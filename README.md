@@ -1,4 +1,4 @@
-Bootstrap-toggle-buttons
+Bootstrap-switch
 ========================
 
 Demo
@@ -30,7 +30,7 @@ Large, small or mini
 --------------------
 
 ``` html
-<div class="switch switch-large">  <!-- switch-small or switch-mini -->
+<div class="switch switch-large">  <!-- switch-large, switch-small or switch-mini -->
     <input type="checkbox">
 </div>
 ```
