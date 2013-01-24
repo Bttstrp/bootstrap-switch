@@ -138,6 +138,107 @@ $('#mySwitch').on('switch-change', function (e, data) {
 &lt;/div></pre>
         </div>
     </div>
+
+
+    <div class="row-fluid">
+        <div class="span12">
+            <h3>Toggle State</h3>
+            <hr>
+        </div>
+    </div>
+    <div class="row-fluid">
+
+        <div class="span4">
+            <div id="toggle-state-switch" class="switch">
+                <input type="checkbox" checked="checked">
+            </div>
+            <br>
+            <br>
+
+            <div id="toggle-state-switch-button-on" class="btn btn-primary">ON!</div>
+            <div id="toggle-state-switch-button" class="btn btn-primary">Toggle me!</div>
+            <div id="toggle-state-switch-button-off" class="btn btn-primary">OFF!</div>
+        </div>
+        <div class="span8">
+
+            <h4>Html:</h4>
+<pre class="prettyprint linenums">
+&lt;div id="toggle-state-switch" class="switch">
+    &lt;input type="checkbox" checked="checked">
+&lt;/div></pre>
+            <h4>Js:</h4>
+<pre class="prettyprint linenums">
+$('#toggle-state-switch').switch('toggleState');
+$('#toggle-state-switch').switch('setState', false); // true || false
+</pre>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <h3>Destroy</h3>
+            <hr>
+        </div>
+    </div>
+    <div class="row-fluid">
+
+        <div class="span4">
+            <div id="destroy-switch" class="switch">
+                <input type="checkbox" checked="checked">
+            </div>
+            <br>
+            <br>
+            <button id="btn-destroy-switch" class="btn btn-danger">
+                Destroy me!
+            </button>
+        </div>
+        <div class="span8">
+
+            <h4>Html:</h4>
+<pre class="prettyprint linenums">
+&lt;div id="destroy-switch" class="switch">
+    &lt;input type="checkbox" checked="checked">
+&lt;/div></pre>
+            <h4>Js:</h4>
+<pre class="prettyprint linenums">
+$('#destroy-switch').switch('destroy');
+</pre>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <h3>Disabled</h3>
+            <hr>
+        </div>
+    </div>
+    <div class="row-fluid">
+
+        <div class="span4">
+            <div id="disable-switch" class="switch">
+                <input type="checkbox" checked="checked">
+            </div>
+            <br>
+            <br>
+            <button id="btn-disable-switch" class="btn">
+                Disable!
+            </button>
+        </div>
+        <div class="span8">
+
+            <h4>Html:</h4>
+<pre class="prettyprint linenums">
+&lt;div id="disable-switch" class="switch">
+    &lt;input type="checkbox" checked="checked">
+&lt;/div></pre>
+            <h4>Js:</h4>
+<pre class="prettyprint linenums">
+$('#disable-switch').switch('toggleActivation');
+</pre>
+        </div>
+    </div>
+    <p class="pull-right">
+        <a href="https://twitter.com/SpiritualGuru">follow me</a> -
+        <a href="http://www.larentis.eu">my site</a>
+    </p>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -149,6 +250,27 @@ $('#mySwitch').on('switch-change', function (e, data) {
         var $el = $(data.el)
           , value = data.value;
         console.log(e, $el, value);
+    });
+
+    $('#toggle-state-switch-button').on('click', function () {
+        $('#toggle-state-switch').switch('toggleState');
+    });
+
+    $('#toggle-state-switch-button-on').on('click', function () {
+        $('#toggle-state-switch').switch('setState', true);
+    });
+
+    $('#toggle-state-switch-button-off').on('click', function () {
+        $('#toggle-state-switch').switch('setState', false);
+    });
+
+    $('#btn-destroy-switch').on('click', function () {
+        $('#destroy-switch').switch('destroy');
+        $(this).remove();
+    });
+
+    $('#btn-disable-switch').on('click', function () {
+        $('#disable-switch').switch('toggleActivation');
     });
 </script>
 </body>
