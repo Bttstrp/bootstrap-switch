@@ -63,3 +63,14 @@ $('#mySwitch').on('switch-change', function (e, data) {
     console.log(e, $el, value);
 });
 ```
+
+Methods
+-------
+
+``` javascript
+$('#mySwitch').switch('toggleActivation');
+$('#mySwitch').switch('toggleState');
+$('#mySwitch').switch('setState', true);
+$('#mySwitch').switch('status');  // return true or false
+$('#mySwitch').switch('destroy');
+```
