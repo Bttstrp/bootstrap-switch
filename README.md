@@ -39,7 +39,7 @@ Data attributes
 ---------------
 
 ``` html
-<div class="switch" data-on="danger" data-off="warning">  <!-- primary, info, success, warning and danger -->
+<div class="switch" data-on="danger" data-off="warning"  data-animated="false">  <!-- primary, info, success, warning and danger -->
     <input type="checkbox">
 </div>
 ```

@@ -20,7 +20,7 @@
         if ($element.data('on') !== undefined)
           color = "switch-" + $element.data('on');
 
-        $switchLeft = $('<span></span>')
+        $switchLeft = $('<span>')
           .addClass("switch-left")
           .addClass(myClasses)
           .addClass(color)
@@ -29,18 +29,22 @@
         if ($element.data('off') !== undefined)
           color = "switch-" + $element.data('off');
 
-        $switchRight = $('<span></span>')
+        $switchRight = $('<span>')
           .addClass("switch-right")
           .addClass(myClasses)
           .addClass(color)
           .text("OFF");
 
-        $label = $('<label></label>')
+        $label = $('<label>')
           .html("&nbsp;")
           .addClass(myClasses)
           .attr('for', $element.find('input').attr('id'));
 
-        $div = $element.find('input').wrap($('<div></div>')).parent().addClass('switch-animate');
+        $div = $element.find('input').wrap($('<div>')).parent().data('animated', false);
+
+        if($element.data('animated') !== false)
+          $div.addClass('switch-animate').data('animated', true);
+
         $div.append($switchLeft);
         $div.append($label);
         $div.append($switchRight);
@@ -75,7 +79,8 @@
             $element.removeClass('switch-off').addClass('switch-on');
           else $element.removeClass('switch-on').addClass('switch-off');
 
-          $element.addClass("switch-animate");
+          if($element.data('animated') !== false)
+            $element.addClass("switch-animate");
 
           $element.parent().trigger('switch-change', {'el': $(this), 'value': $(this).is(':checked')})
         });
@@ -151,7 +156,7 @@
       }
     );
   };
-}($);
+}(jQuery);
 
 $(function () {
   $('.switch').switch();
