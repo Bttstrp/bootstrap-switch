@@ -1,0 +1,168 @@
+@import "compass/css3";
+
+$border: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+$white: #ffffff;
+$blue: #0088cc;
+$gray: #e6e6e6;
+$border-radius: 4px;
+
+.switch {
+  display: inline-block;
+  cursor: pointer;
+  @include border-radius(5px);
+  border: 1px solid;
+  border-color: $border;
+  background: $gray;
+  position: relative;
+  text-align: left;
+  overflow: hidden;
+  line-height: 8px;
+
+  // disable text selection highlighting
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  min-width: 100px;
+
+  &.switch-mini {
+    min-width: 70px;
+  }
+
+  &.switch-small {
+    min-width: 80px;
+  }
+
+  &.switch-large {
+    min-width: 120px;
+  }
+
+  &.deactivate {
+    @include opacity(0.5);
+    cursor: default !important;
+    label, span {
+      cursor: default !important;
+    }
+  }
+  > div {
+    display: inline-block;
+    width: 150%;
+    position: relative;
+    top: 0;
+
+    &.switch-animate {
+      @include transition(left 0.5s);
+    }
+    &.switch-off {
+      left: -49.5%;
+    }
+    &.switch-on {
+      left: 0%;
+    }
+  }
+  input[type=checkbox] {
+    //debug
+    display: none;
+    //position: absolute;
+    //margin-left: 60%;
+    //z-index: 123;
+  }
+
+  span, label {
+    @include box-sizing(border-box);
+
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    height: 100%;
+
+    padding-bottom: 4px;
+    padding-top: 4px;
+    font-size: 14px;
+    line-height: 20px;
+
+    &.switch-mini {
+      padding-bottom: 4px;
+      padding-top: 4px;
+      font-size: 10px;
+      line-height: 9px;
+    }
+
+    &.switch-small {
+      padding-bottom: 3px;
+      padding-top: 3px;
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    &.switch-large {
+      padding-bottom: 9px;
+      padding-top: 9px;
+      font-size: 16px;
+      line-height: normal;
+    }
+  }
+
+  label {
+    background: $white;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    z-index: 100;
+    width: 34%;
+    border-left: 1px solid $gray;
+    border-right: 1px solid $gray;
+
+    @include background-image(linear-gradient(top, $white, $gray));
+  }
+
+  span {
+    color: $white;
+    text-align: center;
+    z-index: 1;
+    width: 33%;
+
+    &.switch-left {
+      @include border-top-left-radius($border-radius);
+      @include border-bottom-left-radius($border-radius);
+    }
+    &.switch-right {
+      color: black;
+      @include border-top-right-radius($border-radius);
+      @include border-bottom-right-radius($border-radius);
+      @include background-image(linear-gradient(bottom, $white, $gray));
+    }
+
+    &.switch-primary, &.switch-left {
+      color: $white;
+      background: $blue;
+      @include background-image(linear-gradient(bottom, $blue, #0055CC));
+    }
+    &.switch-info {
+      $startColor: #5BC0DE;
+      color: $white;
+      background: $startColor;
+      @include background-image(linear-gradient(bottom, $startColor, #2F96B4));
+    }
+    &.switch-success {
+      $startColor: #62C462;
+      color: $white;
+      background: $startColor;
+      @include background-image(linear-gradient(bottom, $startColor, #51A351));
+    }
+    &.switch-warning {
+      $startColor: #DBB450;
+      color: $white;
+      background: $startColor;
+      @include background-image(linear-gradient(bottom, $startColor, #F89406));
+    }
+    &.switch-danger {
+      $startColor: #EE5f5B;
+      color: $white;
+      background: $startColor;
+      @include background-image(linear-gradient(bottom, $startColor, #BD362F));
+    }
+  }
+}
