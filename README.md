@@ -71,6 +71,6 @@ Methods
 $('#mySwitch').switch('toggleActivation');
 $('#mySwitch').switch('toggleState');
 $('#mySwitch').switch('setState', true);
-$('#mySwitch').switch('status');  // return true or false
+$('#mySwitch').switch('status');  // returns true or false
 $('#mySwitch').switch('destroy');
 ```
