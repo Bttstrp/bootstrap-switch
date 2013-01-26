@@ -26,14 +26,14 @@ $border-radius: 4px;
   -ms-user-select: none;
   user-select: none;
 
-  min-width: 100px;
+  min-width: 102px;
 
   &.switch-mini {
-    min-width: 70px;
+    min-width: 72px;
   }
 
   &.switch-small {
-    min-width: 80px;
+    min-width: 81px;
   }
 
   &.switch-large {
@@ -57,7 +57,7 @@ $border-radius: 4px;
       @include transition(left 0.5s);
     }
     &.switch-off {
-      left: -49.5%;
+      left: -50%;
     }
     &.switch-on {
       left: 0%;
@@ -111,7 +111,7 @@ $border-radius: 4px;
     margin-top: -1px;
     margin-bottom: -1px;
     z-index: 100;
-    width: 34%;
+    width: 33.333333%;
     border-left: 1px solid $gray;
     border-right: 1px solid $gray;
 
@@ -122,7 +122,7 @@ $border-radius: 4px;
     color: $white;
     text-align: center;
     z-index: 1;
-    width: 33%;
+    width: 33.333333%;
 
     &.switch-left {
       @include border-top-left-radius($border-radius);

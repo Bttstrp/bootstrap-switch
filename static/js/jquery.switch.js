@@ -128,8 +128,8 @@
                   $this.unbind('mouseleave');
 
                   if (moving)
-                    $myCheckBox.attr('checked', !(parseInt($this.parent().css('left')) < -25));
-                  else $myCheckBox.attr("checked", !$myCheckBox.is(":checked"));
+                    $myCheckBox.prop('checked', !(parseInt($this.parent().css('left')) < -25));
+                  else $myCheckBox.prop("checked", !$myCheckBox.is(":checked"));
 
                   moving = false;
                   $myCheckBox.trigger('change');
@@ -145,7 +145,7 @@
                   $this.unbind('mouseleave');
                   $this.trigger('mouseup');
 
-                  $myCheckBox.attr('checked', !(parseInt($this.parent().css('left')) < -25)).trigger('change');
+                  $myCheckBox.prop('checked', !(parseInt($this.parent().css('left')) < -25)).trigger('change');
                 });
 
                 $this.on('mouseup', function (e) {
@@ -164,10 +164,10 @@
       },
       toggleState:function (skipOnChange) {
         var $input = $(this).find('input:checkbox');
-        $input.attr('checked', !$input.is(':checked')).trigger('change', skipOnChange);
+        $input.prop('checked', !$input.is(':checked')).trigger('change', skipOnChange);
       },
       setState:function (value, skipOnChange) {
-        $(this).find('input:checkbox').attr('checked', value).trigger('change', skipOnChange);
+        $(this).find('input:checkbox').prop('checked', value).trigger('change', skipOnChange);
       },
       status:function () {
         return $(this).find('input:checkbox').is(':checked');
