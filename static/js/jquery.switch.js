@@ -12,7 +12,8 @@
               , $label
               , myClasses = ""
               , classes = $element.attr('class')
-              , color;
+              , color
+              , moving;
 
             $.each(['switch-mini', 'switch-small', 'switch-large'], function (i, el) {
               if (classes.indexOf(el) >= 0)
@@ -88,8 +89,8 @@
             });
 
             $element.find('label').on('mousedown touchstart', function (e) {
-              var $this = $(this)
-                , moving = false;
+              var $this = $(this);
+              moving = false;
 
               e.preventDefault();
               e.stopImmediatePropagation();
