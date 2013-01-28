@@ -13,7 +13,9 @@
               , myClasses = ""
               , classes = $element.attr('class')
               , color
-              , moving;
+              , moving
+              , onLabel = "ON"
+              , offLabel = "OFF";
 
             $.each(['switch-mini', 'switch-small', 'switch-large'], function (i, el) {
               if (classes.indexOf(el) >= 0)
@@ -23,11 +25,17 @@
             if ($element.data('on') !== undefined)
               color = "switch-" + $element.data('on');
 
+            if ($element.data('on-label') !== undefined)
+              onLabel = $element.data('on-label');
+
+            if ($element.data('off-label') !== undefined)
+              offLabel = $element.data('off-label');
+
             $switchLeft = $('<span>')
               .addClass("switch-left")
               .addClass(myClasses)
               .addClass(color)
-              .text("ON");
+              .text(onLabel);
 
             if ($element.data('off') !== undefined)
               color = "switch-" + $element.data('off');
@@ -36,7 +44,7 @@
               .addClass("switch-right")
               .addClass(myClasses)
               .addClass(color)
-              .text("OFF");
+              .text(offLabel);
 
             $label = $('<label>')
               .html("&nbsp;")
