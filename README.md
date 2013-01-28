@@ -35,11 +35,29 @@ Large, small or mini
 </div>
 ```
 
-Data attributes
----------------
+Colors
+------
 
 ``` html
-<div class="switch" data-on="danger" data-off="warning"  data-animated="false">  <!-- primary, info, success, warning and danger -->
+<div class="switch" data-on="danger" data-off="warning">  <!-- primary, info, success, warning and danger -->
+    <input type="checkbox">
+</div>
+```
+
+Animation
+---------
+
+``` html
+<div class="switch" data-animated="false">
+    <input type="checkbox">
+</div>
+```
+
+Label
+-----
+
+``` html
+<div class="switch" data-on-label="SI" data-off-label="NO">
     <input type="checkbox">
 </div>
 ```
