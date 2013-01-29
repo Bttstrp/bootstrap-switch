@@ -35,7 +35,7 @@
               .addClass("switch-left")
               .addClass(myClasses)
               .addClass(color)
-              .text(onLabel);
+              .html(onLabel);
 
             if ($element.data('off') !== undefined)
               color = "switch-" + $element.data('off');
@@ -44,7 +44,7 @@
               .addClass("switch-right")
               .addClass(myClasses)
               .addClass(color)
-              .text(offLabel);
+              .html(offLabel);
 
             $label = $('<label>')
               .html("&nbsp;")
