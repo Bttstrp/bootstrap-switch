@@ -62,6 +62,15 @@ Label
 </div>
 ```
 
+HTML Label
+-----
+
+``` html
+<div class="switch" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
+    <input type="checkbox">
+</div>
+```
+
 Initial values
 --------------
 
