@@ -51,7 +51,7 @@
               .addClass(myClasses)
               .attr('for', $element.find('input').attr('id'));
 
-            $div = $element.find('input').wrap($('<div>')).parent().data('animated', false);
+            $div = $element.find(':checkbox').wrap($('<div>')).parent().data('animated', false);
 
             if ($element.data('animated') !== false)
               $div.addClass('switch-animate').data('animated', true);
