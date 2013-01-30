@@ -1,7 +1,7 @@
 !function ($) {
   "use strict";
 
-  $.fn.switch = function (method) {
+  $.fn['switch'] = function (method) {
     var methods = {
       init:function () {
         this.each(function () {
@@ -205,5 +205,5 @@
 }(jQuery);
 
 $(function () {
-  $('.switch').switch();
+  $('.switch')['switch']();
 });
