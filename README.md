@@ -11,10 +11,10 @@ Usage
 Just include Twitter Bootstrap, jQuery, Bootstrap Switch CSS and Javascript
 ``` html
 <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
-<link href="bootstrap-switch.css" rel="stylesheet">
+<link href="bootstrapSwitch.css" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-<script src="jquery.switch.js"></script>
+<script src="bootstrapSwitch.js"></script>
 ```
 
 Basic Example
@@ -95,9 +95,14 @@ Methods
 -------
 
 ``` javascript
-$('#mySwitch').switch('toggleActivation');
-$('#mySwitch').switch('toggleState');
-$('#mySwitch').switch('setState', true);
-$('#mySwitch').switch('status');  // returns true or false
-$('#mySwitch').switch('destroy');
+$('#mySwitch').bootstrapSwitch('toggleActivation');
+$('#mySwitch').bootstrapSwitch('toggleState');
+$('#mySwitch').bootstrapSwitch('setState', true);
+$('#mySwitch').bootstrapSwitch('status');  // returns true or false
+$('#mySwitch').bootstrapSwitch('destroy');
 ```
+
+License
+-------
+Licensed under the Apache License, Version 2.0
+http://www.apache.org/licenses/LICENSE-2.0

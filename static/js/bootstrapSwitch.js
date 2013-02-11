@@ -1,7 +1,15 @@
+/* ============================================================
+ * bootstrapSwitch v1.0 by Larentis Mattia @spiritualGuru
+ * http://www.larentis.eu/switch/
+ * ============================================================
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * ============================================================ */
+
 !function ($) {
   "use strict";
 
-  $.fn['switch'] = function (method) {
+  $.fn['bootstrapSwitch'] = function (method) {
     var methods = {
       init:function () {
         this.each(function () {
@@ -205,5 +213,5 @@
 }(jQuery);
 
 $(function () {
-  $('.switch')['switch']();
+  $('.switch')['bootstrapSwitch']();
 });
