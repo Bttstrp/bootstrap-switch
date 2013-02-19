@@ -101,6 +101,11 @@
               if ($element.data('animated') !== false)
                 $element.addClass("switch-animate");
 
+              var elem = $(this)[0]
+              if (typeof elem.onclick == "function") {
+                elem.onclick.apply(elem);
+              }
+              
               $element.parent().trigger('switch-change', {'el':$(this), 'value':$(this).is(':checked')})
             });
 
