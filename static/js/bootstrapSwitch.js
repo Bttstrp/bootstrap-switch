@@ -45,6 +45,7 @@
               .addClass(color)
               .html(onLabel);
 
+            color = '';  // reset value
             if ($element.data('off') !== undefined)
               color = "switch-" + $element.data('off');
 
