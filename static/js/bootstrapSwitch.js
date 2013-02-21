@@ -1,5 +1,5 @@
 /* ============================================================
- * bootstrapSwitch v1.0 by Larentis Mattia @spiritualGuru
+ * bootstrapSwitch v1.1 by Larentis Mattia @spiritualGuru
  * http://www.larentis.eu/switch/
  * ============================================================
  * Licensed under the Apache License, Version 2.0
@@ -178,6 +178,14 @@
       },
       toggleActivation:function () {
         $(this).toggleClass('deactivate');
+      },
+      isActive : function() {
+        return !$(this).hasClass('deactivate');
+      },
+      setActive: function (active) {
+        if(active)
+          $(this).removeClass('deactivate');
+        else $(this).addClass('deactivate');
       },
       toggleState:function (skipOnChange) {
         var $input = $(this).find('input:checkbox');

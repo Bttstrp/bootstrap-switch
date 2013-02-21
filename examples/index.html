@@ -218,8 +218,17 @@ $('#destroy-switch').bootstrapSwitch('destroy');
         </div>
         <br>
         <br>
+        <button id="btn-is-active-switch" class="btn">
+            Is active?
+        </button>
+        <button id="btn-toggle-activation-switch" class="btn">
+            Toggle activation!
+        </button>
         <button id="btn-disable-switch" class="btn">
             Disable!
+        </button>
+        <button id="btn-activate-switch" class="btn">
+            Activate!
         </button>
     </div>
     <div class="span8">
@@ -231,7 +240,10 @@ $('#destroy-switch').bootstrapSwitch('destroy');
 &lt;/div></pre>
         <h4>Js:</h4>
 <pre class="prettyprint linenums">
+$('#disable-switch').bootstrapSwitch('isActive');
 $('#disable-switch').bootstrapSwitch('toggleActivation');
+$('#disable-switch').bootstrapSwitch('setActive', false);
+$('#disable-switch').bootstrapSwitch('setActive', true);
 </pre>
     </div>
 </div>
@@ -313,8 +325,20 @@ $('#disable-switch').bootstrapSwitch('toggleActivation');
         $(this).remove();
     });
 
-    $('#btn-disable-switch').on('click', function () {
+    $('#btn-is-active-switch').on('click', function () {
+        alert($('#disable-switch').bootstrapSwitch('isActive'));
+    });
+
+    $('#btn-toggle-activation-switch').on('click', function () {
         $('#disable-switch').bootstrapSwitch('toggleActivation');
+    });
+
+    $('#btn-disable-switch').on('click', function () {
+        $('#disable-switch').bootstrapSwitch('setActive', false);
+    });
+
+    $('#btn-activate-switch').on('click', function () {
+        $('#disable-switch').bootstrapSwitch('setActive', true);
     });
 </script>
 </body>
