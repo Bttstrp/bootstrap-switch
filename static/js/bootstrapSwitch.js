@@ -1,5 +1,5 @@
 /* ============================================================
- * bootstrapSwitch v1.1 by Larentis Mattia @spiritualGuru
+ * bootstrapSwitch v1.2 by Larentis Mattia @spiritualGuru
  * http://www.larentis.eu/switch/
  * ============================================================
  * Licensed under the Apache License, Version 2.0
@@ -11,7 +11,7 @@
 
   $.fn['bootstrapSwitch'] = function (method) {
     var methods = {
-      init:function () {
+      init: function () {
         this.each(function () {
             var $element = $(this)
               , $div
@@ -45,7 +45,7 @@
               .addClass(color)
               .html(onLabel);
 
-            color = '';  // reset value
+            color = '';
             if ($element.data('off') !== undefined)
               color = "switch-" + $element.data('off');
 
@@ -65,9 +65,10 @@
             if ($element.data('animated') !== false)
               $div.addClass('switch-animate').data('animated', true);
 
-            $div.append($switchLeft);
-            $div.append($label);
-            $div.append($switchRight);
+            $div
+              .append($switchLeft)
+              .append($label)
+              .append($switchRight);
 
             $element.find('>div').addClass(
               $element.find('input').is(':checked') ? 'switch-on' : 'switch-off'
@@ -80,9 +81,18 @@
               $this.siblings('label').trigger('mousedown').trigger('mouseup').trigger('click');
             };
 
+            $element.on('keydown', function (e) {
+              if (e.keyCode === 32) {
+                e.stopImmediatePropagation();
+                e.preventDefault();
+                changeStatus($(e.target).find('span:first'));
+              }
+            });
+
             $switchLeft.on('click', function (e) {
               changeStatus($(this));
             });
+
             $switchRight.on('click', function (e) {
               changeStatus($(this));
             });
@@ -102,7 +112,7 @@
               if ($element.data('animated') !== false)
                 $element.addClass("switch-animate");
 
-              $element.parent().trigger('switch-change', {'el':$(this), 'value':$(this).is(':checked')})
+              $element.parent().trigger('switch-change', {'el': $(this), 'value': $(this).is(':checked')})
             });
 
             $element.find('label').on('mousedown touchstart', function (e) {
@@ -176,28 +186,28 @@
           }
         );
       },
-      toggleActivation:function () {
+      toggleActivation: function () {
         $(this).toggleClass('deactivate');
       },
-      isActive : function() {
+      isActive: function () {
         return !$(this).hasClass('deactivate');
       },
       setActive: function (active) {
-        if(active)
+        if (active)
           $(this).removeClass('deactivate');
         else $(this).addClass('deactivate');
       },
-      toggleState:function (skipOnChange) {
+      toggleState: function (skipOnChange) {
         var $input = $(this).find('input:checkbox');
         $input.prop('checked', !$input.is(':checked')).trigger('change', skipOnChange);
       },
-      setState:function (value, skipOnChange) {
+      setState: function (value, skipOnChange) {
         $(this).find('input:checkbox').prop('checked', value).trigger('change', skipOnChange);
       },
-      status:function () {
+      status: function () {
         return $(this).find('input:checkbox').is(':checked');
       },
-      destroy:function () {
+      destroy: function () {
         var $div = $(this).find('div')
           , $checkbox;
 
