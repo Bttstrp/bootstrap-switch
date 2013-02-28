@@ -30,6 +30,8 @@
                 myClasses = el;
             });
 
+            $element.addClass('has-switch');
+
             if ($element.data('on') !== undefined)
               color = "switch-" + $element.data('on');
 
