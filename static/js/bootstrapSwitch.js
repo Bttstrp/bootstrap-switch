@@ -12,7 +12,7 @@
   $.fn['bootstrapSwitch'] = function (method) {
     var methods = {
       init: function () {
-        this.each(function () {
+        return this.each(function () {
             var $element = $(this)
               , $div
               , $switchLeft
