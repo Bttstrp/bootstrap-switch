@@ -2,3 +2,8 @@ target/
 .idea
 .sass-cache/
 .DS_Store
+
+static/stylesheets/bootstrapSwitch.css.orig
+static/stylesheets/bootstrapSwitch.css.orig
+static/less/bootstrapSwitch.less.orig
+static/stylesheets/bootstrapSwitch.css.orig
