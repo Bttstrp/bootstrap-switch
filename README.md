@@ -7,7 +7,6 @@ http://www.larentis.eu/switch/
 
 Usage
 -----
-
 Just include Twitter Bootstrap, jQuery, Bootstrap Switch CSS and Javascript
 ``` html
 <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
@@ -17,9 +16,15 @@ Just include Twitter Bootstrap, jQuery, Bootstrap Switch CSS and Javascript
 <script src="bootstrapSwitch.js"></script>
 ```
 
+Less
+----
+If you want to use your bootstrap vars edit bootstrapSwitch.less and then compile the less file
+``` bash
+lessc static/less/bootstrapSwitch.less static/stylesheets/bootstrapSwitch.css
+```
+
 Basic Example
 -------------
-
 ``` html
 <div class="switch">
     <input type="checkbox">
@@ -28,7 +33,6 @@ Basic Example
 
 Large, small or mini
 --------------------
-
 ``` html
 <div class="switch switch-large">  <!-- switch-large, switch-small or switch-mini -->
     <input type="checkbox">
@@ -37,7 +41,6 @@ Large, small or mini
 
 Colors
 ------
-
 ``` html
 <div class="switch" data-on="danger" data-off="warning">  <!-- primary, info, success, warning and danger -->
     <input type="checkbox">
@@ -46,25 +49,22 @@ Colors
 
 Animation
 ---------
-
 ``` html
 <div class="switch" data-animated="false">
     <input type="checkbox">
 </div>
 ```
 
-Label
+Text
 -----
-
 ``` html
 <div class="switch" data-on-label="SI" data-off-label="NO">
     <input type="checkbox">
 </div>
 ```
 
-HTML Label
------
-
+HTML Text
+----------
 ``` html
 <div class="switch" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
     <input type="checkbox">
@@ -73,7 +73,6 @@ HTML Label
 
 Initial values
 --------------
-
 ``` html
 <div class="switch">
     <input type="checkbox" checked="checked" disabled="disabled">
@@ -82,7 +81,6 @@ Initial values
 
 Event handler
 -------------
-
 ``` javascript
 $('#mySwitch').on('switch-change', function (e, data) {
     var $el = $(data.el)
@@ -93,7 +91,6 @@ $('#mySwitch').on('switch-change', function (e, data) {
 
 Methods
 -------
-
 ``` javascript
 $('#mySwitch').bootstrapSwitch('toggleActivation');
 $('#mySwitch').bootstrapSwitch('isActive');
