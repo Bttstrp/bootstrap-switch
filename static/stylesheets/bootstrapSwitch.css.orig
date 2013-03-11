@@ -22,13 +22,13 @@
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  min-width: 102px;
+  min-width: 100px;
 }
 .has-switch.switch-mini {
   min-width: 72px;
 }
 .has-switch.switch-small {
-  min-width: 81px;
+  min-width: 80px;
 }
 .has-switch.switch-large {
   min-width: 120px;
@@ -55,7 +55,7 @@
   transition: left 0.5s;
 }
 .has-switch > div.switch-off {
-  left: -50%;
+  left: -49%;
 }
 .has-switch > div.switch-on {
   left: 0%;
@@ -104,18 +104,14 @@
   z-index: 100;
 <<<<<<< HEAD
   width: 33.348%;
-  border-left: 1px solid #e6e6e6;
-  border-right: 1px solid #e6e6e6;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #e6e6e6));
-  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
 =======
-  width: 33.333333%;
+  width: 34%;
+>>>>>>> d46c830b6b08775443051a8d77f633f5b40b7777
   border-left: 1px solid #cccccc;
   border-right: 1px solid #cccccc;
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #f5f5f5;
->>>>>>> 4618d8a8d73f81c6eb20a8eba77a9ad356ee8866
   background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
   background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
@@ -147,7 +143,7 @@
 .has-switch span {
   text-align: center;
   z-index: 1;
-  width: 33.333333%;
+  width: 33%;
 }
 .has-switch span.switch-left {
   -webkit-border-top-left-radius: 4px;
