@@ -22,13 +22,13 @@
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  min-width: 102px;
+  min-width: 100px;
 }
 .has-switch.switch-mini {
   min-width: 72px;
 }
 .has-switch.switch-small {
-  min-width: 81px;
+  min-width: 80px;
 }
 .has-switch.switch-large {
   min-width: 120px;
@@ -55,7 +55,7 @@
   transition: left 0.5s;
 }
 .has-switch > div.switch-off {
-  left: -50%;
+  left: -49%;
 }
 .has-switch > div.switch-on {
   left: 0%;
@@ -102,7 +102,7 @@
   margin-top: -1px;
   margin-bottom: -1px;
   z-index: 100;
-  width: 33.348%;
+  width: 34%;
   border-left: 1px solid #cccccc;
   border-right: 1px solid #cccccc;
   color: #ffffff;
@@ -139,7 +139,7 @@
 .has-switch span {
   text-align: center;
   z-index: 1;
-  width: 33.333333%;
+  width: 33%;
 }
 .has-switch span.switch-left {
   -webkit-border-top-left-radius: 4px;
