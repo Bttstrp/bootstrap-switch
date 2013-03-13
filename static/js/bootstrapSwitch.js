@@ -103,7 +103,11 @@
               var $element = $(this).parent();
 
               e.preventDefault();
-              e.stopImmediatePropagation();
+              // don't stop propagation of the
+              // change event, there's no need to do so
+              // and we don't want to break other modules
+              // that might depend on this event.
+              // e.stopImmediatePropagation();
 
               $element.css('left', '');
 
