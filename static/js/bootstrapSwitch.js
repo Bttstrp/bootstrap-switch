@@ -23,7 +23,8 @@
               , color
               , moving
               , onLabel = "ON"
-              , offLabel = "OFF";
+              , offLabel = "OFF"
+              , icon = false;
 
             $.each(['switch-mini', 'switch-small', 'switch-large'], function (i, el) {
               if (classes.indexOf(el) >= 0)
@@ -40,6 +41,9 @@
 
             if ($element.data('off-label') !== undefined)
               offLabel = $element.data('off-label');
+
+            if ($element.data('icon') !== undefined)
+              icon = $element.data('icon');
 
             $switchLeft = $('<span>')
               .addClass("switch-left")
@@ -61,6 +65,10 @@
               .html("&nbsp;")
               .addClass(myClasses)
               .attr('for', $element.find('input').attr('id'));
+
+            if (icon) {
+              $label.html('<i class="icon icon-'+icon+'"></i>');
+            }
 
             $div = $element.find(':checkbox').wrap($('<div>')).parent().data('animated', false);
 

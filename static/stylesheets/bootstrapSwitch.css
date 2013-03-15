@@ -99,6 +99,7 @@
   line-height: normal;
 }
 .has-switch label {
+  text-align: center;
   margin-top: -1px;
   margin-bottom: -1px;
   z-index: 100;
@@ -136,6 +137,13 @@
 .has-switch label.active {
   background-color: #cccccc \9;
 }
+
+	.has-switch label i {
+		color: #000;
+		text-shadow: 0 1px 0 #fff;
+		line-height: 18px;
+	}
+
 .has-switch span {
   text-align: center;
   z-index: 1;
