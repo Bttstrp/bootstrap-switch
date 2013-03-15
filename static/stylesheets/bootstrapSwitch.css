@@ -142,6 +142,7 @@
 		color: #000;
 		text-shadow: 0 1px 0 #fff;
 		line-height: 18px;
+		pointer-events: none;
 	}
 
 .has-switch span {
