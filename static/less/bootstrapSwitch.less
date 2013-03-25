@@ -102,6 +102,7 @@
   }
 
   label {
+  	text-align: center;
     margin-top: -1px;
     margin-bottom: -1px;
     z-index: 100;
@@ -110,6 +111,13 @@
     border-right: 1px solid @btnBorder;
 
     .buttonBackground(@btnBackground, @btnBackgroundHighlight);
+
+    i {
+      color: #000;
+      text-shadow: 0 1px 0 #fff;
+      line-height: 18px;
+      pointer-events: none;
+    }
   }
 
   span {
