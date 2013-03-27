@@ -55,7 +55,7 @@
   transition: left 0.5s;
 }
 .has-switch > div.switch-off {
-  left: -49%;
+  left: -50%;
 }
 .has-switch > div.switch-on {
   left: 0%;
@@ -137,14 +137,12 @@
 .has-switch label.active {
   background-color: #cccccc \9;
 }
-
-	.has-switch label i {
-		color: #000;
-		text-shadow: 0 1px 0 #fff;
-		line-height: 18px;
-		pointer-events: none;
-	}
-
+.has-switch label i {
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  line-height: 18px;
+  pointer-events: none;
+}
 .has-switch span {
   text-align: center;
   z-index: 1;
