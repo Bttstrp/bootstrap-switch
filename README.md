@@ -9,8 +9,8 @@ Usage
 -----
 Just include Twitter Bootstrap, jQuery, Bootstrap Switch CSS and Javascript
 ``` html
-<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
-<link href="bootstrapSwitch.css" rel="stylesheet">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
+<link rel="stylesheet" href="bootstrapSwitch.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="bootstrapSwitch.js"></script>
