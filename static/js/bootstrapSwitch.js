@@ -107,7 +107,7 @@
               changeStatus($(this));
             });
 
-            $element.find('input').on('change', function (e) {
+            $element.find('input').on('change', function (e, skipOnChange) {
               var $this = $(this)
                 , $element = $this.parent()
                 , thisState = $this.is(':checked')
@@ -126,7 +126,8 @@
                 if ($element.data('animated') !== false)
                   $element.addClass("switch-animate");
 
-                $element.parent().trigger('switch-change', {'el': $this, 'value': thisState})
+                if (skipOnChange !== false)
+                  $element.parent().trigger('switch-change', {'el': $this, 'value': thisState});
               }
             });
 
