@@ -13,7 +13,8 @@ Just include Twitter Bootstrap, jQuery, Bootstrap Switch CSS and Javascript
 <link rel="stylesheet" href="bootstrapSwitch.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-<script src="bootstrapSwitch.js"></script>
+<script src="bootstrapSwitch.js"></script>  // master
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.3/bootstrapSwitch.min.js">  // from cdnjs.com
 ```
 
 Less
