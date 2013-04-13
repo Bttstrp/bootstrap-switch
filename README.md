@@ -27,7 +27,7 @@ lessc static/less/bootstrapSwitch.less static/stylesheets/bootstrapSwitch.css
 Basic Example
 -------------
 ``` html
-<div class="switch">
+<div class="has-switch">
     <input type="checkbox">
 </div>
 ```
@@ -35,7 +35,7 @@ Basic Example
 Large, small or mini
 --------------------
 ``` html
-<div class="switch switch-large">  <!-- switch-large, switch-small or switch-mini -->
+<div class="has-switch switch-large">  <!-- switch-large, switch-small or switch-mini -->
     <input type="checkbox">
 </div>
 ```
@@ -43,7 +43,7 @@ Large, small or mini
 Colors
 ------
 ``` html
-<div class="switch" data-on="danger" data-off="warning">  <!-- primary, info, success, warning and danger -->
+<div class="has-switch" data-on="danger" data-off="warning">  <!-- primary, info, success, warning and danger -->
     <input type="checkbox">
 </div>
 ```
@@ -51,7 +51,7 @@ Colors
 Animation
 ---------
 ``` html
-<div class="switch" data-animated="false">
+<div class="has-switch" data-animated="false">
     <input type="checkbox">
 </div>
 ```
@@ -59,7 +59,7 @@ Animation
 Text
 -----
 ``` html
-<div class="switch" data-on-label="SI" data-off-label="NO">
+<div class="has-switch" data-on-label="SI" data-off-label="NO">
     <input type="checkbox">
 </div>
 ```
@@ -67,7 +67,7 @@ Text
 HTML Text
 ----------
 ``` html
-<div class="switch" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
+<div class="has-switch" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
     <input type="checkbox">
 </div>
 ```
@@ -75,7 +75,7 @@ HTML Text
 Initial values
 --------------
 ``` html
-<div class="switch">
+<div class="has-switch">
     <input type="checkbox" checked="checked" disabled="disabled">
 </div>
 ```
