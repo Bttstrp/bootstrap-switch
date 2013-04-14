@@ -9,6 +9,7 @@ Usage
 -----
 Just include Twitter Bootstrap, jQuery, Bootstrap Switch CSS and Javascript
 ``` html
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8;" />
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
 <link rel="stylesheet" href="bootstrapSwitch.css">
 
