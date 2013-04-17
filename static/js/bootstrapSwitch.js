@@ -139,7 +139,7 @@
 
               $this.closest('div').removeClass('switch-animate');
 
-              if ($this.closest('.switch').is('.deactivate'))
+              if ($this.closest('.has-switch').is('.deactivate'))
                 $this.unbind('click');
               else {
                 $this.on('mousemove touchmove', function (e) {
