@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Bootstrap.Switch</id>
+    <title>bootstrap-switch</title>
+    <version>0.0.20130426</version>
+    <authors>Mattia Larentis</authors>
+    <owners>Brian Lachniet</owners>
+    <licenseUrl>https://github.com/blachniet/bootstrap-switch/blob/master/LICENSE</licenseUrl>
+    <projectUrl>http://www.larentis.eu/switch/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>unofficial bootstrap switch</description>
+    <releaseNotes>Initial NuGet release.</releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <tags>bootstrap switch toggle</tags>
+  </metadata>
+</package>
