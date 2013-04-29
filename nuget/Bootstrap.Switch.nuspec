@@ -3,7 +3,7 @@
   <metadata>
     <id>Bootstrap.Switch</id>
     <title>bootstrap-switch</title>
-    <version>0.0.20130426</version>
+    <version>0.0.20130428</version>
     <authors>Mattia Larentis</authors>
     <owners>Brian Lachniet</owners>
     <licenseUrl>https://github.com/nostalgiaz/bootstrap-switch/blob/master/LICENSE</licenseUrl>
@@ -13,5 +13,8 @@
     <releaseNotes>Initial NuGet release.</releaseNotes>
     <copyright>Copyright 2013</copyright>
     <tags>bootstrap switch toggle</tags>
+    <dependencies>
+        <dependency id="Twitter.Bootstrap" />
+    </dependencies>
   </metadata>
 </package>
