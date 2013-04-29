@@ -10,7 +10,7 @@
     <projectUrl>http://www.larentis.eu/switch/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>unofficial bootstrap switch</description>
-    <releaseNotes>Initial NuGet release.</releaseNotes>
+    <releaseNotes>Added Twitter.Bootstrap dependency</releaseNotes>
     <copyright>Copyright 2013</copyright>
     <tags>bootstrap switch toggle</tags>
     <dependencies>
