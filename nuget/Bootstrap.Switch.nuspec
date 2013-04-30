@@ -3,14 +3,18 @@
   <metadata>
     <id>Bootstrap.Switch</id>
     <title>bootstrap-switch</title>
-    <version>0.0.20130426</version>
+    <version>0.0.20130430</version>
     <authors>Mattia Larentis</authors>
     <owners>Brian Lachniet</owners>
     <licenseUrl>https://github.com/nostalgiaz/bootstrap-switch/blob/master/LICENSE</licenseUrl>
     <projectUrl>http://www.larentis.eu/switch/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>unofficial bootstrap switch</description>
-    <releaseNotes>Initial NuGet release.</releaseNotes>
+    <releaseNotes>
+Removed unnecessary files from package.
+
+ - Removed nuget.exe, README.md, and build.cmd from the NuGet package +Changed
+    </releaseNotes>
     <copyright>Copyright 2013</copyright>
     <tags>bootstrap switch toggle</tags>
   </metadata>

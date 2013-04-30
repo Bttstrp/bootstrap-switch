@@ -14,7 +14,7 @@ mkdir Content\Content
 copy ..\static\stylesheets\bootstrapSwitch.css Content\Content\
 
 :: Pack up the NuGet package
-NuGet.exe pack
+NuGet.exe pack -Exclude nuget.exe;build.cmd;README.md
 
 :: Delete the temporary content folder
 rd Content /s /q
