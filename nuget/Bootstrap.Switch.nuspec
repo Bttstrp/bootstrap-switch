@@ -17,5 +17,8 @@ Removed unnecessary files from package.
     </releaseNotes>
     <copyright>Copyright 2013</copyright>
     <tags>bootstrap switch toggle</tags>
+    <dependencies>
+        <dependency id="Twitter.Bootstrap" />
+    </dependencies>
   </metadata>
 </package>
