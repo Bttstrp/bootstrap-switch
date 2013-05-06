@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Bootstrap.Switch</id>
+    <title>bootstrap-switch</title>
+    <version>0.0.20130431</version>
+    <authors>Mattia Larentis</authors>
+    <owners>Brian Lachniet</owners>
+    <licenseUrl>https://github.com/nostalgiaz/bootstrap-switch/blob/master/LICENSE</licenseUrl>
+    <projectUrl>http://www.larentis.eu/switch/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>unofficial bootstrap switch</description>
+    <releaseNotes>
+Fixed dependency issue.
+
+ - Re-added Twitter.Bootstrap dependency. +Fix
+    </releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <tags>bootstrap switch toggle</tags>
+    <dependencies>
+        <dependency id="Twitter.Bootstrap" />
+    </dependencies>
+  </metadata>
+</package>
