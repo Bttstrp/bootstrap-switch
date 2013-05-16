@@ -357,3 +357,26 @@
 .has-switch span.switch-danger.active {
   background-color: #e9322d \9;
 }
+
+
+/*Allows the use of append extensions on a switch*/
+.input-prepend .switch-left,
+.input-prepend .has-switch {
+  -webkit-border-top-left-radius: 0 !important;
+  -webkit-border-bottom-left-radius: 0 !important;
+  -moz-border-top-left-radius: 0 !important;
+  -moz-border-bottom-left-radius: 0 !important;
+      border-top-left-radius:0 !important;
+      border-bottom-left-radius:0 !important;
+}
+
+/*Allows the use of prepend extensions on a switch*/
+.input-append .switch-left,
+.input-append .has-switch {
+  -webkit-border-top-right-radius: 0 !important;
+  -webkit-border-bottom-right-radius: 0 !important;
+  -moz-border-top-right-radius: 0 !important;
+  -moz-border-bottom-right-radius: 0 !important;
+      border-top-right-radius:0 !important;
+      border-bottom-right-radius:0 !important;
+}
