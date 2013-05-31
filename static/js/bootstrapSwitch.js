@@ -205,15 +205,25 @@
         );
       },
       toggleActivation: function () {
+        var $input = $(this).find('input:checkbox');
+        if ($(this).hasClass('deactivate'))
+          $input.removeAttr('disabled');
+        else $input.attr('disabled','disabled');
         $(this).toggleClass('deactivate');
       },
       isActive: function () {
         return !$(this).hasClass('deactivate');
       },
       setActive: function (active) {
-        if (active)
+        var $input = $(this).find('input:checkbox');
+        if (active) {
           $(this).removeClass('deactivate');
-        else $(this).addClass('deactivate');
+          $input.removeAttr('disabled');
+        }
+        else {
+          $(this).addClass('deactivate');
+          $input.attr('disabled','disabled');
+        }
       },
       toggleState: function (skipOnChange) {
         var $input = $(this).find('input:checkbox');
