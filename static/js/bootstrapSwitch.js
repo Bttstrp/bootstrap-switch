@@ -197,7 +197,7 @@
                   e.stopImmediatePropagation();
                   e.preventDefault();
 
-                  $(this).unbind('mo:usemove');
+                  $(this).unbind('mousemove');
                 });
               }
             });
