@@ -100,8 +100,10 @@ $('#mySwitch').bootstrapSwitch('setActive', false);
 $('#mySwitch').bootstrapSwitch('setActive', true);
 $('#mySwitch').bootstrapSwitch('toggleState');
 $('#mySwitch').bootstrapSwitch('setState', true);
-$('#mySwitch').bootstrapSwitch('setState', value, skipOnChange); // value and if you want to skip trigger change event 
-$('#mySwitch').bootstrapSwitch('status');  // returns true or false
+// value and if you want to skip trigger change event
+$('#mySwitch').bootstrapSwitch('setState', value, skipOnChange); 
+// returns true or false
+$('#mySwitch').bootstrapSwitch('status');
 $('#mySwitch').bootstrapSwitch('destroy');
 ```
 
