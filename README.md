@@ -29,7 +29,7 @@ Basic Example
 -------------
 ``` html
 <div class="switch">
-    <input type="checkbox">
+    <input type="checkbox" />
 </div>
 ```
 
@@ -37,7 +37,7 @@ Large, small or mini
 --------------------
 ``` html
 <div class="switch switch-large">  <!-- switch-large, switch-small or switch-mini -->
-    <input type="checkbox">
+    <input type="checkbox" />
 </div>
 ```
 
@@ -45,7 +45,7 @@ Colors
 ------
 ``` html
 <div class="switch" data-on="danger" data-off="warning">  <!-- primary, info, success, warning and danger -->
-    <input type="checkbox">
+    <input type="checkbox" />
 </div>
 ```
 
@@ -53,7 +53,7 @@ Animation
 ---------
 ``` html
 <div class="switch" data-animated="false">
-    <input type="checkbox">
+    <input type="checkbox" />
 </div>
 ```
 
@@ -61,7 +61,7 @@ Text
 -----
 ``` html
 <div class="switch" data-on-label="SI" data-off-label="NO">
-    <input type="checkbox">
+    <input type="checkbox" />
 </div>
 ```
 
@@ -69,7 +69,7 @@ HTML Text
 ----------
 ``` html
 <div class="switch" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
-    <input type="checkbox">
+    <input type="checkbox" />
 </div>
 ```
 
@@ -100,8 +100,10 @@ $('#mySwitch').bootstrapSwitch('setActive', false);
 $('#mySwitch').bootstrapSwitch('setActive', true);
 $('#mySwitch').bootstrapSwitch('toggleState');
 $('#mySwitch').bootstrapSwitch('setState', true);
-$('#mySwitch').bootstrapSwitch('setState', value, skipOnChange); // value and if you want to skip trigger change event 
-$('#mySwitch').bootstrapSwitch('status');  // returns true or false
+// value and if you want to skip trigger change event
+$('#mySwitch').bootstrapSwitch('setState', value, skipOnChange); 
+// returns true or false
+$('#mySwitch').bootstrapSwitch('status');
 $('#mySwitch').bootstrapSwitch('destroy');
 ```
 
