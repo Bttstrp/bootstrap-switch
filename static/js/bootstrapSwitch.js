@@ -18,6 +18,7 @@
               , $switchLeft
               , $switchRight
               , $label
+              , $form = $element.closest('form')
               , myClasses = ""
               , classes = $element.attr('class')
               , color
@@ -201,6 +202,18 @@
                 });
               }
             });
+
+            if ($form.data('bootstrapSwitch') != 'injected') {
+              $form.bind('reset', function () {
+                setTimeout(function () {
+                  $form.find('.switch').each(function () {
+                    var $this = $(this);
+                    $this.bootstrapSwitch('setState', $this.bootstrapSwitch('status'));
+                  });
+                }, 1);
+              });
+              $form.data('bootstrapSwitch', 'injected');
+            }
           }
         );
       },
