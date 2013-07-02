@@ -1,6 +1,9 @@
 Bootstrap-switch
 ========================
 
+You can now also use radio buttons as switches.
+
+
 Demo
 ----
 http://www.larentis.eu/switch/
@@ -27,59 +30,136 @@ lessc static/less/bootstrapSwitch.less static/stylesheets/bootstrapSwitch.css
 
 Basic Example
 -------------
+checkboxes:
+
 ``` html
 <div class="switch">
     <input type="checkbox">
 </div>
 ```
 
+radioboxes:
+
+``` html
+<div class="switch">
+    <input type="radio">
+</div>
+```
+
+
 Large, small or mini
 --------------------
+checkboxes:
+
 ``` html
 <div class="switch switch-large">  <!-- switch-large, switch-small or switch-mini -->
     <input type="checkbox">
 </div>
 ```
 
+radioboxes:
+
+``` html
+<div class="switch switch-large">  <!-- switch-large, switch-small or switch-mini -->
+    <input type="radio">
+</div>
+```
+
+
 Colors
 ------
+checkboxes:
+
 ``` html
 <div class="switch" data-on="danger" data-off="warning">  <!-- primary, info, success, warning and danger -->
     <input type="checkbox">
 </div>
 ```
 
+radioboxes:
+
+``` html
+<div class="switch" data-on="danger" data-off="warning">  <!-- primary, info, success, warning and danger -->
+    <input type="radio">
+</div>
+```
+
+
 Animation
 ---------
+checkboxes:
+
 ``` html
 <div class="switch" data-animated="false">
     <input type="checkbox">
 </div>
 ```
 
+radioboxes:
+
+``` html
+<div class="switch" data-animated="false">
+    <input type="radio">
+</div>
+```
+
+
 Text
 -----
+checkboxes:
+
 ``` html
 <div class="switch" data-on-label="SI" data-off-label="NO">
     <input type="checkbox">
 </div>
 ```
 
+radioboxes:
+
+``` html
+<div class="switch" data-on-label="SI" data-off-label="NO">
+    <input type="radio">
+</div>
+```
+
+
 HTML Text
 ----------
+checkboxes:
+
 ``` html
 <div class="switch" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
     <input type="checkbox">
 </div>
 ```
 
+radioboxes:
+
+``` html
+<div class="switch" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
+    <input type="radio">
+</div>
+```
+
+
 Initial values
 --------------
+checkboxes:
+
 ``` html
 <div class="switch">
     <input type="checkbox" checked="checked" disabled="disabled">
 </div>
 ```
+radioboxes:
+
+
+``` html
+<div class="switch">
+    <input type="radio" checked="checked" disabled="disabled">
+</div>
+```
+
 
 Event handler
 -------------
