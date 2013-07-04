@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Bootstrap switch - by Mattia Larentis</title>
+    <title>Bootstrap switch - by Mattia Larentis, enhanced by BdMdesigN aka Peter Stein</title>
     <meta name="author" content="Mattia Larentis">
+    <meta name="subauthor" content="Peter Stein">
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8;" />
 
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
@@ -303,6 +304,139 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false</pre
     </div>
 </div>
 
+
+<div class="row-fluid">
+    <div class="span12">
+        <h3>Radio <small>- radioboxes 1</small></h3>
+
+        <div class="bs-docs-example">
+               <div class="control-group exemple1">
+                  <br /><br />
+                    <div id="radio1" class="controls radio1">
+                        <label class="control-label" for="yes">Yes</label>
+                        <div id="yes" class="switch yes" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
+                            <input type="radio" name="yes" class="check demo-1" value="1" checked="checked" />
+                        </div>
+                        <label class="control-label" for="no">No</label>
+                        <div id="no" class="switch no" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
+                            <input type="radio" name="no" class="check demo-1" value="0" />
+                        </div>
+                    </div>
+                </div>
+
+            <div class="clearfix"></div>
+
+        </div>
+        <pre class="prettyprint linenums">
+    &lt;div class="control-group exemple1">
+      &lt;br />&lt;br />
+        &lt;div id="radio1" class="controls radio1">
+            &lt;label class="control-label" for="yes">Yes&lt;/label>
+            &lt;div id="yes" class="switch yes" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
+                &lt;input type="radio" name="yes" class="check demo-1" value="1" checked="checked" />
+            &lt;/div>
+            &lt;label class="control-label" for="no">No&lt;/label>
+            &lt;div id="no" class="switch no" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
+                &lt;input type="radio" name="no" class="check demo-1" value="0" />
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+&lt;script>
+$(document).ready(function() {
+    $('#yes').on('click', function () {
+        if($('input[name=yes]').val() == 1) {
+        $('.no').bootstrapSwitch('toggleState');
+        }
+    });
+    $('#no').on('click', function () {
+        if($('input[name=no]').val() == 0) {
+        $('.yes').bootstrapSwitch('toggleState');
+        }
+    });
+});
+&lt;/script></pre>
+    </div>
+</div>
+
+
+<div class="row-fluid">
+    <div class="span12">
+        <h3>Radio <small>- radioboxes 2</small></h3>
+
+        <div class="bs-docs-example">
+            <div id="exemple2" class="control-group exemple2">
+              <br /><br />
+                <div class="control-group" style="margin-bottom: 2%;">
+                    <div style="width: 10%;float: left;">
+                      <label class="control-label" for="option1">Option 1</label>
+                    </div>
+                    <div class="controls radio2">
+                        <div id="option1" class="switch option1">
+                            <input id="radio1" type="radio" name="radio" value="option1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group" style="margin-bottom: 2%;">
+                    <div style="width: 10%;float: left;">
+                      <label class="control-label" for="option2">Option 2</label>
+                    </div>
+                    <div class="controls radio2">
+                        <div id="option2" class="switch option2">
+                            <input id="radio2" type="radio" name="radio" value="option2" />
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group" style="margin-bottom: 2%;">
+                    <div style="width: 10%;float: left;">
+                      <label class="control-label" for="option3">Option 3</label>
+                    </div>
+                    <div class="controls radio2">
+                        <div id="option3" class="switch option3">
+                            <input id="radio3" type="radio" name="radio" value="option3" />
+                        </div>
+                    </div>
+                </div>
+            <div class="clearfix"></div>
+
+        </div>
+        <pre class="prettyprint linenums">
+    &lt;div id="exemple2" class="control-group exemple2">
+        &lt;br />&lt;br />
+        &lt;div class="control-group" style="margin-bottom: 2%;">
+          &lt;div style="width: 10%;float: left;">
+              &lt;label class="control-label" for="option1">Option 1</label>
+          &lt;/div>
+            &lt;div class="controls radio2">
+              &lt;div id="option1" class="switch option1">
+                &lt;input id="radio1" type="radio" name="radio" value="option1" />
+              &lt;/div>
+            &lt;/div>
+        &lt;/div>
+        &lt;div class="control-group" style="margin-bottom: 2%;">
+            &lt;div style="width: 10%;float: left;">
+              &lt;label class="control-label" for="option2">Option 2&lt;/label>
+            &lt;/div>
+            &lt;div class="controls radio2">
+              &lt;div id="option2" class="switch option2">
+                &lt;input id="radio2" type="radio" name="radio" value="option2" />
+              &lt;/div>
+            &lt;/div>
+        &lt;/div>
+        &lt;div class="control-group" style="margin-bottom: 2%;">
+            &lt;div style="width: 10%;float: left;">
+              &lt;label class="control-label" for="option3">Option 3&lt;/label>
+            &lt;/div>
+            &lt;div class="controls radio2">
+              &lt;div id="option3" class="switch option3">
+                &lt;input id="radio3" type="radio" name="radio" value="option3" />
+              &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div></pre>
+    </div>
+</div>
+
+
 <div class="row-fluid">
     <div class="span12">
         <h3>Form <small>- try to use tab and space</small></h3>
@@ -411,6 +545,7 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false</pre
 <script src="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.js"></script>
 <script src="../static/js/bootstrapSwitch.js"></script>
 <script>
+$(document).ready(function() {
     window.prettyPrint && prettyPrint();
     $('#mySwitch').on('switch-change', function (e, data) {
         var $el = $(data.el)
@@ -455,6 +590,24 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false</pre
     $('#btn-activate-switch').on('click', function () {
         $('#disable-switch').bootstrapSwitch('setActive', true);
     });
+
+    $('#yes').on('click', function () {
+
+        if($('input[name=yes]').val() == 1) {
+
+        $('.no').bootstrapSwitch('toggleState');
+        }
+    });
+
+    $('#no').on('click', function () {
+
+        if($('input[name=no]').val() == 0) {
+
+        $('.yes').bootstrapSwitch('toggleState');
+        }
+    });
+
+});
 </script>
 </body>
 </html>
