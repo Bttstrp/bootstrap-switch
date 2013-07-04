@@ -1,8 +1,6 @@
 /* ============================================================
- * bootstrapSwitch v1.3 by Larentis Mattia @spiritualGuru
+ * bootstrapSwitch v1.3.1 by Larentis Mattia @spiritualGuru
  * http://www.larentis.eu/switch/
- * 
- * bootstrapSwitch v1.3.1 by Stein, Peter @BdMdesigN
  * 
  * enhanced by BdMdesigN
  * http://www.bdmdesign.org
@@ -10,7 +8,7 @@
  * Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  * ============================================================ */
- 
+
 !function ($) {
   "use strict";
 
@@ -178,7 +176,9 @@
                   $this.unbind('mouseleave');
 
                   if (moving)
+
                     $myRadioCheckBox.prop('checked', !(parseInt($this.parent().css('left')) < -25));
+
                   else
                     $myRadioCheckBox.prop("checked", !$myRadioCheckBox.is(":checked"));
 

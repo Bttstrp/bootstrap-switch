@@ -1,6 +1,11 @@
 /* ============================================================
- * bootstrapSwitch v1.2 by Larentis Mattia @spiritualGuru
+ * bootstrapSwitch v1.3 by Larentis Mattia @spiritualGuru
  * http://www.larentis.eu/switch/
+ * 
+ * bootstrapSwitch v1.3.1 by Stein, Peter @BdMdesigN
+ * 
+ * enhanced by BdMdesigN
+ * http://www.bdmdesign.org
  * ============================================================
  * Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -60,6 +65,7 @@
 .has-switch > div.switch-on {
   left: 0%;
 }
+.has-switch input[type=radio],
 .has-switch input[type=checkbox] {
   display: none;
 }
