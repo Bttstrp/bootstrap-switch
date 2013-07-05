@@ -312,14 +312,14 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false</pre
         <div class="bs-docs-example">
                <div class="control-group exemple1">
                   <br /><br />
-                    <div id="radio1" class="controls radio1">
+                    <div id="radio1" class="controls">
                         <label class="control-label" for="yes">Yes</label>
-                        <div id="yes" class="switch yes" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
-                            <input type="radio" name="yes" class="check demo-1" value="1" checked="checked" />
+                        <div id="yes" class="switch radio1" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
+                            <input type="radio" name="radio1" class="check demo-1" value="1" checked="checked" />
                         </div>
                         <label class="control-label" for="no">No</label>
-                        <div id="no" class="switch no" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
-                            <input type="radio" name="no" class="check demo-1" value="0" />
+                        <div id="no" class="switch radio1" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
+                            <input type="radio" name="radio1" class="check demo-1" value="0" />
                         </div>
                     </div>
                 </div>
@@ -330,28 +330,25 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false</pre
         <pre class="prettyprint linenums">
     &lt;div class="control-group exemple1">
       &lt;br />&lt;br />
-        &lt;div id="radio1" class="controls radio1">
+        &lt;div id="radio1" class="controls">
             &lt;label class="control-label" for="yes">Yes&lt;/label>
-            &lt;div id="yes" class="switch yes" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
-                &lt;input type="radio" name="yes" class="check demo-1" value="1" checked="checked" />
+            &lt;div id="yes" class="switch radio1" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
+                &lt;input type="radio" name="radio1" class="check demo-1" value="1" checked="checked" />
             &lt;/div>
             &lt;label class="control-label" for="no">No&lt;/label>
-            &lt;div id="no" class="switch no" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
-                &lt;input type="radio" name="no" class="check demo-1" value="0" />
+            &lt;div id="no" class="switch radio1" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
+                &lt;input type="radio" name="radio1" class="check demo-1" value="0" />
             &lt;/div>
         &lt;/div>
     &lt;/div>
 &lt;script>
 $(document).ready(function() {
-    $('#yes').on('click', function () {
-        if($('input[name=yes]').val() == 1) {
-        $('.no').bootstrapSwitch('toggleState');
-        }
-    });
-    $('#no').on('click', function () {
-        if($('input[name=no]').val() == 0) {
-        $('.yes').bootstrapSwitch('toggleState');
-        }
+    $('.radio1').on('click', function () {
+        $(this).addClass('is-checked')
+            if($(this).bootstrapSwitch('isActive') == true) {
+                $('.radio1').not('.is-checked').bootstrapSwitch('toggleState');
+            }
+        $(this).removeClass('is-checked')
     });
 });
 &lt;/script></pre>
@@ -591,20 +588,12 @@ $(document).ready(function() {
         $('#disable-switch').bootstrapSwitch('setActive', true);
     });
 
-    $('#yes').on('click', function () {
-
-        if($('input[name=yes]').val() == 1) {
-
-        $('.no').bootstrapSwitch('toggleState');
-        }
-    });
-
-    $('#no').on('click', function () {
-
-        if($('input[name=no]').val() == 0) {
-
-        $('.yes').bootstrapSwitch('toggleState');
-        }
+    $('.radio1').on('click', function () {
+        $(this).addClass('is-checked')
+            if($(this).bootstrapSwitch('isActive') == true) {
+                $('.radio1').not('.is-checked').bootstrapSwitch('toggleState');
+            }
+        $(this).removeClass('is-checked')
     });
 
 });
