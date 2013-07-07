@@ -75,7 +75,7 @@
               $label.html('<i class="icon icon-' + icon + '"></i>');
             }
 
-            $div = $element.find('input[type=radio],input[type=checkbox]').wrap($('<div>')).parent().data('animated', false);
+            $div = $element.find('input').wrap($('<div>')).parent().data('animated', false);
 
             if ($element.data('animated') !== false)
               $div.addClass('switch-animate').data('animated', true);
@@ -86,10 +86,10 @@
               .append($switchRight);
 
             $element.find('>div').addClass(
-              $element.find('input[type=radio],input[type=checkbox]').is(':checked') ? 'switch-on' : 'switch-off'
+              $element.find('input').is(':checked') ? 'switch-on' : 'switch-off'
             );
 
-            if ($element.find('input[type=radio],input[type=checkbox]').is(':disabled'))
+            if ($element.find('input').is(':disabled'))
               $(this).addClass('deactivate');
 
             var changeStatus = function ($this) {
@@ -112,7 +112,7 @@
               changeStatus($(this));
             });
 
-            $element.find('input[type=radio],input[type=checkbox]').on('change', function (e, skipOnChange) {
+            $element.find('input').on('change', function (e, skipOnChange) {
               var $this = $(this)
                 , $element = $this.parent()
                 , thisState = $this.is(':checked')
@@ -170,7 +170,7 @@
                 $this.on('click touchend', function (e) {
                   var $this = $(this)
                     , $target = $(e.target)
-                    , $myRadioCheckBox = $target.siblings('input[type=radio],input[type=checkbox]');
+                    , $myRadioCheckBox = $target.siblings('input');
 
                   e.stopImmediatePropagation();
                   e.preventDefault();
@@ -188,7 +188,7 @@
 
                 $this.on('mouseleave', function (e) {
                   var $this = $(this)
-                    , $myInputBox = $this.siblings('input[type=radio],input[type=checkbox]');
+                    , $myInputBox = $this.siblings('input');
 
                   e.preventDefault();
                   e.stopImmediatePropagation();
@@ -222,20 +222,20 @@
         else $(this).addClass('deactivate');
       },
       toggleState: function (skipOnChange) {
-        var $input = $(this).find('input[type=radio],input[type=checkbox]');
+        var $input = $(this).find('input');
         $input.prop('checked', !$input.is(':checked')).trigger('change', skipOnChange);
       },
       setState: function (value, skipOnChange) {
-        $(this).find('input[type=radio],input[type=checkbox]').prop('checked', value).trigger('change', skipOnChange);
+        $(this).find('input').prop('checked', value).trigger('change', skipOnChange);
       },
       status: function () {
-        return $(this).find('input[type=radio],input[type=checkbox]').is(':checked');
+        return $(this).find('input').is(':checked');
       },
       destroy: function () {
         var $div = $(this).find('div')
           , $inputbox;
 
-        $div.find(':not(input:radio),:not(input:checkbox').remove();
+        $div.find(':not(input)').remove();
 
         $inputbox = $div.children();
         $inputbox.unwrap().unwrap();
