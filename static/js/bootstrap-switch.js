@@ -205,15 +205,25 @@
         );
       },
       toggleActivation: function () {
-        $(this).toggleClass('deactivate');
+        var $this = $(this);
+
+        $this.toggleClass('deactivate');
+        $this.find('input:checkbox').attr('disabled', $this.is('.deactivate'));
       },
       isActive: function () {
         return !$(this).hasClass('deactivate');
       },
       setActive: function (active) {
-        if (active)
-          $(this).removeClass('deactivate');
-        else $(this).addClass('deactivate');
+        var $this = $(this);
+
+        if (active) {
+          $this.removeClass('deactivate');
+          $this.find('input:checkbox').attr('disabled', false);
+        }
+        else {
+          $this.addClass('deactivate');
+          $this.find('input:checkbox').attr('disabled', true);
+        }
       },
       toggleState: function (skipOnChange) {
         var $input = $(this).find('input:checkbox');
