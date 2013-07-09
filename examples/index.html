@@ -234,11 +234,13 @@ $('#mySwitch').on('switch-change', function (e, data) {
             </div>
             <br>
             <br>
+            <div id="toggle-state-switch-button-status" class="btn btn-primary">Status!</div>
             <div id="toggle-state-switch-button-on" class="btn btn-primary">ON!</div>
             <div id="toggle-state-switch-button" class="btn btn-primary">Toggle me!</div>
             <div id="toggle-state-switch-button-off" class="btn btn-primary">OFF!</div>
         </div>
         <pre class="prettyprint linenums">
+$('#toggle-state-switch').bootstrapSwitch('status'); // true || false
 $('#toggle-state-switch').bootstrapSwitch('toggleState');
 $('#toggle-state-switch').bootstrapSwitch('setState', false); // true || false</pre>
     </div>
@@ -431,6 +433,10 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false</pre
 
     $('#toggle-state-switch-button-on').on('click', function () {
         $('#toggle-state-switch').bootstrapSwitch('setState', true);
+    });
+
+    $('#toggle-state-switch-button-status').on('click', function () {
+        alert($('#toggle-state-switch').bootstrapSwitch('status'));
     });
 
     $('#toggle-state-switch-button-off').on('click', function () {
