@@ -25,6 +25,10 @@ If you want to use your bootstrap vars edit bootstrapSwitch.less and then compil
 lessc static/less/bootstrapSwitch.less static/stylesheets/bootstrapSwitch.css
 ```
 
+Supported browsers
+------------------
+I'm not going to support ancient browsers! (it works on IE8+)
+
 Basic Example
 -------------
 ``` html
