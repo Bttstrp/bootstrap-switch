@@ -1,5 +1,5 @@
 /* ============================================================
- * bootstrapSwitch v1.2 by Larentis Mattia @spiritualGuru
+ * bootstrapSwitch v1.3 by Larentis Mattia @spiritualGuru
  * http://www.larentis.eu/switch/
  * ============================================================
  * Licensed under the Apache License, Version 2.0
@@ -356,4 +356,36 @@
 .has-switch span.switch-danger:active,
 .has-switch span.switch-danger.active {
   background-color: #e9322d \9;
+}
+.has-switch span.switch-default {
+  color: #333333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #f0f0f0;
+  background-image: -moz-linear-gradient(top, #e6e6e6, #ffffff);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e6e6e6), to(#ffffff));
+  background-image: -webkit-linear-gradient(top, #e6e6e6, #ffffff);
+  background-image: -o-linear-gradient(top, #e6e6e6, #ffffff);
+  background-image: linear-gradient(to bottom, #e6e6e6, #ffffff);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe6e6e6', endColorstr='#ffffffff', GradientType=0);
+  border-color: #ffffff #ffffff #d9d9d9;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #ffffff;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.has-switch span.switch-default:hover,
+.has-switch span.switch-default:focus,
+.has-switch span.switch-default:active,
+.has-switch span.switch-default.active,
+.has-switch span.switch-default.disabled,
+.has-switch span.switch-default[disabled] {
+  color: #333333;
+  background-color: #ffffff;
+  *background-color: #f2f2f2;
+}
+.has-switch span.switch-default:active,
+.has-switch span.switch-default.active {
+  background-color: #e6e6e6 \9;
 }

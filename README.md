@@ -48,7 +48,7 @@ Large, small or mini
 Colors
 ------
 ``` html
-<div class="switch" data-on="danger" data-off="warning">  <!-- primary, info, success, warning and danger -->
+<div class="switch" data-on="danger" data-off="warning">  <!-- primary, info, success, warning, danger and default -->
     <input type="checkbox">
 </div>
 ```
