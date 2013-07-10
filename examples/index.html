@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8;" />
 
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
-    <link rel="stylesheet" href="../static/stylesheets/bootstrapSwitch.css">
+    <link rel="stylesheet" href="../static/stylesheets/bootstrap-switch.css">
     <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css">
     <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/docs.css">
 
@@ -108,7 +108,10 @@
             <div class="switch" data-on="warning" data-off="danger">
                 <input type="checkbox" checked />
             </div>
-            <div class="switch" data-on="danger" data-off="primary">
+            <div class="switch" data-on="danger" data-off="default">
+                <input type="checkbox" checked />
+            </div>
+            <div class="switch" data-on="default" data-off="primary">
                 <input type="checkbox" checked />
             </div>
         </div>
@@ -129,7 +132,10 @@
     &lt;input type="checkbox" checked />
 &lt;/div>
 
-&lt;div class="switch" data-on="danger" data-off="primary">
+&lt;div class="switch" data-on="danger" data-off="default">
+    &lt;input type="checkbox" checked />
+&lt;/div>
+&lt;div class="switch" data-on="default" data-off="primary">
     &lt;input type="checkbox" checked />
 &lt;/div>
 </pre>
@@ -228,11 +234,13 @@ $('#mySwitch').on('switch-change', function (e, data) {
             </div>
             <br>
             <br>
+            <div id="toggle-state-switch-button-status" class="btn btn-primary">Status!</div>
             <div id="toggle-state-switch-button-on" class="btn btn-primary">ON!</div>
             <div id="toggle-state-switch-button" class="btn btn-primary">Toggle me!</div>
             <div id="toggle-state-switch-button-off" class="btn btn-primary">OFF!</div>
         </div>
         <pre class="prettyprint linenums">
+$('#toggle-state-switch').bootstrapSwitch('status'); // true || false
 $('#toggle-state-switch').bootstrapSwitch('toggleState');
 $('#toggle-state-switch').bootstrapSwitch('setState', false); // true || false</pre>
     </div>
@@ -278,8 +286,9 @@ $('#create-switch').wrap('&lt;div class="switch" />').parent().bootstrapSwitch()
         <h3>Disabled <small>javascript</small></h3>
 
         <div class="bs-docs-example">
+            <label for="disable-switch-input">amazing label</label>
             <div id="disable-switch" class="switch">
-                <input type="checkbox" checked />
+                <input id="disable-switch-input" type="checkbox" checked />
             </div>
             <br>
             <br>
@@ -409,7 +418,7 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false</pre
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
 <script src="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.js"></script>
-<script src="../static/js/bootstrapSwitch.js"></script>
+<script src="../static/js/bootstrap-switch.js"></script>
 <script>
     window.prettyPrint && prettyPrint();
     $('#mySwitch').on('switch-change', function (e, data) {
@@ -424,6 +433,10 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false</pre
 
     $('#toggle-state-switch-button-on').on('click', function () {
         $('#toggle-state-switch').bootstrapSwitch('setState', true);
+    });
+
+    $('#toggle-state-switch-button-status').on('click', function () {
+        alert($('#toggle-state-switch').bootstrapSwitch('status'));
     });
 
     $('#toggle-state-switch-button-off').on('click', function () {
