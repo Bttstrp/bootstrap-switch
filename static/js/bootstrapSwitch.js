@@ -220,7 +220,7 @@
         else $(this).addClass('deactivate');
       },
       toggleState: function (skipOnChange) {
-        var $input = $(this).find('input[type=ceckbox]');
+        var $input = $(this).find('input[type=checkbox]');
         $input.prop('checked', !$input.is(':checked')).trigger('change', skipOnChange);
       },
       toggleRadioState: function (skipOnChange) {
