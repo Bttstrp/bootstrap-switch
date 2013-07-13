@@ -1,10 +1,8 @@
 /* ============================================================
- * bootstrapSwitch v1.3 by Larentis Mattia @spiritualGuru
+ * bootstrapSwitch v1.5 by Larentis Mattia @spiritualGuru
  * http://www.larentis.eu/switch/
  * 
- * bootstrapSwitch v1.3.1 by Stein, Peter @BdMdesigN
- * 
- * enhanced by BdMdesigN
+ * enhanced for radiobuttons by Stein, Peter @BdMdesigN
  * http://www.bdmdesign.org
  * ============================================================
  * Licensed under the Apache License, Version 2.0
@@ -222,8 +220,11 @@
         else $(this).addClass('deactivate');
       },
       toggleState: function (skipOnChange) {
-        var $input = $(this).find('input');
+        var $input = $(this).find('input[type=ceckbox]');
         $input.prop('checked', !$input.is(':checked')).trigger('change', skipOnChange);
+      },
+      toggleRadioState: function (skipOnChange) {
+        $(this).find('input[type=radio]').not(':checked').trigger('change', skipOnChange);
       },
       setState: function (value, skipOnChange) {
         $(this).find('input').prop('checked', value).trigger('change', skipOnChange);
