@@ -14,18 +14,18 @@ Just include Twitter Bootstrap, jQuery, Bootstrap Switch CSS and Javascript
 ``` html
 <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8;" />
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
-<link rel="stylesheet" href="bootstrapSwitch.css">
+<link rel="stylesheet" href="bootstrap-switch.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-<script src="bootstrapSwitch.js"></script>  // master
-<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.3/bootstrapSwitch.min.js">  // from cdnjs.com
+<script src="bootstrap-switch.js"></script>  // master
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.4/bootstrap-switch.min.js">  // from cdnjs.com
 ```
 
 Less
 ----
 If you want to use your bootstrap vars edit bootstrapSwitch.less and then compile the less file
 ``` bash
-lessc static/less/bootstrapSwitch.less static/stylesheets/bootstrapSwitch.css
+lessc static/less/bootstrap-switch.less static/stylesheets/bootstrap-switch.css
 ```
 
 Basic Example
