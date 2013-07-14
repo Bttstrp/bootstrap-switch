@@ -13,12 +13,12 @@ Usage
 Just include Twitter Bootstrap, jQuery, Bootstrap Switch CSS and Javascript
 ``` html
 <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8;" />
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
 <link rel="stylesheet" href="bootstrapSwitch.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="bootstrapSwitch.js"></script>  // master
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.3/bootstrapSwitch.min.js">  // from cdnjs.com
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.3/bootstrapSwitch.min.js">  // from cdnjs.com
 ```
 
 Less
@@ -71,7 +71,7 @@ Colors
 checkboxes:
 
 ``` html
-<div class="switch" data-on="danger" data-off="warning">  <!-- primary, info, success, warning and danger -->
+<div class="switch" data-on="danger" data-off="warning">  <!-- primary, info, success, warning, danger and default -->
     <input type="checkbox">
 </div>
 ```
@@ -79,7 +79,7 @@ checkboxes:
 radioboxes:
 
 ``` html
-<div class="switch" data-on="danger" data-off="warning">  <!-- primary, info, success, warning and danger -->
+<div class="switch" data-on="danger" data-off="warning">  <!-- primary, info, success, warning, danger and default -->
     <input type="radio">
 </div>
 ```
@@ -179,6 +179,7 @@ $('#mySwitch').bootstrapSwitch('isActive');
 $('#mySwitch').bootstrapSwitch('setActive', false);
 $('#mySwitch').bootstrapSwitch('setActive', true);
 $('#mySwitch').bootstrapSwitch('toggleState');
+$('.mySwitch').bootstrapSwitch('toggleRadioState'); // the radiobuttons need a class not a ID
 $('#mySwitch').bootstrapSwitch('setState', true);
 $('#mySwitch').bootstrapSwitch('status');  // returns true or false
 $('#mySwitch').bootstrapSwitch('destroy');

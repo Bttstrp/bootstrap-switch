@@ -7,7 +7,7 @@
     <meta name="subauthor" content="Peter Stein">
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8;" />
 
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
     <link rel="stylesheet" href="../static/stylesheets/bootstrapSwitch.css">
     <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css">
     <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/docs.css">
@@ -229,11 +229,13 @@ $('#mySwitch').on('switch-change', function (e, data) {
             </div>
             <br>
             <br>
+            <div id="toggle-state-switch-button-status" class="btn btn-primary">Status!</div>
             <div id="toggle-state-switch-button-on" class="btn btn-primary">ON!</div>
             <div id="toggle-state-switch-button" class="btn btn-primary">Toggle me!</div>
             <div id="toggle-state-switch-button-off" class="btn btn-primary">OFF!</div>
         </div>
         <pre class="prettyprint linenums">
+$('#toggle-state-switch').bootstrapSwitch('status'); // true || false
 $('#toggle-state-switch').bootstrapSwitch('toggleState');
 $('#toggle-state-switch').bootstrapSwitch('setState', false); // true || false</pre>
     </div>
@@ -312,14 +314,14 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false</pre
         <div class="bs-docs-example">
                <div class="control-group exemple1">
                   <br /><br />
-                    <div id="radio1" class="controls radio1">
+                    <div id="radio1" class="controls">
                         <label class="control-label" for="yes">Yes</label>
-                        <div id="yes" class="switch yes" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
-                            <input type="radio" name="yes" class="check demo-1" value="1" checked="checked" />
+                        <div id="yes" class="switch radio1" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
+                            <input type="radio" name="radio1" class="check demo-1" value="1" checked />
                         </div>
                         <label class="control-label" for="no">No</label>
-                        <div id="no" class="switch no" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
-                            <input type="radio" name="no" class="check demo-1" value="0" />
+                        <div id="no" class="switch radio1" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
+                            <input type="radio" name="radio1" class="check demo-1" value="0" />
                         </div>
                     </div>
                 </div>
@@ -330,28 +332,21 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false</pre
         <pre class="prettyprint linenums">
     &lt;div class="control-group exemple1">
       &lt;br />&lt;br />
-        &lt;div id="radio1" class="controls radio1">
+        &lt;div id="radio1" class="controls">
             &lt;label class="control-label" for="yes">Yes&lt;/label>
-            &lt;div id="yes" class="switch yes" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
-                &lt;input type="radio" name="yes" class="check demo-1" value="1" checked="checked" />
+            &lt;div id="yes" class="switch radio1" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
+                &lt;input type="radio" name="radio1" class="check demo-1" value="1" checked />
             &lt;/div>
             &lt;label class="control-label" for="no">No&lt;/label>
-            &lt;div id="no" class="switch no" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
-                &lt;input type="radio" name="no" class="check demo-1" value="0" />
+            &lt;div id="no" class="switch radio1" data-on-label="Yes" data-off-label="No" data-on="success" data-off="danger">
+                &lt;input type="radio" name="radio1" class="check demo-1" value="0" />
             &lt;/div>
         &lt;/div>
     &lt;/div>
 &lt;script>
 $(document).ready(function() {
-    $('#yes').on('click', function () {
-        if($('input[name=yes]').val() == 1) {
-        $('.no').bootstrapSwitch('toggleState');
-        }
-    });
-    $('#no').on('click', function () {
-        if($('input[name=no]').val() == 0) {
-        $('.yes').bootstrapSwitch('toggleState');
-        }
+    $('.radio1').on('switch-change', function () {
+        $('.radio1').bootstrapSwitch('toggleRadioState');
     });
 });
 &lt;/script></pre>
@@ -370,9 +365,9 @@ $(document).ready(function() {
                     <div style="width: 10%;float: left;">
                       <label class="control-label" for="option1">Option 1</label>
                     </div>
-                    <div class="controls radio2">
-                        <div id="option1" class="switch option1">
-                            <input id="radio1" type="radio" name="radio" value="option1" />
+                    <div class="controls">
+                        <div id="option1" class="switch radio2">
+                            <input id="radio1" type="radio" name="radio2" value="option1" checked />
                         </div>
                     </div>
                 </div>
@@ -380,9 +375,9 @@ $(document).ready(function() {
                     <div style="width: 10%;float: left;">
                       <label class="control-label" for="option2">Option 2</label>
                     </div>
-                    <div class="controls radio2">
-                        <div id="option2" class="switch option2">
-                            <input id="radio2" type="radio" name="radio" value="option2" />
+                    <div class="controls">
+                        <div id="option2" class="switch radio2">
+                            <input id="radio2" type="radio" name="radio2" value="option2" />
                         </div>
                     </div>
                 </div>
@@ -390,9 +385,9 @@ $(document).ready(function() {
                     <div style="width: 10%;float: left;">
                       <label class="control-label" for="option3">Option 3</label>
                     </div>
-                    <div class="controls radio2">
-                        <div id="option3" class="switch option3">
-                            <input id="radio3" type="radio" name="radio" value="option3" />
+                    <div class="controls">
+                        <div id="option3" class="switch radio2">
+                            <input id="radio3" type="radio" name="radio2" value="option3" />
                         </div>
                     </div>
                 </div>
@@ -408,7 +403,7 @@ $(document).ready(function() {
           &lt;/div>
             &lt;div class="controls radio2">
               &lt;div id="option1" class="switch option1">
-                &lt;input id="radio1" type="radio" name="radio" value="option1" />
+                &lt;input id="radio1" type="radio" name="radio2" value="option1" checked />
               &lt;/div>
             &lt;/div>
         &lt;/div>
@@ -418,7 +413,7 @@ $(document).ready(function() {
             &lt;/div>
             &lt;div class="controls radio2">
               &lt;div id="option2" class="switch option2">
-                &lt;input id="radio2" type="radio" name="radio" value="option2" />
+                &lt;input id="radio2" type="radio" name="radio2" value="option2" />
               &lt;/div>
             &lt;/div>
         &lt;/div>
@@ -428,11 +423,18 @@ $(document).ready(function() {
             &lt;/div>
             &lt;div class="controls radio2">
               &lt;div id="option3" class="switch option3">
-                &lt;input id="radio3" type="radio" name="radio" value="option3" />
+                &lt;input id="radio3" type="radio" name="radio2" value="option3" />
               &lt;/div>
             &lt;/div>
         &lt;/div>
-    &lt;/div></pre>
+    &lt;/div>
+&lt;script>
+$(document).ready(function() {
+    $('.radio2').on('switch-change', function () {
+        $('.radio2').bootstrapSwitch('toggleRadioGroupState');
+    });
+});
+&lt;/script></pre>
     </div>
 </div>
 
@@ -561,6 +563,10 @@ $(document).ready(function() {
         $('#toggle-state-switch').bootstrapSwitch('setState', true);
     });
 
+    $('#toggle-state-switch-button-status').on('click', function () {
+        alert($('#toggle-state-switch').bootstrapSwitch('status'));
+    });
+
     $('#toggle-state-switch-button-off').on('click', function () {
         $('#toggle-state-switch').bootstrapSwitch('setState', false);
     });
@@ -591,20 +597,12 @@ $(document).ready(function() {
         $('#disable-switch').bootstrapSwitch('setActive', true);
     });
 
-    $('#yes').on('click', function () {
-
-        if($('input[name=yes]').val() == 1) {
-
-        $('.no').bootstrapSwitch('toggleState');
-        }
+    $('.radio1').on('switch-change', function () {
+        $('.radio1').bootstrapSwitch('toggleRadioState');
     });
 
-    $('#no').on('click', function () {
-
-        if($('input[name=no]').val() == 0) {
-
-        $('.yes').bootstrapSwitch('toggleState');
-        }
+    $('.radio2').on('switch-change', function () {
+        $('.radio2').bootstrapSwitch('toggleRadioState');
     });
 
 });
