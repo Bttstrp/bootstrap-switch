@@ -18,6 +18,7 @@
               , $switchLeft
               , $switchRight
               , $label
+              , $form = $element.closest('form')
               , myClasses = ""
               , classes = $element.attr('class')
               , color
@@ -201,6 +202,18 @@
                 });
               }
             });
+
+            if ($form.data('bootstrapSwitch') != 'injected') {
+              $form.bind('reset', function () {
+                setTimeout(function () {
+                  $form.find('.switch').each(function () {
+                    var $this = $(this);
+                    $this.bootstrapSwitch('setState', $this.bootstrapSwitch('status'));
+                  });
+                }, 1);
+              });
+              $form.data('bootstrapSwitch', 'injected');
+            }
           }
         );
       },
@@ -236,7 +249,9 @@
         return $(this).find('input:checkbox').is(':checked');
       },
       destroy: function () {
-        var $div = $(this).find('div')
+        var $element = $(this)
+          , $div = $element.find('div')
+          , $form = $element.closest('form')
           , $checkbox;
 
         $div.find(':not(input:checkbox)').remove();
@@ -245,6 +260,11 @@
         $checkbox.unwrap().unwrap();
 
         $checkbox.unbind('change');
+
+        if ($form) {
+          $form.unbind('reset');
+          $form.removeData('bootstrapSwitch');
+        }
 
         return $checkbox;
       }
