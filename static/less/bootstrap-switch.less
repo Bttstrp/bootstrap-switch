@@ -1,9 +1,12 @@
 /* ============================================================
- * bootstrapSwitch v1.5 by Larentis Mattia @spiritualGuru
+ * bootstrapSwitch v1.5 by Larentis Mattia @SpiritualGuru
+ * http://www.larentis.eu/
+ *
+ * Enhanced for radiobuttons by Stein, Peter @BdMdesigN
+ * http://www.bdmdesign.org/
+ *
+ * Project site:
  * http://www.larentis.eu/switch/
- * 
- * enhanced for radiobuttons by Stein, Peter @BdMdesigN
- * http://www.bdmdesign.org
  * ============================================================
  * Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -155,6 +158,10 @@
 
     &.switch-danger {
       .buttonBackground(@btnDangerBackgroundHighlight, @btnDangerBackground);
+    }
+
+    &.switch-default {
+      .buttonBackground(@btnBackgroundHighlight, @btnBackground, @grayDark, 0 1px 1px rgba(255,255,255,.75));
     }
   }
 }

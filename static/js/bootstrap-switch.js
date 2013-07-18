@@ -1,14 +1,17 @@
 /* ============================================================
- * bootstrapSwitch v1.5 by Larentis Mattia @spiritualGuru
- * http://www.larentis.eu/switch/
+ * bootstrapSwitch v1.5 by Larentis Mattia @SpiritualGuru
+ * http://www.larentis.eu/
  * 
- * enhanced for radiobuttons by Stein, Peter @BdMdesigN
- * http://www.bdmdesign.org
+ * Enhanced for radiobuttons by Stein, Peter @BdMdesigN
+ * http://www.bdmdesign.org/
+ *
+ * Project site:
+ * http://www.larentis.eu/switch/
  * ============================================================
  * Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  * ============================================================ */
- 
+
 !function ($) {
   "use strict";
 
@@ -21,6 +24,7 @@
               , $switchLeft
               , $switchRight
               , $label
+              , $form = $element.closest('form')
               , myClasses = ""
               , classes = $element.attr('class')
               , color
@@ -205,19 +209,42 @@
                 });
               }
             });
+
+            if ($form.data('bootstrapSwitch') !== 'injected') {
+              $form.bind('reset', function () {
+                setTimeout(function () {
+                  $form.find('.switch').each(function () {
+                    var $input = $(this).find('input');
+                    
+                    $input.prop('checked', $input.is(':checked')).trigger('change');
+                  });
+                }, 1);
+              });
+              $form.data('bootstrapSwitch', 'injected');
+            }
           }
         );
       },
       toggleActivation: function () {
-        $(this).toggleClass('deactivate');
+        var $this = $(this);
+
+        $this.toggleClass('deactivate');
+        $this.find('input:checkbox').attr('disabled', $this.is('.deactivate'));
       },
       isActive: function () {
         return !$(this).hasClass('deactivate');
       },
       setActive: function (active) {
-        if (active)
-          $(this).removeClass('deactivate');
-        else $(this).addClass('deactivate');
+        var $this = $(this);
+
+        if (active) {
+          $this.removeClass('deactivate');
+          $this.find('input:checkbox').attr('disabled', false);
+        }
+        else {
+          $this.addClass('deactivate');
+          $this.find('input:checkbox').attr('disabled', true);
+        }
       },
       toggleState: function (skipOnChange) {
         var $input = $(this).find('input[type=checkbox]');
@@ -233,7 +260,9 @@
         return $(this).find('input').is(':checked');
       },
       destroy: function () {
-        var $div = $(this).find('div')
+        var $element = $(this)
+          , $div = $element.find('div')
+          , $form = $element.closest('form')
           , $inputbox;
 
         $div.find(':not(input)').remove();
@@ -242,6 +271,11 @@
         $inputbox.unwrap().unwrap();
 
         $inputbox.unbind('change');
+
+        if ($form) {
+          $form.unbind('reset');
+          $form.removeData('bootstrapSwitch');
+        }
 
         return $inputbox;
       }
@@ -256,6 +290,6 @@
   };
 }(jQuery);
 
-$(function () {
-  $('.switch')['bootstrapSwitch']();
-});
+(function () {
+  jQuery('.switch')['bootstrapSwitch']();
+})();
