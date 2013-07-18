@@ -229,7 +229,7 @@
         var $this = $(this);
 
         $this.toggleClass('deactivate');
-        $this.find('input:checkbox').attr('disabled', $this.is('.deactivate'));
+        $this.find('input').attr('disabled', $this.is('.deactivate'));
       },
       isActive: function () {
         return !$(this).hasClass('deactivate');
@@ -239,11 +239,11 @@
 
         if (active) {
           $this.removeClass('deactivate');
-          $this.find('input:checkbox').attr('disabled', false);
+          $this.find('input').attr('disabled', false);
         }
         else {
           $this.addClass('deactivate');
-          $this.find('input:checkbox').attr('disabled', true);
+          $this.find('input').attr('disabled', true);
         }
       },
       toggleState: function (skipOnChange) {
