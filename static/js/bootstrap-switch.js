@@ -1,11 +1,17 @@
 /* ============================================================
- * bootstrapSwitch v1.4 by Larentis Mattia @spiritualGuru
+ * bootstrapSwitch v1.5 by Larentis Mattia @SpiritualGuru
+ * http://www.larentis.eu/
+ * 
+ * Enhanced for radiobuttons by Stein, Peter @BdMdesigN
+ * http://www.bdmdesign.org/
+ *
+ * Project site:
  * http://www.larentis.eu/switch/
  * ============================================================
  * Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  * ============================================================ */
-
+ 
 !function ($) {
   "use strict";
 
@@ -71,7 +77,7 @@
               $label.html('<i class="icon icon-' + icon + '"></i>');
             }
 
-            $div = $element.find(':checkbox').wrap($('<div>')).parent().data('animated', false);
+            $div = $element.find('input').wrap($('<div>')).parent().data('animated', false);
 
             if ($element.data('animated') !== false)
               $div.addClass('switch-animate').data('animated', true);
@@ -166,7 +172,7 @@
                 $this.on('click touchend', function (e) {
                   var $this = $(this)
                     , $target = $(e.target)
-                    , $myCheckBox = $target.siblings('input');
+                    , $myRadioCheckBox = $target.siblings('input');
 
                   e.stopImmediatePropagation();
                   e.preventDefault();
@@ -174,16 +180,17 @@
                   $this.unbind('mouseleave');
 
                   if (moving)
-                    $myCheckBox.prop('checked', !(parseInt($this.parent().css('left')) < -25));
-                  else $myCheckBox.prop("checked", !$myCheckBox.is(":checked"));
+                    $myRadioCheckBox.prop('checked', !(parseInt($this.parent().css('left')) < -25));
+                  else
+                    $myRadioCheckBox.prop("checked", !$myRadioCheckBox.is(":checked"));
 
                   moving = false;
-                  $myCheckBox.trigger('change');
+                  $myRadioCheckBox.trigger('change');
                 });
 
                 $this.on('mouseleave', function (e) {
                   var $this = $(this)
-                    , $myCheckBox = $this.siblings('input');
+                    , $myInputBox = $this.siblings('input');
 
                   e.preventDefault();
                   e.stopImmediatePropagation();
@@ -191,7 +198,7 @@
                   $this.unbind('mouseleave');
                   $this.trigger('mouseup');
 
-                  $myCheckBox.prop('checked', !(parseInt($this.parent().css('left')) < -25)).trigger('change');
+                  $myInputBox.prop('checked', !(parseInt($this.parent().css('left')) < -25)).trigger('change');
                 });
 
                 $this.on('mouseup', function (e) {
@@ -239,34 +246,37 @@
         }
       },
       toggleState: function (skipOnChange) {
-        var $input = $(this).find('input:checkbox');
+        var $input = $(this).find('input[type=checkbox]');
         $input.prop('checked', !$input.is(':checked')).trigger('change', skipOnChange);
       },
+      toggleRadioState: function (skipOnChange) {
+        $(this).find('input[type=radio]').not(':checked').trigger('change', skipOnChange);
+      },
       setState: function (value, skipOnChange) {
-        $(this).find('input:checkbox').prop('checked', value).trigger('change', skipOnChange);
+        $(this).find('input').prop('checked', value).trigger('change', skipOnChange);
       },
       status: function () {
-        return $(this).find('input:checkbox').is(':checked');
+        return $(this).find('input').is(':checked');
       },
       destroy: function () {
         var $element = $(this)
           , $div = $element.find('div')
           , $form = $element.closest('form')
-          , $checkbox;
+          , $inputbox;
 
-        $div.find(':not(input:checkbox)').remove();
+        $div.find(':not(input)').remove();
 
-        $checkbox = $div.children();
-        $checkbox.unwrap().unwrap();
+        $inputbox = $div.children();
+        $inputbox.unwrap().unwrap();
 
-        $checkbox.unbind('change');
+        $inputbox.unbind('change');
 
         if ($form) {
           $form.unbind('reset');
           $form.removeData('bootstrapSwitch');
         }
 
-        return $checkbox;
+        return $inputbox;
       }
     };
 
@@ -279,6 +289,6 @@
   };
 }(jQuery);
 
-$(function () {
-  $('.switch')['bootstrapSwitch']();
-});
+(function () {
+  jQuery('.switch')['bootstrapSwitch']();
+})();

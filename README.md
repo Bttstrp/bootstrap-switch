@@ -1,6 +1,9 @@
 Bootstrap-switch
 ========================
 
+You can now also use radio buttons as switches.
+
+
 Demo
 ----
 http://www.larentis.eu/switch/
@@ -10,12 +13,12 @@ Usage
 Just include Twitter Bootstrap, jQuery, Bootstrap Switch CSS and Javascript
 ``` html
 <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8;" />
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
 <link rel="stylesheet" href="bootstrap-switch.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="bootstrap-switch.js"></script>  // master
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.3/bootstrapSwitch.min.js">  // from cdnjs.com
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.4/bootstrap-switch.min.js">  // from cdnjs.com
 ```
 
 Less
@@ -31,59 +34,136 @@ I'm not going to support ancient browsers! (it works on IE8+)
 
 Basic Example
 -------------
+checkboxes:
+
 ``` html
 <div class="switch">
     <input type="checkbox">
 </div>
 ```
 
+radioboxes:
+
+``` html
+<div class="switch">
+    <input type="radio">
+</div>
+```
+
+
 Large, small or mini
 --------------------
+checkboxes:
+
 ``` html
 <div class="switch switch-large">  <!-- switch-large, switch-small or switch-mini -->
     <input type="checkbox">
 </div>
 ```
 
+radioboxes:
+
+``` html
+<div class="switch switch-large">  <!-- switch-large, switch-small or switch-mini -->
+    <input type="radio">
+</div>
+```
+
+
 Colors
 ------
+checkboxes:
+
 ``` html
 <div class="switch" data-on="danger" data-off="warning">  <!-- primary, info, success, warning, danger and default -->
     <input type="checkbox">
 </div>
 ```
 
+radioboxes:
+
+``` html
+<div class="switch" data-on="danger" data-off="warning">  <!-- primary, info, success, warning, danger and default -->
+    <input type="radio">
+</div>
+```
+
+
 Animation
 ---------
+checkboxes:
+
 ``` html
 <div class="switch" data-animated="false">
     <input type="checkbox">
 </div>
 ```
 
+radioboxes:
+
+``` html
+<div class="switch" data-animated="false">
+    <input type="radio">
+</div>
+```
+
+
 Text
 -----
+checkboxes:
+
 ``` html
 <div class="switch" data-on-label="SI" data-off-label="NO">
     <input type="checkbox">
 </div>
 ```
 
+radioboxes:
+
+``` html
+<div class="switch" data-on-label="SI" data-off-label="NO">
+    <input type="radio">
+</div>
+```
+
+
 HTML Text
 ----------
+checkboxes:
+
 ``` html
 <div class="switch" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
     <input type="checkbox">
 </div>
 ```
 
+radioboxes:
+
+``` html
+<div class="switch" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
+    <input type="radio">
+</div>
+```
+
+
 Initial values
 --------------
+checkboxes:
+
 ``` html
 <div class="switch">
     <input type="checkbox" checked="checked" disabled="disabled">
 </div>
 ```
+radioboxes:
+
+
+``` html
+<div class="switch">
+    <input type="radio" checked="checked" disabled="disabled">
+</div>
+```
+
 
 Event handler
 -------------
@@ -103,6 +183,7 @@ $('#mySwitch').bootstrapSwitch('isActive');
 $('#mySwitch').bootstrapSwitch('setActive', false);
 $('#mySwitch').bootstrapSwitch('setActive', true);
 $('#mySwitch').bootstrapSwitch('toggleState');
+$('.mySwitch').bootstrapSwitch('toggleRadioState'); // the radiobuttons need a class not a ID
 $('#mySwitch').bootstrapSwitch('setState', true);
 $('#mySwitch').bootstrapSwitch('status');  // returns true or false
 $('#mySwitch').bootstrapSwitch('destroy');
