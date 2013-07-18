@@ -11,7 +11,7 @@
  * Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  * ============================================================ */
- 
+
 !function ($) {
   "use strict";
 
@@ -210,12 +210,13 @@
               }
             });
 
-            if ($form.data('bootstrapSwitch') != 'injected') {
+            if ($form.data('bootstrapSwitch') !== 'injected') {
               $form.bind('reset', function () {
                 setTimeout(function () {
                   $form.find('.switch').each(function () {
-                    var $this = $(this);
-                    $this.bootstrapSwitch('setState', $this.bootstrapSwitch('status'));
+                    var $input = $(this).find('input');
+                    
+                    $input.prop('checked', $input.is(':checked')).trigger('change');
                   });
                 }, 1);
               });
