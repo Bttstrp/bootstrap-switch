@@ -149,9 +149,11 @@
 
               $this.closest('div').removeClass('switch-animate');
 
-              if ($this.closest('.has-switch').is('.deactivate'))
+              if ($this.closest('.has-switch').is('.deactivate')) {
                 $this.unbind('click');
-              else {
+              } else if ($this.closest('.has-switch').is('.radio-no-uncheck')) {
+                $this.unbind('click');
+              } else {
                 $this.on('mousemove touchmove', function (e) {
                   var $element = $(this).closest('.switch')
                     , relativeX = (e.pageX || e.originalEvent.targetTouches[0].pageX) - $element.offset().left
@@ -239,19 +241,37 @@
 
         if (active) {
           $this.removeClass('deactivate');
-          $this.find('input').prop('disabled', false);
+          $this.find('input').removeAttr('disabled');
         }
         else {
           $this.addClass('deactivate');
-          $this.find('input').prop('disabled', true);
+          $this.find('input').attr('disabled', 'disabled');
         }
       },
       toggleState: function (skipOnChange) {
-        var $input = $(this).find('input[type=checkbox]');
+        var $input = $(this).find(':checkbox');
         $input.prop('checked', !$input.is(':checked')).trigger('change', skipOnChange);
       },
       toggleRadioState: function (skipOnChange) {
-        $(this).find('input[type=radio]').not(':checked').trigger('change', skipOnChange);
+        var $this = $(this)
+          , $radioinput = $this.find(':radio');
+          if ($radioinput.is(':checked'))
+          $radioinput.closest('.switch-on').parent().addClass('radio-no-uncheck');
+
+          $radioinput.not(':checked').prop('checked', !$radioinput.is(':checked')).trigger('change', skipOnChange);
+      },
+      toggleRadioStateAllowUncheck: function (uncheck, skipOnChange) {
+        var $this = $(this)
+          , $radioinput = $this.find(':radio');
+        if (uncheck) {
+          $radioinput.not(':checked').trigger('change', skipOnChange);
+        }
+        else {
+          if ($radioinput.is(':checked'))
+          $radioinput.closest('.switch-on').parent().addClass('radio-no-uncheck');
+
+          $radioinput.not(':checked').prop('checked', !$radioinput.is(':checked')).trigger('change', skipOnChange);
+        }
       },
       setState: function (value, skipOnChange) {
         $(this).find('input').prop('checked', value).trigger('change', skipOnChange);
