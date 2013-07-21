@@ -151,7 +151,7 @@
 
               if ($this.closest('.has-switch').is('.deactivate')) {
                 $this.unbind('click');
-              } else if ($this.closest('.has-switch').is('.radio-no-uncheck')) {
+              } else if ( $this.closest('.switch-on').parent().is('.radio-no-uncheck') ) {
                 $this.unbind('click');
               } else {
                 $this.on('mousemove touchmove', function (e) {
@@ -253,23 +253,15 @@
         $input.prop('checked', !$input.is(':checked')).trigger('change', skipOnChange);
       },
       toggleRadioState: function (skipOnChange) {
-        var $this = $(this)
-          , $radioinput = $this.find(':radio');
-          if ($radioinput.is(':checked'))
-          $radioinput.closest('.switch-on').parent().addClass('radio-no-uncheck');
-
+        var $radioinput = $(this).find(':radio');
           $radioinput.not(':checked').prop('checked', !$radioinput.is(':checked')).trigger('change', skipOnChange);
       },
       toggleRadioStateAllowUncheck: function (uncheck, skipOnChange) {
-        var $this = $(this)
-          , $radioinput = $this.find(':radio');
+        var $radioinput = $(this).find(':radio');
         if (uncheck) {
           $radioinput.not(':checked').trigger('change', skipOnChange);
         }
         else {
-          if ($radioinput.is(':checked'))
-          $radioinput.closest('.switch-on').parent().addClass('radio-no-uncheck');
-
           $radioinput.not(':checked').prop('checked', !$radioinput.is(':checked')).trigger('change', skipOnChange);
         }
       },
