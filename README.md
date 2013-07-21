@@ -179,7 +179,10 @@ $('#mySwitch').bootstrapSwitch('isActive');
 $('#mySwitch').bootstrapSwitch('setActive', false);
 $('#mySwitch').bootstrapSwitch('setActive', true);
 $('#mySwitch').bootstrapSwitch('toggleState');
-$('.mySwitch').bootstrapSwitch('toggleRadioState'); // the radiobuttons need a class not a ID
+$('.mySwitch').bootstrapSwitch('toggleRadioState'); // the radiobuttons need a class not a ID, don't allow uncheck radio switch
+$('.mySwitch').bootstrapSwitch('toggleRadioStateAllowUncheck'); // don't allow uncheck radio switch
+$('.mySwitch').bootstrapSwitch('toggleRadioStateAllowUncheck', false); // don't allow uncheck radio switch
+$('.mySwitch').bootstrapSwitch('toggleRadioStateAllowUncheck', true); // allow uncheck radio switch
 $('#mySwitch').bootstrapSwitch('setState', true);
 $('#mySwitch').bootstrapSwitch('status');  // returns true or false
 $('#mySwitch').bootstrapSwitch('destroy');
