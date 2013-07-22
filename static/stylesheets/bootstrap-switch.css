@@ -48,15 +48,6 @@
 .has-switch.deactivate span {
   cursor: default !important;
 }
-.has-switch.radio-no-uncheck {
-
-  filter: alpha(opacity=50);
-  cursor: default !important;
-}
-.has-switch.radio-no-uncheck label,
-.has-switch.radio-no-uncheck span {
-  cursor: default !important;
-}
 .has-switch > div {
   display: inline-block;
   width: 150%;
