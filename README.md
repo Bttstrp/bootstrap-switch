@@ -18,7 +18,7 @@ Just include Twitter Bootstrap, jQuery, Bootstrap Switch CSS and Javascript
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="bootstrap-switch.js"></script>  // master
-<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.4/bootstrap-switch.min.js">  // from cdnjs.com
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.6/bootstrap-switch.min.js">  // from cdnjs.com
 ```
 
 Less
@@ -183,7 +183,10 @@ $('#mySwitch').bootstrapSwitch('isActive');
 $('#mySwitch').bootstrapSwitch('setActive', false);
 $('#mySwitch').bootstrapSwitch('setActive', true);
 $('#mySwitch').bootstrapSwitch('toggleState');
-$('.mySwitch').bootstrapSwitch('toggleRadioState'); // the radiobuttons need a class not a ID
+$('.mySwitch').bootstrapSwitch('toggleRadioState'); // the radiobuttons need a class not a ID, don't allow uncheck radio switch
+$('.mySwitch').bootstrapSwitch('toggleRadioStateAllowUncheck'); // don't allow uncheck radio switch
+$('.mySwitch').bootstrapSwitch('toggleRadioStateAllowUncheck', false); // don't allow uncheck radio switch
+$('.mySwitch').bootstrapSwitch('toggleRadioStateAllowUncheck', true); // allow uncheck radio switch
 $('#mySwitch').bootstrapSwitch('setState', true);
 $('#mySwitch').bootstrapSwitch('status');  // returns true or false
 $('#mySwitch').bootstrapSwitch('destroy');

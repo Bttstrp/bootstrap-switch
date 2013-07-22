@@ -313,73 +313,108 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false</pre
     </div>
 </div>
 
+
 <div class="row-fluid">
     <div class="span12">
         <h3>Radio <small>javascript</small></h3>
 
         <div class="bs-docs-example">
             <div class="control-group">
-                <div class="control-group">
+                 <div class="controls">
                     <label class="control-label" for="option1">Option 1</label>
-                    <div class="controls">
-                        <div id="option1" class="switch radio2">
-                            <input type="radio" name="radio2" value="option1" checked />
+                        <div id="option1" class="switch radio1 radio-no-uncheck">
+                            <input type="radio" name="radio1" value="option1" />
                         </div>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <div>
                     <label class="control-label" for="option2">Option 2</label>
-                    </div>
-                    <div class="controls">
-                        <div id="option2" class="switch radio2">
-                            <input type="radio" name="radio2" value="option2" />
+                        <div id="option2" class="switch radio1 radio-no-uncheck">
+                            <input type="radio" name="radio1" value="option2" />
                         </div>
-                    </div>
-                </div>
-                <div class="control-group">
                     <label class="control-label" for="option3">Option 3</label>
-                    <div class="controls">
-                        <div id="option3" class="switch radio2">
-                            <input type="radio" name="radio2" value="option3" />
+                        <div id="option3" class="switch radio1 radio-no-uncheck">
+                            <input type="radio" name="radio1" value="option3" />
                         </div>
-                    </div>
-                </div>
+                 </div>
             </div>
         </div>
         <pre class="prettyprint linenums">
 &lt;div class="control-group">
-    &lt;div class="control-group">
+    &lt;div class="controls">
         &lt;label class="control-label" for="option1">Option 1&lt;/label>
-        &lt;div class="controls">
-            &lt;div id="option1" class="switch radio2">
-                &lt;input type="radio" name="radio2" value="option1" checked />
+            &lt;div id="option1" class="switch radio1 radio-no-uncheck">
+                &lt;input type="radio" name="radio1" value="option1" />
             &lt;/div>
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="control-group">
-        &lt;div>
         &lt;label class="control-label" for="option2">Option 2&lt;/label>
-        &lt;/div>
-        &lt;div class="controls">
-            &lt;div id="option2" class="switch radio2">
-                &lt;input type="radio" name="radio2" value="option2" />
+            &lt;div id="option2" class="switch radio1 radio-no-uncheck">
+                &lt;input type="radio" name="radio1" value="option2" />
             &lt;/div>
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="control-group">
         &lt;label class="control-label" for="option3">Option 3&lt;/label>
-        &lt;div class="controls">
+            &lt;div id="option3" class="switch radio1 radio-no-uncheck">
+                &lt;input type="radio" name="radio1" value="option3" />
+            &lt;/div>
+    &lt;/div>
+&lt;/div>            
+&lt;script>
+    $(document).ready(function() {
+        $('.radio1').on('switch-change', function () {
+            $('.radio1').bootstrapSwitch('toggleRadioState');
+        });
+// or
+        $('.radio1').on('switch-change', function () {
+            $('.radio1').bootstrapSwitch('toggleRadioStateAllowUncheck');
+        });
+// or
+        $('.radio1').on('switch-change', function () {
+            $('.radio1').bootstrapSwitch('toggleRadioStateAllowUncheck', false);
+        });
+    });
+&lt;/script></pre>
+    </div>
+</div>
+
+
+<div class="row-fluid">
+    <div class="span12">
+        <h3>Radio <small>javascript (allow radios uncheck)</small></h3>
+
+        <div class="bs-docs-example">
+            <div class="control-group">
+                 <div class="controls">
+                    <label class="control-label" for="option1">Option 1</label>
+                        <div id="option1" class="switch radio2">
+                            <input type="radio" name="radio2" value="option1" />
+                        </div>
+                    <label class="control-label" for="option2">Option 2</label>
+                        <div id="option2" class="switch radio2">
+                            <input type="radio" name="radio2" value="option2" checked="checked" />
+                        </div>
+                    <label class="control-label" for="option3">Option 3</label>
+                        <div id="option3" class="switch radio2">
+                            <input type="radio" name="radio2" value="option3" />
+                        </div>
+                 </div>
+            </div>
+        </div>
+        <pre class="prettyprint linenums">
+&lt;div class="control-group">
+    &lt;div class="controls">
+        &lt;label class="control-label" for="option1">Option 1&lt;/label>
+            &lt;div id="option1" class="switch radio2">
+                &lt;input type="radio" name="radio2" value="option1" />
+            &lt;/div>
+        &lt;label class="control-label" for="option2">Option 2&lt;/label>
+            &lt;div id="option2" class="switch radio2">
+                &lt;input type="radio" name="radio2" value="option2" checked="checked" />
+            &lt;/div>
+        &lt;label class="control-label" for="option3">Option 3&lt;/label>
             &lt;div id="option3" class="switch radio2">
                 &lt;input type="radio" name="radio2" value="option3" />
             &lt;/div>
-        &lt;/div>
     &lt;/div>
 &lt;/div>            
 &lt;script>
     $(document).ready(function() {
         $('.radio2').on('switch-change', function () {
-            $('.radio2').bootstrapSwitch('toggleRadioState');
+            $('.radio2').bootstrapSwitch('toggleRadioStateAllowUncheck', true);
         });
     });
 &lt;/script></pre>
@@ -557,7 +592,7 @@ $(document).ready(function() {
     });
 
     $('.radio2').on('switch-change', function () {
-        $('.radio2').bootstrapSwitch('toggleRadioState');
+        $('.radio2').bootstrapSwitch('toggleRadioStateAllowUncheck', true);
     });
 
 });
