@@ -149,7 +149,7 @@
 
               $this.closest('div').removeClass('switch-animate');
 
-              if ($this.closest('.has-switch').is('.deactivate'))
+              if ($this.closest('.has-switch').is('.deactivate')) {
                 $this.unbind('click');
               } else if ( $this.closest('.switch-on').parent().is('.radio-no-uncheck') ) {
                 $this.unbind('click');
