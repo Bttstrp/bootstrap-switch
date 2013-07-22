@@ -302,6 +302,8 @@
   };
 }(jQuery);
 
-(function () {
-  jQuery('.switch')['bootstrapSwitch']();
-})();
+(function($) {  // creates scope for $ sign assigned to jQuery
+    $(function () { // on dom ready
+        $('.switch')['bootstrapSwitch'](); // attach bootstrapswitch
+    });
+})(jQuery);
