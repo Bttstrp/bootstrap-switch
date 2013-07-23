@@ -1,7 +1,7 @@
 Bootstrap-switch
 ========================
 
-You can now also use radio buttons as switches.
+You can now also use radio buttons and checkboxes as switches.
 
 
 Demo

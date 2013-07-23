@@ -71,13 +71,13 @@
             $label = $('<label>')
               .html("&nbsp;")
               .addClass(myClasses)
-              .attr('for', $element.find('input').attr('id'));
+              .attr('for', $element.find('input[type!="hidden"]').attr('id'));
 
             if (icon) {
               $label.html('<i class="icon icon-' + icon + '"></i>');
             }
 
-            $div = $element.find('input').wrap($('<div>')).parent().data('animated', false);
+            $div = $element.find('input[type!="hidden"]').wrap($('<div>')).parent().data('animated', false);
 
             if ($element.data('animated') !== false)
               $div.addClass('switch-animate').data('animated', true);
@@ -88,10 +88,10 @@
               .append($switchRight);
 
             $element.find('>div').addClass(
-              $element.find('input').is(':checked') ? 'switch-on' : 'switch-off'
+              $element.find('input[type!="hidden"]').is(':checked') ? 'switch-on' : 'switch-off'
             );
 
-            if ($element.find('input').is(':disabled'))
+            if ($element.find('input[type!="hidden"]').is(':disabled'))
               $(this).addClass('deactivate');
 
             var changeStatus = function ($this) {
@@ -114,7 +114,7 @@
               changeStatus($(this));
             });
 
-            $element.find('input').on('change', function (e, skipOnChange) {
+            $element.find('input[type!="hidden"]').on('change', function (e, skipOnChange) {
               var $this = $(this)
                 , $element = $this.parent()
                 , thisState = $this.is(':checked')
@@ -216,7 +216,7 @@
               $form.bind('reset', function () {
                 setTimeout(function () {
                   $form.find('.switch').each(function () {
-                    var $input = $(this).find('input');
+                    var $input = $(this).find('input[type!="hidden"]');
                     
                     $input.prop('checked', $input.is(':checked')).trigger('change');
                   });
@@ -231,7 +231,7 @@
         var $this = $(this);
 
         $this.toggleClass('deactivate');
-        $this.find('input').prop('disabled', $this.is('.deactivate'));
+        $this.find('input[type!="hidden"]').prop('disabled', $this.is('.deactivate'));
       },
       isActive: function () {
         return !$(this).hasClass('deactivate');
@@ -241,11 +241,11 @@
 
         if (active) {
           $this.removeClass('deactivate');
-          $this.find('input').removeAttr('disabled');
+          $this.find('input[type!="hidden"]').removeAttr('disabled');
         }
         else {
           $this.addClass('deactivate');
-          $this.find('input').attr('disabled', 'disabled');
+          $this.find('input[type!="hidden"]').attr('disabled', 'disabled');
         }
       },
       toggleState: function (skipOnChange) {
@@ -266,10 +266,10 @@
         }
       },
       setState: function (value, skipOnChange) {
-        $(this).find('input').prop('checked', value).trigger('change', skipOnChange);
+        $(this).find('input[type!="hidden"]').prop('checked', value).trigger('change', skipOnChange);
       },
       status: function () {
-        return $(this).find('input').is(':checked');
+        return $(this).find('input[type!="hidden"]').is(':checked');
       },
       destroy: function () {
         var $element = $(this)
@@ -277,7 +277,7 @@
           , $form = $element.closest('form')
           , $inputbox;
 
-        $div.find(':not(input)').remove();
+        $div.find(':not(input[type!="hidden"])').remove();
 
         $inputbox = $div.children();
         $inputbox.unwrap().unwrap();
