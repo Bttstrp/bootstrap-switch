@@ -35,16 +35,12 @@
 }
 .has-switch.switch-mini i.switch-mini-icons {
   height: 1.20em;
-  min-height: 5px;
-  line-height: 8px;
-  padding-bottom: 0px;
-  padding-top: 0px;
+  line-height: 9px;
   vertical-align: text-top;
   text-align: center;
   transform: scale(0.6);
   margin-top: -1px;
   margin-bottom: -1px;
-  z-index: 500;
 }
 .has-switch.switch-small {
   min-width: 80px;
