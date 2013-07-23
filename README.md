@@ -1,7 +1,7 @@
 Bootstrap-switch
 ========================
 
-You can now also use radio buttons as switches.
+You can now also use radio buttons and checkboxes as switches.
 
 
 Demo
@@ -27,6 +27,10 @@ If you want to use your bootstrap vars edit bootstrapSwitch.less and then compil
 ``` bash
 lessc static/less/bootstrap-switch.less static/stylesheets/bootstrap-switch.css
 ```
+
+Supported browsers
+------------------
+I'm not going to support ancient browsers! (it works on IE8+)
 
 Basic Example
 -------------
