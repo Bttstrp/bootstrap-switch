@@ -1,5 +1,5 @@
 /*! ============================================================
- * bootstrapSwitch v1.5 by Larentis Mattia @SpiritualGuru
+ * bootstrapSwitch v1.6 by Larentis Mattia @SpiritualGuru
  * http://www.larentis.eu/
  * 
  * Enhanced for radiobuttons by Stein, Peter @BdMdesigN
@@ -16,6 +16,7 @@
   "use strict";
 
   $.fn['bootstrapSwitch'] = function (method) {
+    var inputSelector = 'input[type!="hidden"]';
     var methods = {
       init: function () {
         return this.each(function () {
@@ -71,13 +72,13 @@
             $label = $('<label>')
               .html("&nbsp;")
               .addClass(myClasses)
-              .attr('for', $element.find('input').attr('id'));
+              .attr('for', $element.find(inputSelector).attr('id'));
 
             if (icon) {
               $label.html('<i class="icon icon-' + icon + '"></i>');
             }
 
-            $div = $element.find('input').wrap($('<div>')).parent().data('animated', false);
+            $div = $element.find(inputSelector).wrap($('<div>')).parent().data('animated', false);
 
             if ($element.data('animated') !== false)
               $div.addClass('switch-animate').data('animated', true);
@@ -88,10 +89,10 @@
               .append($switchRight);
 
             $element.find('>div').addClass(
-              $element.find('input').is(':checked') ? 'switch-on' : 'switch-off'
+              $element.find(inputSelector).is(':checked') ? 'switch-on' : 'switch-off'
             );
 
-            if ($element.find('input').is(':disabled'))
+            if ($element.find(inputSelector).is(':disabled'))
               $(this).addClass('deactivate');
 
             var changeStatus = function ($this) {
@@ -114,7 +115,7 @@
               changeStatus($(this));
             });
 
-            $element.find('input').on('change', function (e, skipOnChange) {
+            $element.find(inputSelector).on('change', function (e, skipOnChange) {
               var $this = $(this)
                 , $element = $this.parent()
                 , thisState = $this.is(':checked')
@@ -149,9 +150,11 @@
 
               $this.closest('div').removeClass('switch-animate');
 
-              if ($this.closest('.has-switch').is('.deactivate'))
+              if ($this.closest('.has-switch').is('.deactivate')) {
                 $this.unbind('click');
-              else {
+              } else if ( $this.closest('.switch-on').parent().is('.radio-no-uncheck') ) {
+                $this.unbind('click');
+              } else {
                 $this.on('mousemove touchmove', function (e) {
                   var $element = $(this).closest('.switch')
                     , relativeX = (e.pageX || e.originalEvent.targetTouches[0].pageX) - $element.offset().left
@@ -214,8 +217,8 @@
               $form.bind('reset', function () {
                 setTimeout(function () {
                   $form.find('.switch').each(function () {
-                    var $input = $(this).find('input');
-                    
+                    var $input = $(this).find(inputSelector);
+
                     $input.prop('checked', $input.is(':checked')).trigger('change');
                   });
                 }, 1);
@@ -229,7 +232,7 @@
         var $this = $(this);
 
         $this.toggleClass('deactivate');
-        $this.find('input').prop('disabled', $this.is('.deactivate'));
+        $this.find(inputSelector).prop('disabled', $this.is('.deactivate'));
       },
       isActive: function () {
         return !$(this).hasClass('deactivate');
@@ -239,25 +242,35 @@
 
         if (active) {
           $this.removeClass('deactivate');
-          $this.find('input').prop('disabled', false);
+          $this.find(inputSelector).removeAttr('disabled');
         }
         else {
           $this.addClass('deactivate');
-          $this.find('input').prop('disabled', true);
+          $this.find(inputSelector).attr('disabled', 'disabled');
         }
       },
       toggleState: function (skipOnChange) {
-        var $input = $(this).find('input[type=checkbox]');
+        var $input = $(this).find(':checkbox');
         $input.prop('checked', !$input.is(':checked')).trigger('change', skipOnChange);
       },
       toggleRadioState: function (skipOnChange) {
-        $(this).find('input[type=radio]').not(':checked').trigger('change', skipOnChange);
+        var $radioinput = $(this).find(':radio');
+          $radioinput.not(':checked').prop('checked', !$radioinput.is(':checked')).trigger('change', skipOnChange);
+      },
+      toggleRadioStateAllowUncheck: function (uncheck, skipOnChange) {
+        var $radioinput = $(this).find(':radio');
+        if (uncheck) {
+          $radioinput.not(':checked').trigger('change', skipOnChange);
+        }
+        else {
+          $radioinput.not(':checked').prop('checked', !$radioinput.is(':checked')).trigger('change', skipOnChange);
+        }
       },
       setState: function (value, skipOnChange) {
-        $(this).find('input').prop('checked', value).trigger('change', skipOnChange);
+        $(this).find(inputSelector).prop('checked', value).trigger('change', skipOnChange);
       },
       status: function () {
-        return $(this).find('input').is(':checked');
+        return $(this).find(inputSelector).is(':checked');
       },
       destroy: function () {
         var $element = $(this)
@@ -265,7 +278,7 @@
           , $form = $element.closest('form')
           , $inputbox;
 
-        $div.find(':not(input)').remove();
+        $div.find(':not(input[type!="hidden"])').remove();
 
         $inputbox = $div.children();
         $inputbox.unwrap().unwrap();
@@ -290,6 +303,8 @@
   };
 }(jQuery);
 
-(function () {
-  jQuery('.switch')['bootstrapSwitch']();
-})();
+(function($) {  // creates scope for $ sign assigned to jQuery
+    $(function () { // on dom ready
+        $('.switch')['bootstrapSwitch'](); // attach bootstrapswitch
+    });
+})(jQuery);
