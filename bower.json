@@ -1,15 +1,11 @@
 {
   "name": "bootstrap-switch",
+  "description" : "Unofficial bootstrap switch",
   "version": "1.6.0",
-  "main": [
-    "static/js/bootstrap-switch.js",
-    "static/stylesheets/bootstrap-switch.css"
-  ],
-  "ignore": [
-    ".jshintrc",
-    "**/*.txt"
-  ],
+  "main": "static/js/bootstrap-switch.js",
+  "ignore": "examples",
   "dependencies": {
     "jquery": "~1.9.0"
   }
 }
+
