@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-switch",
-  "version": "1.6",
+  "version": "1.6.0",
   "main": [
     "static/js/bootstrap-switch.js",
     "static/stylesheets/bootstrap-switch.css"
@@ -10,6 +10,6 @@
     "**/*.txt"
   ],
   "dependencies": {
-    "jquery": "~1.9.0",
+    "jquery": "~1.9.0"
   }
 }
