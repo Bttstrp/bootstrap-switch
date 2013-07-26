@@ -278,7 +278,7 @@
           , $form = $element.closest('form')
           , $inputbox;
 
-        $div.find(':not(input[type!="hidden"])').remove();
+        $div.find(':not(inputSelector)').remove();
 
         $inputbox = $div.children();
         $inputbox.unwrap().unwrap();
