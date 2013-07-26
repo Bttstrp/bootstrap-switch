@@ -7,6 +7,7 @@ You can now also use radio buttons and checkboxes as switches.
 Demo:
 ----
 http://www.larentis.eu/switch/
+
 http://bdmdesign.github.io/bootstrap-switch-BdMdesigN (uptodate)
 
 Usage
