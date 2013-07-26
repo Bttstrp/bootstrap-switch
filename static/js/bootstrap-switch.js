@@ -1,5 +1,5 @@
 /*! ============================================================
- * bootstrapSwitch v1.6 by Larentis Mattia @SpiritualGuru
+ * bootstrapSwitch v1.7 by Larentis Mattia @SpiritualGuru
  * http://www.larentis.eu/
  * 
  * Enhanced for radiobuttons by Stein, Peter @BdMdesigN
@@ -156,7 +156,7 @@
                 $this.unbind('click');
               } else {
                 $this.on('mousemove touchmove', function (e) {
-                  var $element = $(this).closest('.switch')
+                  var $element = $(this).closest('.make-switch')
                     , relativeX = (e.pageX || e.originalEvent.targetTouches[0].pageX) - $element.offset().left
                     , percent = (relativeX / $element.width()) * 100
                     , left = 25
@@ -216,7 +216,7 @@
             if ($form.data('bootstrapSwitch') !== 'injected') {
               $form.bind('reset', function () {
                 setTimeout(function () {
-                  $form.find('.switch').each(function () {
+                  $form.find('.make-switch').each(function () {
                     var $input = $(this).find(inputSelector);
 
                     $input.prop('checked', $input.is(':checked')).trigger('change');
@@ -305,6 +305,6 @@
 
 (function($) {  // creates scope for $ sign assigned to jQuery
     $(function () { // on dom ready
-        $('.switch')['bootstrapSwitch'](); // attach bootstrapswitch
+        $('.make-switch')['bootstrapSwitch'](); // attach bootstrapswitch
     });
 })(jQuery);
