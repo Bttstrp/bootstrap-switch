@@ -60,25 +60,25 @@
         <div class="span12">
             <h3>Size</h3>
             <div class="bs-docs-example">
-                <div class="switch switch-large">
+                <div class="make-switch switch-large">
                     <input type="checkbox" checked />
                 </div>
 
-                <div class="switch">
+                <div class="make-switch">
                     <input type="checkbox" checked />
                 </div>
 
-                <div class="switch switch-small">
+                <div class="make-switch switch-small">
                     <input type="checkbox" checked />
                 </div>
 
-                <div class="switch switch-mini">
+                <div class="make-switch switch-mini">
                     <input type="checkbox" checked />
                 </div>
                 <br>
                 <br>
                 <label>Dimensions can be changed too:</label>
-                <div id="dimension-switch" class="switch">
+                <div id="dimension-switch" class="make-switch">
                     <input type="checkbox" checked />
                 </div>
                 <button id="btn-size-large-switch" class="btn">Large</button>
@@ -87,23 +87,23 @@
                 <button id="btn-size-mini-switch" class="btn">Mini</button>
             </div>
             <pre class="prettyprint linenums">
-&lt;div class="switch switch-large">
+&lt;div class="make-switch switch-large">
     &lt;input type="checkbox" checked />
 &lt;/div>
 
-&lt;div class="switch">
+&lt;div class="make-switch">
     &lt;input type="checkbox" checked />
 &lt;/div>
 
-&lt;div class="switch switch-small">
+&lt;div class="make-switch switch-small">
     &lt;input type="checkbox" checked />
 &lt;/div>
 
-&lt;div class="switch switch-mini">
+&lt;div class="make-switch switch-mini">
     &lt;input type="checkbox" checked />
 &lt;/div>
 
-&lt;div id="dimension-switch" class="switch">
+&lt;div id="dimension-switch" class="make-switch">
     &lt;input type="checkbox" checked />
 &lt;/div>
             </pre>
@@ -121,28 +121,28 @@ $('#dimension-switch').bootstrapSwitch('setSizeClass', 'switch-large');   // Set
         <div class="span12">
             <h3>Colors <small>javascript</small></h3>
             <div class="bs-docs-example">
-                <div class="switch" data-on="primary" data-off="info">
+                <div class="make-switch" data-on="primary" data-off="info">
                     <input type="checkbox" checked />
                 </div>
-                <div class="switch" data-on="info" data-off="success">
+                <div class="make-switch" data-on="info" data-off="success">
                     <input type="checkbox" checked />
                 </div>
-                <div class="switch" data-on="success" data-off="warning">
+                <div class="make-switch" data-on="success" data-off="warning">
                     <input type="checkbox" checked />
                 </div>
-                <div class="switch" data-on="warning" data-off="danger">
+                <div class="make-switch" data-on="warning" data-off="danger">
                     <input type="checkbox" checked />
                 </div>
-                <div class="switch" data-on="danger" data-off="default">
+                <div class="make-switch" data-on="danger" data-off="default">
                     <input type="checkbox" checked />
                 </div>
-                <div class="switch" data-on="default" data-off="primary">
+                <div class="make-switch" data-on="default" data-off="primary">
                     <input type="checkbox" checked />
                 </div>
                 <br>
                 <br>
                 <label for="change-color-switch">Colors can be changed too</label>
-                <div id="change-color-switch" class="switch" data-on="default" data-off="primary">
+                <div id="change-color-switch" class="make-switch" data-on="default" data-off="primary">
                     <input type="checkbox" checked />
                 </div>
                 <br>
@@ -156,31 +156,31 @@ $('#dimension-switch').bootstrapSwitch('setSizeClass', 'switch-large');   // Set
             </div>
             
             <pre class="prettyprint linenums">
-&lt;div class="switch" data-on="primary" data-off="info">
+&lt;div class="make-switch" data-on="primary" data-off="info">
     &lt;input type="checkbox" checked />
 &lt;/div>
 
-&lt;div class="switch" data-on="info" data-off="success">
+&lt;div class="make-switch" data-on="info" data-off="success">
     &lt;input type="checkbox" checked />
 &lt;/div>
 
-&lt;div class="switch" data-on="success" data-off="warning">
+&lt;div class="make-switch" data-on="success" data-off="warning">
     &lt;input type="checkbox" checked />
 &lt;/div>
 
-&lt;div class="switch" data-on="warning" data-off="danger">
+&lt;div class="make-switch" data-on="warning" data-off="danger">
     &lt;input type="checkbox" checked />
 &lt;/div>
 
-&lt;div class="switch" data-on="danger" data-off="default">
+&lt;div class="make-switch" data-on="danger" data-off="default">
     &lt;input type="checkbox" checked />
 &lt;/div>
 
-&lt;div class="switch" data-on="default" data-off="primary">
+&lt;div class="make-switch" data-on="default" data-off="primary">
     &lt;input type="checkbox" checked />
 &lt;/div>
 
-&lt;div id="change-color-switch" class="switch" data-on="default" data-off="primary">
+&lt;div id="change-color-switch" class="make-switch" data-on="default" data-off="primary">
     &lt;input type="checkbox" checked />
 &lt;/div>
             </pre>
@@ -198,7 +198,7 @@ $('#change-color-switch').bootstrapSwitch('setOffClass', 'danger');
             <h3>Animation <small>javascript</small></h3>
 
             <div class="bs-docs-example">
-                <div id="animated-switch" class="switch" data-animated="false">
+                <div id="animated-switch" class="make-switch" data-animated="false">
                     <input type="checkbox" checked />
                 </div>
                 <br>
@@ -211,7 +211,7 @@ $('#change-color-switch').bootstrapSwitch('setOffClass', 'danger');
                 </button>
             </div>
             <pre class="prettyprint linenums">
-&lt;div id="animated-switch" class="switch" data-animated="false">
+&lt;div id="animated-switch" class="make-switch" data-animated="false">
     &lt;input type="checkbox" checked />
 &lt;/div>
              </pre>
@@ -229,12 +229,12 @@ $('#animated-switch').bootstrapSwitch('setAnimated', false);    // Disables anim
             <h3>Disabled</h3>
 
             <div class="bs-docs-example">
-                <div class="switch">
+                <div class="make-switch">
                     <input type="checkbox" checked disabled />
                 </div>
             </div>
             <pre class="prettyprint linenums">
-&lt;div class="switch">
+&lt;div class="make-switch">
    &lt;input type="checkbox" checked disabled />
 &lt;/div>
             </pre>
@@ -247,7 +247,7 @@ $('#animated-switch').bootstrapSwitch('setAnimated', false);    // Disables anim
             <h3>Text</h3>
 
             <div class="bs-docs-example">
-                <div id="label-switch" class="switch" data-on-label="SI" data-off-label="NO">
+                <div id="label-switch" class="make-switch" data-on-label="SI" data-off-label="NO">
                     <input type="checkbox" checked />
                 </div>
                 <br>
@@ -260,7 +260,7 @@ $('#animated-switch').bootstrapSwitch('setAnimated', false);    // Disables anim
                 </button>
             </div>
             <pre class="prettyprint linenums">
-&lt;div id="label-switch" class="switch" data-on-label="SI" data-off-label="NO">
+&lt;div id="label-switch" class="make-switch" data-on-label="SI" data-off-label="NO">
     &lt;input type="checkbox" checked />
 &lt;/div>
             </pre>
@@ -277,12 +277,12 @@ $('#label-switch').bootstrapSwitch('setOffLabel', 'O');
             <h3>HTML text</h3>
 
             <div class="bs-docs-example">
-                <div class="switch" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
+                <div class="make-switch" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
                     <input type="checkbox" checked />
                 </div>
             </div>
             <pre class="prettyprint linenums">
-&lt;div class="switch" data-on-label="&lt;i class='icon-ok icon-white'>&lt;/i>" data-off-label="&lt;i class='icon-remove'>&lt;/i>">
+&lt;div class="make-switch" data-on-label="&lt;i class='icon-ok icon-white'>&lt;/i>" data-off-label="&lt;i class='icon-remove'>&lt;/i>">
     &lt;input type="checkbox" checked />
 &lt;/div>
             </pre>
@@ -295,12 +295,12 @@ $('#label-switch').bootstrapSwitch('setOffLabel', 'O');
             <h3>HTML text (mini-switch)</h3>
 
             <div class="bs-docs-example">
-                <div class="switch switch-mini" data-on-label="<i class='switch-mini-icons icon-ok icon-white'></i>" data-off-label="<i class='switch-mini-icons icon-remove'></i>">
+                <div class="make-switch switch-mini" data-on-label="<i class='switch-mini-icons icon-ok icon-white'></i>" data-off-label="<i class='switch-mini-icons icon-remove'></i>">
                     <input type="checkbox" checked />
                 </div>
             </div>
             <pre class="prettyprint linenums">
-&lt;div class="switch switch-mini" data-on-label="&lt;i class='switch-mini-icons icon-ok icon-white'>&lt;/i>" data-off-label="&lt;i class='switch-mini-icons icon-remove'>&lt;/i>">
+&lt;div class="make-switch switch-mini" data-on-label="&lt;i class='switch-mini-icons icon-ok icon-white'>&lt;/i>" data-off-label="&lt;i class='switch-mini-icons icon-remove'>&lt;/i>">
     &lt;input type="checkbox" checked />
 &lt;/div>
             </pre>
@@ -313,7 +313,7 @@ $('#label-switch').bootstrapSwitch('setOffLabel', 'O');
             <h3>Event handler <small>javascript</small></h3>
 
             <div class="bs-docs-example">
-                <div id="mySwitch" class="switch">
+                <div id="mySwitch" class="make-switch">
                     <input type="checkbox" checked />
                 </div>
             </div>
@@ -333,7 +333,7 @@ $('#mySwitch').on('switch-change', function (e, data) {
             <h3>Toggle State <small>javascript</small></h3>
 
             <div class="bs-docs-example">
-                <div id="toggle-state-switch" class="switch">
+                <div id="toggle-state-switch" class="make-switch">
                     <input type="checkbox" checked />
                 </div>
                 <br>
@@ -357,7 +357,7 @@ $('#toggle-state-switch').bootstrapSwitch('setState', false); // true || false
             <h3>Destroy <small>javascript</small></h3>
 
             <div class="bs-docs-example">
-                <div id="destroy-switch" class="switch">
+                <div id="destroy-switch" class="make-switch">
                     <input type="checkbox" checked />
                 </div>
                 <br>
@@ -383,7 +383,7 @@ $('#destroy-switch').bootstrapSwitch('destroy');
                 <div id="btn-create" class="btn">Create</div>
             </div>
             <pre class="prettyprint linenums">
-$('#create-switch').wrap('&lt;div class="switch" />').parent().bootstrapSwitch();
+$('#create-switch').wrap('&lt;div class="make-switch" />').parent().bootstrapSwitch();
             </pre>
         </div>
     </div>
@@ -395,7 +395,7 @@ $('#create-switch').wrap('&lt;div class="switch" />').parent().bootstrapSwitch()
 
             <div class="bs-docs-example">
                 <label for="disable-switch-input">amazing label</label>
-                <div id="disable-switch" class="switch">
+                <div id="disable-switch" class="make-switch">
                     <input id="disable-switch-input" type="checkbox" checked />
                 </div>
                 <br>
@@ -430,15 +430,15 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false
                 <div class="control-group">
                      <div class="controls">
                         <label class="control-label" for="option1">Option 1</label>
-                            <div id="option1" class="switch radio1 radio-no-uncheck">
+                            <div id="option1" class="make-switch radio1 radio-no-uncheck">
                                 <input type="radio" name="radio1" value="option1" />
                             </div>
                         <label class="control-label" for="option2">Option 2</label>
-                            <div id="option2" class="switch radio1 radio-no-uncheck">
+                            <div id="option2" class="make-switch radio1 radio-no-uncheck">
                                 <input type="radio" name="radio1" value="option2" />
                             </div>
                         <label class="control-label" for="option3">Option 3</label>
-                            <div id="option3" class="switch radio1 radio-no-uncheck">
+                            <div id="option3" class="make-switch radio1 radio-no-uncheck">
                                 <input type="radio" name="radio1" value="option3" />
                             </div>
                      </div>
@@ -448,15 +448,15 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false
 &lt;div class="control-group">
     &lt;div class="controls">
         &lt;label class="control-label" for="option1">Option 1&lt;/label>
-            &lt;div id="option1" class="switch radio1 radio-no-uncheck">
+            &lt;div id="option1" class="make-switch radio1 radio-no-uncheck">
                 &lt;input type="radio" name="radio1" value="option1" />
             &lt;/div>
         &lt;label class="control-label" for="option2">Option 2&lt;/label>
-            &lt;div id="option2" class="switch radio1 radio-no-uncheck">
+            &lt;div id="option2" class="make-switch radio1 radio-no-uncheck">
                 &lt;input type="radio" name="radio1" value="option2" />
             &lt;/div>
         &lt;label class="control-label" for="option3">Option 3&lt;/label>
-            &lt;div id="option3" class="switch radio1 radio-no-uncheck">
+            &lt;div id="option3" class="make-switch radio1 radio-no-uncheck">
                 &lt;input type="radio" name="radio1" value="option3" />
             &lt;/div>
     &lt;/div>
@@ -489,15 +489,15 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false
                 <div class="control-group">
                      <div class="controls">
                         <label class="control-label" for="option1">Option 1</label>
-                            <div id="option1" class="switch radio2">
+                            <div id="option1" class="make-switch radio2">
                                 <input type="radio" name="radio2" value="option1" />
                             </div>
                         <label class="control-label" for="option2">Option 2</label>
-                            <div id="option2" class="switch radio2">
+                            <div id="option2" class="make-switch radio2">
                                 <input type="radio" name="radio2" value="option2" checked="checked" />
                             </div>
                         <label class="control-label" for="option3">Option 3</label>
-                            <div id="option3" class="switch radio2">
+                            <div id="option3" class="make-switch radio2">
                                 <input type="radio" name="radio2" value="option3" />
                             </div>
                      </div>
@@ -507,15 +507,15 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false
 &lt;div class="control-group">
     &lt;div class="controls">
         &lt;label class="control-label" for="option1">Option 1&lt;/label>
-            &lt;div id="option1" class="switch radio2">
+            &lt;div id="option1" class="make-switch radio2">
                 &lt;input type="radio" name="radio2" value="option1" />
             &lt;/div>
         &lt;label class="control-label" for="option2">Option 2&lt;/label>
-            &lt;div id="option2" class="switch radio2">
+            &lt;div id="option2" class="make-switch radio2">
                 &lt;input type="radio" name="radio2" value="option2" checked="checked" />
             &lt;/div>
         &lt;label class="control-label" for="option3">Option 3&lt;/label>
-            &lt;div id="option3" class="switch radio2">
+            &lt;div id="option3" class="make-switch radio2">
                 &lt;input type="radio" name="radio2" value="option3" />
             &lt;/div>
     &lt;/div>
@@ -549,7 +549,7 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false
                         <label class="control-label" for="notification1">Notification 1</label>
 
                         <div class="controls">
-                            <div class="switch" tabindex="0">
+                            <div class="make-switch" tabindex="0">
                                 <input id="notification1" type="checkbox" />
                             </div>
                         </div>
@@ -558,7 +558,7 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false
                         <label class="control-label" for="notification2">Notification 2</label>
 
                         <div class="controls">
-                            <div class="switch" tabindex="0">
+                            <div class="make-switch" tabindex="0">
                                 <input id="notification2" type="checkbox" />
                             </div>
                         </div>
@@ -582,7 +582,7 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false
     &lt;div class="control-group">
         &lt;label class="control-label" for="notification1">Notification 1&lt;/label>
         &lt;div class="controls">
-            &lt;div class="switch" tabindex="0">
+            &lt;div class="make-switch" tabindex="0">
                 &lt;input id="notification1" type="checkbox" />
             &lt;/div>
         &lt;/div>
@@ -590,7 +590,7 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false
     &lt;div class="control-group">
         &lt;label class="control-label" for="notification2">Notification 2&lt;/label>
         &lt;div class="controls">
-            &lt;div class="switch" tabindex="0">
+            &lt;div class="make-switch" tabindex="0">
                 &lt;input id="notification2" type="checkbox" />
             &lt;/div>
         &lt;/div>
@@ -615,7 +615,7 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false
 &lt;a href="#myModal" role="button" class="btn" data-toggle="modal">Modal&lt;/a>
 -----
 &lt;div class="modal-body">
-    &lt;div class="switch">
+    &lt;div class="make-switch">
         &lt;input type="checkbox" checked />
     &lt;/div>
 &lt;/div></pre>
@@ -634,7 +634,7 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false
         <h3>Modal</h3>
     </div>
     <div class="modal-body">
-        <div class="switch">
+        <div class="make-switch">
             <input type="checkbox" checked />
         </div>
     </div>
@@ -692,7 +692,7 @@ $(document).ready(function() {
     });
     // CREATE
     $('#btn-create').on('click', function () {
-        $('#create-switch').wrap('<div class="switch" />').parent().bootstrapSwitch();
+        $('#create-switch').wrap('<div class="make-switch" />').parent().bootstrapSwitch();
         $(this).remove()
     });
 
