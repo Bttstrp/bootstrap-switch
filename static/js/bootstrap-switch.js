@@ -302,9 +302,10 @@
         }
       },
       setAnimated: function(value) {
-        var $element = $(this);
+        var $element = $(this).find('input[type!="hidden"]').parent();
         if (value === undefined) value = false;
         $element.data('animated', value);
+        $element.attr('data-animated', value);
 
         if ($element.data('animated') !== false) {
           $element.addClass("switch-animate");
