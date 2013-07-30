@@ -190,6 +190,12 @@ $('.mySwitch').bootstrapSwitch('toggleRadioStateAllowUncheck'); // don't allow u
 $('.mySwitch').bootstrapSwitch('toggleRadioStateAllowUncheck', false); // don't allow uncheck radio switch
 $('.mySwitch').bootstrapSwitch('toggleRadioStateAllowUncheck', true); // allow uncheck radio switch
 $('#mySwitch').bootstrapSwitch('setState', true);
+$('#mySwitch').bootstrapSwitch('setOnLabel', onValue); // sets the text of the "on" label
+$('#mySwitch').bootstrapSwitch('setOffLabel', offValue); // sets the text of the "off" label
+$('#mySwitch').bootstrapSwitch('setOnClass', onClass); // sets the left color class
+$('#mySwitch').bootstrapSwitch('setOffClass', offClass); // sets the right color class
+$('#mySwitch').bootstrapSwitch('setAnimated', animated); // sets true or false for animation
+$('#mySwitch').bootstrapSwitch('setSizeClass', size); // sets 'switch-mini', 'switch-small' or 'switch-large'
 $('#mySwitch').bootstrapSwitch('status');  // returns true or false
 $('#mySwitch').bootstrapSwitch('destroy');
 ```

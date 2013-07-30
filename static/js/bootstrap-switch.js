@@ -269,6 +269,67 @@
       setState: function (value, skipOnChange) {
         $(this).find(inputSelector).prop('checked', value).trigger('change', skipOnChange);
       },
+      setOnLabel: function(value) {
+        var $switchLeft = $(this).find(".switch-left");
+        $switchLeft.html(value);
+      },
+      setOffLabel: function(value) {
+        var $switchRight = $(this).find(".switch-right");
+        $switchRight.html(value);
+      },
+      setOnClass: function(value) {
+        var $switchLeft = $(this).find(".switch-left");
+        var color = '';
+        if (value !== undefined) {
+          if ($(this).attr('data-on') !== undefined) {
+            color = "switch-" + $(this).attr('data-on')
+          }
+          $switchLeft.removeClass(color);
+          color = "switch-" + value;
+          $switchLeft.addClass(color);
+        }
+      },
+      setOffClass: function(value) {
+        var $switchRight = $(this).find(".switch-right");
+        var color = '';
+        if (value !== undefined) {
+          if ($(this).attr('data-off') !== undefined) {
+            color = "switch-" + $(this).attr('data-off')
+          }
+          $switchRight.removeClass(color);
+          color = "switch-" + value;
+          $switchRight.addClass(color);
+        }
+      },
+      setAnimated: function(value) {
+        var $element = $(this).find('input[type!="hidden"]').parent();
+        if (value === undefined) value = false;
+        $element.data('animated', value);
+        $element.attr('data-animated', value);
+
+        if ($element.data('animated') !== false) {
+          $element.addClass("switch-animate");
+        } else {
+          $element.removeClass("switch-animate");
+        }
+      },
+      setSizeClass: function(value) {
+        var $element = $(this);
+        var $switchLeft = $element.find(".switch-left");
+        var $switchRight = $element.find(".switch-right");
+        var $label = $element.find("label");
+        $.each(['switch-mini', 'switch-small', 'switch-large'], function (i, el) {
+          if (el !== value) {
+            $switchLeft.removeClass(el)
+            $switchRight.removeClass(el);
+            $label.removeClass(el);
+          } else {
+            $switchLeft.addClass(el);
+            $switchRight.addClass(el);
+            $label.addClass(el);
+          }
+        });
+      },
       status: function () {
         return $(this).find(inputSelector).is(':checked');
       },
