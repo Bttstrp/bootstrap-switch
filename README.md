@@ -4,7 +4,7 @@ Bootstrap-switch v.1.7
 You can now also use radio buttons and checkboxes as switches.
 
 
-Demo:
+Demos
 ----
 http://www.larentis.eu/switch/
 
