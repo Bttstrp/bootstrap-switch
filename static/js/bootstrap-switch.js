@@ -339,7 +339,7 @@
           , $form = $element.closest('form')
           , $inputbox;
 
-        $div.find(':not(inputSelector)').remove();
+        $div.find(':not(input)').remove();
 
         $inputbox = $div.children();
         $inputbox.unwrap().unwrap();
