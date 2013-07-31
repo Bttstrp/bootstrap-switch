@@ -320,7 +320,7 @@
         var $label = $element.find("label");
         $.each(['switch-mini', 'switch-small', 'switch-large'], function (i, el) {
           if (el !== value) {
-            $switchLeft.removeClass(el)
+            $switchLeft.removeClass(el);
             $switchRight.removeClass(el);
             $label.removeClass(el);
           } else {
