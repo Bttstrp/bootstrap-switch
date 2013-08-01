@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/js/google-code-prettify/prettify.css" />
     <link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/docs.css" />
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
-    <link rel="stylesheet" href="static/stylesheets/flat-ui-fonts.css">
+    <link rel="stylesheet" href="../static/stylesheets/flat-ui-fonts.css">
     
     <style>
         .span4, h1 {
@@ -815,7 +815,8 @@ $(document).ready(function() {
         $('.radio1').bootstrapSwitch('toggleRadioState');
     });
     $('.radio2').on('switch-change', function () {
-        $('.radio2').bootstrapSwitch('toggleRadioStateAllowUncheck', true);
+        $('.radio2')
+                .bootstrapSwitch('toggleRadioStateAllowUncheck', true);
     });
 
 });
