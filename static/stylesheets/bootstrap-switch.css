@@ -42,6 +42,9 @@
   margin-top: -1px;
   margin-bottom: -1px;
 }
+.has-switch.switch-mini i.switch-mini-font-icons {
+  line-height: 9px;
+}
 .has-switch.switch-small {
   min-width: 80px;
 }
