@@ -75,7 +75,7 @@
               .attr('for', $element.find(inputSelector).attr('id'));
 
             if (icon) {
-              $label.html('<i class="icon icon-' + icon + '"></i>');
+              $label.html('<i class="icon ' + icon + '"></i>');
             }
 
             $div = $element.find(inputSelector).wrap($('<div>')).parent().data('animated', false);
