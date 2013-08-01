@@ -50,8 +50,8 @@
             if ($element.data('off-label') !== undefined)
               offLabel = $element.data('off-label');
 
-            if ($element.data('icon') !== undefined)
-              icon = $element.data('icon');
+            if ($element.data('label-icon') !== undefined)
+              icon = $element.data('label-icon');
 
             $switchLeft = $('<span>')
               .addClass("switch-left")
