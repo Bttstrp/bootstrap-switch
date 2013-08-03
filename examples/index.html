@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="../static/stylesheets/bootstrap-switch.css" />
     <link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/js/google-code-prettify/prettify.css" />
     <link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/docs.css" />
-
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+    <link rel="stylesheet" href="../static/stylesheets/flat-ui-fonts.css">
+    
     <style>
         .span4, h1 {
             text-align: center;
@@ -292,18 +294,89 @@ $('#label-switch').bootstrapSwitch('setOffLabel', 'O');
         </div>
     </div>
 
+    <!-- HTML TEXT LABEL ICON -->
+    <div class="row-fluid">
+        <div class="span12">
+            <h3>HTML text Label Icon</h3>
+
+            <div class="bs-docs-example">
+            <h3>Standard</h3>
+                <div class="make-switch switch-large" data-label-icon="icon-fullscreen" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
+                    <input type="checkbox" checked />
+                </div>
+            <!-- HTML TEXT LABEL ICON FONT AWESOME -->
+            <h3>Font Awesome</h3>
+                <div class="make-switch switch-large" data-label-icon="icon-youtube icon-large" data-on-label="<i class='icon-thumbs-up icon-white'></i>" data-off-label="<i class='icon-thumbs-down'></i>">
+                    <input type="checkbox" checked />
+                </div>
+            <!-- HTML TEXT LABEL ICON FLAT UI -->
+            <h3>Flat UI</h3>
+                <div class="make-switch" data-label-icon="fui-video" data-on-label="<i class='fui-check icon-white'></i>" data-off-label="<i class='fui-cross'></i>">
+                    <input type="checkbox" checked />
+                </div>
+            </div>
+            <!-- HTML TEXT LABEL ICON STANDARD -->
+            <h3>Standard</h3>
+            <pre class="prettyprint linenums">
+&lt;div class="make-switch switch-large" data-label-icon="icon-fullscreen" data-on-label="&lt;i class='icon-ok icon-white'>&lt;/i>" data-off-label="&lt;i class='icon-remove'>&lt;/i>">
+    &lt;input type="checkbox" checked />
+&lt;/div>
+            </pre>
+            <!-- HTML TEXT LABEL ICON FONT AWESOME -->
+            <h3>Font Awesome</h3>
+            <pre class="prettyprint linenums">
+&lt;div class="make-switch switch-large" data-label-icon="icon-youtube icon-large" data-on-label="&lt;i class='icon-thumbs-up icon-white'>&lt;/i>" data-off-label="&lt;i class='icon-thumbs-down'>&lt;/i>">
+    &lt;input type="checkbox" checked />
+&lt;/div>
+            </pre>
+            <!-- HTML TEXT LABEL ICON FLAT UI -->
+            <h3>Flat UI</h3>
+            <pre class="prettyprint linenums">
+&lt;div class="make-switch" data-label-icon="fui-video" data-on-label="&lt;i class='fui-check icon-white'>&lt;/i>" data-off-label="&lt;i class='fui-cross'>&lt;/i>">
+    &lt;input type="checkbox" checked />
+&lt;/div>
+            </pre>
+        </div>
+    </div>
+
     <!-- HTML TEXT MINI SWITCH -->
     <div class="row-fluid">
         <div class="span12">
             <h3>HTML text (mini-switch)</h3>
 
             <div class="bs-docs-example">
+            <h3>Standard</h3>
                 <div class="make-switch switch-mini" data-on-label="<i class='switch-mini-icons icon-ok icon-white'></i>" data-off-label="<i class='switch-mini-icons icon-remove'></i>">
                     <input type="checkbox" checked />
                 </div>
+            <!-- HTML TEXT MINI SWITCH FONT AWESOME -->
+            <h3>Font Awesome</h3>
+                <div class="make-switch switch-mini" data-on-label="<i class='switch-mini-font-icons icon-thumbs-up icon-white'></i>" data-off-label="<i class='switch-mini-font-icons icon-thumbs-down'></i>">
+                    <input type="checkbox" checked />
+                </div>
+            <!-- HTML TEXT MINI SWITCH FLAT UI -->
+            <h3>Flat UI</h3>
+                <div class="make-switch switch-mini" data-on-label="<i class='switch-mini-font-icons fui-check icon-white'></i>" data-off-label="<i class='switch-mini-font-icons fui-cross'></i>">
+                    <input type="checkbox" checked />
+                </div>
             </div>
+            <h3>Standard</h3>
             <pre class="prettyprint linenums">
 &lt;div class="make-switch switch-mini" data-on-label="&lt;i class='switch-mini-icons icon-ok icon-white'>&lt;/i>" data-off-label="&lt;i class='switch-mini-icons icon-remove'>&lt;/i>">
+    &lt;input type="checkbox" checked />
+&lt;/div>
+            </pre>
+            <!-- HTML TEXT MINI SWITCH FONT AWESOME -->
+            <h3>Font Awesome</h3>
+            <pre class="prettyprint linenums">
+&lt;div class="make-switch switch-mini" data-on-label="&lt;i class='switch-mini-font-icons icon-thumbs-up icon-white'>&lt;/i>" data-off-label="&lt;i class='switch-mini-font-icons icon-thumbs-down'>&lt;/i>">
+    &lt;input type="checkbox" checked />
+&lt;/div>
+            </pre>
+            <!-- HTML TEXT MINI SWITCH FLAT UI -->
+            <h3>Flat UI</h3>
+            <pre class="prettyprint linenums">
+&lt;div class="make-switch switch-mini" data-on-label="&lt;i class='switch-mini-font-icons fui-check icon-white'>&lt;/i>" data-off-label="&lt;i class='switch-mini-font-icons fui-cross'>&lt;/i>">
     &lt;input type="checkbox" checked />
 &lt;/div>
             </pre>
@@ -742,7 +815,8 @@ $(document).ready(function() {
         $('.radio1').bootstrapSwitch('toggleRadioState');
     });
     $('.radio2').on('switch-change', function () {
-        $('.radio2').bootstrapSwitch('toggleRadioStateAllowUncheck', true);
+        $('.radio2')
+                .bootstrapSwitch('toggleRadioStateAllowUncheck', true);
     });
 
 });
@@ -750,4 +824,3 @@ $(document).ready(function() {
 
 </body>
 </html>
-).on(
