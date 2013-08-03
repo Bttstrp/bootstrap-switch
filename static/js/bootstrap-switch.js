@@ -50,8 +50,8 @@
             if ($element.data('off-label') !== undefined)
               offLabel = $element.data('off-label');
 
-            if ($element.data('icon') !== undefined)
-              icon = $element.data('icon');
+            if ($element.data('label-icon') !== undefined)
+              icon = $element.data('label-icon');
 
             $switchLeft = $('<span>')
               .addClass("switch-left")
@@ -75,7 +75,7 @@
               .attr('for', $element.find(inputSelector).attr('id'));
 
             if (icon) {
-              $label.html('<i class="icon icon-' + icon + '"></i>');
+              $label.html('<i class="icon ' + icon + '"></i>');
             }
 
             $div = $element.find(inputSelector).wrap($('<div>')).parent().data('animated', false);
@@ -302,7 +302,7 @@
         }
       },
       setAnimated: function(value) {
-        var $element = $(this).find('inputSelector').parent();
+        var $element = $(this).find(inputSelector).parent();
         if (value === undefined) value = false;
         $element.data('animated', value);
         $element.attr('data-animated', value);
