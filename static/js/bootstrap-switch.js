@@ -1,5 +1,5 @@
 /*! ============================================================
- * bootstrapSwitch v1.7 by Larentis Mattia @SpiritualGuru
+ * bootstrapSwitch v1.8 by Larentis Mattia @SpiritualGuru
  * http://www.larentis.eu/
  * 
  * Enhanced for radiobuttons by Stein, Peter @BdMdesigN
@@ -32,7 +32,8 @@
               , moving
               , onLabel = "ON"
               , offLabel = "OFF"
-              , icon = false;
+              , icon = false
+              , textLabel = false;
 
             $.each(['switch-mini', 'switch-small', 'switch-large'], function (i, el) {
               if (classes.indexOf(el) >= 0)
@@ -52,6 +53,9 @@
 
             if ($element.data('label-icon') !== undefined)
               icon = $element.data('label-icon');
+
+            if ($element.data('text-label') !== undefined)
+              textLabel = $element.data('text-label');
 
             $switchLeft = $('<span>')
               .addClass("switch-left")
@@ -76,6 +80,10 @@
 
             if (icon) {
               $label.html('<i class="icon ' + icon + '"></i>');
+            }
+            
+            if (textLabel) {
+              $label.html('<div class="text-label">' + textLabel + '</div>');
             }
 
             $div = $element.find(inputSelector).wrap($('<div>')).parent().data('animated', false);
