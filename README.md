@@ -134,7 +134,7 @@ Text Label
 checkboxes:
 
 ``` html
-<div class="make-switch"  data-text-label="My Slider Text">
+<div class="make-switch" data-text-label="My Slider Text">
     <input type="checkbox">
 </div>
 ```
@@ -142,7 +142,7 @@ checkboxes:
 radioboxes:
 
 ``` html
-<div class="make-switch"   data-text-label="My Slider Text">
+<div class="make-switch" data-text-label="My Slider Text">
     <input type="radio">
 </div>
 ```
