@@ -276,6 +276,25 @@ $('#label-switch').bootstrapSwitch('setOffLabel', 'O');
         </div>
     </div>
 
+    <!-- LABEL TEXT -->
+    <div class="row-fluid">
+        <div class="span12">
+            <h3>Label Text</h3>
+
+            <div class="bs-docs-example">
+            <h3>Standard</h3>
+                <div class="make-switch" data-text-label="My TV">
+                    <input type="checkbox" checked />
+                </div>
+            </div>
+            <pre class="prettyprint linenums">
+&lt;div class="make-switch" data-text-label="My TV">
+    &lt;input type="checkbox" checked />
+&lt;/div>
+            </pre>
+        </div>
+    </div>
+
     <!-- HTML TEXT -->
     <div class="row-fluid">
         <div class="span12">
@@ -815,8 +834,7 @@ $(document).ready(function() {
         $('.radio1').bootstrapSwitch('toggleRadioState');
     });
     $('.radio2').on('switch-change', function () {
-        $('.radio2')
-                .bootstrapSwitch('toggleRadioStateAllowUncheck', true);
+        $('.radio2').bootstrapSwitch('toggleRadioStateAllowUncheck', true);
     });
 
 });

@@ -1,5 +1,5 @@
 /* ============================================================
- * bootstrapSwitch v1.7 by Larentis Mattia @SpiritualGuru
+ * bootstrapSwitch v1.8 by Larentis Mattia @SpiritualGuru
  * http://www.larentis.eu/
  *
  * Enhanced for radiobuttons by Stein, Peter @BdMdesigN
@@ -116,6 +116,11 @@
   padding-top: 9px;
   font-size: 16px;
   line-height: normal;
+}
+.has-switch .text-label {
+  text-align: center;
+  color: #000000;
+  font-size: 14px;
 }
 .has-switch label {
   text-align: center;
