@@ -148,7 +148,7 @@
 .has-switch label.active,
 .has-switch label.disabled,
 .has-switch label[disabled] {
-  color: #ffffff;
+  color: #000000;
   background-color: #e6e6e6;
   *background-color: #d9d9d9;
 }
