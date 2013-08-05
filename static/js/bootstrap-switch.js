@@ -83,7 +83,7 @@
             }
             
             if (textLabel) {
-              $label.html('<div class="text-label">' + textLabel + '</div>');
+              $label.html('' + textLabel + '');
             }
 
             $div = $element.find(inputSelector).wrap($('<div>')).parent().data('animated', false);
