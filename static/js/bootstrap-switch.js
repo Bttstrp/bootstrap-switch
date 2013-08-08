@@ -104,7 +104,11 @@
               $(this).addClass('deactivate');
 
             var changeStatus = function ($this) {
-              $this.siblings('label').trigger('mousedown').trigger('mouseup').trigger('click');
+              if ($element.parent('label').is('.label-change-switch')) {
+
+              } else {
+                $this.siblings('label').trigger('mousedown').trigger('mouseup').trigger('click');
+              }
             };
 
             $element.on('keydown', function (e) {
