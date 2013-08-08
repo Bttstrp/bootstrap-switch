@@ -282,7 +282,6 @@ $('#label-switch').bootstrapSwitch('setOffLabel', 'O');
             <h3>Label Text</h3>
 
             <div class="bs-docs-example">
-            <h3>Standard</h3>
                 <div class="make-switch" data-text-label="My TV">
                     <input type="checkbox" checked />
                 </div>
@@ -418,6 +417,63 @@ $('#mySwitch').on('switch-change', function (e, data) {
       , value = data.value;
     console.log(e, $el, value);
 });
+            </pre>
+        </div>
+    </div>
+
+     <!-- LABEL EVENT HANDLER -->
+    <div class="row-fluid">
+        <div class="span12">
+            <h3>Label Event handler <small>javascript</small></h3>
+
+            <div class="bs-docs-example">
+            <h3>Label 1</h3>
+              <label id="label-toggle-switch">Click on this Text to change the switch state</label>
+                <div class="label-toggle-switch make-switch">
+                    <input type="checkbox" checked />
+                </div>
+            <h3>Label 2</h3>
+                <div id="label2-toggle-switch">
+                    <label class="label-change-switch">Click on this Text to change the switch state
+                    <div class="label2-toggle-switch make-switch">
+                        <input type="checkbox" checked />
+                    </div>
+                    </label>
+                </div>
+            </div>
+           <h3>Label 1</h3>
+            <pre class="prettyprint linenums">
+&lt;label id="label-toggle-switch">Click on this Text to change the switch state&lt;/label>
+    &lt;div class="label-toggle-switch make-switch">
+        &lt;input type="checkbox" checked />
+    &lt;/div>
+&lt;script>
+    $(document).ready(function() {
+        $('#label-toggle-switch').on('click', function(e, data) {
+            $('.label-toggle-switch').bootstrapSwitch('toggleState');
+        });
+        $('.label-toggle-switch').on('switch-change', function (e, data) {
+            alert(data.value);
+        });
+    });
+&lt;/script>
+            </pre>
+            <h3>Label 2</h3>
+            <pre class="prettyprint linenums">
+&lt;div id="label2-toggle-switch">
+    &lt;label class="label-change-switch">Click on this Text to change the switch state
+    &lt;div class="label2-toggle-switch make-switch">
+        &lt;input type="checkbox" checked />
+    &lt;/div>
+    &lt;/label>
+&lt;/div>
+&lt;script>
+    $(document).ready(function() {
+        $('#label2-toggle-switch').on('switch-change', function(e, data) {
+            alert(data.value);
+        });
+    });
+&lt;/script>
             </pre>
         </div>
     </div>
@@ -812,7 +868,17 @@ $(document).ready(function() {
     $('#btn-label-off-switch').on('click', function() {
         $('#label-switch').bootstrapSwitch('setOffLabel', 'O');
     });
-    
+
+    $('#label-toggle-switch').on('click', function(e, data) {
+        $('.label-toggle-switch').bootstrapSwitch('toggleState');
+    });
+    $('.label-toggle-switch').on('switch-change', function(e, data) {
+        alert(data.value);
+    });
+    $('#label2-toggle-switch').on('switch-change', function(e, data) {
+        alert(data.value);
+    });
+
     // COLOR
     $('#btn-color-on-switch').on('click', function() {
         $('#change-color-switch').bootstrapSwitch('setOnClass', 'success');
