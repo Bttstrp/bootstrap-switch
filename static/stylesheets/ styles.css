@@ -4,40 +4,40 @@ by Matt Graham
 */
 @font-face {
   font-family: 'Quattrocento Sans';
-  src: url("../fonts/quattrocentosans-bold-webfont.eot");
-  src: url("../fonts/quattrocentosans-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/quattrocentosans-bold-webfont.woff") format("woff"), url("../fonts/quattrocentosans-bold-webfont.ttf") format("truetype"), url("../fonts/quattrocentosans-bold-webfont.svg#QuattrocentoSansBold") format("svg");
+  src: url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bold-webfont.eot);
+  src: url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bold-webfont.eot?#iefix) format("embedded-opentype"), url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bold-webfont.woff) format("woff"), url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bold-webfont.ttf) format("truetype"), url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bold-webfont.svg#QuattrocentoSansBold) format("svg");
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Quattrocento Sans';
-  src: url("../fonts/quattrocentosans-bolditalic-webfont.eot");
-  src: url("../fonts/quattrocentosans-bolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/quattrocentosans-bolditalic-webfont.woff") format("woff"), url("../fonts/quattrocentosans-bolditalic-webfont.ttf") format("truetype"), url("../fonts/quattrocentosans-bolditalic-webfont.svg#QuattrocentoSansBoldItalic") format("svg");
+  src: url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bolditalic-webfont.eot);
+  src: url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bolditalic-webfont.eot?#iefix) format("embedded-opentype"), url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bolditalic-webfont.woff) format("woff"), url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bolditalic-webfont.ttf) format("truetype"), url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bolditalic-webfont.svg#QuattrocentoSansBoldItalic) format("svg");
   font-weight: bold;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Quattrocento Sans';
-  src: url("../fonts/quattrocentosans-italic-webfont.eot");
-  src: url("../fonts/quattrocentosans-italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/quattrocentosans-italic-webfont.woff") format("woff"), url("../fonts/quattrocentosans-italic-webfont.ttf") format("truetype"), url("../fonts/quattrocentosans-italic-webfont.svg#QuattrocentoSansItalic") format("svg");
+  src: url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-italic-webfont.eot);
+  src: url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-italic-webfont.eot?#iefix) format("embedded-opentype"), url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-italic-webfont.woff) format("woff"), url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-italic-webfont.ttf) format("truetype"), url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-italic-webfont.svg#QuattrocentoSansItalic) format("svg");
   font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Quattrocento Sans';
-  src: url("../fonts/quattrocentosans-regular-webfont.eot");
-  src: url("../fonts/quattrocentosans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/quattrocentosans-regular-webfont.woff") format("woff"), url("../fonts/quattrocentosans-regular-webfont.ttf") format("truetype"), url("../fonts/quattrocentosans-regular-webfont.svg#QuattrocentoSansRegular") format("svg");
+  src: url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-regular-webfont.eot);
+  src: url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-regular-webfont.eot?#iefix) format("embedded-opentype"), url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-regular-webfont.woff) format("woff"), url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-regular-webfont.ttf) format("truetype"), url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-regular-webfont.svg#QuattrocentoSansRegular) format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Copse';
-  src: url("../fonts/copse-regular-webfont.eot");
-  src: url("../fonts/copse-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/copse-regular-webfont.woff") format("woff"), url("../fonts/copse-regular-webfont.ttf") format("truetype"), url("../fonts/copse-regular-webfont.svg#CopseRegular") format("svg");
+  src: url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/copse-regular-webfont.eot);
+  src: url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/copse-regular-webfont.eot?#iefix) format("embedded-opentype"), url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/copse-regular-webfont.woff) format("woff"), url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/copse-regular-webfont.ttf) format("truetype"), url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/copse-regular-webfont.svg#CopseRegular) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -555,7 +555,7 @@ a small {
 }
 
 ul {
-  list-style-image: url("../images/bullet.png");
+  list-style-image: url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/images/bullet.png);
 }
 
 strong {
@@ -640,7 +640,7 @@ hr {
   border: 0;
   outline: none;
   height: 11px;
-  background: transparent url("../images/hr.gif") center center repeat-x;
+  background: transparent url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/images/hr.gif) center center repeat-x;
   margin: 0 0 20px;
 }
 
@@ -658,7 +658,7 @@ header {
   right: 0;
   width: 100%;
   text-align: center;
-  background: url(../images/background.png) #4276b6;
+  background: url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/images/background.png) #4276b6;
   -moz-box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.75);
   -o-box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.75);
@@ -787,7 +787,7 @@ header p {
   right: 7px;
   top: 7px;
   display: block;
-  background: url(../images/octocat-logo.png);
+  background: url(http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/images/octocat-logo.png);
 }
 
 section {
