@@ -5,7 +5,7 @@ by Matt Graham
 @font-face {
   font-family: 'Quattrocento Sans';
   src: url('http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bold-webfont.eot');
-  src: url('http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bold-webfont.eot?#iefix') format("embedded-opentype"), url(''http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bold-webfont.woff') format("woff"), url('http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bold-webfont.ttf') format("truetype"), url('http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bold-webfont.svg#QuattrocentoSansBold') format("svg");
+  src: url('http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bold-webfont.eot?#iefix') format("embedded-opentype"), url('http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bold-webfont.woff') format("woff"), url('http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bold-webfont.ttf') format("truetype"), url('http://bdmdesign.github.io/bootstrap-switch-BdMdesigN/fonts/quattrocentosans-bold-webfont.svg#QuattrocentoSansBold') format("svg");
   font-weight: bold;
   font-style: normal;
 }
