@@ -6,7 +6,7 @@ You can now also use radio buttons and checkboxes as switches.
 
 Demos
 ----
-http://www.larentis.eu/switch/
+Hurray! http://www.larentis.eu/switch/ moves to github pages and we are happy to tell you that we have bought a new domain: http://www.bootstrap-switch.org . Some troubles can occur so please, don't hate us :')
 
 http://bdmdesign.github.io/bootstrap-switch (uptodate)
 
