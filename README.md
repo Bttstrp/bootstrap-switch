@@ -8,7 +8,7 @@ Demos
 ----
 http://www.larentis.eu/switch/
 
-http://bdmdesign.github.io/bootstrap-switch-BdMdesigN (uptodate)
+http://bdmdesign.github.io/bootstrap-switch (uptodate)
 
 Usage
 -----
