@@ -81,6 +81,10 @@
             if (icon) {
               $label.html('<i class="icon ' + icon + '"></i>');
             }
+            
+            if (textLabel) {
+              $label.html('' + textLabel + '');
+            }
 
             if (textLabel) {
               $label.html('' + textLabel + '');

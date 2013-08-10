@@ -1,4 +1,4 @@
-Bootstrap-switch v.1.7
+Bootstrap-switch v.1.8
 ========================
 
 You can now also use radio buttons and checkboxes as switches.
@@ -124,6 +124,25 @@ radioboxes:
 
 ``` html
 <div class="make-switch" data-on-label="SI" data-off-label="NO">
+    <input type="radio">
+</div>
+```
+
+
+Text Label
+----------
+checkboxes:
+
+``` html
+<div class="make-switch" data-text-label="My Slider Text">
+    <input type="checkbox">
+</div>
+```
+
+radioboxes:
+
+``` html
+<div class="make-switch" data-text-label="My Slider Text">
     <input type="radio">
 </div>
 ```
