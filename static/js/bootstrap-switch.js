@@ -86,6 +86,10 @@
               $label.html('' + textLabel + '');
             }
 
+            if (textLabel) {
+              $label.html('' + textLabel + '');
+            }
+
             $div = $element.find(inputSelector).wrap($('<div>')).parent().data('animated', false);
 
             if ($element.data('animated') !== false)
@@ -103,13 +107,13 @@
             if ($element.find(inputSelector).is(':disabled'))
               $(this).addClass('deactivate');
 
-              var changeStatus = function ($this) {
-                if ($element.parent('label').is('.label-change-switch')) {
+            var changeStatus = function ($this) {
+              if ($element.parent('label').is('.label-change-switch')) {
 
-                } else {
-                    $this.siblings('label').trigger('mousedown').trigger('mouseup').trigger('click');
-                }
-              };
+              } else {
+                $this.siblings('label').trigger('mousedown').trigger('mouseup').trigger('click');
+              }
+            };
 
             $element.on('keydown', function (e) {
               if (e.keyCode === 32) {
@@ -164,7 +168,7 @@
 
               if ($this.closest('.has-switch').is('.deactivate')) {
                 $this.unbind('click');
-              } else if ( $this.closest('.switch-on').parent().is('.radio-no-uncheck') ) {
+              } else if ($this.closest('.switch-on').parent().is('.radio-no-uncheck')) {
                 $this.unbind('click');
               } else {
                 $this.on('mousemove touchmove', function (e) {
@@ -267,7 +271,7 @@
       },
       toggleRadioState: function (skipOnChange) {
         var $radioinput = $(this).find(':radio');
-          $radioinput.not(':checked').prop('checked', !$radioinput.is(':checked')).trigger('change', skipOnChange);
+        $radioinput.not(':checked').prop('checked', !$radioinput.is(':checked')).trigger('change', skipOnChange);
       },
       toggleRadioStateAllowUncheck: function (uncheck, skipOnChange) {
         var $radioinput = $(this).find(':radio');
@@ -281,15 +285,15 @@
       setState: function (value, skipOnChange) {
         $(this).find(inputSelector).prop('checked', value).trigger('change', skipOnChange);
       },
-      setOnLabel: function(value) {
+      setOnLabel: function (value) {
         var $switchLeft = $(this).find(".switch-left");
         $switchLeft.html(value);
       },
-      setOffLabel: function(value) {
+      setOffLabel: function (value) {
         var $switchRight = $(this).find(".switch-right");
         $switchRight.html(value);
       },
-      setOnClass: function(value) {
+      setOnClass: function (value) {
         var $switchLeft = $(this).find(".switch-left");
         var color = '';
         if (value !== undefined) {
@@ -301,7 +305,7 @@
           $switchLeft.addClass(color);
         }
       },
-      setOffClass: function(value) {
+      setOffClass: function (value) {
         var $switchRight = $(this).find(".switch-right");
         var color = '';
         if (value !== undefined) {
@@ -313,7 +317,7 @@
           $switchRight.addClass(color);
         }
       },
-      setAnimated: function(value) {
+      setAnimated: function (value) {
         var $element = $(this).find(inputSelector).parent();
         if (value === undefined) value = false;
         $element.data('animated', value);
@@ -325,7 +329,7 @@
           $element.removeClass("switch-animate");
         }
       },
-      setSizeClass: function(value) {
+      setSizeClass: function (value) {
         var $element = $(this);
         var $switchLeft = $element.find(".switch-left");
         var $switchRight = $element.find(".switch-right");
@@ -376,8 +380,8 @@
   };
 }(jQuery);
 
-(function($) {  // creates scope for $ sign assigned to jQuery
-    $(function () { // on dom ready
-        $('.make-switch')['bootstrapSwitch'](); // attach bootstrapswitch
-    });
+(function ($) {
+  $(function () {
+    $('.make-switch')['bootstrapSwitch']();
+  });
 })(jQuery);
