@@ -28,6 +28,7 @@
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
+  vertical-align: middle;
   min-width: 100px;
 }
 .has-switch.switch-mini {
@@ -41,9 +42,6 @@
   transform: scale(0.6);
   margin-top: -1px;
   margin-bottom: -1px;
-}
-.has-switch.switch-mini i.switch-mini-font-icons {
-  line-height: 9px;
 }
 .has-switch.switch-small {
   min-width: 80px;
@@ -121,10 +119,11 @@
   text-align: center;
   margin-top: -1px;
   margin-bottom: -1px;
+  z-index: 100;
   width: 34%;
   border-left: 1px solid #cccccc;
   border-right: 1px solid #cccccc;
-  color: #000000;
+  color: #333333;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #f5f5f5;
   background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
@@ -147,7 +146,7 @@
 .has-switch label.active,
 .has-switch label.disabled,
 .has-switch label[disabled] {
-  color: #000000;
+  color: #333333;
   background-color: #e6e6e6;
   *background-color: #d9d9d9;
 }

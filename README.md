@@ -4,11 +4,10 @@ Bootstrap-switch v.1.8
 You can now also use radio buttons and checkboxes as switches.
 
 
-Demos
+Demo
 ----
-http://www.larentis.eu/switch/
+Hurray! http://www.larentis.eu/switch/ moves to github pages and we are happy to tell you that we have bought a new domain: http://www.bootstrap-switch.org . Some troubles can occur so please, don't hate us :')
 
-http://bdmdesign.github.io/bootstrap-switch-BdMdesigN (uptodate)
 
 Usage
 -----
@@ -209,6 +208,7 @@ $('.mySwitch').bootstrapSwitch('toggleRadioStateAllowUncheck'); // don't allow u
 $('.mySwitch').bootstrapSwitch('toggleRadioStateAllowUncheck', false); // don't allow uncheck radio switch
 $('.mySwitch').bootstrapSwitch('toggleRadioStateAllowUncheck', true); // allow uncheck radio switch
 $('#mySwitch').bootstrapSwitch('setState', true);
+$('#mySwitch').bootstrapSwitch('setState', true || false, true); // sets the state without getting the switch-change event
 $('#mySwitch').bootstrapSwitch('setOnLabel', onValue); // sets the text of the "on" label
 $('#mySwitch').bootstrapSwitch('setOffLabel', offValue); // sets the text of the "off" label
 $('#mySwitch').bootstrapSwitch('setOnClass', onClass); // sets the left color class
