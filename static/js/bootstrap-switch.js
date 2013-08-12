@@ -42,7 +42,7 @@
 
             $element.addClass('has-switch');
 
-            if ($element.data('on') !== undefined)
+            if ($element.data('on'))
               color = "switch-" + $element.data('on');
 
             if ($element.data('on-label') !== undefined)
@@ -64,7 +64,7 @@
               .html(onLabel);
 
             color = '';
-            if ($element.data('off') !== undefined)
+            if ($element.data('off'))
               color = "switch-" + $element.data('off');
 
             $switchRight = $('<span>')
