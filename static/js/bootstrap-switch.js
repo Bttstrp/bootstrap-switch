@@ -42,7 +42,7 @@
 
             $element.addClass('has-switch');
 
-            if ($element.data('on') !== undefined)
+            if ($element.data('on'))
               color = "switch-" + $element.data('on');
 
             if ($element.data('on-label') !== undefined)
@@ -64,7 +64,7 @@
               .html(onLabel);
 
             color = '';
-            if ($element.data('off') !== undefined)
+            if ($element.data('off'))
               color = "switch-" + $element.data('off');
 
             $switchRight = $('<span>')
@@ -291,11 +291,13 @@
       setOnClass: function (value) {
         var $switchLeft = $(this).find(".switch-left");
         var color = '';
-        if (value !== undefined) {
+        if (value) {
+          // Delete the old color
           if ($(this).attr('data-on') !== undefined) {
-            color = "switch-" + $(this).attr('data-on')
+            color = "switch-" + $(this).attr('data-on');
           }
           $switchLeft.removeClass(color);
+          // Add the new color
           color = "switch-" + value;
           $switchLeft.addClass(color);
         }
@@ -303,11 +305,13 @@
       setOffClass: function (value) {
         var $switchRight = $(this).find(".switch-right");
         var color = '';
-        if (value !== undefined) {
+        if (value) {
+          // Delete the old color
           if ($(this).attr('data-off') !== undefined) {
-            color = "switch-" + $(this).attr('data-off')
+            color = "switch-" + $(this).attr('data-off');
           }
           $switchRight.removeClass(color);
+          // Add the new color
           color = "switch-" + value;
           $switchRight.addClass(color);
         }
@@ -340,6 +344,14 @@
             $label.addClass(el);
           }
         });
+      },
+      setTextLabel: function(value) {
+        var $label = $(this).find("label");
+        $label.html('' + value || '&nbsp' + '');
+      },
+      setTextIcon: function(value) {
+        var $label = $(this).find("label");''
+        $label.html(value ? '<i class="icon ' + value + '"></i>' : '&nbsp;');
       },
       status: function () {
         return $(this).find(inputSelector).is(':checked');
