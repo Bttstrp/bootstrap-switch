@@ -140,6 +140,12 @@
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
+.has-switch .switch-on label {
+  border-right: none;
+}
+.has-switch .switch-off label {
+  border-left: none;
+}
 .has-switch label:hover,
 .has-switch label:focus,
 .has-switch label:active,
