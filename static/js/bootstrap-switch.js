@@ -1,12 +1,12 @@
 /*! ============================================================
- * bootstrapSwitch v1.8 by Larentis Mattia @SpiritualGuru
+ * bootstrapSwitch v1.8.1 by Larentis Mattia @SpiritualGuru
  * http://www.larentis.eu/
  *
  * Enhanced for radiobuttons by Stein, Peter @BdMdesigN
  * http://www.bdmdesign.org/
  *
  * Project site:
- * http://www.larentis.eu/switch/
+ * http://www.bootstrap-switch.org/
  * ============================================================
  * Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0
