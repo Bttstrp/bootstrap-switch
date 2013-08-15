@@ -1,4 +1,4 @@
-Bootstrap-switch v.1.8
+Bootstrap-switch v.1.8.1
 ========================
 
 You can now also use radio buttons and checkboxes as switches.
@@ -6,7 +6,7 @@ You can now also use radio buttons and checkboxes as switches.
 
 Demo
 ----
-Hurray! http://www.larentis.eu/switch/ moves to github pages and we are happy to tell you that we have bought a new domain: http://www.bootstrap-switch.org . Some troubles can occur so please, don't hate us :')
+http://www.bootstrap-switch.org
 
 
 Usage
