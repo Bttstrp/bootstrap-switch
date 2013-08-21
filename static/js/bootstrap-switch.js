@@ -1,7 +1,7 @@
 /*! ============================================================
  * bootstrapSwitch v1.8 by Larentis Mattia @SpiritualGuru
  * http://www.larentis.eu/
- * 
+ *
  * Enhanced for radiobuttons by Stein, Peter @BdMdesigN
  * http://www.bdmdesign.org/
  *
@@ -186,8 +186,7 @@
 
                 $this.on('click touchend', function (e) {
                   var $this = $(this)
-                    , $target = $(e.target)
-                    , $myRadioCheckBox = $target.siblings('input');
+                    , $myInputBox = $this.siblings('input');
 
                   e.stopImmediatePropagation();
                   e.preventDefault();
@@ -195,12 +194,12 @@
                   $this.unbind('mouseleave');
 
                   if (moving)
-                    $myRadioCheckBox.prop('checked', !(parseInt($this.parent().css('left')) < -25));
+                    $myInputBox.prop('checked', !(parseInt($this.parent().css('left')) < -25));
                   else
-                    $myRadioCheckBox.prop("checked", !$myRadioCheckBox.is(":checked"));
+                    $myInputBox.prop("checked", !$myInputBox.is(":checked"));
 
                   moving = false;
-                  $myRadioCheckBox.trigger('change');
+                  $myInputBox.trigger('change');
                 });
 
                 $this.on('mouseleave', function (e) {
