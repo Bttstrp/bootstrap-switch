@@ -209,7 +209,7 @@
                   e.preventDefault();
                   e.stopImmediatePropagation();
 
-                  $this.unbind('mouseleave');
+                  $this.unbind('mouseleave mousemove');
                   $this.trigger('mouseup');
 
                   $myInputBox.prop('checked', !(parseInt($this.parent().css('left')) < -25)).trigger('change');
@@ -219,7 +219,7 @@
                   e.stopImmediatePropagation();
                   e.preventDefault();
 
-                  $(this).unbind('mousemove');
+                  $(this).trigger('mouseleave');
                 });
               }
             });
