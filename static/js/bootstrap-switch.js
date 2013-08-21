@@ -2,7 +2,7 @@
  * bootstrapSwitch v1.8.1 by Larentis Mattia @SpiritualGuru
  * http://www.larentis.eu/
  *
- * and Peter Stein (BdMdesigN)
+ * Enhanced for radiobuttons by Stein, Peter @BdMdesigN
  * http://www.bdmdesign.org/
  *
  * Project site:
