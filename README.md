@@ -1,4 +1,4 @@
-Bootstrap-switch v.1.8.1
+Bootstrap-switch v.1.9-dev
 ========================
 
 You can now also use radio buttons and checkboxes as switches.
