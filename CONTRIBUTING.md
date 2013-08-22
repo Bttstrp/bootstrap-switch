@@ -1,24 +1,24 @@
-If you want help us to fix bugs or add a extension please use our x.x.x-dev branch
-
-At this time it was 1.8.1-dev
+If you want help us to fix bugs or add a extension please use our develop branch
 
 
-https://github.com/nostalgiaz/bootstrap-switch/tree/1.8.1-dev
+
+
+https://github.com/nostalgiaz/bootstrap-switch/tree/develop
 
 
 First step:
 
-Please merge your branch 1.8.1-dev with nostalgiaz/bootstrap-switch/tree/1.8.1-dev
+Please merge your branch develop with nostalgiaz/bootstrap-switch/tree/develop
 
 
 second step:
 
-Work in the branch 1.8.1-dev for fixes
+Work in the branch develop for fixes
 
 
 third step:
 
-regularly reviews the branch 1.8.1-dev for updates and then merge this with your branch 1.8.1-dev
+regularly reviews the branch develop for updates and then merge this with your branch develop
 
 
 fourth step:
