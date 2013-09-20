@@ -35,6 +35,9 @@
               , icon = false
               , textLabel = false;
 
+            if ($element.hasClass('has-switch'))
+                return true;
+
             $.each(['switch-mini', 'switch-small', 'switch-large'], function (i, el) {
               if (classes.indexOf(el) >= 0)
                 myClasses = el;
