@@ -94,7 +94,8 @@
             $div
               .append($switchLeft)
               .append($label)
-              .append($switchRight);
+              .append($switchRight)
+              .attr('tabindex', 0);
 
             $element.find('>div').addClass(
               $element.find(inputSelector).is(':checked') ? 'switch-on' : 'switch-off'
@@ -112,10 +113,26 @@
             };
 
             $element.on('keydown', function (e) {
-              if (e.keyCode === 32) {
-                e.stopImmediatePropagation();
-                e.preventDefault();
-                changeStatus($(e.target).find('span:first'));
+              switch (e.keyCode) {
+                case 32:
+                  e.stopImmediatePropagation();
+                  e.preventDefault();
+                  changeStatus($(e.target).find('span:first'));
+                  break;
+                case 37:
+                  e.stopImmediatePropagation();
+                  e.preventDefault();
+                  if($(e.target).hasClass('switch-on')) {
+                    changeStatus($(e.target).find('span:first'));
+                  };
+                  break;
+                case 39:
+                  e.stopImmediatePropagation();
+                  e.preventDefault();
+                  if($(e.target).hasClass('switch-off')) {
+                    changeStatus($(e.target).find('span:first'));
+                  };
+                  break;
               }
             });
 
