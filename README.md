@@ -19,7 +19,7 @@ Just include Twitter Bootstrap, jQuery, Bootstrap Switch CSS and Javascript
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="bootstrap-switch.js"></script>  // master
-<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.7/bootstrap-switch.min.js">  // from cdnjs.com
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.8/js/bootstrap-switch.min.js">  // from cdnjs.com
 ```
 
 Less
