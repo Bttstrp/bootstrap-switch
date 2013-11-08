@@ -131,9 +131,15 @@
               var $this = $(this)
                 , $element = $this.parent()
                 , thisState = $this.is(':checked')
-                , state = $element.is('.switch-off');
+                , state = $element.is('.switch-off')
+                , beforeChange = $this.data('beforeChange');
 
               e.preventDefault();
+
+              if(beforeChange) 
+                var beforeChangeResult = beforeChange(state)
+                if(beforeChangeResult !== undefined && !beforeChangeResult)
+                  return;
 
               $element.css('left', '');
 
@@ -363,6 +369,11 @@
         }
 
         return $inputbox;
+      },
+      beforeChange: function (func) {
+        var $element = $(this).find(inputSelector);
+
+        $element.data('beforeChange', func);
       }
     };
 

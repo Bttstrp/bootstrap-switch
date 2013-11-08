@@ -790,6 +790,31 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false</pre
     &lt;/div></pre>
         </div>
     </div>
+
+    <div class="row-fluid">
+    <h2 class="span8 offset2">
+        <a name="beforeSave" class="anchor" href="#beforeSave">BeforeSave <small>javascript</small></a>
+    </h2>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span8 offset2">
+            <div class="bs-docs-example">
+                <div id="befores-change-switch" class="make-switch">
+                    <input type="checkbox" checked>
+                </div>
+            </div>
+            <pre class="prettyprint linenums">
+    &lt;div id="befores-change-switch" class="make-switch">
+        &lt;input type="checkbox" checked>
+    &lt;/div></pre>
+
+            <pre class="prettyprint linenums">
+    $('#befores-change-switch').bootstrapSwitch('beforeChange', function(value){ 
+        console.log(value);
+      });</pre>
+        </div>
+    </div>
 </div>
 
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -806,6 +831,8 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false</pre
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
     </div>
 </div>
+
+
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
@@ -912,6 +939,9 @@ $('#disable-switch').bootstrapSwitch('setActive', false);  // true || false</pre
         $('.radio2').on('switch-change', function () {
             $('.radio2').bootstrapSwitch('toggleRadioStateAllowUncheck', true);
         });
+
+        //BEFORE CHANGE
+        $('#befores-change-switch').bootstrapSwitch('beforeChange', function(value){ console.log(value); });
     });
 </script>
 
