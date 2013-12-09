@@ -260,6 +260,27 @@
           $this.find(inputSelector).attr('disabled', 'disabled');
         }
       },
+      setReadOnly: function (readonly) {
+        var $this = $(this);
+
+        if (readonly) {
+          $this.removeClass('deactivate');
+          $this.find(inputSelector).removeAttr('readonly');
+        }
+        else {
+          $this.addClass('deactivate');
+          $this.find(inputSelector).attr('readonly', 'readonly');
+        }
+      },
+      toggleReadOnly: function () {
+        var $this = $(this);
+
+        $this.toggleClass('deactivate');
+        $this.find(inputSelector).prop('readonly', $this.is('.deactivate'));
+      },
+      isReadOnly: function () {
+        return $this.find(inputSelector).is('[readonly]');
+      },
       toggleState: function (skipOnChange) {
         var $input = $(this).find(':checkbox');
         $input.prop('checked', !$input.is(':checked')).trigger('change', skipOnChange);
