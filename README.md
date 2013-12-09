@@ -1,5 +1,5 @@
-Bootstrap-switch v.1.8
-========================
+Bootstrap Switch
+================
 
 You can now also use radio buttons and checkboxes as switches.
 
