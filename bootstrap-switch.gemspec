@@ -5,7 +5,7 @@ require 'bootstrap-switch/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "bootstrap-switch"
-  spec.version       = BootstrapSwitch::VERSION
+  spec.version       = Bootstrap::Switch::VERSION
   spec.authors       = ["Michael Hellein"]
   spec.email         = ["themichaek@gmail.com"]
   spec.description   = %q{Unofficial bootstrap switch}
@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = ""
   spec.license       = "Apache Version 2"
 
-  spec.files         = `git ls-files static/sass lib`.split($/)
+  spec.files         = `git ls-files static/sass lib compass`.split($/)
   spec.require_paths = ["lib"]
 
   spec.add_dependency "compass", ">= 0.11"
