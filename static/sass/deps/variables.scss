@@ -1,0 +1,25 @@
+$grayDarker: #222;$grayDark: #333 !default;
+$white: #fff !default;
+$orange: #f89406 !default;
+$bodyBackground: $white !default;
+$textColor: $grayDark !default;
+$textShadow: 0 -1px 0 rgba(0,0,0,.25) !default;
+$linkColor: #08c !default;
+$linkColorHover: darken($linkColor, 15%) !default;
+$btnBackground: $white !default;
+$btnBackgroundHighlight: darken($white, 10%) !default;
+$btnBorder: #ccc !default;
+$btnShadow: 0 1px 1px rgba(255,255,255,.75) !default;
+$btnPrimaryBackground: $linkColor !default;
+$btnPrimaryBackgroundHighlight: adjust-hue($btnPrimaryBackground, 20%) !default;
+$btnInfoBackground: #5bc0de !default;
+$btnInfoBackgroundHighlight: #2f96b4 !default;
+$btnSuccessBackground: #62c462 !default;
+$btnSuccessBackgroundHighlight: #51a351 !default;
+$btnWarningBackground: lighten($orange, 15%) !default;
+$btnWarningBackgroundHighlight: $orange !default;
+$btnDangerBackground: #ee5f5b !default;
+$btnDangerBackgroundHighlight: #bd362f !default;
+$btnInverseBackground: #444 !default;
+$btnInverseBackgroundHighlight: $grayDarker !default;
+
