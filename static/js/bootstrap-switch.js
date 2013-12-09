@@ -1,12 +1,12 @@
 /*! ============================================================
- * bootstrapSwitch v1.8 by Larentis Mattia @SpiritualGuru
+ * bootstrapSwitch v1.8.1 by Larentis Mattia @SpiritualGuru
  * http://www.larentis.eu/
  *
  * Enhanced for radiobuttons by Stein, Peter @BdMdesigN
  * http://www.bdmdesign.org/
  *
  * Project site:
- * http://www.larentis.eu/switch/
+ * http://www.bootstrap-switch.org/
  * ============================================================
  * Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -291,11 +291,13 @@
       setOnClass: function (value) {
         var $switchLeft = $(this).find(".switch-left");
         var color = '';
-        if (value !== undefined) {
+        if (value) {
+          // Delete the old color
           if ($(this).attr('data-on') !== undefined) {
-            color = "switch-" + $(this).attr('data-on')
+            color = "switch-" + $(this).attr('data-on');
           }
           $switchLeft.removeClass(color);
+          // Add the new color
           color = "switch-" + value;
           $switchLeft.addClass(color);
         }
@@ -303,11 +305,13 @@
       setOffClass: function (value) {
         var $switchRight = $(this).find(".switch-right");
         var color = '';
-        if (value !== undefined) {
+        if (value) {
+          // Delete the old color
           if ($(this).attr('data-off') !== undefined) {
-            color = "switch-" + $(this).attr('data-off')
+            color = "switch-" + $(this).attr('data-off');
           }
           $switchRight.removeClass(color);
+          // Add the new color
           color = "switch-" + value;
           $switchRight.addClass(color);
         }
@@ -340,6 +344,14 @@
             $label.addClass(el);
           }
         });
+      },
+      setTextLabel: function(value) {
+        var $label = $(this).find("label");
+        $label.html('' + value || '&nbsp' + '');
+      },
+      setTextIcon: function(value) {
+        var $label = $(this).find("label");''
+        $label.html(value ? '<i class="icon ' + value + '"></i>' : '&nbsp;');
       },
       status: function () {
         return $(this).find(inputSelector).is(':checked');
