@@ -1,5 +1,5 @@
 /* ============================================================
- * bootstrapSwitch v1.8 by Larentis Mattia @SpiritualGuru
+ * bootstrap-switch v1.9.0 by Larentis Mattia @SpiritualGuru
  * http://www.larentis.eu/
  *
  * Enhanced for radiobuttons by Stein, Peter @BdMdesigN
@@ -12,36 +12,37 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  * ============================================================ */
 
-@import "deps/variables";
-@import "deps/mixins";
+@import "variables";
+@import "mixins";
 
 .has-switch {
   display: inline-block;
   cursor: pointer;
-  .border-radius(5px);
+  border-radius: @border-radius-base;
   border: 1px solid;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-color: @btn-default-border;
   position: relative;
   text-align: left;
   overflow: hidden;
   line-height: 8px;
   .user-select(none);
   vertical-align: middle;
-
   min-width: 100px;
 
   &.switch-mini {
     min-width: 72px;
+
+    i.switch-mini-icons {
+      height: 1.20em;
+      line-height: 9px;
+      vertical-align: text-top;
+      text-align: center;
+      transform: scale(0.6);
+      margin-top: -1px;
+      margin-bottom: -1px;
+    }
   }
-  &.switch-mini i.switch-mini-icons {
-    height: 1.20em;
-    line-height: 9px;
-    vertical-align: text-top;
-    text-align: center;
-    transform: scale(0.6);
-    margin-top: -1px;
-    margin-bottom: -1px;
-  }
+
   &.switch-small {
     min-width: 80px;
   }
@@ -53,10 +54,13 @@
   &.deactivate {
     .opacity(50);
     cursor: default !important;
-    label, span {
+
+    label,
+    span {
       cursor: default !important;
     }
   }
+
   > div {
     display: inline-block;
     width: 150%;
@@ -66,25 +70,28 @@
     &.switch-animate {
       .transition(left 0.5s);
     }
+
     &.switch-off {
       left: -50%;
     }
+
     &.switch-on {
       left: 0%;
     }
   }
+
   input[type=radio],
   input[type=checkbox] {
-    //debug
+    // debug
     display: none;
-    //position: absolute;
-    //margin-left: 60%;
-    //z-index: 123;
+    // position: absolute;
+    // margin-left: 60%;
+    // z-index: 123;
   }
 
-  span, label {
+  span,
+  label {
     .box-sizing(border-box);
-
     cursor: pointer;
     position: relative;
     display: inline-block;
@@ -123,10 +130,10 @@
     margin-bottom: -1px;
     z-index: 100;
     width: 34%;
-    border-left: 1px solid @btnBorder;
-    border-right: 1px solid @btnBorder;
-
-    .buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark);
+    // border-left: 1px solid @btnBorder;
+    // border-right: 1px solid @btnBorder;
+    background: @btn-default-bg;
+    // .buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark);
 
     i {
       color: #000;
@@ -142,35 +149,51 @@
     width: 33%;
 
     &.switch-left {
-      .border-left-radius(4px);
+      color: #f00;
+      .border-left-radius(@border-radius-base);
     }
 
     &.switch-right {
-      .buttonBackground(@btnBackgroundHighlight, @btnBackground, @grayDark, 0 1px 1px rgba(255,255,255,.75));
+      color: #000;
+      background: @gray-lighter;
+      // .buttonBackground(@btnBackgroundHighlight, @btnBackground, @grayDark, 0 1px 1px rgba(255,255,255,.75));
     }
 
-    &.switch-primary, &.switch-left {
-      .buttonBackground(@btnPrimaryBackgroundHighlight, @btnPrimaryBackground);
+    &.switch-primary,
+    &.switch-left {
+      color: #fff;
+      background: @btn-primary-bg;
+      // .buttonBackground(@btnPrimaryBackgroundHighlight, @btnPrimaryBackground);
     }
 
     &.switch-info {
-      .buttonBackground(@btnInfoBackgroundHighlight, @btnInfoBackground);
+      color: #fff;
+      background: @btn-info-bg;
+      // .buttonBackground(@btnInfoBackgroundHighlight, @btnInfoBackground);
     }
 
     &.switch-success {
-      .buttonBackground(@btnSuccessBackgroundHighlight, @btnSuccessBackground);
+      color: #fff;
+      background: @btn-success-bg;
+      // .buttonBackground(@btnSuccessBackgroundHighlight, @btnSuccessBackground);
     }
 
     &.switch-warning {
-      .buttonBackground(@btnWarningBackgroundHighlight, @btnWarningBackground);
+      background: @btn-warning-bg;
+      color: #fff;
+      // .buttonBackground(@btnWarningBackgroundHighlight, @btnWarningBackground);
     }
 
     &.switch-danger {
-      .buttonBackground(@btnDangerBackgroundHighlight, @btnDangerBackground);
+      color: #fff;
+      background: @btn-danger-bg;
+      // .buttonBackground(@btnDangerBackgroundHighlight, @btnDangerBackground);
     }
 
     &.switch-default {
-      .buttonBackground(@btnBackgroundHighlight, @btnBackground, @grayDark, 0 1px 1px rgba(255,255,255,.75));
+      color: #000;
+      background: @gray-lighter;
+      // .buttonBackground(@btnBackgroundHighlight, @btnBackground, @grayDark, 0 1px 1px rgba(255,255,255,.75));
     }
   }
 }
