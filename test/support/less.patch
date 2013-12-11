@@ -1,0 +1,92 @@
+Index: static/stylesheets/bootstrap-switch.css
+===================================================================
+--- static/stylesheets/bootstrap-switch.css
++++ static/stylesheets/bootstrap-switch.css
+@@ -136,17 +136,10 @@
+   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+   *background-color: #e6e6e6;
+   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+-
+   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+ }
+-.has-switch .switch-on label {
+-  border-right: none;
+-}
+-.has-switch .switch-off label {
+-  border-left: none;
+-}
+ .has-switch label:hover,
+ .has-switch label:focus,
+ .has-switch label:active,
+ .has-switch label.active,
+@@ -193,9 +186,8 @@
+   border-color: #ffffff #ffffff #d9d9d9;
+   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+   *background-color: #ffffff;
+   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+-
+   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+ }
+ .has-switch span.switch-right:hover,
+ .has-switch span.switch-right:focus,
+@@ -226,9 +218,8 @@
+   border-color: #0088cc #0088cc #005580;
+   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+   *background-color: #0088cc;
+   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+-
+   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+ }
+ .has-switch span.switch-primary:hover,
+ .has-switch span.switch-left:hover,
+@@ -266,9 +257,8 @@
+   border-color: #5bc0de #5bc0de #28a1c5;
+   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+   *background-color: #5bc0de;
+   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+-
+   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+ }
+ .has-switch span.switch-info:hover,
+ .has-switch span.switch-info:focus,
+@@ -298,9 +288,8 @@
+   border-color: #62c462 #62c462 #3b9e3b;
+   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+   *background-color: #62c462;
+   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+-
+   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+ }
+ .has-switch span.switch-success:hover,
+ .has-switch span.switch-success:focus,
+@@ -330,9 +319,8 @@
+   border-color: #fbb450 #fbb450 #f89406;
+   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+   *background-color: #fbb450;
+   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+-
+   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+ }
+ .has-switch span.switch-warning:hover,
+ .has-switch span.switch-warning:focus,
+@@ -362,9 +350,8 @@
+   border-color: #ee5f5b #ee5f5b #e51d18;
+   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+   *background-color: #ee5f5b;
+   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+-
+   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+ }
+ .has-switch span.switch-danger:hover,
+ .has-switch span.switch-danger:focus,
+@@ -394,9 +381,8 @@
+   border-color: #ffffff #ffffff #d9d9d9;
+   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+   *background-color: #ffffff;
+   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+-
+   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+ }
+ .has-switch span.switch-default:hover,
+ .has-switch span.switch-default:focus,
