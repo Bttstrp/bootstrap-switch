@@ -22,6 +22,8 @@ Just include Twitter Bootstrap, jQuery, Bootstrap Switch CSS and Javascript
 <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.7/bootstrap-switch.min.js">  // from cdnjs.com
 ```
 
+To create your switches, you'll need to invoke bootstrapSwitch on a parent of the checkbox or radio you wish to convert. See the basic example below for details.
+
 Less
 ----
 If you want to use your bootstrap vars edit bootstrapSwitch.less and then compile the less file
@@ -50,6 +52,18 @@ radioboxes:
     <input type="radio">
 </div>
 ```
+
+For both examples above, you'll need the following JavaScript to initialize your switches:
+
+``` javascript
+$(function () {
+  $('.make-switch').bootstrapSwitch();
+});
+```
+
+Of course, you can choose a different class name as your selector, or even use data attributes, as the init step is totally under your control.
+
+*In versions <= 1.9.0, the JavaScript above was included in bootstrap-switch, causing the DOM to be modified immediately upon loading the library.*
 
 
 Large, small or mini
