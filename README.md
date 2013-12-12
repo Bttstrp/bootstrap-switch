@@ -1,8 +1,9 @@
-Bootstrap-switch v.1.9-dev
-========================
+Bootstrap Switch
+================
 
-You can now also use radio buttons and checkboxes as switches.
+Turn radio and checkbox form input in switches. 
 
+**Bootstrap 3 ready** thanks to [nabil1337](https://github.com/nabil1337)
 
 Demo
 ----
@@ -11,27 +12,33 @@ http://www.bootstrap-switch.org
 
 Usage
 -----
-Just include Twitter Bootstrap, jQuery, Bootstrap Switch CSS and Javascript
-``` html
-<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8;" />
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css">
-<link rel="stylesheet" href="bootstrap-switch.css">
+Just include jQuery, Bootstrap and Bootstrap Switch CSS + Javascript
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="bootstrap-switch.js"></script>  // master
-<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.7/bootstrap-switch.min.js">  // from cdnjs.com
+``` html
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<link rel="stylesheet" href="bootstrap.css">
+<link rel="stylesheet" href="bootstrap-switch.css">
+<script src="jquery.js"></script>
+<script src="bootstrap-switch.js"></script>
 ```
 
 Less
 ----
-If you want to use your bootstrap vars edit bootstrapSwitch.less and then compile the less file
+If you want to use your bootstrap variables, edit bootstrap-switch.less and compile it:
+
 ``` bash
-lessc static/less/bootstrap-switch.less static/stylesheets/bootstrap-switch.css
+lessc src/less/bootstrap3/bootstrap-switch.less bootstrap-switch.css
+```
+
+Or if you are using Bootstrap 2.3.2:
+
+``` bash
+lessc src/less/bootstrap2/bootstrap-switch.less bootstrap-switch.css
 ```
 
 Supported browsers
 ------------------
-I'm not going to support ancient browsers! (it works on IE8+)
+IE8+ and all the other modern browsers.
 
 Basic Example
 -------------

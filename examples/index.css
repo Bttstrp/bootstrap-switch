@@ -1,0 +1,26 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.span4,
+h1,
+h4 {
+  text-align: center;
+}
+
+h1 {
+  font-size: 4em;
+}
+
+h4 {
+  font-weight: 200;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-top: 20px;
+}
