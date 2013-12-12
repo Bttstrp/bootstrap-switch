@@ -6,7 +6,7 @@
  * http://www.bdmdesign.org/
  *
  * Project site:
- * http://www.larentis.eu/switch/
+ * http://www.bootstrap-switch.org
  * ============================================================
  * Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -52,7 +52,7 @@
   }
 
   &.deactivate {
-    .opacity(50);
+    .opacity(.5);
     cursor: default !important;
 
     label,
@@ -96,7 +96,6 @@
     position: relative;
     display: inline-block;
     height: 100%;
-
     padding-bottom: 4px;
     padding-top: 4px;
     font-size: 14px;
@@ -156,44 +155,37 @@
     &.switch-right {
       color: #000;
       background: @gray-lighter;
-      // .buttonBackground(@btnBackgroundHighlight, @btnBackground, @grayDark, 0 1px 1px rgba(255,255,255,.75));
     }
 
     &.switch-primary,
     &.switch-left {
       color: #fff;
       background: @btn-primary-bg;
-      // .buttonBackground(@btnPrimaryBackgroundHighlight, @btnPrimaryBackground);
     }
 
     &.switch-info {
       color: #fff;
       background: @btn-info-bg;
-      // .buttonBackground(@btnInfoBackgroundHighlight, @btnInfoBackground);
     }
 
     &.switch-success {
       color: #fff;
       background: @btn-success-bg;
-      // .buttonBackground(@btnSuccessBackgroundHighlight, @btnSuccessBackground);
     }
 
     &.switch-warning {
       background: @btn-warning-bg;
       color: #fff;
-      // .buttonBackground(@btnWarningBackgroundHighlight, @btnWarningBackground);
     }
 
     &.switch-danger {
       color: #fff;
       background: @btn-danger-bg;
-      // .buttonBackground(@btnDangerBackgroundHighlight, @btnDangerBackground);
     }
 
     &.switch-default {
       color: #000;
       background: @gray-lighter;
-      // .buttonBackground(@btnBackgroundHighlight, @btnBackground, @grayDark, 0 1px 1px rgba(255,255,255,.75));
     }
   }
 }
