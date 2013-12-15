@@ -243,7 +243,7 @@
         var $this = $(this);
 
         $this.toggleClass('deactivate');
-        $this.find(inputSelector).prop('disabled', $this.is('.deactivate'));
+        $this.find(inputSelector).prop('disabled', $this.hasClass('deactivate'));
       },
       isActive: function () {
         return !$(this).hasClass('deactivate');
