@@ -1,12 +1,8 @@
 $(function() {
-  $('#mySwitch').on('switch-change', function (e, data) {
-    var $el = $(data.el),
-        value = data.value;
+  // initialize all the inputs
+  $('input[type="checkbox"],[type="radio"]').not('#create-switch').bootstrapSwitch();
 
-    console.log(e, $el, value);
-  });
-
-  // DIMENSION
+  // dimension
   $('#btn-size-regular-switch').on('click', function () {
     $('#dimension-switch').bootstrapSwitch('setSizeClass', '');
   });
@@ -20,7 +16,7 @@ $(function() {
     $('#dimension-switch').bootstrapSwitch('setSizeClass', 'switch-large');
   });
 
-  // STATE
+  // state
   $('#toggle-state-switch-button').on('click', function () {
     $('#toggle-state-switch').bootstrapSwitch('toggleState');
   });
@@ -34,15 +30,15 @@ $(function() {
     alert($('#toggle-state-switch').bootstrapSwitch('status'));
   });
 
-  // DESTROY
+  // destroy
   $('#btn-destroy-switch').on('click', function () {
     $('#destroy-switch').bootstrapSwitch('destroy');
     $(this).remove();
   });
   // CREATE
   $('#btn-create').on('click', function () {
-    $('#create-switch').wrap('<div class="make-switch" />').parent().bootstrapSwitch();
-    $(this).remove()
+    $('#create-switch').bootstrapSwitch();
+    $(this).remove();
   });
 
   // ACTIVATION
@@ -75,6 +71,14 @@ $(function() {
   });
   $('#label2-toggle-switch').on('switch-change', function(e, data) {
     alert(data.value);
+  });
+
+  // event handler
+  $('#switch-change').on('switch-change', function (e, data) {
+    var $element = $(data.el),
+      value = data.value;
+
+    console.log(e, $element, value);
   });
 
   // COLOR

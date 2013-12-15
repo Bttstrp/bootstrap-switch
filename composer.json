@@ -15,15 +15,13 @@
       "homepage": "http://www.bootstrap-switch.org"
     }
   ],
-  "require": {
-  },
   "ignore": [
-    "examples"
+    "docs"
   ],
   "extra": {
     "component": {
       "scripts": [
-        "src/js/bootstrap-switch.js"
+        "build/js/bootstrap-switch.js"
       ],
       "shim": {
         "exports": "BootstrapSwitch"

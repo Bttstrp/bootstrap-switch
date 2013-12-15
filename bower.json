@@ -1,13 +1,13 @@
 {
   "name": "bootstrap-switch",
-  "description" : "Unofficial bootstrap switch",
+  "description": "Unofficial bootstrap switch",
   "version": "1.9.0",
   "main": [
     "build/js/bootstrap-switch.js",
     "build/css/bootstrap3/bootstrap-switch.css"
   ],
   "ignore": [
-    "examples"
+    "docs"
   ],
   "dependencies": {
     "jquery": ">=1.9.0"
