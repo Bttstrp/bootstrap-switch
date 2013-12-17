@@ -30,7 +30,7 @@ module.exports = function(grunt) {
     cssmin: {
       build: {
         expand: true,
-        src: 'build/css/**/*.css',
+        src: ['build/css/bootstrap2/bootstrap-switch.css', 'build/css/bootstrap3/bootstrap-switch.css'],
         ext: '.min.css'
       }
     },
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
     uglify: {
       build: {
         expand: true,
-        src: 'build/js/**/*.js',
+        src: 'build/js/bootstrap-switch.js',
         ext: '.min.js'
       }
     },
