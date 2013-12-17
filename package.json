@@ -1,0 +1,29 @@
+{
+  "name": "bootstrap-switch",
+  "description": "Unofficial bootstrap switch",
+  "version": "1.8.0",
+  "main": "static/js/bootstrap-switch.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nostalgiaz/bootstrap-switch.git"
+  },
+  "keywords": [
+    "bootstrap",
+    "switch"
+  ],
+  "license": "Apache Version 2",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "matchdep": "~0.3.0",
+    "grunt": "~0.4.2",
+    "grunt-contrib-less": "~0.8.3",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-bump": "0.0.11",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-cssmin": "~0.7.0"
+  }
+}
