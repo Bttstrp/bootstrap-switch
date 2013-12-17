@@ -37,6 +37,7 @@ module.exports = function(grunt) {
 
     uglify: {
       build: {
+        preserveComments: 'some',
         expand: true,
         src: 'build/js/bootstrap-switch.js',
         ext: '.min.js'

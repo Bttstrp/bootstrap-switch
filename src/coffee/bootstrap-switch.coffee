@@ -1,3 +1,16 @@
+###! ============================================================
+ * bootstrap-switch v1.9.0 by Larentis Mattia @SpiritualGuru
+ * http://www.larentis.eu/
+ *
+ * Enhanced for radiobuttons by Stein, Peter @BdMdesigN
+ * http://www.bdmdesign.org/
+ *
+ * Project site:
+ * http://www.bootstrap-switch.org
+ * ============================================================
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * ============================================================ ###
 (($) ->
   $.fn.bootstrapSwitch = (method) ->
     methods =
