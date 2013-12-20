@@ -1,28 +1,23 @@
 body {
   padding-top: 20px;
   padding-bottom: 20px;
-}
-
-.span4,
-h1,
-h4 {
   text-align: center;
 }
 
 h1 {
-  font-size: 4em;
+  font-size: 5em;
+  letter-spacing: -2px;
 }
 
-h4 {
-  font-weight: 200;
+.header {
 }
 
-h1 {
-  margin-bottom: 20px;
+.people {
+  font-size: 18px;
 }
 
-h3 {
-  margin-top: 20px;
+.page-header {
+  text-align: left;
 }
 
 #github {
