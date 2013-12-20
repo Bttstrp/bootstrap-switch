@@ -65,6 +65,10 @@
   user-select: none;
   vertical-align: middle;
   min-width: 100px;
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -moz-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 .has-switch.switch-mini {
   min-width: 72px;
@@ -84,13 +88,13 @@
 .has-switch.switch-large {
   min-width: 120px;
 }
-.has-switch.deactivate {
+.has-switch.disabled {
   opacity: 0.5;
   filter: alpha(opacity=50);
   cursor: default !important;
 }
-.has-switch.deactivate label,
-.has-switch.deactivate span {
+.has-switch.disabled label,
+.has-switch.disabled span {
   cursor: default !important;
 }
 .has-switch > div {

@@ -14,6 +14,8 @@
   .user-select(none);
   vertical-align: middle;
   min-width: 100px;
+  .form-control-focus();
+  .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
   &.switch-mini {
     min-width: 72px;
@@ -37,7 +39,7 @@
     min-width: 120px;
   }
 
-  &.deactivate {
+  &.disabled {
     .opacity(.5);
     cursor: default !important;
 
@@ -68,11 +70,7 @@
 
   input[type=radio],
   input[type=checkbox] {
-    // debug
     display: none;
-    // position: absolute;
-    // margin-left: 60%;
-    // z-index: 123;
   }
 
   span,

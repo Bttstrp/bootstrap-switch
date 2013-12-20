@@ -33,10 +33,19 @@
               html
           )
           $div = $("<div>")
-          $wrapper = $("<div>", class: "has-switch")
+          $wrapper = $("<div>",
+            class: "has-switch"
+            tabindex: 0
+          )
           $form = $element.closest("form")
-          changeStatus = ->
-            $label.trigger("mousedown").trigger("mouseup").trigger "click"  unless $label.hasClass("label-change-switch")
+          changeState = ->
+            return if $label.hasClass("label-change-switch")
+
+            $label
+            .trigger("mousedown")
+            .trigger("mouseup")
+            .trigger "click"
+
 
           # set bootstrap-switch flag
           $element.data "bootstrap-switch", true
@@ -64,7 +73,7 @@
           # insert label and switch parts
           $element.before($switchLeft).before($label).before($switchRight)
           $div.addClass(if $element.is(":checked") then "switch-on" else "switch-off")
-          $wrapper.addClass("deactivate") if $element.is(":disabled")
+          $wrapper.addClass "disabled" if $element.is(":disabled") or $element.is("[readonly]")
 
           # element handlers
           $element
@@ -73,10 +82,12 @@
 
             e.stopImmediatePropagation()
             e.preventDefault()
-            changeStatus $(e.target).find("span:first")
-          ).on "change", (e, skip) ->
-            isChecked = $element.is(":checked")
-            state = $div.is(".switch-off")
+
+            changeState()
+          )
+          .on "change", (e, skip) ->
+            isChecked = $element.is ":checked"
+            state = $div.hasClass "switch-off"
 
             e.preventDefault()
 
@@ -95,9 +106,24 @@
               el: $element
               value: isChecked
 
+          # wrapper handlers
+          $wrapper.on "keydown", (e) ->
+            return if not e.which or $element.is(":disabled") or $element.is("[readonly]")
+
+            switch e.which
+              when 32
+                e.preventDefault()
+                changeState()
+              when 37
+                e.preventDefault()
+                changeState() if $element.is ":checked"
+              when 39
+                e.preventDefault()
+                changeState() unless $element.is ":checked"
+
           # switch handlers
-          $switchLeft.on "click", -> changeStatus()
-          $switchRight.on "click", -> changeStatus()
+          $switchLeft.on "click", -> changeState()
+          $switchRight.on "click", -> changeState()
 
           # label handlers
           $label.on "mousedown touchstart", (e) ->
@@ -107,7 +133,7 @@
             e.stopImmediatePropagation()
 
             $div.removeClass "switch-animate"
-            return $label.unbind "click" if $element.is(":disabled") or $element.hasClass("radio-no-uncheck")
+            return $label.unbind "click" if $element.is(":disabled") or $element.is("[readonly]") or $element.hasClass("radio-no-uncheck")
 
             # other label event handlers
             $label
@@ -163,26 +189,47 @@
               , 1)
             ).data "bootstrap-switch", true
 
-      toggleActivation: ->
-        $element = $(@)
-
-        $element.prop("disabled", not $element.is(":disabled")).parents(".has-switch").toggleClass "deactivate"
-        $element
-
-      isActive: ->
-        not $(@).is(":disabled")
-
-      setActive: (active) ->
+      setDisabled: (disabled) ->
         $element = $(@)
         $wrapper = $element.parents(".has-switch")
 
-        if active
-          $wrapper.removeClass "deactivate"
-          $element.prop "disabled", false
-        else
-          $wrapper.addClass "deactivate"
+        if disabled
+          $wrapper.addClass "disabled"
           $element.prop "disabled", true
+        else
+          $wrapper.removeClass "disabled"
+          $element.prop "disabled", false
         $element
+
+      toggleDisabled: ->
+        $element = $(@)
+
+        $element.prop("disabled", not $element.is(":disabled")).parents(".has-switch").toggleClass "disabled"
+        $element
+
+      isDisabled: ->
+        $(@).is(":disabled")
+
+      setReadOnly: (readonly) ->
+        $element = $(@)
+        $wrapper = $element.parents(".has-switch")
+
+        if readonly
+          $wrapper.addClass "disabled"
+          $element.prop "readonly", true
+        else
+          $wrapper.removeClass "disabled"
+          $element.prop "readonly", false
+        $element
+
+      toggleReadOnly: ->
+        $element = $(@)
+
+        $element.prop("readonly", not $element.is("[readonly]")).parents(".has-switch").toggleClass "disabled"
+        $element
+
+      isReadOnly: ->
+        $(@).is("[readonly]")
 
       toggleState: (skip) ->
         $element = $(@)
@@ -270,7 +317,6 @@
             $switchLeft.addClass cls
             $label.addClass cls
             $switchRight.addClass cls
-
         $element
 
       setTextLabel: (value) ->
@@ -285,7 +331,7 @@
         $element.siblings("label").html(if value then "<i class=\"icon #{value}\"></i>" else "&nbsp;")
         $element
 
-      status: ->
+      state: ->
         $(@).is ":checked"
 
       destroy: ->

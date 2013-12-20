@@ -114,11 +114,13 @@ $('#animated-switch').bootstrapSwitch('setAnimated', true);
 
 // Disables animation for the selected item
 $('#animated-switch').bootstrapSwitch('setAnimated', false);</code></pre>
-          <h2><a name="disabled" class="anchor" href="#disabled">Disabled</a></h2>
+          <h2><a name="disabled" class="anchor" href="#disabled">Disabled / Readonly</a></h2>
           <div class="bs-docs-example">
             <input type="checkbox" checked disabled>
+            <input type="checkbox" checked readonly>
           </div>
-          <pre class="language-markup"><code>&lt;input type="checkbox" checked disabled></code></pre>
+          <pre class="language-markup"><code>&lt;input type="checkbox" checked disabled>
+&lt;input type="checkbox" checked readonly></code></pre>
           <h2><a name="text" class="anchor" href="#text">Text</a></h2>
           <div class="bs-docs-example">
             <input type="checkbox" id="label-switch" checked data-on-label="SI" data-off-label="NO">
@@ -163,31 +165,15 @@ $('#label-switch').bootstrapSwitch('setOffLabel', 'O');</code></pre>
 });</code></pre>
           <h2><a name="label-event-handler-javascript" class="anchor" href="#label-event-handler-javascript">Label Event handler <small>JavaScript</small></a></h2>
           <div class="bs-docs-example">
-            <h5>Label 1</h5>
             <label id="label-toggle-switch">Click on this Text to change the switch state</label>
             <input type="checkbox" checked class="label-toggle-switch">
-            <h5>Label 2</h5>
-            <div id="label2-toggle-switch">
-              <label class="label-change-switch">Click on this Text to change the switch state
-                <input type="checkbox" checked class="label2-toggle-switch">
-              </label>
-            </div>
           </div>
           <pre class="language-markup"><code>&lt;label id="label-toggle-switch">Click on this Text to change the switch state&lt;/label>
-&lt;input type="checkbox" checked />
-
-&lt;div id="label2-toggle-switch">
-&lt;label class="label-change-switch">Click on this Text to change the switch state
-  &lt;input type="checkbox" checked />
-&lt;/label>
-&lt;/div></code></pre>
+&lt;input type="checkbox" checked></code></pre>
           <pre class="language-javascript"><code>$('#label-toggle-switch').on('click', function(e, data) {
     $('.label-toggle-switch').bootstrapSwitch('toggleState');
 });
 $('.label-toggle-switch').on('switch-change', function (e, data) {
-    alert(data.value);
-});
-$('#label2-toggle-switch').on('switch-change', function(e, data) {
     alert(data.value);
 });</code></pre>
           <h2><a name="toggle-state" class="anchor" href="#toggle-state">Toggle State <small>javascript</small></a></h2>
@@ -195,12 +181,12 @@ $('#label2-toggle-switch').on('switch-change', function(e, data) {
             <input type="checkbox" id="toggle-state-switch" checked>
             <br>
             <br>
-            <div id="toggle-state-switch-button-status" class="btny">Status!</div>
-            <div id="toggle-state-switch-button-on" class="btn btn-default">ON!</div>
-            <div id="toggle-state-switch-button" class="btn btn-default">Toggle me!</div>
-            <div id="toggle-state-switch-button-off" class="btn btn-default">OFF!</div>
+            <div id="toggle-state-switch-button-state" class="btn btn-default">State!</div>
+            <div id="toggle-state-switch-button-on" class="btn btn-default">On</div>
+            <div id="toggle-state-switch-button" class="btn btn-default">Toggle</div>
+            <div id="toggle-state-switch-button-off" class="btn btn-default">Off</div>
           </div>
-          <pre class="language-javascript"><code>$('#toggle-state-switch').bootstrapSwitch('status'); // true || false
+          <pre class="language-javascript"><code>$('#toggle-state-switch').bootstrapSwitch('state'); // true || false
 $('#toggle-state-switch').bootstrapSwitch('toggleState');
 $('#toggle-state-switch').bootstrapSwitch('setState', false); // true || false</code></pre>
           <h2><a name="destroy" class="anchor" href="#destroy">Destroy <small>javascript</small></a></h2>
@@ -219,20 +205,34 @@ $('#toggle-state-switch').bootstrapSwitch('setState', false); // true || false</
             <div id="btn-create" class="btn btn-default">Create</div>
           </div>
           <pre class="language-javascript"><code>$('#create-switch').bootstrapSwitch();</code></pre>
-        <h2><a name="disabled-javascript" class="anchor" href="#disabled-javascript">Disabled <small>javascript</small></a></h2>
+        <h2><a name="disabled-javascript" class="anchor" href="#disabled-javascript">Disable / Readonly <small>javascript</small></a></h2>
           <div class="bs-docs-example">
-            <label for="disable-switch-input">amazing label</label>
+            <label for="disable-switch">Disable controls</label>
             <input type="checkbox" id="disable-switch" checked>
             <br>
             <br>
-            <button id="btn-is-active-switch" class="btn btn-default">Is active?</button>
-            <button id="btn-toggle-activation-switch" class="btn btn-default">Toggle activation!</button>
-            <button id="btn-disable-switch" class="btn btn-default">Disable!</button>
-            <button id="btn-activate-switch" class="btn btn-default">Activate!</button>
+            <button id="btn-disable-is" class="btn btn-default">Is disabled?</button>
+            <button id="btn-disable-toggle" class="btn btn-default">Toggle Disable</button>
+            <button id="btn-disable-set" class="btn btn-default">Set Disable</button>
+            <button id="btn-disable-remove" class="btn btn-default">Remove Disable</button>
+            <br>
+            <br>
+            <label for="readonly-switch">Readonly controls</label>
+            <input type="checkbox" id="readonly-switch" checked>
+            <br>
+            <br>
+            <button id="btn-readonly-is" class="btn btn-default">Is readonly?</button>
+            <button id="btn-readonly-toggle" class="btn btn-default">Toggle readonly</button>
+            <button id="btn-readonly-set" class="btn btn-default">Set readonly</button>
+            <button id="btn-readonly-remove" class="btn btn-default">Remove readonly</button>
           </div>
-          <pre class="language-javascript"><code>$('#disable-switch').bootstrapSwitch('isActive');
-$('#disable-switch').bootstrapSwitch('toggleActivation');
-$('#disable-switch').bootstrapSwitch('setActive', false);  // true || false</code></pre>
+          <pre class="language-javascript"><code>$('#disable-switch').bootstrapSwitch('isDisabled');
+$('#disable-switch').bootstrapSwitch('toggleDisabled');
+$('#disable-switch').bootstrapSwitch('setDisabled', true);  // true || false
+
+$('#readonly-switch').bootstrapSwitch('isReadOnly');
+$('#readonly-switch').bootstrapSwitch('toggleReadOnly');
+$('#readonly-switch').bootstrapSwitch('setReadOnly', true);  // true || false</code></pre>
           <h2><a name="radio-javascript" class="anchor" href="#radio-javascript">Radio <small>javascript</small></a></h2>
           <div class="bs-docs-example">
             <div class="form-group">
@@ -287,7 +287,7 @@ $('.radio1').on('switch-change', function () {
           <pre class="language-javascript"><code>$('.radio2').on('switch-change', function () {
     $('.radio2').bootstrapSwitch('toggleRadioStateAllowUncheck', true);
 });</code></pre>
-          <h2><a name="form" class="anchor" href="#form">Form <small>- try to use tab, space and reset button</small></a></h2>
+          <h2><a name="form" class="anchor" href="#form">Form</a></h2>
           <div class="bs-docs-example">
             <form class="clearfix" role="form">
               <div class="form-group">
