@@ -1,7 +1,7 @@
 Bootstrap Switch
 ================
 
-Turn radio and checkbox form inputs in toggle switches.
+Turn checkboxes and radio buttons in toggle switches.
 **Version 2 is here. Beware! The API design has been revisited. Check out the documentation to know more.** 
 
 Demo and Documentation
