@@ -1,18 +1,23 @@
-/*! ============================================================
- * bootstrap-switch v1.9.0 by Larentis Mattia @SpiritualGuru
- * http://www.larentis.eu/
- *
- * Enhanced for radiobuttons by Stein, Peter @BdMdesigN
- * http://www.bdmdesign.org/
- *
- * Project site:
- * http://www.bootstrap-switch.org
- * ============================================================
- * Licensed under the Apache License, Version 2.0
- * http://www.apache.org/licenses/LICENSE-2.0
- * ============================================================
+/* ========================================================================
+* bootstrap-switch - v2.0.0
+* http://www.bootstrap-switch.org
+* ========================================================================
+* Copyright 2012-2013 Mattia Larentis
+*
+* ========================================================================
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+* ========================================================================
 */
-
 
 (function() {
   (function($) {
@@ -29,7 +34,7 @@
                 var html, label;
                 html = "ON";
                 label = $element.data("on-label");
-                if (typeof label !== "undefined") {
+                if (label != null) {
                   html = label;
                 }
                 return html;
@@ -41,7 +46,7 @@
                 var html, label;
                 html = "OFF";
                 label = $element.data("off-label");
-                if (typeof label !== "undefined") {
+                if (label != null) {
                   html = label;
                 }
                 return html;
@@ -54,10 +59,10 @@
                 html = "&nbsp;";
                 icon = $element.data("label-icon");
                 label = $element.data("text-label");
-                if (typeof icon !== "undefined") {
+                if (icon != null) {
                   html = "<i class=\"icon " + icon + "\"></i>";
                 }
-                if (typeof label !== "undefined") {
+                if (label != null) {
                   html = label;
                 }
                 return html;
@@ -83,10 +88,10 @@
                 }
               });
             }
-            if ($element.data("on") !== undefined) {
+            if ($element.data("on") != null) {
               $switchLeft.addClass("switch-" + $element.data("on"));
             }
-            if ($element.data("off") !== undefined) {
+            if ($element.data("off") != null) {
               $switchRight.addClass("switch-" + $element.data("off"));
             }
             $div.data("animated", false);
@@ -262,10 +267,10 @@
           $element = $(this);
           $switchLeft = $element.siblings(".switch-left");
           cls = $element.attr("data-on");
-          if (typeof value === "undefined") {
+          if (value == null) {
             return;
           }
-          if (typeof cls !== "undefined") {
+          if (cls != null) {
             $switchLeft.removeClass("switch-" + cls);
           }
           $switchLeft.addClass("switch-" + value);
@@ -276,10 +281,10 @@
           $element = $(this);
           $switchRight = $element.siblings(".switch-right");
           cls = $element.attr("data-off");
-          if (typeof value === "undefined") {
+          if (value == null) {
             return;
           }
-          if (typeof cls !== "undefined") {
+          if (cls != null) {
             $switchRight.removeClass("switch-" + cls);
           }
           $switchRight.addClass("switch-" + value);

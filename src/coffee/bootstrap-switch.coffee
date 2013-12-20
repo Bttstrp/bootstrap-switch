@@ -1,16 +1,3 @@
-###! ============================================================
- * bootstrap-switch v1.9.0 by Larentis Mattia @SpiritualGuru
- * http://www.larentis.eu/
- *
- * Enhanced for radiobuttons by Stein, Peter @BdMdesigN
- * http://www.bdmdesign.org/
- *
- * Project site:
- * http://www.bootstrap-switch.org
- * ============================================================
- * Licensed under the Apache License, Version 2.0
- * http://www.apache.org/licenses/LICENSE-2.0
- * ============================================================ ###
 (($) ->
   $.fn.bootstrapSwitch = (method) ->
     methods =
@@ -22,7 +9,7 @@
             html: ->
               html = "ON"
               label = $element.data("on-label")
-              html = label if typeof label isnt "undefined"
+              html = label if label?
               html
           )
           $switchRight = $("<span>",
@@ -30,7 +17,7 @@
             html: ->
               html = "OFF"
               label = $element.data("off-label")
-              html = label if typeof label isnt "undefined"
+              html = label if label?
               html
           )
           $label = $("<label>",
@@ -40,8 +27,8 @@
               icon = $element.data("label-icon")
               label = $element.data("text-label")
 
-              html = "<i class=\"icon " + icon + "\"></i>" if typeof icon isnt "undefined"
-              html = label if typeof label isnt "undefined"
+              html = "<i class=\"icon " + icon + "\"></i>" if icon?
+              html = label if label?
 
               html
           )
@@ -63,8 +50,8 @@
                 $switchRight.addClass cls
 
           # override default
-          $switchLeft.addClass "switch-" + $element.data("on") if $element.data("on") isnt `undefined`
-          $switchRight.addClass "switch-" + $element.data("off") if $element.data("off") isnt `undefined`
+          $switchLeft.addClass "switch-" + $element.data("on") if $element.data("on")?
+          $switchRight.addClass "switch-" + $element.data("off") if $element.data("off")?
 
           # set animated for div
           $div.data("animated", false)
@@ -241,9 +228,9 @@
         $switchLeft = $element.siblings(".switch-left")
         cls = $element.attr("data-on")
 
-        return if typeof value is "undefined"
+        return unless value?
 
-        $switchLeft.removeClass "switch-#{cls}" if typeof cls isnt "undefined"
+        $switchLeft.removeClass "switch-#{cls}" if cls?
         $switchLeft.addClass "switch-#{value}"
         $element
 
@@ -252,9 +239,9 @@
         $switchRight = $element.siblings(".switch-right")
         cls = $element.attr("data-off")
 
-        return if typeof value is "undefined"
+        return unless value?
 
-        $switchRight.removeClass "switch-#{cls}" if typeof cls isnt "undefined"
+        $switchRight.removeClass "switch-#{cls}" if cls?
         $switchRight.addClass "switch-#{value}"
         $element
 

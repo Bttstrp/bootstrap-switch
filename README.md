@@ -1,7 +1,7 @@
 Bootstrap Switch
 ================
 
-Turn radio and checkbox form input in switches. 
+Turn radio and checkbox form inputs in toggle switches.
 
 **Bootstrap 3 ready** thanks to [nabil1337](https://github.com/nabil1337)
 

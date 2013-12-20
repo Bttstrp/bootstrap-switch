@@ -1,7 +1,29 @@
 {
   "name": "bootstrap-switch",
   "description": "Unofficial bootstrap switch",
-  "version": "1.8.0",
+  "version": "2.0.0",
+  "keywords": [
+    "bootstrap",
+    "switch",
+    "js"
+  ],
+  "homepage": "http://www.bootstrap-switch.org",
+  "author": {
+    "name": "Mattia Larentis",
+    "email": "sorich87@gmail.com",
+    "url": "http://larentis.eu"
+  },
+  "contributors": [
+    {
+      "name": "Emanuele Marchi",
+      "email": "emanuele@lostcrew.it",
+      "url": "http://lostcrew.it"
+    },
+    {
+      "name": "Peter Stein",
+      "url": "http://www.bdmdesign.org"
+    }
+  ],
   "main": "static/js/bootstrap-switch.js",
   "scripts": {
     "test": "grunt test"
@@ -10,10 +32,6 @@
     "type": "git",
     "url": "git://github.com/nostalgiaz/bootstrap-switch.git"
   },
-  "keywords": [
-    "bootstrap",
-    "switch"
-  ],
   "license": "Apache Version 2",
   "readmeFilename": "README.md",
   "devDependencies": {
@@ -24,6 +42,8 @@
     "grunt-bump": "0.0.11",
     "grunt-contrib-coffee": "~0.7.0",
     "grunt-contrib-uglify": "~0.2.7",
-    "grunt-contrib-cssmin": "~0.7.0"
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-coffeelint": "0.0.8",
+    "grunt-banner": "~0.2.0"
   }
 }
