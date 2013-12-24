@@ -1,0 +1,38 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 5em;
+  letter-spacing: -2px;
+}
+
+.header {
+}
+
+.people {
+  font-size: 18px;
+}
+
+.page-header {
+  text-align: left;
+}
+
+#github {
+  display: block;
+  position: fixed;
+  width: 150px;
+  height: 150px;
+  top: 0;
+  right: 0;
+  z-index: 150;
+}
+
+.footer {
+  border-top: 1px solid #eee;
+  margin-top: 80px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}

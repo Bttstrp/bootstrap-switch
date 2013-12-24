@@ -1,3 +1,7 @@
 .grunt
 node_modules
+<<<<<<< HEAD
 components
+=======
+components
+>>>>>>> master
