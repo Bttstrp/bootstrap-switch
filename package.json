@@ -24,7 +24,7 @@
       "url": "http://www.bdmdesign.org"
     }
   ],
-  "main": "static/js/bootstrap-switch.js",
+  "main": "build/js/bootstrap-switch.js",
   "scripts": {
     "test": "grunt test"
   },
