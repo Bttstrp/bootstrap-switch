@@ -86,6 +86,7 @@
                 if ($element.attr("class").indexOf(cls) >= 0) {
                   $switchLeft.addClass(cls);
                   $label.addClass(cls);
+                  $wrapper.addClass('has-switch-'+cls);
                   return $switchRight.addClass(cls);
                 }
               });
