@@ -6,11 +6,11 @@
     <meta name="description" content="Switches for radio buttons and checkboxes">
     <meta name="author" content="Mattia Larentis">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="build/css/bootstrap3/bootstrap-switch.css" />
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
-    <link rel="stylesheet" href="http://bdmdesign.github.io/bootstrap-switch/static/stylesheets/flat-ui-fonts.css">
+    <link rel="stylesheet" href="docs/vendor/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"> -->
+    <!-- <link rel="stylesheet" href="http://bdmdesign.github.io/bootstrap-switch/static/stylesheets/flat-ui-fonts.css"> -->
     <link rel="stylesheet" href="docs/vendor/prism.css">
+    <link rel="stylesheet" href="build/css/bootstrap3/bootstrap-switch.min.css" />
     <link rel="stylesheet" href="docs/index.css">
     <script>
     var _gaq = _gaq || [];
@@ -165,7 +165,7 @@ $('#label-switch').bootstrapSwitch('setOffLabel', 'O');</code></pre>
           <div class="bs-docs-example">
             <input type="checkbox" checked data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
           </div>
-          <pre class="language-markup"><code>&lt;input type="checkbox" checked data-on-label="&lt;i class='icon-ok icon-white'>&lt;/i>" data-offlabel="&lt;i class='icon-remove'>&lt;/i>"></code></pre>
+          <pre class="language-markup"><code>&lt;input type="checkbox" checked data-on-label="&lt;i class='icon-ok icon-white'>&lt;/i>" data-off-label="&lt;i class='icon-remove'>&lt;/i>"></code></pre>
           <div class="page-header">
             <h2><a name="html-text-label-icon" class="anchor" href="#html-text-label-icon">HTML Text Label Icon</a></h2>
           </div>
@@ -174,7 +174,7 @@ $('#label-switch').bootstrapSwitch('setOffLabel', 'O');</code></pre>
             Font Awesome <input type="checkbox" checked class="switch-large" data-label-icon="icon-youtube icon-large" data-on-label="<i class='icon-thumbs-up icon-white'></i>" data-off-label="<i class='icon-thumbs-down'></i>"> &nbsp;&nbsp;
             Flat UI <input type="checkbox" class="switch-large" checked data-label-icon="fui-video" data-on-label="<i class='fui-check icon-white'></i>" data-off-label="<i class='fui-cross'></i>">
           </div>
-          <pre class="language-markup"><code>&lt;input type="checkbox" checked class="switch-large" data-label-icon="icon-fullscreen" data-onlabel="&lt;i class='icon-ok icon-white'>&lt;/i>" data-off-label="&lt;i class='icon-remove'>&lt;/i>">
+          <pre class="language-markup"><code>&lt;input type="checkbox" checked class="switch-large" data-label-icon="icon-fullscreen" data-on-label="&lt;i class='icon-ok icon-white'>&lt;/i>" data-off-label="&lt;i class='icon-remove'>&lt;/i>">
 &lt;input type="checkbox" checked class="switch-large" data-label-icon="icon-youtube icon-large" data-on-label="&lt;i class='icon-thumbs-up icon-white'>&lt;/i>" data-off-label="&lt;i class='icon-thumbs-down'>&lt;/i>">
 &lt;input type="checkbox" class="switch-large" checked data-label-icon="fui-video" data-on-label="&lt;i class='fui-check icon-white'>&lt;/i>" data-off-label="&lt;i class='fui-cross'>&lt;/i>"></code></pre>
           <div class="page-header">
@@ -400,9 +400,9 @@ $('.radio1').on('switch-change', function () {
       </div>
     </div>
   </div>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-  <script src="build/js/bootstrap-switch.js"></script>
+  <script src="docs/vendor/jquery.js"></script>
+  <script src="docs/vendor/bootstrap.min.js"></script>
+  <script src="build/js/bootstrap-switch.min.js"></script>
   <script src="docs/vendor/prism.js"></script>
   <script src="docs/index.js"></script>
   </body>
