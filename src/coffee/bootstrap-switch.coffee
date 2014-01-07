@@ -50,30 +50,27 @@
           # set bootstrap-switch flag
           $element.data "bootstrap-switch", true
 
-          # apply class
-          if $element.attr("class")
-            $.each ["switch-mini", "switch-small", "switch-large"], (i, cls) ->
-              if $element.attr("class").indexOf(cls) >= 0
-                $switchLeft.addClass cls
-                $label.addClass cls
-                $switchRight.addClass cls
-
           # override default
           $switchLeft.addClass "switch-" + $element.data("on") if $element.data("on")?
           $switchRight.addClass "switch-" + $element.data("off") if $element.data("off")?
 
           # set animated for div
-          $div.data("animated", false)
-          $div.addClass("switch-animate").data("animated", true) if $element.data("animated") isnt false
+          $wrapper.data "animated", false
+          $wrapper.addClass("switch-animate").data("animated", true) if $element.data("animated") isnt false
 
           # reassign elements after dom modification
           $div = $element.wrap($div).parent()
           $wrapper = $div.wrap($wrapper).parent()
 
+          # apply size class
+          if $element.attr "class"
+            $.each ["switch-mini", "switch-small", "switch-large"], (i, cls) ->
+              $wrapper.addClass cls if $element.attr("class").indexOf(cls) >= 0
+
           # insert label and switch parts
           $element.before($switchLeft).before($label).before($switchRight)
-          $div.addClass(if $element.is(":checked") then "switch-on" else "switch-off")
-          $wrapper.addClass "disabled" if $element.is(":disabled") or $element.is("[readonly]")
+          $wrapper.addClass(if $element.is(":checked") then "switch-on" else "switch-off")
+          $wrapper.addClass("disabled") if $element.is(":disabled") or $element.is("[readonly]")
 
           # element handlers
           $element
@@ -87,19 +84,19 @@
           )
           .on "change", (e, skip) ->
             isChecked = $element.is ":checked"
-            state = $div.hasClass "switch-off"
+            state = $wrapper.hasClass "switch-off"
 
             e.preventDefault()
 
-            $div.css("left", "")
+            $div.css "left", ""
             return unless state is isChecked
 
             if isChecked
-              $div.removeClass("switch-off").addClass "switch-on"
+              $wrapper.removeClass("switch-off").addClass "switch-on"
             else
-              $div.removeClass("switch-on").addClass "switch-off"
+              $wrapper.removeClass("switch-on").addClass "switch-off"
 
-            $div.addClass "switch-animate"  if $div.data("animated") isnt false
+            $wrapper.addClass("switch-animate") if $wrapper.data("animated") isnt false
             return if typeof skip is "boolean" and skip
 
             $element.trigger "switch-change",
@@ -132,7 +129,7 @@
             e.preventDefault()
             e.stopImmediatePropagation()
 
-            $div.removeClass "switch-animate"
+            $wrapper.removeClass "switch-animate"
             return $label.unbind "click" if $element.is(":disabled") or $element.is("[readonly]") or $element.hasClass("radio-no-uncheck")
 
             # other label event handlers
@@ -294,29 +291,20 @@
 
       setAnimated: (value) ->
         $element = $(@)
-        $div = $element.parent()
+        $wrapper = $element.parents(".has-switch")
         value ?= false
 
-        $div
+        $wrapper
         .data("animated", value)
-        .attr("data-animated", value)[if $div.data("animated") isnt false then "addClass" else "removeClass"]("switch-animate")
+        .attr("data-animated", value)[if $wrapper.data("animated") isnt false then "addClass" else "removeClass"]("switch-animate")
         $element
 
       setSizeClass: (value) ->
         $element = $(@)
-        $switchLeft = $element.siblings(".switch-left")
-        $label = $element.siblings("label")
-        $switchRight = $element.siblings(".switch-right")
+        $wrapper = $element.parents(".has-switch")
 
         $.each ["switch-mini", "switch-small", "switch-large"], (i, cls) ->
-          if cls isnt value
-            $switchLeft.removeClass cls
-            $label.removeClass cls
-            $switchRight.removeClass cls
-          else
-            $switchLeft.addClass cls
-            $label.addClass cls
-            $switchRight.addClass cls
+          $wrapper[if cls isnt value then "removeClass" else "addClass"](cls)
         $element
 
       setTextLabel: (value) ->
@@ -341,7 +329,7 @@
 
         $div.children().not($element).remove()
         $element.unwrap().unwrap().unbind "change"
-        $form.unbind("reset").removeData "bootstrapSwitch" if $form.length
+        $form.unbind("reset").removeData "bootstrap-switch" if $form.length
         $element
 
     return methods[method].apply(@, Array::slice.call(arguments, 1)) if methods[method]
