@@ -373,9 +373,9 @@
           $div = $element.parent();
           $form = $div.closest("form");
           $div.children().not($element).remove();
-          $element.unwrap().unwrap().unbind("change");
+          $element.unwrap().unwrap().off("change");
           if ($form.length) {
-            $form.unbind("reset").removeData("bootstrap-switch");
+            $form.off("reset").removeData("bootstrap-switch");
           }
           return $element;
         }

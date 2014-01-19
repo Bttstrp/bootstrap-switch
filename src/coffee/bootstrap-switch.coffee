@@ -39,7 +39,7 @@
           )
           $form = $element.closest("form")
           changeState = ->
-            return if $label.hasClass("label-change-switch")
+            return if $label.hasClass "label-change-switch"
 
             $label
             .trigger("mousedown")
@@ -328,8 +328,8 @@
         $form = $div.closest("form")
 
         $div.children().not($element).remove()
-        $element.unwrap().unwrap().unbind "change"
-        $form.unbind("reset").removeData "bootstrap-switch" if $form.length
+        $element.unwrap().unwrap().off "change"
+        $form.off("reset").removeData "bootstrap-switch" if $form.length
         $element
 
     return methods[method].apply(@, Array::slice.call(arguments, 1)) if methods[method]
