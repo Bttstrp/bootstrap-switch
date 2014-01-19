@@ -1,7 +1,7 @@
 {
   "name": "bootstrap-switch",
-  "description": "Unofficial bootstrap switch",
-  "version": "2.0.0",
+  "description": "Turn checkboxes and radio buttons in toggle switches.",
+  "version": "2.0.1",
   "main": [
     "build/js/bootstrap-switch.js",
     "build/css/bootstrap3/bootstrap-switch.css"

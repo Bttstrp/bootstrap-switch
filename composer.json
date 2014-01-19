@@ -1,12 +1,15 @@
 {
   "name": "nostalgiaz/bootstrap-switch",
-  "description": "Unofficial bootstrap switch",
-  "version": "2.0.0",
+  "description": "Turn checkboxes and radio buttons in toggle switches.",
+  "version": "2.0.1",
   "type": "component",
   "keywords": [
-    "javaScript"
+    "bootstrap",
+    "switch",
+    "javascript",
+    "js"
   ],
-  "homepage": "http://www.larentis.eu/switch/",
+  "homepage": "http://www.bootstrap-switch.org",
   "license": "Apache License, Version 2.0",
   "authors": [
     {
