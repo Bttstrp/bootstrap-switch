@@ -108,6 +108,8 @@
   width: 150%;
   position: relative;
   top: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 .has-switch input[type=radio],
 .has-switch input[type=checkbox] {
