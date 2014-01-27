@@ -1,340 +1,343 @@
-(($) ->
-  $.fn.bootstrapSwitch = (method) ->
-    methods =
-      init: ->
-        @each ->
-          $element = $(@)
-          $switchLeft = $("<span>",
-            class: "switch-left"
-            html: ->
-              html = "ON"
-              label = $element.data("on-label")
-              html = label if label?
-              html
-          )
-          $switchRight = $("<span>",
-            class: "switch-right"
-            html: ->
-              html = "OFF"
-              label = $element.data("off-label")
-              html = label if label?
-              html
-          )
-          $label = $("<label>",
-            for: $element.attr("id")
-            html: ->
-              html = "&nbsp;"
-              icon = $element.data("label-icon")
-              label = $element.data("text-label")
+(($, window) ->
+  "use strict"
 
-              html = "<i class=\"icon " + icon + "\"></i>" if icon?
-              html = label if label?
+  class BootstrapSwitch
+    constructor: (element, option) ->
+      # @options = $.extend {}, @defaults, options
+      @$element = $ element
+      @$switchLeft = $ "<span>",
+        class: =>
+          cls = "switch-left"
+          color = @$element.data "on-color"
 
-              html
-          )
-          $div = $("<div>")
-          $wrapper = $("<div>",
-            class: "has-switch"
-            tabindex: 0
-          )
-          $form = $element.closest("form")
-          changeState = ->
-            return if $label.hasClass "label-change-switch"
+          cls += " switch-#{color}" if color?
+          cls
+        html: =>
+          html = "ON"
+          text = @$element.data "on-text"
 
-            $label
-            .trigger("mousedown")
-            .trigger("mouseup")
-            .trigger "click"
+          html = text if text?
+          html
+      @$switchRight = $ "<span>",
+        class: =>
+          cls = "switch-right"
+          color = @$element.data "off-color"
 
+          cls += " switch-#{color}" if color?
+          cls
+        html: =>
+          html = "OFF"
+          text = @$element.data "off-text"
 
-          # set bootstrap-switch flag
-          $element.data "bootstrap-switch", true
-
-          # override default
-          $switchLeft.addClass "switch-" + $element.data("on") if $element.data("on")?
-          $switchRight.addClass "switch-" + $element.data("off") if $element.data("off")?
-
-          # set animated for div
-          $wrapper.data "animated", false
-          $wrapper.addClass("switch-animate").data("animated", true) if $element.data("animated") isnt false
-
-          # reassign elements after dom modification
-          $div = $element.wrap($div).parent()
-          $wrapper = $div.wrap($wrapper).parent()
+          html = text if text?
+          html
+      @$label = $ "<label>",
+        for: @$element.attr("id")
+        html: =>
+          html = "&nbsp;"
+          text = @$element.data "label-text"
+          html = text if text?
+          html
+      @$wrapper = $ "<div>",
+        class: =>
+          classes = ["has-switch"]
 
           # apply size class
-          if $element.attr "class"
-            $.each ["switch-mini", "switch-small", "switch-large"], (i, cls) ->
-              $wrapper.addClass cls if $element.attr("class").indexOf(cls) >= 0
+          if @$element.attr("class")
+            for cls in ["mini", "small", "large"]
+              classes.push "switch-#{cls}" if @$element.hasClass "switch-#{cls}"
 
-          # insert label and switch parts
-          $element.before($switchLeft).before($label).before($switchRight)
-          $wrapper.addClass(if $element.is(":checked") then "switch-on" else "switch-off")
-          $wrapper.addClass("disabled") if $element.is(":disabled") or $element.is("[readonly]")
+          classes.push if @$element.is ":checked" then "switch-on" else "switch-off"
+          classes.push "switch-animate" if @$element.data("animate") isnt false
+          classes.push "disabled" if @$element.is(":disabled") or @$element.is "[readonly]"
+          classes.join " "
+        tabindex: 0
 
-          # element handlers
-          $element
-          .on("keydown", (e) ->
-            return unless e.keyCode is 32
+      # reassign elements after dom modification
+      @$div = @$element.wrap($("<div>")).parent()
+      @$wrapper = @$div.wrap(@$wrapper).parent()
 
-            e.stopImmediatePropagation()
-            e.preventDefault()
+      # insert label and switch parts
+      @$element.before(@$switchLeft).before(@$label).before @$switchRight
 
-            changeState()
-          )
-          .on "change", (e, skip) ->
-            isChecked = $element.is ":checked"
-            state = $wrapper.hasClass "switch-off"
+      @_elementHandlers()
+      @_wrapperHandlers()
+      @_switchesHandlers()
+      @_labelHandlers()
+      @_form()
 
-            e.preventDefault()
+      # TODO: @$label.hasClass "label-change-switch" in toggleState
 
-            $div.css "left", ""
-            return unless state is isChecked
+    _constructor: BootstrapSwitch
 
-            if isChecked
-              $wrapper.removeClass("switch-off").addClass "switch-on"
-            else
-              $wrapper.removeClass("switch-on").addClass "switch-off"
+    state: (value, skip) ->
+      return @$element.is ":checked" if typeof value is "undefined"
 
-            $wrapper.addClass("switch-animate") if $wrapper.data("animated") isnt false
-            return if typeof skip is "boolean" and skip
+      @$element.prop("checked", not not value).trigger "change", skip
+      @$element
 
-            $element.trigger "switch-change",
-              el: $element
-              value: isChecked
+    toggleState: (skip) ->
+      @$element.prop("checked", not @$element.is ":checked").trigger "change", skip
+      @$element
 
-          # wrapper handlers
-          $wrapper.on "keydown", (e) ->
-            return if not e.which or $element.is(":disabled") or $element.is("[readonly]")
+    ###
+    TODO: refactor
+    toggleRadioState: (uncheck, skip) ->
+      $element = @$element.not ":checked"
 
-            switch e.which
-              when 32
-                e.preventDefault()
-                changeState()
-              when 37
-                e.preventDefault()
-                changeState() if $element.is ":checked"
-              when 39
-                e.preventDefault()
-                changeState() unless $element.is ":checked"
+      if uncheck
+        $element.trigger "change", skip
+      else
+        $element.prop("checked", not @$element.is ":checked").trigger "change", skip
+      @$element
+    ###
 
-          # switch handlers
-          $switchLeft.on "click", -> changeState()
-          $switchRight.on "click", -> changeState()
+    disabled: (value) ->
+      return @$element.is ":disabled" if typeof value is "undefined"
 
-          # label handlers
-          $label.on "mousedown touchstart", (e) ->
-            moving = false
+      value = not not value
 
-            e.preventDefault()
-            e.stopImmediatePropagation()
+      @$wrapper[if value then "addClass" else "removeClass"]("disabled")
+      @$element.prop "disabled", value
+      @$element
 
-            $wrapper.removeClass "switch-animate"
-            return $label.unbind "click" if $element.is(":disabled") or $element.is("[readonly]") or $element.hasClass("radio-no-uncheck")
+    toggleDisabled: ->
+      @$element.prop("disabled", not @$element.is ":disabled")
+      @$wrapper.toggleClass "disabled"
+      @$element
 
-            # other label event handlers
-            $label
-            .on("mousemove touchmove", (e) ->
-              relativeX = (e.pageX or e.originalEvent.targetTouches[0].pageX) - $wrapper.offset().left
-              percent = (relativeX / $wrapper.width()) * 100
-              left = 25
-              right = 75
-              moving = true
+    readOnly: (value) ->
+      return @$element.is "[readonly]" if typeof value is "undefined"
 
-              if percent < left
-                percent = left
-              else if percent > right
-                percent = right
+      if readonly
+        @$wrapper.addClass "disabled"
+        @$element.prop "readonly", true
+      else
+        @$wrapper.removeClass "disabled"
+        @$element.prop "readonly", false
+      @$element
 
-              $div.css "left", (percent - right) + "%"
-            )
-            .on("click touchend", (e) ->
-              e.stopImmediatePropagation()
-              e.preventDefault()
+    toggleReadOnly: ->
+      @$element
+      .prop("readonly", not @$element.is("[readonly]"))
+      .parents(".has-switch")
+      .toggleClass "disabled"
+      @$element
 
-              $label.unbind "mouseleave"
+    labelText: (value) ->
+      @$element.siblings("label").html value or "&nbsp"
+      @$element
 
-              if moving
-                $element.prop "checked", (parseInt($label.parent().css("left"), 10) > -25)
-              else
-                $element.prop "checked", not $element.is(":checked")
+    onText: (value) ->
+      return @$switchLeft.html() if typeof value is "undefined"
 
-              moving = false
-              $element.trigger "change"
-            )
-            .on("mouseleave", (e) ->
-              e.preventDefault()
-              e.stopImmediatePropagation()
+      @$switchLeft.html value
+      @$element
 
-              $label.unbind("mouseleave mousemove").trigger "mouseup"
-              $element.prop("checked", (parseInt($label.parent().css("left"), 10) > -25)).trigger "change"
-            )
-            .on "mouseup", (e) ->
-              e.stopImmediatePropagation()
-              e.preventDefault()
+    offText: (value) ->
+      return @$switchRight.html() if typeof value is "undefined"
 
-              $label.trigger "mouseleave"
+      @$switchRight.html value
+      @$element
 
+    onColor: (value) ->
+      # TODO: add data-on-color in init (defaults)
+      color = @$element.data "on-color"
 
-          unless $form.data("bootstrap-switch")
-            $form.bind("reset", ->
-              window.setTimeout(->
-                $form.find(".has-switch").each ->
-                  $input = $(@).find("input")
-                  $input.prop("checked", $input.is(":checked")).trigger "change"
+      return color if typeof value is "undefined"
 
-              , 1)
-            ).data "bootstrap-switch", true
+      @$switchLeft.removeClass "switch-#{color}" if color?
+      @$switchLeft.addClass "switch-#{value}"
+      @$element.data "on-color", value
+      @$element
 
-      setDisabled: (disabled) ->
-        $element = $(@)
-        $wrapper = $element.parents(".has-switch")
+    offColor: (value) ->
+      # TODO: add data-on-color in init (defaults)
+      color = @$element.data "off-color"
 
-        if disabled
-          $wrapper.addClass "disabled"
-          $element.prop "disabled", true
+      return color if typeof value is "undefined"
+
+      @$switchRight.removeClass "switch-#{color}" if color?
+      @$switchRight.addClass "switch-#{value}"
+      @$element.data "off-color", value
+      @$element
+
+    animate: (value) ->
+      return @$element.data "animate" if typeof value is "undefined"
+
+      value = not not value
+
+      @$wrapper[if value then "addClass" else "removeClass"]("switch-animate")
+      @$element.data "animate", value
+      @$element
+
+    size: (value) ->
+      return @$wrapper.hasClass "switch-#{value}" if typeof value is "undefined"
+
+      for cls in ["mini", "small", "large"]
+        @$wrapper[if cls isnt value then "removeClass" else "addClass"]("switch-#{cls}")
+      @$element
+
+    destroy: ->
+      $form = @$element.closest "form"
+
+      @$div.children().not(@$element).remove()
+      @$element.unwrap().unwrap().off "change"
+
+      $form.off("reset").removeData "bootstrap-switch" if $form.length
+      @$element
+
+    _elementHandlers: ->
+      @$element.on "change", (e, skip) =>
+        e.preventDefault()
+
+        isChecked = @$element.is ":checked"
+        state = @$wrapper.hasClass "switch-off"
+
+        @$div.css "margin-left", ""
+        return unless state is isChecked
+
+        if isChecked
+          @$wrapper.removeClass("switch-off").addClass "switch-on"
         else
-          $wrapper.removeClass "disabled"
-          $element.prop "disabled", false
-        $element
+          @$wrapper.removeClass("switch-on").addClass "switch-off"
 
-      toggleDisabled: ->
-        $element = $(@)
+        @$wrapper.addClass "switch-animate" if @$element.data("animate") isnt false
+        return if typeof skip is "boolean" and skip
 
-        $element.prop("disabled", not $element.is(":disabled")).parents(".has-switch").toggleClass "disabled"
-        $element
+        @$element.trigger "switch-change",
+          el: @$element
+          value: isChecked
 
-      isDisabled: ->
-        $(@).is(":disabled")
+    _wrapperHandlers: ->
+      @$wrapper.on "keydown", (e) =>
+        return if not e.which or @$element.is(":disabled") or @$element.is "[readonly]"
 
-      setReadOnly: (readonly) ->
-        $element = $(@)
-        $wrapper = $element.parents(".has-switch")
+        switch e.which
+          when 32
+            e.preventDefault()
+            @toggleState()
+          when 37
+            e.preventDefault()
+            @toggleState() if @$element.is ":checked"
+          when 39
+            e.preventDefault()
+            @toggleState() unless @$element.is ":checked"
 
-        if readonly
-          $wrapper.addClass "disabled"
-          $element.prop "readonly", true
-        else
-          $wrapper.removeClass "disabled"
-          $element.prop "readonly", false
-        $element
+    _switchesHandlers: ->
+      @$switchLeft.on "click", => @toggleState()
+      @$switchRight.on "click", => @toggleState()
 
-      toggleReadOnly: ->
-        $element = $(@)
+    _labelHandlers: ->
+      ###
+      @$label.on "click", =>
+        e.preventDefault()
+        e.stopImmediatePropagation()
 
-        $element.prop("readonly", not $element.is("[readonly]")).parents(".has-switch").toggleClass "disabled"
-        $element
+        @toggleState()
+      ###
 
-      isReadOnly: ->
-        $(@).is("[readonly]")
+      @$label.on "click", (e) =>
+        e.preventDefault()
+        e.stopImmediatePropagation()
 
-      toggleState: (skip) ->
-        $element = $(@)
+        @$wrapper.removeClass "switch-animate"
+        return if @moving # @$element.prop "checked", (parseInt(@$div.css("margin-left"), 10) > -25)
 
-        $element.prop("checked", not $element.is(":checked")).trigger "change", skip
-        $element
+        @$label.on "mousemove", (e) =>
+          relativeX = (e.pageX or e.originalEvent.targetTouches[0].pageX) - @$wrapper.offset().left
+          percent = (relativeX / @$wrapper.width()) * 100
+          left = 25
+          right = 75
 
-      toggleRadioState: (skip) ->
-        $element = $(@)
+          @moving = true
+          if percent < left
+            percent = left
+          else if percent > right
+            percent = right
 
-        $element.not(":checked").prop("checked", not $element.is(":checked")).trigger "change", skip
-        $element
+          @$div.css "margin-left", "#{percent - right}%"
 
-      toggleRadioStateAllowUncheck: (uncheck, skip) ->
-        $element = $(@)
+        @$label.on "mouseup mouseleave", (e) =>
+          e.preventDefault()
+          e.stopImmediatePropagation()
 
-        if uncheck
-          $element.not(":checked").trigger "change", skip
-        else
-          $element.not(":checked").prop("checked", not $element.is(":checked")).trigger "change", skip
-        $element
+          # @$label.off("mouseleave mousemove").trigger "mouseup"
+          @$element.prop("checked", (parseInt(@$div.css("margin-left"), 10) > -25)).trigger "change"
+          @$label.off("mousemove")
 
-      setState: (value, skip) ->
-        $element = $(@)
+        @$label.trigger "mousemove"
 
-        $element.prop("checked", value).trigger "change", skip
-        $element
+      ###
+      @$label.on
+        "click touchstart": (e) =>
+          @moving = false
 
-      setOnLabel: (value) ->
-        $element = $(@)
+          e.preventDefault()
+          e.stopImmediatePropagation()
 
-        $element.siblings(".switch-left").html value
-        $element
+          @$wrapper.removeClass "switch-animate"
 
-      setOffLabel: (value) ->
-        $element = $(@)
+          if @moving
+            @$element.prop "checked", (parseInt(@$div.css("margin-left"), 10) > -25)
+          else
+            @$element.prop "checked", not @$element.is(":checked")
 
-        $element.siblings(".switch-right").html value
-        $element
+          @$element.trigger "change"
+          # @$label.off "click" if @$element.is(":disabled") or @$element.is("[readonly]") or @$element.hasClass "radio-no-uncheck"
+        "mousemove touchmove": (e) =>
+          relativeX = (e.pageX or e.originalEvent.targetTouches[0].pageX) - @$wrapper.offset().left
+          percent = (relativeX / @$wrapper.width()) * 100
+          left = 25
+          right = 75
 
-      setOnClass: (value) ->
-        $element = $(@)
-        $switchLeft = $element.siblings(".switch-left")
-        cls = $element.attr("data-on")
+          @moving = true
+          if percent < left
+            percent = left
+          else if percent > right
+            percent = right
 
-        return unless value?
+          @$div.css "margin-left", "#{percent - right}%"
+        "click touchend": (e) =>
+          e.stopImmediatePropagation()
+          e.preventDefault()
 
-        $switchLeft.removeClass "switch-#{cls}" if cls?
-        $switchLeft.addClass "switch-#{value}"
-        $element
+          @$label.off "mouseleave"
+        mouseleave: (e) =>
+          e.preventDefault()
+          e.stopImmediatePropagation()
 
-      setOffClass: (value) ->
-        $element = $(@)
-        $switchRight = $element.siblings(".switch-right")
-        cls = $element.attr("data-off")
+          @$label.off("mouseleave mousemove").trigger "mouseup"
+          @$element.prop("checked", (parseInt(@$div.css("margin-left"), 10) > -25)).trigger "change"
+        mouseup: (e) =>
+          e.stopImmediatePropagation()
+          e.preventDefault()
 
-        return unless value?
+          @$label.trigger "mouseleave"
+      ###
 
-        $switchRight.removeClass "switch-#{cls}" if cls?
-        $switchRight.addClass "switch-#{value}"
-        $element
+    _form: ->
+      $form = @$element.closest "form"
 
-      setAnimated: (value) ->
-        $element = $(@)
-        $wrapper = $element.parents(".has-switch")
-        value ?= false
+      return if $form.data "bootstrap-switch"
 
-        $wrapper
-        .data("animated", value)
-        .attr("data-animated", value)[if $wrapper.data("animated") isnt false then "addClass" else "removeClass"]("switch-animate")
-        $element
+      $form
+      .data("bootstrap-switch", true)
+      .on "reset", ->
+        window.setTimeout(->
+          $form.find(".has-switch").each ->
+            $input = $(@).find("input")
+            $input.prop("checked", $input.is(":checked")).trigger "change"
+        , 1)
 
-      setSizeClass: (value) ->
-        $element = $(@)
-        $wrapper = $element.parents(".has-switch")
+  $.fn.extend bootstrapSwitch: (option, args...) ->
+    ret = @
+    @each ->
+      $this = $(@)
+      data = $this.data "bootstrap-switch"
 
-        $.each ["switch-mini", "switch-small", "switch-large"], (i, cls) ->
-          $wrapper[if cls isnt value then "removeClass" else "addClass"](cls)
-        $element
-
-      setTextLabel: (value) ->
-        $element = $(@)
-
-        $element.siblings("label").html value or "&nbsp"
-        $element
-
-      setTextIcon: (value) ->
-        $element = $(@)
-
-        $element.siblings("label").html(if value then "<i class=\"icon #{value}\"></i>" else "&nbsp;")
-        $element
-
-      state: ->
-        $(@).is ":checked"
-
-      destroy: ->
-        $element = $(@)
-        $div = $element.parent()
-        $form = $div.closest("form")
-
-        $div.children().not($element).remove()
-        $element.unwrap().unwrap().off "change"
-        $form.off("reset").removeData "bootstrap-switch" if $form.length
-        $element
-
-    return methods[method].apply(@, Array::slice.call(arguments, 1)) if methods[method]
-    return methods.init.apply(@, arguments) if typeof method is "object" or not method
-    $.error "Method " + method + " does not exist!"
-
-  @
-) jQuery
+      $this.data "bootstrap-switch", (data = new BootstrapSwitch @, option) if not data
+      ret = data[option].apply data, args if typeof option is "string"
+    ret
+  # $.fn.bootstrapSwitch.Constructor = BootstrapSwitch
+) window.jQuery, window

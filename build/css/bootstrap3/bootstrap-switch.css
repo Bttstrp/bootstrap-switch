@@ -48,14 +48,14 @@
 .has-switch.switch-mini {
   min-width: 72px;
 }
-.has-switch.switch-mini span,
-.has-switch.switch-mini label {
+.has-switch.switch-mini > div > span,
+.has-switch.switch-mini > div > label {
   padding-bottom: 4px;
   padding-top: 4px;
   font-size: 10px;
   line-height: 9px;
 }
-.has-switch.switch-mini i.switch-mini-icons {
+.has-switch.switch-mini .switch-mini-icons {
   height: 1.20em;
   line-height: 9px;
   vertical-align: text-top;
@@ -67,8 +67,8 @@
 .has-switch.switch-small {
   min-width: 80px;
 }
-.has-switch.switch-small span,
-.has-switch.switch-small label {
+.has-switch.switch-small > div > span,
+.has-switch.switch-small > div > label {
   padding-bottom: 3px;
   padding-top: 3px;
   font-size: 12px;
@@ -77,51 +77,46 @@
 .has-switch.switch-large {
   min-width: 120px;
 }
-.has-switch.switch-large span,
-.has-switch.switch-large label {
+.has-switch.switch-large > div > span,
+.has-switch.switch-large > div > label {
   padding-bottom: 9px;
   padding-top: 9px;
   font-size: 16px;
   line-height: normal;
 }
 .has-switch.switch-animate > div {
-  -webkit-transition: left 0.5s;
-  transition: left 0.5s;
+  -webkit-transition: margin-left 0.5s;
+  transition: margin-left 0.5s;
 }
 .has-switch.switch-off > div {
-  left: -50%;
+  margin-left: -50%;
 }
 .has-switch.switch-on > div {
-  left: 0%;
+  margin-left: 0%;
 }
 .has-switch.disabled {
   opacity: 0.5;
   filter: alpha(opacity=50);
   cursor: default !important;
 }
-.has-switch.disabled span,
-.has-switch.disabled label {
+.has-switch.disabled > div > span,
+.has-switch.disabled > div > label {
   cursor: default !important;
 }
 .has-switch > div {
   display: inline-block;
   width: 150%;
-  position: relative;
   top: 0;
+  border-radius: 3px;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-.has-switch input[type=radio],
-.has-switch input[type=checkbox] {
-  display: none;
-}
-.has-switch span,
-.has-switch label {
+.has-switch > div > span,
+.has-switch > div > label {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   cursor: pointer;
-  position: relative;
   display: inline-block !important;
   height: 100%;
   padding-bottom: 4px;
@@ -129,56 +124,55 @@
   font-size: 14px;
   line-height: 20px;
 }
-.has-switch label {
+.has-switch > div > span {
+  text-align: center;
+  z-index: 1;
+  width: 33.333333333%;
+}
+.has-switch > div > span.switch-left {
+  color: #f00;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.has-switch > div > span.switch-right {
+  color: #000;
+  background: #eeeeee;
+}
+.has-switch > div > span.switch-primary,
+.has-switch > div > span.switch-left {
+  color: #fff;
+  background: #428bca;
+}
+.has-switch > div > span.switch-info {
+  color: #fff;
+  background: #5bc0de;
+}
+.has-switch > div > span.switch-success {
+  color: #fff;
+  background: #5cb85c;
+}
+.has-switch > div > span.switch-warning {
+  background: #f0ad4e;
+  color: #fff;
+}
+.has-switch > div > span.switch-danger {
+  color: #fff;
+  background: #d9534f;
+}
+.has-switch > div > span.switch-default {
+  color: #000;
+  background: #eeeeee;
+}
+.has-switch > div > label {
   text-align: center;
   margin-top: -1px;
   margin-bottom: -1px;
   z-index: 100;
   width: 33.333333333%;
+  color: #333333;
   background: #ffffff;
 }
-.has-switch label i {
-  color: #000;
-  text-shadow: 0 1px 0 #fff;
-  line-height: 18px;
-  pointer-events: none;
-}
-.has-switch span {
-  text-align: center;
-  z-index: 1;
-  width: 33.333333333%;
-}
-.has-switch span.switch-left {
-  color: #f00;
-  border-bottom-left-radius: 4px;
-  border-top-left-radius: 4px;
-}
-.has-switch span.switch-right {
-  color: #000;
-  background: #eeeeee;
-}
-.has-switch span.switch-primary,
-.has-switch span.switch-left {
-  color: #fff;
-  background: #428bca;
-}
-.has-switch span.switch-info {
-  color: #fff;
-  background: #5bc0de;
-}
-.has-switch span.switch-success {
-  color: #fff;
-  background: #5cb85c;
-}
-.has-switch span.switch-warning {
-  background: #f0ad4e;
-  color: #fff;
-}
-.has-switch span.switch-danger {
-  color: #fff;
-  background: #d9534f;
-}
-.has-switch span.switch-default {
-  color: #000;
-  background: #eeeeee;
+.has-switch input[type=radio],
+.has-switch input[type=checkbox] {
+  display: none;
 }

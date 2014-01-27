@@ -44,8 +44,8 @@ module.exports = (grunt) ->
     less:
       build:
         files:
-          "build/css/bootstrap2/bootstrap-switch.css": "src/less/bootstrap2/bootstrap-switch.less"
-          "build/css/bootstrap3/bootstrap-switch.css": "src/less/bootstrap3/bootstrap-switch.less"
+          "build/css/bootstrap2/bootstrap-switch.css": "src/less/bootstrap2/build.less"
+          "build/css/bootstrap3/bootstrap-switch.css": "src/less/bootstrap3/build.less"
 
     cssmin:
       build:

@@ -1,6 +1,3 @@
-@import "variables";
-@import "mixins";
-
 .has-switch {
   display: inline-block;
   cursor: pointer;
@@ -20,15 +17,15 @@
   &.switch-mini {
     min-width: 72px;
 
-    span,
-    label {
+    > div > span,
+    > div > label {
       padding-bottom: 4px;
       padding-top: 4px;
       font-size: 10px;
       line-height: 9px;
     }
 
-    i.switch-mini-icons {
+    .switch-mini-icons {
       height: 1.20em;
       line-height: 9px;
       vertical-align: text-top;
@@ -42,8 +39,8 @@
   &.switch-small {
     min-width: 80px;
 
-    span,
-    label {
+    > div > span,
+    > div > label {
       padding-bottom: 3px;
       padding-top: 3px;
       font-size: 12px;
@@ -54,8 +51,8 @@
   &.switch-large {
     min-width: 120px;
 
-    span,
-    label {
+    > div > span,
+    > div > label {
       padding-bottom: 9px;
       padding-top: 9px;
       font-size: 16px;
@@ -66,21 +63,21 @@
   &.switch-animate {
 
     > div {
-      .transition(left 0.5s);
+      .transition(margin-left 0.5s);
     }
   }
 
   &.switch-off {
 
     > div {
-      left: -50%;
+      margin-left: -50%;
     }
   }
 
   &.switch-on {
 
     > div {
-      left: 0%;
+      margin-left: 0%;
     }
   }
 
@@ -88,8 +85,8 @@
     .opacity(.5);
     cursor: default !important;
 
-    span,
-    label {
+    > div > span,
+    > div > label {
       cursor: default !important;
     }
   }
@@ -97,89 +94,84 @@
   > div {
     display: inline-block;
     width: 150%;
-    position: relative;
+    // position: relative;
     top: 0;
+    border-radius: @border-radius-base - 1;
     .translate3d(0, 0, 0);
+
+    > span,
+    > label {
+      .box-sizing(border-box);
+      cursor: pointer;
+      // position: relative;
+      display: inline-block !important;
+      height: 100%;
+      padding-bottom: 4px;
+      padding-top: 4px;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    > span {
+      text-align: center;
+      z-index: 1;
+      width: 33.333333333%;
+
+      &.switch-left {
+        color: #f00;
+        .border-left-radius(@border-radius-base - 1);
+      }
+
+      &.switch-right {
+        color: #000;
+        background: @gray-lighter;
+      }
+
+      &.switch-primary,
+      &.switch-left {
+        color: #fff;
+        background: @btn-primary-bg;
+      }
+
+      &.switch-info {
+        color: #fff;
+        background: @btn-info-bg;
+      }
+
+      &.switch-success {
+        color: #fff;
+        background: @btn-success-bg;
+      }
+
+      &.switch-warning {
+        background: @btn-warning-bg;
+        color: #fff;
+      }
+
+      &.switch-danger {
+        color: #fff;
+        background: @btn-danger-bg;
+      }
+
+      &.switch-default {
+        color: #000;
+        background: @gray-lighter;
+      }
+    }
+
+    > label {
+      text-align: center;
+      margin-top: -1px;
+      margin-bottom: -1px;
+      z-index: 100;
+      width: 33.333333333%;
+      color: @btn-default-color;
+      background: @btn-default-bg;
+    }
   }
 
   input[type=radio],
   input[type=checkbox] {
     display: none;
-  }
-
-  span,
-  label {
-    .box-sizing(border-box);
-    cursor: pointer;
-    position: relative;
-    display: inline-block !important;
-    height: 100%;
-    padding-bottom: 4px;
-    padding-top: 4px;
-    font-size: 14px;
-    line-height: 20px;
-  }
-
-  label {
-    text-align: center;
-    margin-top: -1px;
-    margin-bottom: -1px;
-    z-index: 100;
-    width: 33.333333333%;
-    background: @btn-default-bg;
-
-    i {
-      color: #000;
-      text-shadow: 0 1px 0 #fff;
-      line-height: 18px;
-      pointer-events: none;
-    }
-  }
-
-  span {
-    text-align: center;
-    z-index: 1;
-    width: 33.333333333%;
-
-    &.switch-left {
-      color: #f00;
-      .border-left-radius(@border-radius-base);
-    }
-
-    &.switch-right {
-      color: #000;
-      background: @gray-lighter;
-    }
-
-    &.switch-primary,
-    &.switch-left {
-      color: #fff;
-      background: @btn-primary-bg;
-    }
-
-    &.switch-info {
-      color: #fff;
-      background: @btn-info-bg;
-    }
-
-    &.switch-success {
-      color: #fff;
-      background: @btn-success-bg;
-    }
-
-    &.switch-warning {
-      background: @btn-warning-bg;
-      color: #fff;
-    }
-
-    &.switch-danger {
-      color: #fff;
-      background: @btn-danger-bg;
-    }
-
-    &.switch-default {
-      color: #000;
-      background: @gray-lighter;
-    }
   }
 }

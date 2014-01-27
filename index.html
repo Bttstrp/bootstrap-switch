@@ -7,11 +7,11 @@
     <meta name="author" content="Mattia Larentis">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="docs/vendor/bootstrap.min.css" />
-    <!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"> -->
-    <!-- <link rel="stylesheet" href="http://bdmdesign.github.io/bootstrap-switch/static/stylesheets/flat-ui-fonts.css"> -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://bdmdesign.github.io/bootstrap-switch/static/stylesheets/flat-ui-fonts.css">
+    <link rel="stylesheet" href="build/css/bootstrap3/bootstrap-switch.css" />
     <link rel="stylesheet" href="docs/vendor/prism.css">
-    <link rel="stylesheet" href="build/css/bootstrap3/bootstrap-switch.min.css" />
     <link rel="stylesheet" href="docs/index.css">
     <script>
     var _gaq = _gaq || [];
@@ -51,9 +51,9 @@
     <div class="container">
     <div class="row">
       <div class="col-sm-10 col-sm-offset-1">
-        <section name="size">
+        <section id="sizes">
           <div class="page-header">
-            <h2>Sizes</h2>
+            <h2><a href="#sizes">Sizes</a></h2>
           </div>
           <input type="checkbox" checked class="switch-large">
           <input type="checkbox" checked>
@@ -76,46 +76,46 @@
 &lt;input type="checkbox" checked class="switch-mini">
 &lt;input id="dimension-switch" type="checkbox" checked></code></pre>
           <pre class="language-javascript"><code>// Resets to the regular style
-$('#dimension-switch').bootstrapSwitch('setSizeClass', '');
+$('#dimension-switch').bootstrapSwitch('size', '');
 
 // Sets a mini switch
-$('#dimension-switch').bootstrapSwitch('setSizeClass', 'switch-mini');
+$('#dimension-switch').bootstrapSwitch('size', 'mini');
 
 // Sets a small switch
-$('#dimension-switch').bootstrapSwitch('setSizeClass', 'switch-small');
+$('#dimension-switch').bootstrapSwitch('size', 'small');
 
 // Sets a large switch
-$('#dimension-switch').bootstrapSwitch('setSizeClass', 'switch-large');</code></pre>
+$('#dimension-switch').bootstrapSwitch('size', 'large');</code></pre>
         </section>
-        <section name="colors">
+        <section id="colors">
           <div class="page-header">
             <h2><a href="#colors">Colors</a></h2>
           </div>
-          <input type="checkbox" checked data-on="primary" data-off="info">
-          <input type="checkbox" checked data-on="info" data-off="success">
-          <input type="checkbox" checked data-on="success" data-off="warning">
-          <input type="checkbox" checked data-on="warning" data-off="danger">
-          <input type="checkbox" checked data-on="danger" data-off="default">
-          <input type="checkbox" checked data-on="default" data-off="primary">
+          <input type="checkbox" checked data-on-color="primary" data-off-color="info">
+          <input type="checkbox" checked data-on-color="info" data-off-color="success">
+          <input type="checkbox" checked data-on-color="success" data-off-color="warning">
+          <input type="checkbox" checked data-on-color="warning" data-off-color="danger">
+          <input type="checkbox" checked data-on-color="danger" data-off-color="default">
+          <input type="checkbox" checked data-on-color="default" data-off-color="primary">
           <br>
           <br>
           <span>Change the colors programmatically:</span>
-          <input type="checkbox" id="change-color-switch" checked data-on="default" data-off="primary">
+          <input type="checkbox" id="change-color-switch" checked data-on-color="default" data-off-color="primary">
           <br>
           <br>
           <button id="btn-color-on-switch" class="btn btn-success">Change ON color</button>
           <button id="btn-color-off-switch" class="btn btn-danger">Change OFF color</button>
-          <pre class="language-markup"><code>&lt;input type="checkbox" checked data-on="primary" data-off="info">
-&lt;input type="checkbox" checked data-on="info" data-off="success">
-&lt;input type="checkbox" checked data-on="success" data-off="warning">
-&lt;input type="checkbox" checked data-on="warning" data-off="danger">
-&lt;input type="checkbox" checked data-on="danger" data-off="default">
-&lt;input type="checkbox" checked data-on="default" data-off="primary">
-&lt;input type="checkbox" id="change-color-switch" checked data-on="default" data-off="primary"></code></pre>
-          <pre class="language-javascript"><code>$('#change-color-switch').bootstrapSwitch('setOnClass', 'success');
-$('#change-color-switch').bootstrapSwitch('setOffClass', 'danger');</code></pre>
+          <pre class="language-markup"><code>&lt;input type="checkbox" checked data-on-color="primary" data-off-color="info">
+&lt;input type="checkbox" checked data-on-color="info" data-off-color="success">
+&lt;input type="checkbox" checked data-on-color="success" data-off-color="warning">
+&lt;input type="checkbox" checked data-on-color="warning" data-off-color="danger">
+&lt;input type="checkbox" checked data-on-color="danger" data-off-color="default">
+&lt;input type="checkbox" checked data-on-color="default" data-off-color="primary">
+&lt;input type="checkbox" id="change-color-switch" checked data-on-color="default" data-off-color="primary"></code></pre>
+          <pre class="language-javascript"><code>$('#change-color-switch').bootstrapSwitch('onColor', 'success');
+$('#change-color-switch').bootstrapSwitch('offColor', 'danger');</code></pre>
         </section>
-        <section name="animation">
+        <section id="animation">
           <div class="page-header">
             <h2><a name="animation" class="anchor" href="#animation">Animation <small>JavaScript</small></a></h2>
           </div>
@@ -124,14 +124,14 @@ $('#change-color-switch').bootstrapSwitch('setOffClass', 'danger');</code></pre>
           <br>
           <button id="btn-animate-switch" class="btn btn-default">Animate</button>
           <button id="btn-dont-animate-switch" class="btn btn-default">Don't animate</button>
-          <pre class="language-markup"><code>&lt;input type="checkbox" checked data-animated="false"></code></pre>
+          <pre class="language-markup"><code>&lt;input type="checkbox" checked data-animate="false"></code></pre>
           <pre class="language-javascript"><code>// Enables animation for the selected item
-$('#animated-switch').bootstrapSwitch('setAnimated', true);
+$('#animated-switch').bootstrapSwitch('animate', true);
 
 // Disables animation for the selected item
-$('#animated-switch').bootstrapSwitch('setAnimated', false);</code></pre>
+$('#animated-switch').bootstrapSwitch('animate', false);</code></pre>
         </section>
-        <section name="disabled">
+        <section id="disabled">
           <div class="page-header">
             <h2><a name="disabled" class="anchor" href="#disabled">Disabled / Readonly</a></h2>
           </div>
@@ -140,44 +140,41 @@ $('#animated-switch').bootstrapSwitch('setAnimated', false);</code></pre>
           <pre class="language-markup"><code>&lt;input type="checkbox" checked disabled>
 &lt;input type="checkbox" checked readonly></code></pre>
         </section>
-        <section name="text">
+        <section id="text">
           <div class="page-header">
             <h2><a name="text" class="anchor" href="#text">Text</a></h2>
           </div>
-          <input type="checkbox" id="label-switch" checked data-on-label="SI" data-off-label="NO">
+          <input type="checkbox" id="label-switch" checked data-on-text="SI" data-off-text="NO">
           <br>
           <br>
           <button id="btn-label-on-switch" class="btn btn-default">Change "On" label</button>
           <button id="btn-label-off-switch" class="btn btn-default">Change "Off" label</button>
-          <pre class="language-markup"><code>&lt;input type="checkbox" checked data-on-label="SI" data-off-label="NO"></code></pre>
-          <pre class="language-javascript"><code>$('#label-switch').bootstrapSwitch('setOnLabel', 'I');
-$('#label-switch').bootstrapSwitch('setOffLabel', 'O');</code></pre>
+          <pre class="language-markup"><code>&lt;input type="checkbox" checked data-on-text="SI" data-off-text="NO"></code></pre>
+          <pre class="language-javascript"><code>$('#label-switch').bootstrapSwitch('onText', 'I');
+$('#label-switch').bootstrapSwitch('offText', 'O');</code></pre>
         </section>
+        <section id="label-text">
           <div class="page-header">
-            <h2><a name="label-text" class="anchor" href="#label-text">Label Text</a></h2>
+            <h2><a href="#label-text">Label Text</a></h2>
           </div>
-          <div class="bs-docs-example">
-            <input type="checkbox" checked data-text-label="TV">
-          </div>
-          <pre class="language-markup"><code>&lt;input type="checkbox" checked data-text-label="TV"></code></pre>
-         <div class="page-header">
-           <h2><a name="html-text" class="anchor" href="#html-text">HTML Text</a></h2>
-          </div>
-          <div class="bs-docs-example">
-            <input type="checkbox" checked data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>">
-          </div>
-          <pre class="language-markup"><code>&lt;input type="checkbox" checked data-on-label="&lt;i class='icon-ok icon-white'>&lt;/i>" data-off-label="&lt;i class='icon-remove'>&lt;/i>"></code></pre>
+          <input type="checkbox" checked data-label-text="TV">
+          <pre class="language-markup"><code>&lt;input type="checkbox" checked data-label-text="TV"></code></pre>
+        </section>
+        <section id="icon-label-text">
           <div class="page-header">
-            <h2><a name="html-text-label-icon" class="anchor" href="#html-text-label-icon">HTML Text Label Icon</a></h2>
+            <h2><a name="icon-label-text" class="anchor" href="#html-text-label-icon">Icon Label Text</a></h2>
           </div>
-          <div class="bs-docs-example">
-            Standard <input type="checkbox" checked class="switch-large" data-label-icon="icon-fullscreen" data-on-label="<i class='icon-ok icon-white'></i>" data-off-label="<i class='icon-remove'></i>"> &nbsp;&nbsp;
-            Font Awesome <input type="checkbox" checked class="switch-large" data-label-icon="icon-youtube icon-large" data-on-label="<i class='icon-thumbs-up icon-white'></i>" data-off-label="<i class='icon-thumbs-down'></i>"> &nbsp;&nbsp;
-            Flat UI <input type="checkbox" class="switch-large" checked data-label-icon="fui-video" data-on-label="<i class='fui-check icon-white'></i>" data-off-label="<i class='fui-cross'></i>">
-          </div>
-          <pre class="language-markup"><code>&lt;input type="checkbox" checked class="switch-large" data-label-icon="icon-fullscreen" data-on-label="&lt;i class='icon-ok icon-white'>&lt;/i>" data-off-label="&lt;i class='icon-remove'>&lt;/i>">
-&lt;input type="checkbox" checked class="switch-large" data-label-icon="icon-youtube icon-large" data-on-label="&lt;i class='icon-thumbs-up icon-white'>&lt;/i>" data-off-label="&lt;i class='icon-thumbs-down'>&lt;/i>">
-&lt;input type="checkbox" class="switch-large" checked data-label-icon="fui-video" data-on-label="&lt;i class='fui-check icon-white'>&lt;/i>" data-off-label="&lt;i class='fui-cross'>&lt;/i>"></code></pre>
+
+          Standard <input type="checkbox" checked class="switch-large" data-label-text="<span class='glyphicon glyphicon-fullscreen'></span>" data-on-text="<span class='glyphicon glyphicon-ok'></span>" data-off-text="<span class='glyphicon glyphicon-remove'></span>"> &nbsp;&nbsp;
+
+          Font Awesome <input type="checkbox" checked class="switch-large" data-label-text="<span class='fa fa-youtube fa-lg'></span>" data-on-text="<span class='fa fa-thumbs-up fa-lg'></span>" data-off-text="<span class='fa fa-thumbs-down fa-lg'></span>"> &nbsp;&nbsp;
+
+          Flat UI <input type="checkbox" class="switch-large" checked data-label-text="<span class='fui-video'></span>" data-on-text="<span class='fui-check'></span>" data-off-text="<span class='fui-cross'></span>">
+
+          <pre class="language-markup"><code>&lt;input type="checkbox" checked class="switch-large" data-label-text="&lt;span class='glyphicon glyphicon-fullscreen'>&lt;/span>" data-on-text="&lt;span class='glyphicon glyphicon-ok'>&lt;/span>" data-off-text="&lt;span class='glyphicon glyphicon-remove'>&lt;/span>">
+&lt;input type="checkbox" checked class="switch-large" data-label-text="&lt;span class='fa fa-youtube fa-lg'>&lt;/span>" data-on-text="&lt;span class='fa fa-thumbs-up fa-lg'>&lt;/span>" data-off-text="&lt;span class='fa fa-thumbs-down fa-lg'>&lt;/span>">
+&lt;input type="checkbox" class="switch-large" checked data-label-text="&lt;span class='fui-video'>&lt;/span>" data-on-text="&lt;span class='fui-check'>&lt;/span>" data-off-text="&lt;span class='fui-cross'>&lt;/span>"></code></pre>
+        </section>
           <div class="page-header">
             <h2><a name="event-handler-javascript" class="anchor" href="#event-handler-javascript">Event Handler <small>JavaScript</small></a></h2>
           </div>
@@ -219,7 +216,7 @@ $('.label-toggle-switch').on('switch-change', function (e, data) {
           </div>
           <pre class="language-javascript"><code>$('#toggle-state-switch').bootstrapSwitch('state'); // true || false
 $('#toggle-state-switch').bootstrapSwitch('toggleState');
-$('#toggle-state-switch').bootstrapSwitch('setState', false); // true || false</code></pre>
+$('#toggle-state-switch').bootstrapSwitch('state', false); // true || false</code></pre>
           <div class="page-header">
             <h2><a name="destroy" class="anchor" href="#destroy">Destroy <small>JavaScript</small></a></h2>
           </div>
@@ -230,16 +227,6 @@ $('#toggle-state-switch').bootstrapSwitch('setState', false); // true || false</
             <button id="btn-destroy-switch" class="btn btn-default">Destroy me!</button>
           </div>
           <pre class="language-javascript"><code>$('#destroy-switch').bootstrapSwitch('destroy');</code></pre>
-          <div class="page-header">
-            <h2><a name="create" class="anchor" href="#create">Create <small>JavaScript</small></a></h2>
-          </div>
-          <div class="bs-docs-example">
-            <input id="create-switch" type="checkbox" checked>
-            <br>
-            <br>
-            <div id="btn-create" class="btn btn-default">Create</div>
-          </div>
-          <pre class="language-javascript"><code>$('#create-switch').bootstrapSwitch();</code></pre>
           <div class="page-header">
             <h2><a name="disabled-javascript" class="anchor" href="#disabled-javascript">Disable / Readonly <small>JavaScript</small></a></h2>
           </div>
@@ -293,16 +280,6 @@ $('#readonly-switch').bootstrapSwitch('setReadOnly', true);  // true || false</c
 &lt;/div></code></pre>
           <pre class="language-javascript"><code>$('.radio1').on('switch-change', function () {
     $('.radio1').bootstrapSwitch('toggleRadioState');
-});
-
-// or
-$('.radio1').on('switch-change', function () {
-    $('.radio1').bootstrapSwitch('toggleRadioStateAllowUncheck');
-});
-
-// or
-$('.radio1').on('switch-change', function () {
-    $('.radio1').bootstrapSwitch('toggleRadioStateAllowUncheck', false);
 });</code></pre>
           <div class="page-header">
             <h2><a name="radio-javascript-allow-uncheck" class="anchor" href="#radio-javascript-allow-uncheck">Radio + uncheck <small>JavaScript</small></a></h2>
@@ -326,7 +303,7 @@ $('.radio1').on('switch-change', function () {
   &lt;input id="option13" type="radio" name="radio2" value="option3">
 &lt;/div></code></pre>
           <pre class="language-javascript"><code>$('.radio2').on('switch-change', function () {
-    $('.radio2').bootstrapSwitch('toggleRadioStateAllowUncheck', true);
+    $('.radio2').bootstrapSwitch('toggleRadioState', true);
 });</code></pre>
           <div class="page-header">
             <h2><a name="form" class="anchor" href="#form">Form</a></h2>
@@ -401,9 +378,9 @@ $('.radio1').on('switch-change', function () {
       </div>
     </div>
   </div>
-  <script src="docs/vendor/jquery.js"></script>
-  <script src="docs/vendor/bootstrap.min.js"></script>
-  <script src="build/js/bootstrap-switch.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  <script src="build/js/bootstrap-switch.js"></script>
   <script src="docs/vendor/prism.js"></script>
   <script src="docs/index.js"></script>
   </body>
