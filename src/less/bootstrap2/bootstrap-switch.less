@@ -1,4 +1,4 @@
-.has-switch {
+.switch {
   display: inline-block;
   cursor: pointer;
   .border-radius(5px);
@@ -80,7 +80,8 @@
     }
   }
 
-  &.disabled {
+  &.switch-disabled,
+  &.switch-readonly {
     .opacity(50);
     cursor: default !important;
 
@@ -120,16 +121,15 @@
       z-index: 1;
       width: 33%;
 
-      &.switch-left {
+      &.switch-handle-on {
         .border-top-left-radius(4px);
       }
 
-      &.switch-right {
+      &.switch-handle-off {
         .buttonBackground(@btnBackgroundHighlight, @btnBackground, @grayDark, 0 1px 1px rgba(255,255,255,.75));
       }
 
-      &.switch-primary,
-      &.switch-left {
+      &.switch-primary {
         .buttonBackground(@btnPrimaryBackgroundHighlight, @btnPrimaryBackground);
       }
 

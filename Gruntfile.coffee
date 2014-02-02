@@ -28,11 +28,17 @@ module.exports = (grunt) ->
       build: ["Gruntfile.coffee", "src/**/*.coffee"]
 
     coffee:
-      build:
+      default:
         expand: true
         cwd: "src/coffee"
         src: "**/*.coffee"
         dest: "build/js"
+        ext: ".js"
+      test:
+        expand: true
+        cwd: "src/test"
+        src: "**/*.coffee"
+        dest: "test/"
         ext: ".js"
 
     uglify:
@@ -86,8 +92,9 @@ module.exports = (grunt) ->
       all: ["*.json"]
 
     clean:
-      css: ["build/css"]
-      js: ["build/js"]
+      css: "build/css"
+      js: "build/js"
+      test: "test"
 
     connect:
       go:
@@ -104,6 +111,13 @@ module.exports = (grunt) ->
         commitFiles: ["-a"]
         push: false
 
+    jasmine:
+      options:
+        keepRunner: true
+        specs: "test/**/*.js"
+        vendor: ["docs/vendor/jquery.min.js", "docs/vendor/bootstrap.min.js"]
+      src: "build/js/bootstrap-switch.js"
+
     watch:
       coffee:
         files: ["src/**/*.coffee"]
@@ -113,4 +127,5 @@ module.exports = (grunt) ->
         tasks: ["clean:css", "less", "cssmin", "usebanner:css"]
 
   grunt.registerTask "go", ["build", "connect", "open", "watch"]
-  grunt.registerTask "build", ["clean", "coffeelint", "coffee", "uglify", "usebanner:js", "less", "cssmin", "usebanner:css"]
+  grunt.registerTask "build", ["clean", "coffeelint", "coffee", "uglify", "less", "cssmin", "usebanner"]
+  grunt.registerTask "test", ["build", "jasmine"]

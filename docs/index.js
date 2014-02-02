@@ -59,16 +59,16 @@ $(function() {
   // readonly
   var $readonly = $('#readonly-switch');
   $('#btn-readonly-is').on('click', function () {
-    alert($readonly.bootstrapSwitch('readOnly'));
+    alert($readonly.bootstrapSwitch('readonly'));
   });
   $('#btn-readonly-toggle').on('click', function () {
-    $readonly.bootstrapSwitch('toggleReadOnly');
+    $readonly.bootstrapSwitch('toggleReadonly');
   });
   $('#btn-readonly-set').on('click', function () {
-    $readonly.bootstrapSwitch('readOnly', true);
+    $readonly.bootstrapSwitch('readonly', true);
   });
   $('#btn-readonly-remove').on('click', function () {
-    $readonly.bootstrapSwitch('readOnly', false);
+    $readonly.bootstrapSwitch('readonly', false);
   });
 
   // label
@@ -87,7 +87,7 @@ $(function() {
   });
 
   // event handler
-  $('#switch-change').on('switch-change', function (e, data) {
+  $('#switch-change').on('switchChange', function (e, data) {
     var $element = $(data.el),
       value = data.value;
 

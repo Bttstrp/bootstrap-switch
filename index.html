@@ -55,10 +55,10 @@
           <div class="page-header">
             <h2><a href="#sizes">Sizes</a></h2>
           </div>
-          <input type="checkbox" checked class="switch-large">
+          <input type="checkbox" checked data-size="large">
           <input type="checkbox" checked>
-          <input type="checkbox" checked class="switch-small">
-          <input type="checkbox" checked class="switch-mini">
+          <input type="checkbox" checked data-size="small">
+          <input type="checkbox" checked data-size="mini">
           <br>
           <br>
           <p>Change the size programmatically:</p>
@@ -70,10 +70,10 @@
           <button id="btn-size-small-switch" class="btn btn-default">Small</button>
           <button id="btn-size-mini-switch" class="btn btn-default">Mini</button>
           <br>
-          <pre class="language-markup"><code>&lt;input type="checkbox" checked class="switch-large">
+          <pre class="language-markup"><code>&lt;input type="checkbox" checked data-size="large">
 &lt;input type="checkbox" checked>
-&lt;input type="checkbox" checked class="switch-small">
-&lt;input type="checkbox" checked class="switch-mini">
+&lt;input type="checkbox" checked data-size="small">
+&lt;input type="checkbox" checked data-size="mini">
 &lt;input id="dimension-switch" type="checkbox" checked></code></pre>
           <pre class="language-javascript"><code>// Resets to the regular style
 $('#dimension-switch').bootstrapSwitch('size', '');
@@ -165,15 +165,15 @@ $('#label-switch').bootstrapSwitch('offText', 'O');</code></pre>
             <h2><a name="icon-label-text" class="anchor" href="#html-text-label-icon">Icon Label Text</a></h2>
           </div>
 
-          Standard <input type="checkbox" checked class="switch-large" data-label-text="<span class='glyphicon glyphicon-fullscreen'></span>" data-on-text="<span class='glyphicon glyphicon-ok'></span>" data-off-text="<span class='glyphicon glyphicon-remove'></span>"> &nbsp;&nbsp;
+          Standard <input type="checkbox" checked data-size="large" data-label-text="<span class='glyphicon glyphicon-fullscreen'></span>" data-on-text="<span class='glyphicon glyphicon-ok'></span>" data-off-text="<span class='glyphicon glyphicon-remove'></span>"> &nbsp;&nbsp;
 
-          Font Awesome <input type="checkbox" checked class="switch-large" data-label-text="<span class='fa fa-youtube fa-lg'></span>" data-on-text="<span class='fa fa-thumbs-up fa-lg'></span>" data-off-text="<span class='fa fa-thumbs-down fa-lg'></span>"> &nbsp;&nbsp;
+          Font Awesome <input type="checkbox" checked data-size="large" data-label-text="<span class='fa fa-youtube fa-lg'></span>" data-on-text="<span class='fa fa-thumbs-up fa-lg'></span>" data-off-text="<span class='fa fa-thumbs-down fa-lg'></span>"> &nbsp;&nbsp;
 
-          Flat UI <input type="checkbox" class="switch-large" checked data-label-text="<span class='fui-video'></span>" data-on-text="<span class='fui-check'></span>" data-off-text="<span class='fui-cross'></span>">
+          Flat UI <input type="checkbox" data-size="large" checked data-label-text="<span class='fui-video'></span>" data-on-text="<span class='fui-check'></span>" data-off-text="<span class='fui-cross'></span>">
 
-          <pre class="language-markup"><code>&lt;input type="checkbox" checked class="switch-large" data-label-text="&lt;span class='glyphicon glyphicon-fullscreen'>&lt;/span>" data-on-text="&lt;span class='glyphicon glyphicon-ok'>&lt;/span>" data-off-text="&lt;span class='glyphicon glyphicon-remove'>&lt;/span>">
-&lt;input type="checkbox" checked class="switch-large" data-label-text="&lt;span class='fa fa-youtube fa-lg'>&lt;/span>" data-on-text="&lt;span class='fa fa-thumbs-up fa-lg'>&lt;/span>" data-off-text="&lt;span class='fa fa-thumbs-down fa-lg'>&lt;/span>">
-&lt;input type="checkbox" class="switch-large" checked data-label-text="&lt;span class='fui-video'>&lt;/span>" data-on-text="&lt;span class='fui-check'>&lt;/span>" data-off-text="&lt;span class='fui-cross'>&lt;/span>"></code></pre>
+          <pre class="language-markup"><code>&lt;input type="checkbox" checked data-size="large" data-label-text="&lt;span class='glyphicon glyphicon-fullscreen'>&lt;/span>" data-on-text="&lt;span class='glyphicon glyphicon-ok'>&lt;/span>" data-off-text="&lt;span class='glyphicon glyphicon-remove'>&lt;/span>">
+&lt;input type="checkbox" checked data-size="large" data-label-text="&lt;span class='fa fa-youtube fa-lg'>&lt;/span>" data-on-text="&lt;span class='fa fa-thumbs-up fa-lg'>&lt;/span>" data-off-text="&lt;span class='fa fa-thumbs-down fa-lg'>&lt;/span>">
+&lt;input type="checkbox" data-size="large" checked data-label-text="&lt;span class='fui-video'>&lt;/span>" data-on-text="&lt;span class='fui-check'>&lt;/span>" data-off-text="&lt;span class='fui-cross'>&lt;/span>"></code></pre>
         </section>
           <div class="page-header">
             <h2><a name="event-handler-javascript" class="anchor" href="#event-handler-javascript">Event Handler <small>JavaScript</small></a></h2>
@@ -181,7 +181,7 @@ $('#label-switch').bootstrapSwitch('offText', 'O');</code></pre>
           <div class="bs-docs-example">
             <input type="checkbox" id="switch-change" checked>
           </div>
-          <pre class="language-javascript"><code>$('#switch-change').on('switch-change', function (e, data) {
+          <pre class="language-javascript"><code>$('#switch-change').on('switchChange', function (e, data) {
   var $element = $(data.el),
       value = data.value;
 
@@ -250,13 +250,13 @@ $('#toggle-state-switch').bootstrapSwitch('state', false); // true || false</cod
             <button id="btn-readonly-set" class="btn btn-default">Set readonly</button>
             <button id="btn-readonly-remove" class="btn btn-default">Remove readonly</button>
           </div>
-          <pre class="language-javascript"><code>$('#disable-switch').bootstrapSwitch('isDisabled');
+          <pre class="language-javascript"><code>$('#disable-switch').bootstrapSwitch('disabled');
 $('#disable-switch').bootstrapSwitch('toggleDisabled');
-$('#disable-switch').bootstrapSwitch('setDisabled', true);  // true || false
+$('#disable-switch').bootstrapSwitch('disabled', true);  // true || false
 
-$('#readonly-switch').bootstrapSwitch('isReadOnly');
-$('#readonly-switch').bootstrapSwitch('toggleReadOnly');
-$('#readonly-switch').bootstrapSwitch('setReadOnly', true);  // true || false</code></pre>
+$('#readonly-switch').bootstrapSwitch('readonly');
+$('#readonly-switch').bootstrapSwitch('toggleReadonly');
+$('#readonly-switch').bootstrapSwitch('readonly', true);  // true || false</code></pre>
           <div class="page-header">
             <h2><a name="radio-javascript" class="anchor" href="#radio-javascript">Radio <small>JavaScript</small></a></h2>
           </div>
@@ -278,9 +278,6 @@ $('#readonly-switch').bootstrapSwitch('setReadOnly', true);  // true || false</c
   &lt;label for="option3">Option 3&lt;/label>
   &lt;input id="option3" type="radio" name="radio1" value="option3">
 &lt;/div></code></pre>
-          <pre class="language-javascript"><code>$('.radio1').on('switch-change', function () {
-    $('.radio1').bootstrapSwitch('toggleRadioState');
-});</code></pre>
           <div class="page-header">
             <h2><a name="radio-javascript-allow-uncheck" class="anchor" href="#radio-javascript-allow-uncheck">Radio + uncheck <small>JavaScript</small></a></h2>
           </div>
@@ -302,9 +299,6 @@ $('#readonly-switch').bootstrapSwitch('setReadOnly', true);  // true || false</c
   &lt;label for="option13">Option 3&lt;/label>
   &lt;input id="option13" type="radio" name="radio2" value="option3">
 &lt;/div></code></pre>
-          <pre class="language-javascript"><code>$('.radio2').on('switch-change', function () {
-    $('.radio2').bootstrapSwitch('toggleRadioState', true);
-});</code></pre>
           <div class="page-header">
             <h2><a name="form" class="anchor" href="#form">Form</a></h2>
           </div>
