@@ -115,11 +115,27 @@
   -o-transition: margin-left 0.5s;
   transition: margin-left 0.5s;
 }
+.switch.switch-on > div {
+  margin-left: 0%;
+}
+.switch.switch-on > div > label {
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  border-bottom-right-radius: 4px;
+}
 .switch.switch-off > div {
   margin-left: -50%;
 }
-.switch.switch-on > div {
-  margin-left: 0%;
+.switch.switch-off > div > label {
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  border-bottom-left-radius: 4px;
 }
 .switch.switch-disabled,
 .switch.switch-readonly {
@@ -143,16 +159,15 @@
 }
 .switch > div {
   display: inline-block;
-  position: relative;
   width: 150%;
   top: 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
 }
 .switch > div > span,
 .switch > div > label {
@@ -176,37 +191,17 @@
   -webkit-border-top-left-radius: 4px;
   -moz-border-radius-topleft: 4px;
   border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  border-bottom-left-radius: 4px;
 }
 .switch > div > span.switch-handle-off {
-  color: #333333;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  background-color: #f0f0f0;
-  background-image: -moz-linear-gradient(top, #e6e6e6, #ffffff);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e6e6e6), to(#ffffff));
-  background-image: -webkit-linear-gradient(top, #e6e6e6, #ffffff);
-  background-image: -o-linear-gradient(top, #e6e6e6, #ffffff);
-  background-image: linear-gradient(to bottom, #e6e6e6, #ffffff);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe6e6e6', endColorstr='#ffffffff', GradientType=0);
-  border-color: #ffffff #ffffff #d9d9d9;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #ffffff;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-}
-.switch > div > span.switch-handle-off:hover,
-.switch > div > span.switch-handle-off:focus,
-.switch > div > span.switch-handle-off:active,
-.switch > div > span.switch-handle-off.active,
-.switch > div > span.switch-handle-off.disabled,
-.switch > div > span.switch-handle-off[disabled] {
-  color: #333333;
-  background-color: #ffffff;
-  *background-color: #f2f2f2;
-}
-.switch > div > span.switch-handle-off:active,
-.switch > div > span.switch-handle-off.active {
-  background-color: #e6e6e6 \9;
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  border-bottom-right-radius: 4px;
 }
 .switch > div > span.switch-primary {
   color: #ffffff;
@@ -432,8 +427,8 @@
 .switch > div > label.active {
   background-color: #cccccc \9;
 }
-.switch input[type=radio],
-.switch input[type=checkbox] {
+.switch input[type='radio'],
+.switch input[type='checkbox'] {
   position: absolute !important;
   top: 0;
   left: 0;

@@ -66,17 +66,25 @@
     }
   }
 
-  &.switch-off {
-
-    > div {
-      margin-left: -50%;
-    }
-  }
-
   &.switch-on {
 
     > div {
       margin-left: 0%;
+
+      > label {
+        .border-right-radius(4px);
+      }
+    }
+  }
+
+  &.switch-off {
+
+    > div {
+      margin-left: -50%;
+
+      > label {
+        .border-left-radius(4px);
+      }
     }
   }
 
@@ -100,11 +108,10 @@
 
   > div {
     display: inline-block;
-    position: relative;
     width: 150%;
     top: 0;
-    .translate3d(0, 0, 0);
     .border-radius(4px);
+    .translate3d(0, 0, 0);
 
     > span,
     > label {
@@ -124,11 +131,11 @@
       width: 33.333333333%;
 
       &.switch-handle-on {
-        .border-top-left-radius(4px);
+        .border-left-radius(4px);
       }
 
       &.switch-handle-off {
-        .buttonBackground(@btnBackgroundHighlight, @btnBackground, @grayDark, 0 1px 1px rgba(255,255,255,.75));
+        .border-right-radius(4px);
       }
 
       &.switch-primary {
@@ -168,8 +175,8 @@
     }
   }
 
-  input[type=radio],
-  input[type=checkbox] {
+  input[type='radio'],
+  input[type='checkbox'] {
     position: absolute !important;
     top: 0;
     left: 0;

@@ -82,11 +82,19 @@
   -webkit-transition: margin-left 0.5s;
   transition: margin-left 0.5s;
 }
+.switch.switch-on > div {
+  margin-left: 0%;
+}
+.switch.switch-on > div > label {
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+}
 .switch.switch-off > div {
   margin-left: -50%;
 }
-.switch.switch-on > div {
-  margin-left: 0%;
+.switch.switch-off > div > label {
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
 }
 .switch.switch-disabled,
 .switch.switch-readonly {
@@ -110,7 +118,7 @@
   display: inline-block;
   width: 150%;
   top: 0;
-  border-radius: 3px;
+  border-radius: 4px;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
@@ -140,6 +148,8 @@
 .switch > div > span.switch-handle-off {
   color: #000;
   background: #eeeeee;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
 }
 .switch > div > span.switch-primary {
   color: #fff;
