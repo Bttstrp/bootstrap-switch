@@ -2,7 +2,9 @@ Bootstrap Switch
 ================
 
 Turn checkboxes and radio buttons in toggle switches.
-**Version 2 is here. Beware! The API design has been revisited. Check out the documentation to know more.**
+
+**Version 2.1 is almost ready and features a entire API redesign and source rewriting. Knowing that, your help would be decisive to ship it within days. Give the branch `2.1` a try and post any bugs you might encounter or improvements you would like to integrate in the final release.
+With heart, many thanks.**
 
 Demo and Documentation
 ----------------------
@@ -10,33 +12,39 @@ http://www.bootstrap-switch.org
 
 Usage
 -----
-Just include jQuery, Bootstrap and Bootstrap Switch CSS + Javascript
+
+Include the dependencies: jQuery, Bootstrap and Bootstrap Switch CSS + Javascript:
 
 ``` html
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<link rel="stylesheet" href="bootstrap.css">
-<link rel="stylesheet" href="bootstrap-switch.css">
+[...]
+<link href="bootstrap.css" rel="stylesheet">
+<link href="bootstrap-switch.css" rel="stylesheet">
 <script src="jquery.js"></script>
 <script src="bootstrap-switch.js"></script>
+[...]
 ```
+
+Add your checkbox:
+
+```html
+<input type="checkbox" name="my-checkbox" checked>
+```
+
+Initialize Bootstrap Switch on it:
+
+```javascript
+$("[name='my-checkbox']").bootstrapSwitch();
+```
+
+Enjoy.
 
 Less
 ----
-If you want to use your bootstrap variables, edit bootstrap-switch.less and compile it:
-
-``` bash
-lessc src/less/bootstrap3/bootstrap-switch.less bootstrap-switch.css
-```
-
-Or if you are using Bootstrap 2.3.2:
-
-``` bash
-lessc src/less/bootstrap2/bootstrap-switch.less bootstrap-switch.css
-```
+If you want to use your bootstrap variables, include `bootstrap-switch.less` in your compilation stack. You can even choose among Bootstrap versions 2.3.2 or 3.*.* compatible source.
 
 Supported browsers
 ------------------
-IE8+ and all the other modern browsers.
+IE8+ and all the other modern browsers (until proven otherwise: submit a issue and let's see what we can do).
 
 License
 -------
