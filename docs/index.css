@@ -1,15 +1,11 @@
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  text-align: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 h1 {
   font-size: 5em;
   letter-spacing: -2px;
-}
-
-.header {
 }
 
 .people {
@@ -20,6 +16,14 @@ h1 {
   text-align: left;
 }
 
+#main {
+  text-align: center;
+}
+
+.section {
+  padding-top: 20px;
+}
+
 #github {
   display: block;
   position: fixed;
@@ -27,7 +31,7 @@ h1 {
   height: 150px;
   top: 0;
   right: 0;
-  z-index: 150;
+  z-index: 2000;
 }
 
 .footer {
