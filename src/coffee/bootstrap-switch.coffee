@@ -70,14 +70,13 @@
 
       value = not not value
 
-      @$element.prop("checked", value).trigger "change", skip
+      @$element.prop("checked", value).trigger "change.bootstrapSwitch", skip
       @$element
 
     toggleState: (skip) ->
       return @$element if @options.disabled or @options.readonly
 
-      @$element.prop("checked", not @options.state).trigger "change", skip
-
+      @$element.prop("checked", not @options.state).trigger "change.bootstrapSwitch", skip
 
     ###
     TODO: refactor
@@ -85,9 +84,9 @@
       $element = @$element.not ":checked"
 
       if uncheck
-        $element.trigger "change", skip
+        $element.trigger "change.bootstrapSwitch", skip
       else
-        $element.prop("checked", not @$element.is ":checked").trigger "change", skip
+        $element.prop("checked", not @$element.is ":checked").trigger "change.bootstrapSwitch", skip
       @$element
     ###
 
@@ -205,23 +204,24 @@
           .removeClass(if checked then "switch-off" else "switch-on")
           .addClass if checked then "switch-on" else "switch-off"
 
-          $radios = @_radioSiblings()
-          console.log $radios
-          $radios.prop("checked", not value).trigger "change", skip if $radios
+          unless skip
+            $("[name='#{@$element.attr('name')}']").not(@$element).prop("checked", false).trigger "change.bootstrapSwitch", true if @$element.is ":radio"
+            @$element.trigger "switchChange", el: @$element, value: checked
 
-          @$element.trigger "switchChange", el: @$element, value: checked if not skip
         "focus.bootstrapSwitch": (e) =>
           e.preventDefault()
           e.stopPropagation()
           e.stopImmediatePropagation()
 
           @$wrapper.addClass "switch-focused"
+
         "blur.bootstrapSwitch": (e) =>
           e.preventDefault()
           e.stopPropagation()
           e.stopImmediatePropagation()
 
           @$wrapper.removeClass "switch-focused"
+
         "keydown.bootstrapSwitch": (e) =>
           return if not e.which or @options.disabled or @options.readonly
 
@@ -248,10 +248,11 @@
     _handleHandlers: ->
       @$on.on "click.bootstrapSwitch", (e) =>
         @state false
-        @$element.trigger "focus"
+        @$element.trigger "focus.bootstrapSwitch"
+
       @$off.on "click.bootstrapSwitch", (e) =>
         @state true
-        @$element.trigger "focus"
+        @$element.trigger "focus.bootstrapSwitch"
 
     _labelHandlers: ->
       @$label.on
@@ -268,26 +269,29 @@
             percent = right
 
           @$div.css "margin-left", "#{percent - right}%"
-          @$element.trigger "focus"
+          @$element.trigger "focus.bootstrapSwitch"
+
         "mousedown.bootstrapSwitch": (e) =>
           return if @drag or @options.disabled or @options.readonly
 
           @drag = true
           @$wrapper.removeClass "switch-animate" if @options.animate
-          @$element.trigger "focus"
+          @$element.trigger "focus.bootstrapSwitch"
+
         "mouseup.bootstrapSwitch": (e) =>
           return unless @drag
 
           @drag = false
-          @$element.prop("checked", (parseInt(@$div.css("margin-left"), 10) > -25)).trigger "change"
+          @$element.prop("checked", (parseInt(@$div.css("margin-left"), 10) > -25)).trigger "change.bootstrapSwitch"
           @$div.css "margin-left", ""
           @$wrapper.addClass "switch-animate" if @options.animate
+
         "click.bootstrapSwitch": (e) =>
           e.preventDefault()
           e.stopImmediatePropagation()
 
           @toggleState()
-          @$element.trigger "focus"
+          @$element.trigger "focus.bootstrapSwitch"
 
     _formHandler: ->
       $form = @$element.closest "form"
@@ -303,14 +307,6 @@
           .each -> $(@).bootstrapSwitch "state", false
         , 1
       .data "bootstrap-switch", true
-
-    _radioSiblings: ->
-      return false unless @$element.is ":radio"
-
-      $elements = $("[name='#{@$element.attr('name')}']").not @$element
-
-      return false unless $elements.length
-      $elements
 
   $.fn.extend bootstrapSwitch: (option, args...) ->
     ret = @

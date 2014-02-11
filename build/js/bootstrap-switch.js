@@ -111,7 +111,7 @@
           return this.$element;
         }
         value = !!value;
-        this.$element.prop("checked", value).trigger("change", skip);
+        this.$element.prop("checked", value).trigger("change.bootstrapSwitch", skip);
         return this.$element;
       };
 
@@ -119,7 +119,7 @@
         if (this.options.disabled || this.options.readonly) {
           return this.$element;
         }
-        return this.$element.prop("checked", !this.options.state).trigger("change", skip);
+        return this.$element.prop("checked", !this.options.state).trigger("change.bootstrapSwitch", skip);
       };
 
       /*
@@ -128,9 +128,9 @@
         $element = @$element.not ":checked"
       
         if uncheck
-          $element.trigger "change", skip
+          $element.trigger "change.bootstrapSwitch", skip
         else
-          $element.prop("checked", not @$element.is ":checked").trigger "change", skip
+          $element.prop("checked", not @$element.is ":checked").trigger "change.bootstrapSwitch", skip
         @$element
       */
 
@@ -263,7 +263,7 @@
         var _this = this;
         return this.$element.on({
           "change.bootstrapSwitch": function(e, skip) {
-            var $radios, checked;
+            var checked;
             e.preventDefault();
             e.stopPropagation();
             e.stopImmediatePropagation();
@@ -273,12 +273,10 @@
             }
             _this.options.state = checked;
             _this.$wrapper.removeClass(checked ? "switch-off" : "switch-on").addClass(checked ? "switch-on" : "switch-off");
-            $radios = _this._radioSiblings();
-            console.log($radios);
-            if ($radios) {
-              $radios.prop("checked", !value).trigger("change", skip);
-            }
             if (!skip) {
+              if (_this.$element.is(":radio")) {
+                $("[name='" + (_this.$element.attr('name')) + "']").not(_this.$element).prop("checked", false).trigger("change.bootstrapSwitch", true);
+              }
               return _this.$element.trigger("switchChange", {
                 el: _this.$element,
                 value: checked
@@ -326,11 +324,11 @@
         var _this = this;
         this.$on.on("click.bootstrapSwitch", function(e) {
           _this.state(false);
-          return _this.$element.trigger("focus");
+          return _this.$element.trigger("focus.bootstrapSwitch");
         });
         return this.$off.on("click.bootstrapSwitch", function(e) {
           _this.state(true);
-          return _this.$element.trigger("focus");
+          return _this.$element.trigger("focus.bootstrapSwitch");
         });
       };
 
@@ -351,7 +349,7 @@
               percent = right;
             }
             _this.$div.css("margin-left", "" + (percent - right) + "%");
-            return _this.$element.trigger("focus");
+            return _this.$element.trigger("focus.bootstrapSwitch");
           },
           "mousedown.bootstrapSwitch": function(e) {
             if (_this.drag || _this.options.disabled || _this.options.readonly) {
@@ -361,14 +359,14 @@
             if (_this.options.animate) {
               _this.$wrapper.removeClass("switch-animate");
             }
-            return _this.$element.trigger("focus");
+            return _this.$element.trigger("focus.bootstrapSwitch");
           },
           "mouseup.bootstrapSwitch": function(e) {
             if (!_this.drag) {
               return;
             }
             _this.drag = false;
-            _this.$element.prop("checked", parseInt(_this.$div.css("margin-left"), 10) > -25).trigger("change");
+            _this.$element.prop("checked", parseInt(_this.$div.css("margin-left"), 10) > -25).trigger("change.bootstrapSwitch");
             _this.$div.css("margin-left", "");
             if (_this.options.animate) {
               return _this.$wrapper.addClass("switch-animate");
@@ -378,7 +376,7 @@
             e.preventDefault();
             e.stopImmediatePropagation();
             _this.toggleState();
-            return _this.$element.trigger("focus");
+            return _this.$element.trigger("focus.bootstrapSwitch");
           }
         });
       };
@@ -398,18 +396,6 @@
             });
           }, 1);
         }).data("bootstrap-switch", true);
-      };
-
-      BootstrapSwitch.prototype._radioSiblings = function() {
-        var $elements;
-        if (!this.$element.is(":radio")) {
-          return false;
-        }
-        $elements = $("[name='" + (this.$element.attr('name')) + "']").not(this.$element);
-        if (!$elements.length) {
-          return false;
-        }
-        return $elements;
       };
 
       return BootstrapSwitch;
