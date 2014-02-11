@@ -1,7 +1,6 @@
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 h1 {
@@ -9,15 +8,16 @@ h1 {
   letter-spacing: -2px;
 }
 
-.header {
-}
-
-.people {
-  font-size: 18px;
-}
-
 .page-header {
   text-align: left;
+}
+
+#main {
+  text-align: center;
+}
+
+.section {
+  padding-top: 20px;
 }
 
 #github {
@@ -27,7 +27,7 @@ h1 {
   height: 150px;
   top: 0;
   right: 0;
-  z-index: 150;
+  z-index: 2000;
 }
 
 .footer {
