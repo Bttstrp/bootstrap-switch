@@ -3,7 +3,7 @@ Bootstrap Switch
 
 Turn checkboxes and radio buttons in toggle switches.
 
-**Version 2.1 is almost ready and features a entire API redesign and source rewriting. Knowing that, your help would be decisive to ship it within days. Give the branch `2.1` a try and post any bugs you might encounter or improvements you would like to integrate in the final release.
+**Version 3 is almost ready and features a entire API redesign and source rewriting. Knowing that, your help would be decisive to ship it within days. Give the branch `3.0` a try and post any bugs you might encounter or improvements you would like to integrate in the final release.
 With heart, many thanks.**
 
 Demo and Documentation
