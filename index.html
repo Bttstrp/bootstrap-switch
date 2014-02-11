@@ -7,7 +7,7 @@
     <meta name="description" content="Turn checkboxes and radio buttons in toggle switches.">
     <meta name="author" content="Mattia Larentis, Emanuele Marchi and Peter Stein">
     <title>Bootstrap Switch · Turn checkboxes and radio buttons in toggle switches</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://bdmdesign.github.io/bootstrap-switch/static/stylesheets/flat-ui-fonts.css">
     <link rel="stylesheet" href="build/css/bootstrap3/bootstrap-switch.css" />
@@ -32,48 +32,57 @@
     </a>
     <header class="navbar navbar-default navbar-fixed-top header" role="banner">
       <div class="container">
-        <div class="navbar-header">
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a href="../" class="navbar-brand">Bootstrap Switch</a>
-        </div>
-        <nav id="collapse" class="collapse navbar-collapse" role="navigation">
-          <ul class="nav navbar-nav">
-            <li><a href="#getting-started">Getting started</a></li>
-            <li class="dropdown">
-              <a href="#documentation" data-toggle="dropdown">Documentation <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#sizes">Sizes</a></li>
-                <li><a href="#colors">Colors</a></li>
-                <li><a href="#animation">Animation</a></li>
-                <li><a href="#disabled">Disabled / Readonly</a></li>
-                <li><a href="#text">Text</a></li>
-                <li><a href="#label-text">Label Text</a></li>
-                <li><a href="#icon-label-text">Icon Label Text</a></li>
-                <li><a href="#event-handler">Event Handler</a></li>
-                <li><a href="#label-event-handler">Label Event Handler</a></li>
-                <li><a href="#state">State</a></li>
-                <li><a href="#destroy">Destroy</a></li>
-                <li><a href="#disable">Disable / Readonly</a></li>
-                <li><a href="#radio">Radio</a></li>
-                <li><a href="#form">Form</a></li>
-                <li><a href="#modal">Modal</a></li>
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1">
+            <div class="navbar-header">
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a href="../" class="navbar-brand">Bootstrap Switch</a>
+            </div>
+            <nav id="collapse" class="collapse navbar-collapse" role="navigation">
+              <ul class="nav navbar-nav">
+                <li><a href="#getting-started">Getting started</a></li>
+                <li><a href="https://github.com/nostalgiaz/bootstrap-switch/archive/3.0.zip">Download 3rc</a></li>
+                <li class="dropdown">
+                  <a href="#documentation" data-toggle="dropdown">Documentation <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#sizes">Sizes</a></li>
+                    <li><a href="#colors">Colors</a></li>
+                    <li><a href="#animation">Animation</a></li>
+                    <li><a href="#disabled">Disabled / Readonly</a></li>
+                    <li><a href="#text">Text</a></li>
+                    <li><a href="#label-text">Label Text</a></li>
+                    <li><a href="#icon-label-text">Icon Label Text</a></li>
+                    <li><a href="#event-handler">Event Handler</a></li>
+                    <li><a href="#label-event-handler">Label Event Handler</a></li>
+                    <li><a href="#state">State</a></li>
+                    <li><a href="#destroy">Destroy</a></li>
+                    <li><a href="#disable">Disable / Readonly</a></li>
+                    <li><a href="#radio">Radio</a></li>
+                    <li><a href="#form">Form</a></li>
+                    <li><a href="#modal">Modal</a></li>
+                  </ul>
+                </li>
+                <li><a href="https://github.com/nostalgiaz/bootstrap-switch/issues">Bug reports</a></li>
               </ul>
-            </li>
-          </ul>
-        </nav>
+            </nav>
+          </div>
+        </div>
       </div>
     </header>
-    <main id="main" role="main">
+    <main id="main" class="jumbotron" role="main">
       <div class="container">
-        <h1>Bootstrap Switch <span class="small">3.0.0</span></h1>
+        <h1>Bootstrap Switch</h1>
         <p class="lead">Turn checkboxes and radio buttons in toggle switches.</p>
+        <div>
+          <a href="https://github.com/nostalgiaz/bootstrap-switch/archive/3.0.zip" class="btn btn-lg btn-primary">Download Bootstrap Switch 3 Release Candidate</a><br>
+          <a href="https://github.com/nostalgiaz/bootstrap-switch/archive/master.zip" class="btn btn-link">Download Stable Bootstrap Switch 2</a>
+        </div>
         <br>
-        <a href="#">Download Bootstrap Switch</a>
         <iframe src="http://ghbtns.com/github-btn.html?user=nostalgiaz&amp;repo=bootstrap-switch&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="30"></iframe>
         <iframe src="http://ghbtns.com/github-btn.html?user=nostalgiaz&amp;repo=bootstrap-switch&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="30"></iframe>
         <iframe src="http://ghbtns.com/github-btn.html?user=nostalgiaz&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="190" height="30"></iframe>
@@ -81,15 +90,15 @@
         <iframe src="http://ghbtns.com/github-btn.html?user=BdMdesigN&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
         <br>
         <br>
-        <p class="lead people">
+        <p class="people">
           <a href="http://larentis.eu" target="_blank">Mattia Larentis</a> · <a href="http://www.bdmdesign.org/" target="_blank">Peter Stein</a> · <a href="http://www.lostcrew.it" target="_blank">Emanuele Marchi</a>
         </p>
         </div>
       </div>
     </main>
     <div class="container">
-    <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
         <section id="getting-started" class="section">
           <div class="page-header">
             <h2><a href="#getting-started">Getting started</a></h2>
@@ -410,7 +419,7 @@ $('#readonly-switch').bootstrapSwitch('readonly', true);  // true || false</code
     </div>
   </div>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
   <script src="build/js/bootstrap-switch.js"></script>
   <script src="docs/lib/prism.js"></script>
   <script src="docs/index.js"></script>
