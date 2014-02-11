@@ -1,5 +1,5 @@
 /* ========================================================================
- * bootstrap-switch - v2.0.1
+ * bootstrap-switch - v3.0.0
  * http://www.bootstrap-switch.org
  * ========================================================================
  * Copyright 2012-2013 Mattia Larentis
@@ -98,7 +98,7 @@
         this._elementHandlers();
         this._handleHandlers();
         this._labelHandlers();
-        this._form();
+        this._formHandler();
       }
 
       BootstrapSwitch.prototype._constructor = BootstrapSwitch;
@@ -110,7 +110,8 @@
         if (this.options.disabled || this.options.readonly) {
           return this.$element;
         }
-        this.$element.prop("checked", !!value).trigger("change", skip);
+        value = !!value;
+        this.$element.prop("checked", value).trigger("change", skip);
         return this.$element;
       };
 
@@ -262,7 +263,7 @@
         var _this = this;
         return this.$element.on({
           "change.bootstrapSwitch": function(e, skip) {
-            var checked;
+            var $radios, checked;
             e.preventDefault();
             e.stopPropagation();
             e.stopImmediatePropagation();
@@ -272,6 +273,11 @@
             }
             _this.options.state = checked;
             _this.$wrapper.removeClass(checked ? "switch-off" : "switch-on").addClass(checked ? "switch-on" : "switch-off");
+            $radios = _this._radioSiblings();
+            console.log($radios);
+            if ($radios) {
+              $radios.prop("checked", !value).trigger("change", skip);
+            }
             if (!skip) {
               return _this.$element.trigger("switchChange", {
                 el: _this.$element,
@@ -377,7 +383,7 @@
         });
       };
 
-      BootstrapSwitch.prototype._form = function() {
+      BootstrapSwitch.prototype._formHandler = function() {
         var $form;
         $form = this.$element.closest("form");
         if ($form.data("bootstrap-switch")) {
@@ -392,6 +398,18 @@
             });
           }, 1);
         }).data("bootstrap-switch", true);
+      };
+
+      BootstrapSwitch.prototype._radioSiblings = function() {
+        var $elements;
+        if (!this.$element.is(":radio")) {
+          return false;
+        }
+        $elements = $("[name='" + (this.$element.attr('name')) + "']").not(this.$element);
+        if (!$elements.length) {
+          return false;
+        }
+        return $elements;
       };
 
       return BootstrapSwitch;

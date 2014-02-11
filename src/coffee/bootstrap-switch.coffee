@@ -56,10 +56,9 @@
       @$element.before(@$on).before(@$label).before @$off
 
       @_elementHandlers()
-      # @_wrapperHandlers()
       @_handleHandlers()
       @_labelHandlers()
-      @_form()
+      @_formHandler()
 
       # TODO: @$label.hasClass "label-change-switch" in toggleState
 
@@ -69,13 +68,16 @@
       return @options.state if typeof value is "undefined"
       return @$element if @options.disabled or @options.readonly
 
-      @$element.prop("checked", not not value).trigger "change", skip
+      value = not not value
+
+      @$element.prop("checked", value).trigger "change", skip
       @$element
 
     toggleState: (skip) ->
       return @$element if @options.disabled or @options.readonly
 
       @$element.prop("checked", not @options.state).trigger "change", skip
+
 
     ###
     TODO: refactor
@@ -203,6 +205,10 @@
           .removeClass(if checked then "switch-off" else "switch-on")
           .addClass if checked then "switch-on" else "switch-off"
 
+          $radios = @_radioSiblings()
+          console.log $radios
+          $radios.prop("checked", not value).trigger "change", skip if $radios
+
           @$element.trigger "switchChange", el: @$element, value: checked if not skip
         "focus.bootstrapSwitch": (e) =>
           e.preventDefault()
@@ -283,7 +289,7 @@
           @toggleState()
           @$element.trigger "focus"
 
-    _form: ->
+    _formHandler: ->
       $form = @$element.closest "form"
 
       return if $form.data "bootstrap-switch"
@@ -297,6 +303,14 @@
           .each -> $(@).bootstrapSwitch "state", false
         , 1
       .data "bootstrap-switch", true
+
+    _radioSiblings: ->
+      return false unless @$element.is ":radio"
+
+      $elements = $("[name='#{@$element.attr('name')}']").not @$element
+
+      return false unless $elements.length
+      $elements
 
   $.fn.extend bootstrapSwitch: (option, args...) ->
     ret = @
