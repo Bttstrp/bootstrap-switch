@@ -1,6 +1,4 @@
-# Bootstrap Switch 
-[![Dependency Status](https://david-dm.org/nostalgiaz/bootstrap-switch.png)](https://david-dm.org/nostalgiaz/bootstrap-switch)
-[![devDependency Status](https://david-dm.org/nostalgiaz/bootstrap-switch/dev-status.png)](https://david-dm.org/nostalgiaz/bootstrap-switch#info=devDependencies)
+# Bootstrap Switch [![Dependency Status](https://david-dm.org/nostalgiaz/bootstrap-switch.svg?theme=shields.io)](https://david-dm.org/nostalgiaz/bootstrap-switch) [![devDependency Status](https://david-dm.org/nostalgiaz/bootstrap-switch/dev-status.svg?theme=shields.io)](https://david-dm.org/nostalgiaz/bootstrap-switch#info=devDependencies)
 
 Turn checkboxes and radio buttons in toggle switches.
 
