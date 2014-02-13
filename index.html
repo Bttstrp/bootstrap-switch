@@ -9,7 +9,6 @@
     <title>Bootstrap Switch · Turn checkboxes and radio buttons in toggle switches</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://bdmdesign.github.io/bootstrap-switch/static/stylesheets/flat-ui-fonts.css">
     <link rel="stylesheet" href="build/css/bootstrap3/bootstrap-switch.css" />
     <link rel="stylesheet" href="docs/lib/prism.css">
     <link rel="stylesheet" href="docs/index.css">
@@ -232,16 +231,10 @@ $('#label-switch').bootstrapSwitch('offText', 'O');</code></pre>
           <div class="page-header">
             <h3><a name="icon-label-text" class="anchor" href="#html-text-label-icon">Icon Label Text</a></h3>
           </div>
-
           Standard <input type="checkbox" checked data-size="large" data-label-text="<span class='glyphicon glyphicon-fullscreen'></span>" data-on-text="<span class='glyphicon glyphicon-ok'></span>" data-off-text="<span class='glyphicon glyphicon-remove'></span>"> &nbsp;&nbsp;
-
           Font Awesome <input type="checkbox" checked data-size="large" data-label-text="<span class='fa fa-youtube fa-lg'></span>" data-on-text="<span class='fa fa-thumbs-up fa-lg'></span>" data-off-text="<span class='fa fa-thumbs-down fa-lg'></span>"> &nbsp;&nbsp;
-
-          Flat UI <input type="checkbox" data-size="large" checked data-label-text="<span class='fui-video'></span>" data-on-text="<span class='fui-check'></span>" data-off-text="<span class='fui-cross'></span>">
-
           <pre class="language-markup"><code>&lt;input type="checkbox" checked data-size="large" data-label-text="&lt;span class='glyphicon glyphicon-fullscreen'>&lt;/span>" data-on-text="&lt;span class='glyphicon glyphicon-ok'>&lt;/span>" data-off-text="&lt;span class='glyphicon glyphicon-remove'>&lt;/span>">
-&lt;input type="checkbox" checked data-size="large" data-label-text="&lt;span class='fa fa-youtube fa-lg'>&lt;/span>" data-on-text="&lt;span class='fa fa-thumbs-up fa-lg'>&lt;/span>" data-off-text="&lt;span class='fa fa-thumbs-down fa-lg'>&lt;/span>">
-&lt;input type="checkbox" data-size="large" checked data-label-text="&lt;span class='fui-video'>&lt;/span>" data-on-text="&lt;span class='fui-check'>&lt;/span>" data-off-text="&lt;span class='fui-cross'>&lt;/span>"></code></pre>
+&lt;input type="checkbox" checked data-size="large" data-label-text="&lt;span class='fa fa-youtube fa-lg'>&lt;/span>" data-on-text="&lt;span class='fa fa-thumbs-up fa-lg'>&lt;/span>" data-off-text="&lt;span class='fa fa-thumbs-down fa-lg'>&lt;/span>"></code></pre>
         </section>
         <section id="event-handler" class="section">
           <div class="page-header">
@@ -266,7 +259,7 @@ $('#label-switch').bootstrapSwitch('offText', 'O');</code></pre>
           <pre class="language-javascript"><code>$('#label-toggle-switch').on('click', function(e, data) {
     $('.label-toggle-switch').bootstrapSwitch('toggleState');
 });
-$('.label-toggle-switch').on('switch-change', function (e, data) {
+$('.label-toggle-switch').on('switchChange', function (e, data) {
     alert(data.value);
 });</code></pre>
         </section>

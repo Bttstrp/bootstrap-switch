@@ -1,4 +1,6 @@
-.switch {
+@bootstrap-switch-name: bootstrap-switch;
+
+.@{bootstrap-switch-name} {
   display: inline-block;
   cursor: pointer;
   border-radius: @border-radius-base;
@@ -13,7 +15,7 @@
   min-width: 100px;
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
-  &.switch-mini {
+  &.@{bootstrap-switch-name}-mini {
     min-width: 72px;
 
     > div > span,
@@ -24,7 +26,7 @@
       line-height: 9px;
     }
 
-    .switch-mini-icons {
+    .@{bootstrap-switch-name}-mini-icons {
       height: 1.20em;
       line-height: 9px;
       vertical-align: text-top;
@@ -35,7 +37,7 @@
     }
   }
 
-  &.switch-small {
+  &.@{bootstrap-switch-name}-small {
     min-width: 80px;
 
     > div > span,
@@ -47,7 +49,7 @@
     }
   }
 
-  &.switch-large {
+  &.@{bootstrap-switch-name}-large {
     min-width: 120px;
 
     > div > span,
@@ -59,14 +61,14 @@
     }
   }
 
-  &.switch-animate {
+  &.@{bootstrap-switch-name}-animate {
 
     > div {
       .transition(margin-left 0.5s);
     }
   }
 
-  &.switch-on {
+  &.@{bootstrap-switch-name}-on {
 
     > div {
       margin-left: 0%;
@@ -77,7 +79,7 @@
     }
   }
 
-  &.switch-off {
+  &.@{bootstrap-switch-name}-off {
 
     > div {
       margin-left: -50%;
@@ -88,8 +90,8 @@
     }
   }
 
-  &.switch-disabled,
-  &.switch-readonly {
+  &.@{bootstrap-switch-name}-disabled,
+  &.@{bootstrap-switch-name}-readonly {
     .opacity(.5);
     cursor: default !important;
 
@@ -99,7 +101,7 @@
     }
   }
 
-  &.switch-focused {
+  &.@{bootstrap-switch-name}-focused {
     @color-rgba: rgba(red(@input-border-focus), green(@input-border-focus), blue(@input-border-focus), .6);
     border-color: @input-border-focus;
     outline: 0;
@@ -130,43 +132,43 @@
       z-index: 1;
       width: 33.333333333%;
 
-      &.switch-handle-on {
+      &.@{bootstrap-switch-name}-handle-on {
         color: #f00;
         .border-left-radius(@border-radius-base - 1);
       }
 
-      &.switch-handle-off {
+      &.@{bootstrap-switch-name}-handle-off {
         color: #000;
         background: @gray-lighter;
         .border-right-radius(@border-radius-base - 1);
       }
 
-      &.switch-primary {
+      &.@{bootstrap-switch-name}-primary {
         color: #fff;
         background: @btn-primary-bg;
       }
 
-      &.switch-info {
+      &.@{bootstrap-switch-name}-info {
         color: #fff;
         background: @btn-info-bg;
       }
 
-      &.switch-success {
+      &.@{bootstrap-switch-name}-success {
         color: #fff;
         background: @btn-success-bg;
       }
 
-      &.switch-warning {
+      &.@{bootstrap-switch-name}-warning {
         background: @btn-warning-bg;
         color: #fff;
       }
 
-      &.switch-danger {
+      &.@{bootstrap-switch-name}-danger {
         color: #fff;
         background: @btn-danger-bg;
       }
 
-      &.switch-default {
+      &.@{bootstrap-switch-name}-default {
         color: #000;
         background: @gray-lighter;
       }

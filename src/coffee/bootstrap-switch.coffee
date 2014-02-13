@@ -13,6 +13,7 @@
       onText: "ON"
       offText: "OFF"
       labelText: "&nbsp;"
+    name: "bootstrap-switch"
 
     constructor: (element, options = {}) ->
       @$element = $ element
@@ -28,24 +29,24 @@
         offText: @$element.data "off-text"
         labelText: @$element.data "label-text"
       @$on = $ "<span>",
-        class: "switch-handle-on switch-#{@options.onColor}"
+        class: "#{@name}-handle-on #{@name}-#{@options.onColor}"
         html: @options.onText
       @$off = $ "<span>",
-        class: "switch-handle-off switch-#{@options.offColor}"
+        class: "#{@name}-handle-off #{@name}-#{@options.offColor}"
         html: @options.offText
       @$label = $ "<label>",
         for: @$element.attr "id"
         html: @options.labelText
       @$wrapper = $ "<div>",
         class: =>
-          classes = ["switch"]
+          classes = ["#{@name}"]
 
-          classes.push if @options.state then "switch-on" else "switch-off"
-          classes.push "switch-#{@options.size}" if @options.size?
-          classes.push "switch-animate" if @options.animate
-          classes.push "switch-disabled" if @options.disabled
-          classes.push "switch-readonly" if @options.readonly
-          classes.push "switch-id-#{@$element.attr("id")}" if @$element.attr "id"
+          classes.push if @options.state then "#{@name}-on" else "#{@name}-off"
+          classes.push "#{@name}-#{@options.size}" if @options.size?
+          classes.push "#{@name}-animate" if @options.animate
+          classes.push "#{@name}-disabled" if @options.disabled
+          classes.push "#{@name}-readonly" if @options.readonly
+          classes.push "#{@name}-id-#{@$element.attr("id")}" if @$element.attr "id"
           classes.join " "
 
       # reassign elements after dom modification
@@ -93,8 +94,8 @@
     size: (value) ->
       return @options.size if typeof value is "undefined"
 
-      @$wrapper.removeClass "switch-#{@options.size}" if @options.size?
-      @$wrapper.addClass "switch-#{value}"
+      @$wrapper.removeClass "#{@name}-#{@options.size}" if @options.size?
+      @$wrapper.addClass "#{@name}-#{value}"
       @options.size = value
       @$element
 
@@ -103,7 +104,7 @@
 
       value = not not value
 
-      @$wrapper[if value then "addClass" else "removeClass"]("switch-animate")
+      @$wrapper[if value then "addClass" else "removeClass"]("#{@name}-animate")
       @options.animate = value
       @$element
 
@@ -112,14 +113,14 @@
 
       value = not not value
 
-      @$wrapper[if value then "addClass" else "removeClass"]("switch-disabled")
+      @$wrapper[if value then "addClass" else "removeClass"]("#{@name}-disabled")
       @$element.prop "disabled", value
       @options.disabled = value
       @$element
 
     toggleDisabled: ->
       @$element.prop "disabled", not @options.disabled
-      @$wrapper.toggleClass "switch-disabled"
+      @$wrapper.toggleClass "#{@name}-disabled"
       @options.disabled = not @options.disabled
       @$element
 
@@ -128,14 +129,14 @@
 
       value = not not value
 
-      @$wrapper[if value then "addClass" else "removeClass"]("switch-readonly")
+      @$wrapper[if value then "addClass" else "removeClass"]("#{@name}-readonly")
       @$element.prop "readonly", value
       @options.readonly = value
       @$element
 
     toggleReadonly: ->
       @$element.prop "readonly", not @options.readonly
-      @$wrapper.toggleClass "switch-readonly"
+      @$wrapper.toggleClass "#{@name}-readonly"
       @options.readonly = not @options.readonly
       @$element
 
@@ -144,8 +145,8 @@
 
       return color if typeof value is "undefined"
 
-      @$on.removeClass "switch-#{color}" if color?
-      @$on.addClass "switch-#{value}"
+      @$on.removeClass "#{@name}-#{color}" if color?
+      @$on.addClass "#{@name}-#{value}"
       @options.onColor = value
       @$element
 
@@ -154,8 +155,8 @@
 
       return color if typeof value is "undefined"
 
-      @$off.removeClass "switch-#{color}" if color?
-      @$off.addClass "switch-#{value}"
+      @$off.removeClass "#{@name}-#{color}" if color?
+      @$off.addClass "#{@name}-#{value}"
       @options.offColor = value
       @$element
 
@@ -201,8 +202,8 @@
 
           @options.state = checked
           @$wrapper
-          .removeClass(if checked then "switch-off" else "switch-on")
-          .addClass if checked then "switch-on" else "switch-off"
+          .removeClass(if checked then "#{@name}-off" else "#{@name}-on")
+          .addClass if checked then "#{@name}-on" else "#{@name}-off"
 
           unless skip
             $("[name='#{@$element.attr('name')}']").not(@$element).prop("checked", false).trigger "change.bootstrapSwitch", true if @$element.is ":radio"
@@ -213,14 +214,14 @@
           e.stopPropagation()
           e.stopImmediatePropagation()
 
-          @$wrapper.addClass "switch-focused"
+          @$wrapper.addClass "#{@name}-focused"
 
         "blur.bootstrapSwitch": (e) =>
           e.preventDefault()
           e.stopPropagation()
           e.stopImmediatePropagation()
 
-          @$wrapper.removeClass "switch-focused"
+          @$wrapper.removeClass "#{@name}-focused"
 
         "keydown.bootstrapSwitch": (e) =>
           return if not e.which or @options.disabled or @options.readonly
@@ -275,7 +276,7 @@
           return if @drag or @options.disabled or @options.readonly
 
           @drag = true
-          @$wrapper.removeClass "switch-animate" if @options.animate
+          @$wrapper.removeClass "#{@name}-animate" if @options.animate
           @$element.trigger "focus.bootstrapSwitch"
 
         "mouseup.bootstrapSwitch": (e) =>
@@ -284,7 +285,7 @@
           @drag = false
           @$element.prop("checked", (parseInt(@$div.css("margin-left"), 10) > -25)).trigger "change.bootstrapSwitch"
           @$div.css "margin-left", ""
-          @$wrapper.addClass "switch-animate" if @options.animate
+          @$wrapper.addClass "#{@name}-animate" if @options.animate
 
         "click.bootstrapSwitch": (e) =>
           e.preventDefault()
