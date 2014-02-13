@@ -19,4 +19,428 @@
  * ========================================================================
  */
 
-(function(){var a=[].slice;!function(b,c){"use strict";var d;return d=function(){function a(a,c){var d=this;null==c&&(c={}),this.$element=b(a),this.options=b.extend({},this.defaults,c,{state:this.$element.is(":checked"),size:this.$element.data("size"),animate:this.$element.data("animate"),disabled:this.$element.is(":disabled"),readonly:this.$element.is("[readonly]"),onColor:this.$element.data("on-color"),offColor:this.$element.data("off-color"),onText:this.$element.data("on-text"),offText:this.$element.data("off-text"),labelText:this.$element.data("label-text")}),this.$on=b("<span>",{"class":"switch-handle-on switch-"+this.options.onColor,html:this.options.onText}),this.$off=b("<span>",{"class":"switch-handle-off switch-"+this.options.offColor,html:this.options.offText}),this.$label=b("<label>",{"for":this.$element.attr("id"),html:this.options.labelText}),this.$wrapper=b("<div>",{"class":function(){var a;return a=["switch"],a.push(d.options.state?"switch-on":"switch-off"),null!=d.options.size&&a.push("switch-"+d.options.size),d.options.animate&&a.push("switch-animate"),d.options.disabled&&a.push("switch-disabled"),d.options.readonly&&a.push("switch-readonly"),d.$element.attr("id")&&a.push("switch-id-"+d.$element.attr("id")),a.join(" ")}}),this.$div=this.$element.wrap(b("<div>")).parent(),this.$wrapper=this.$div.wrap(this.$wrapper).parent(),this.$element.before(this.$on).before(this.$label).before(this.$off),this._elementHandlers(),this._handleHandlers(),this._labelHandlers(),this._formHandler()}return a.prototype.defaults={state:!0,size:null,animate:!0,disabled:!1,readonly:!1,onColor:"primary",offColor:"default",onText:"ON",offText:"OFF",labelText:"&nbsp;"},a.prototype._constructor=a,a.prototype.state=function(a,b){return"undefined"==typeof a?this.options.state:this.options.disabled||this.options.readonly?this.$element:(a=!!a,this.$element.prop("checked",a).trigger("change.bootstrapSwitch",b),this.$element)},a.prototype.toggleState=function(a){return this.options.disabled||this.options.readonly?this.$element:this.$element.prop("checked",!this.options.state).trigger("change.bootstrapSwitch",a)},a.prototype.size=function(a){return"undefined"==typeof a?this.options.size:(null!=this.options.size&&this.$wrapper.removeClass("switch-"+this.options.size),this.$wrapper.addClass("switch-"+a),this.options.size=a,this.$element)},a.prototype.animate=function(a){return"undefined"==typeof a?this.options.animate:(a=!!a,this.$wrapper[a?"addClass":"removeClass"]("switch-animate"),this.options.animate=a,this.$element)},a.prototype.disabled=function(a){return"undefined"==typeof a?this.options.disabled:(a=!!a,this.$wrapper[a?"addClass":"removeClass"]("switch-disabled"),this.$element.prop("disabled",a),this.options.disabled=a,this.$element)},a.prototype.toggleDisabled=function(){return this.$element.prop("disabled",!this.options.disabled),this.$wrapper.toggleClass("switch-disabled"),this.options.disabled=!this.options.disabled,this.$element},a.prototype.readonly=function(a){return"undefined"==typeof a?this.options.readonly:(a=!!a,this.$wrapper[a?"addClass":"removeClass"]("switch-readonly"),this.$element.prop("readonly",a),this.options.readonly=a,this.$element)},a.prototype.toggleReadonly=function(){return this.$element.prop("readonly",!this.options.readonly),this.$wrapper.toggleClass("switch-readonly"),this.options.readonly=!this.options.readonly,this.$element},a.prototype.onColor=function(a){var b;return b=this.options.onColor,"undefined"==typeof a?b:(null!=b&&this.$on.removeClass("switch-"+b),this.$on.addClass("switch-"+a),this.options.onColor=a,this.$element)},a.prototype.offColor=function(a){var b;return b=this.options.offColor,"undefined"==typeof a?b:(null!=b&&this.$off.removeClass("switch-"+b),this.$off.addClass("switch-"+a),this.options.offColor=a,this.$element)},a.prototype.onText=function(a){return"undefined"==typeof a?this.options.onText:(this.$on.html(a),this.options.onText=a,this.$element)},a.prototype.offText=function(a){return"undefined"==typeof a?this.options.offText:(this.$off.html(a),this.options.offText=a,this.$element)},a.prototype.labelText=function(a){return"undefined"==typeof a?this.options.labelText:(this.$label.html(a),this.options.labelText=a,this.$element)},a.prototype.destroy=function(){var a;return a=this.$element.closest("form"),a.length&&a.off("reset.bootstrapSwitch").removeData("bootstrap-switch"),this.$div.children().not(this.$element).remove(),this.$element.unwrap().unwrap().off(".bootstrapSwitch").removeData("bootstrap-switch"),this.$element},a.prototype._elementHandlers=function(){var a=this;return this.$element.on({"change.bootstrapSwitch":function(c,d){var e;return c.preventDefault(),c.stopPropagation(),c.stopImmediatePropagation(),e=a.$element.is(":checked"),e!==a.options.state?(a.options.state=e,a.$wrapper.removeClass(e?"switch-off":"switch-on").addClass(e?"switch-on":"switch-off"),d?void 0:(a.$element.is(":radio")&&b("[name='"+a.$element.attr("name")+"']").not(a.$element).prop("checked",!1).trigger("change.bootstrapSwitch",!0),a.$element.trigger("switchChange",{el:a.$element,value:e}))):void 0},"focus.bootstrapSwitch":function(b){return b.preventDefault(),b.stopPropagation(),b.stopImmediatePropagation(),a.$wrapper.addClass("switch-focused")},"blur.bootstrapSwitch":function(b){return b.preventDefault(),b.stopPropagation(),b.stopImmediatePropagation(),a.$wrapper.removeClass("switch-focused")},"keydown.bootstrapSwitch":function(b){if(b.which&&!a.options.disabled&&!a.options.readonly)switch(b.which){case 32:return b.preventDefault(),b.stopPropagation(),b.stopImmediatePropagation(),a.toggleState();case 37:return b.preventDefault(),b.stopPropagation(),b.stopImmediatePropagation(),a.state(!1);case 39:return b.preventDefault(),b.stopPropagation(),b.stopImmediatePropagation(),a.state(!0)}}})},a.prototype._handleHandlers=function(){var a=this;return this.$on.on("click.bootstrapSwitch",function(){return a.state(!1),a.$element.trigger("focus.bootstrapSwitch")}),this.$off.on("click.bootstrapSwitch",function(){return a.state(!0),a.$element.trigger("focus.bootstrapSwitch")})},a.prototype._labelHandlers=function(){var a=this;return this.$label.on({"mousemove.bootstrapSwitch":function(b){var c,d,e;if(a.drag)return d=(b.pageX-a.$wrapper.offset().left)/a.$wrapper.width()*100,c=25,e=75,c>d?d=c:d>e&&(d=e),a.$div.css("margin-left",""+(d-e)+"%"),a.$element.trigger("focus.bootstrapSwitch")},"mousedown.bootstrapSwitch":function(){return a.drag||a.options.disabled||a.options.readonly?void 0:(a.drag=!0,a.options.animate&&a.$wrapper.removeClass("switch-animate"),a.$element.trigger("focus.bootstrapSwitch"))},"mouseup.bootstrapSwitch":function(){return a.drag?(a.drag=!1,a.$element.prop("checked",parseInt(a.$div.css("margin-left"),10)>-25).trigger("change.bootstrapSwitch"),a.$div.css("margin-left",""),a.options.animate?a.$wrapper.addClass("switch-animate"):void 0):void 0},"click.bootstrapSwitch":function(b){return b.preventDefault(),b.stopImmediatePropagation(),a.toggleState(),a.$element.trigger("focus.bootstrapSwitch")}})},a.prototype._formHandler=function(){var a;return a=this.$element.closest("form"),a.data("bootstrap-switch")?void 0:a.on("reset.bootstrapSwitch",function(){return c.setTimeout(function(){return a.find("input").filter(function(){return b(this).data("bootstrap-switch")}).each(function(){return b(this).bootstrapSwitch("state",!1)})},1)}).data("bootstrap-switch",!0)},a}(),b.fn.extend({bootstrapSwitch:function(){var c,e,f;return e=arguments[0],c=2<=arguments.length?a.call(arguments,1):[],f=this,this.each(function(){var a,g;return a=b(this),g=a.data("bootstrap-switch"),g||a.data("bootstrap-switch",g=new d(this,e)),"string"==typeof e?f=g[e].apply(g,c):void 0}),f}}),b.fn.bootstrapSwitch.Constructor=d}(window.jQuery,window)}).call(this);
+(function() {
+  var __slice = [].slice;
+
+  (function($, window) {
+    "use strict";
+    var BootstrapSwitch;
+    BootstrapSwitch = (function() {
+      BootstrapSwitch.prototype.defaults = {
+        state: true,
+        size: null,
+        animate: true,
+        disabled: false,
+        readonly: false,
+        onColor: "primary",
+        offColor: "default",
+        onText: "ON",
+        offText: "OFF",
+        labelText: "&nbsp;"
+      };
+
+      BootstrapSwitch.prototype.name = "bootstrap-switch";
+
+      function BootstrapSwitch(element, options) {
+        if (options == null) {
+          options = {};
+        }
+        this.$element = $(element);
+        this.options = $.extend({}, this.defaults, options, {
+          state: this.$element.is(":checked"),
+          size: this.$element.data("size"),
+          animate: this.$element.data("animate"),
+          disabled: this.$element.is(":disabled"),
+          readonly: this.$element.is("[readonly]"),
+          onColor: this.$element.data("on-color"),
+          offColor: this.$element.data("off-color"),
+          onText: this.$element.data("on-text"),
+          offText: this.$element.data("off-text"),
+          labelText: this.$element.data("label-text")
+        });
+        this.$on = $("<span>", {
+          "class": "" + this.name + "-handle-on " + this.name + "-" + this.options.onColor,
+          html: this.options.onText
+        });
+        this.$off = $("<span>", {
+          "class": "" + this.name + "-handle-off " + this.name + "-" + this.options.offColor,
+          html: this.options.offText
+        });
+        this.$label = $("<label>", {
+          "for": this.$element.attr("id"),
+          html: this.options.labelText
+        });
+        this.$wrapper = $("<div>", {
+          "class": (function(_this) {
+            return function() {
+              var classes;
+              classes = ["" + _this.name];
+              classes.push(_this.options.state ? "" + _this.name + "-on" : "" + _this.name + "-off");
+              if (_this.options.size != null) {
+                classes.push("" + _this.name + "-" + _this.options.size);
+              }
+              if (_this.options.animate) {
+                classes.push("" + _this.name + "-animate");
+              }
+              if (_this.options.disabled) {
+                classes.push("" + _this.name + "-disabled");
+              }
+              if (_this.options.readonly) {
+                classes.push("" + _this.name + "-readonly");
+              }
+              if (_this.$element.attr("id")) {
+                classes.push("" + _this.name + "-id-" + (_this.$element.attr("id")));
+              }
+              return classes.join(" ");
+            };
+          })(this)
+        });
+        this.$div = this.$element.wrap($("<div>")).parent();
+        this.$wrapper = this.$div.wrap(this.$wrapper).parent();
+        this.$element.before(this.$on).before(this.$label).before(this.$off);
+        this._elementHandlers();
+        this._handleHandlers();
+        this._labelHandlers();
+        this._formHandler();
+      }
+
+      BootstrapSwitch.prototype._constructor = BootstrapSwitch;
+
+      BootstrapSwitch.prototype.state = function(value, skip) {
+        if (typeof value === "undefined") {
+          return this.options.state;
+        }
+        if (this.options.disabled || this.options.readonly) {
+          return this.$element;
+        }
+        value = !!value;
+        this.$element.prop("checked", value).trigger("change.bootstrapSwitch", skip);
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.toggleState = function(skip) {
+        if (this.options.disabled || this.options.readonly) {
+          return this.$element;
+        }
+        return this.$element.prop("checked", !this.options.state).trigger("change.bootstrapSwitch", skip);
+      };
+
+
+      /*
+      TODO: refactor
+      toggleRadioState: (uncheck, skip) ->
+        $element = @$element.not ":checked"
+
+        if uncheck
+          $element.trigger "change.bootstrapSwitch", skip
+        else
+          $element.prop("checked", not @$element.is ":checked").trigger "change.bootstrapSwitch", skip
+        @$element
+       */
+
+      BootstrapSwitch.prototype.size = function(value) {
+        if (typeof value === "undefined") {
+          return this.options.size;
+        }
+        if (this.options.size != null) {
+          this.$wrapper.removeClass("" + this.name + "-" + this.options.size);
+        }
+        this.$wrapper.addClass("" + this.name + "-" + value);
+        this.options.size = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.animate = function(value) {
+        if (typeof value === "undefined") {
+          return this.options.animate;
+        }
+        value = !!value;
+        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.name + "-animate");
+        this.options.animate = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.disabled = function(value) {
+        if (typeof value === "undefined") {
+          return this.options.disabled;
+        }
+        value = !!value;
+        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.name + "-disabled");
+        this.$element.prop("disabled", value);
+        this.options.disabled = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.toggleDisabled = function() {
+        this.$element.prop("disabled", !this.options.disabled);
+        this.$wrapper.toggleClass("" + this.name + "-disabled");
+        this.options.disabled = !this.options.disabled;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.readonly = function(value) {
+        if (typeof value === "undefined") {
+          return this.options.readonly;
+        }
+        value = !!value;
+        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.name + "-readonly");
+        this.$element.prop("readonly", value);
+        this.options.readonly = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.toggleReadonly = function() {
+        this.$element.prop("readonly", !this.options.readonly);
+        this.$wrapper.toggleClass("" + this.name + "-readonly");
+        this.options.readonly = !this.options.readonly;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.onColor = function(value) {
+        var color;
+        color = this.options.onColor;
+        if (typeof value === "undefined") {
+          return color;
+        }
+        if (color != null) {
+          this.$on.removeClass("" + this.name + "-" + color);
+        }
+        this.$on.addClass("" + this.name + "-" + value);
+        this.options.onColor = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.offColor = function(value) {
+        var color;
+        color = this.options.offColor;
+        if (typeof value === "undefined") {
+          return color;
+        }
+        if (color != null) {
+          this.$off.removeClass("" + this.name + "-" + color);
+        }
+        this.$off.addClass("" + this.name + "-" + value);
+        this.options.offColor = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.onText = function(value) {
+        if (typeof value === "undefined") {
+          return this.options.onText;
+        }
+        this.$on.html(value);
+        this.options.onText = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.offText = function(value) {
+        if (typeof value === "undefined") {
+          return this.options.offText;
+        }
+        this.$off.html(value);
+        this.options.offText = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.labelText = function(value) {
+        if (typeof value === "undefined") {
+          return this.options.labelText;
+        }
+        this.$label.html(value);
+        this.options.labelText = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.destroy = function() {
+        var $form;
+        $form = this.$element.closest("form");
+        if ($form.length) {
+          $form.off("reset.bootstrapSwitch").removeData("bootstrap-switch");
+        }
+        this.$div.children().not(this.$element).remove();
+        this.$element.unwrap().unwrap().off(".bootstrapSwitch").removeData("bootstrap-switch");
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype._elementHandlers = function() {
+        return this.$element.on({
+          "change.bootstrapSwitch": (function(_this) {
+            return function(e, skip) {
+              var checked;
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
+              checked = _this.$element.is(":checked");
+              if (checked === _this.options.state) {
+                return;
+              }
+              _this.options.state = checked;
+              _this.$wrapper.removeClass(checked ? "" + _this.name + "-off" : "" + _this.name + "-on").addClass(checked ? "" + _this.name + "-on" : "" + _this.name + "-off");
+              if (!skip) {
+                if (_this.$element.is(":radio")) {
+                  $("[name='" + (_this.$element.attr('name')) + "']").not(_this.$element).prop("checked", false).trigger("change.bootstrapSwitch", true);
+                }
+                return _this.$element.trigger("switchChange", {
+                  el: _this.$element,
+                  value: checked
+                });
+              }
+            };
+          })(this),
+          "focus.bootstrapSwitch": (function(_this) {
+            return function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
+              return _this.$wrapper.addClass("" + _this.name + "-focused");
+            };
+          })(this),
+          "blur.bootstrapSwitch": (function(_this) {
+            return function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
+              return _this.$wrapper.removeClass("" + _this.name + "-focused");
+            };
+          })(this),
+          "keydown.bootstrapSwitch": (function(_this) {
+            return function(e) {
+              if (!e.which || _this.options.disabled || _this.options.readonly) {
+                return;
+              }
+              switch (e.which) {
+                case 32:
+                  e.preventDefault();
+                  e.stopPropagation();
+                  e.stopImmediatePropagation();
+                  return _this.toggleState();
+                case 37:
+                  e.preventDefault();
+                  e.stopPropagation();
+                  e.stopImmediatePropagation();
+                  return _this.state(false);
+                case 39:
+                  e.preventDefault();
+                  e.stopPropagation();
+                  e.stopImmediatePropagation();
+                  return _this.state(true);
+              }
+            };
+          })(this)
+        });
+      };
+
+      BootstrapSwitch.prototype._handleHandlers = function() {
+        this.$on.on("click.bootstrapSwitch", (function(_this) {
+          return function(e) {
+            _this.state(false);
+            return _this.$element.trigger("focus.bootstrapSwitch");
+          };
+        })(this));
+        return this.$off.on("click.bootstrapSwitch", (function(_this) {
+          return function(e) {
+            _this.state(true);
+            return _this.$element.trigger("focus.bootstrapSwitch");
+          };
+        })(this));
+      };
+
+      BootstrapSwitch.prototype._labelHandlers = function() {
+        return this.$label.on({
+          "mousemove.bootstrapSwitch": (function(_this) {
+            return function(e) {
+              var left, percent, right;
+              if (!_this.drag) {
+                return;
+              }
+              percent = ((e.pageX - _this.$wrapper.offset().left) / _this.$wrapper.width()) * 100;
+              left = 25;
+              right = 75;
+              if (percent < left) {
+                percent = left;
+              } else if (percent > right) {
+                percent = right;
+              }
+              _this.$div.css("margin-left", "" + (percent - right) + "%");
+              return _this.$element.trigger("focus.bootstrapSwitch");
+            };
+          })(this),
+          "mousedown.bootstrapSwitch": (function(_this) {
+            return function(e) {
+              if (_this.drag || _this.options.disabled || _this.options.readonly) {
+                return;
+              }
+              _this.drag = true;
+              if (_this.options.animate) {
+                _this.$wrapper.removeClass("" + _this.name + "-animate");
+              }
+              return _this.$element.trigger("focus.bootstrapSwitch");
+            };
+          })(this),
+          "mouseup.bootstrapSwitch": (function(_this) {
+            return function(e) {
+              if (!_this.drag) {
+                return;
+              }
+              _this.drag = false;
+              _this.$element.prop("checked", parseInt(_this.$div.css("margin-left"), 10) > -25).trigger("change.bootstrapSwitch");
+              _this.$div.css("margin-left", "");
+              if (_this.options.animate) {
+                return _this.$wrapper.addClass("" + _this.name + "-animate");
+              }
+            };
+          })(this),
+          "click.bootstrapSwitch": (function(_this) {
+            return function(e) {
+              e.preventDefault();
+              e.stopImmediatePropagation();
+              _this.toggleState();
+              return _this.$element.trigger("focus.bootstrapSwitch");
+            };
+          })(this)
+        });
+      };
+
+      BootstrapSwitch.prototype._formHandler = function() {
+        var $form;
+        $form = this.$element.closest("form");
+        if ($form.data("bootstrap-switch")) {
+          return;
+        }
+        return $form.on("reset.bootstrapSwitch", function() {
+          return window.setTimeout(function() {
+            return $form.find("input").filter(function() {
+              return $(this).data("bootstrap-switch");
+            }).each(function() {
+              return $(this).bootstrapSwitch("state", false);
+            });
+          }, 1);
+        }).data("bootstrap-switch", true);
+      };
+
+      return BootstrapSwitch;
+
+    })();
+    $.fn.extend({
+      bootstrapSwitch: function() {
+        var args, option, ret;
+        option = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+        ret = this;
+        this.each(function() {
+          var $this, data;
+          $this = $(this);
+          data = $this.data("bootstrap-switch");
+          if (!data) {
+            $this.data("bootstrap-switch", data = new BootstrapSwitch(this, option));
+          }
+          if (typeof option === "string") {
+            return ret = data[option].apply(data, args);
+          }
+        });
+        return ret;
+      }
+    });
+    return $.fn.bootstrapSwitch.Constructor = BootstrapSwitch;
+  })(window.jQuery, window);
+
+}).call(this);
