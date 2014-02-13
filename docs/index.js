@@ -82,7 +82,7 @@ $(function() {
   $('#label-toggle-switch').on('click', function(e, data) {
     $('.label-toggle-switch').bootstrapSwitch('toggleState');
   });
-  $('.label-toggle-switch').on('switch-change', function(e, data) {
+  $('.label-toggle-switch').on('switchChange', function(e, data) {
     alert(data.value);
   });
 
