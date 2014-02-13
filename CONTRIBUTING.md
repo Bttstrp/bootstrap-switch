@@ -1,21 +1,7 @@
-If you want help us to fix bugs or add a extension please use our develop branch
+If you want help to fix bugs or propose a feature:
 
-At this time it was develop
+- Checkout `develop` branch
+- Always work on this branch for fixes
+- Once done, submit us your Pull Requests. Always pick `develop` as destination branch
 
-https://github.com/nostalgiaz/bootstrap-switch/tree/develop
-
-First step:
-
-Please merge your branch develop with nostalgiaz/bootstrap-switch/tree/develop
-
-second step:
-
-Work in the branch develop for fixes
-
-third step:
-
-regularly reviews the branch develop for updates and then merge this with your branch develop
-
-fourth step:
-
-When you're done in your branch send us a PR to merge the two branches
+Thank you.
