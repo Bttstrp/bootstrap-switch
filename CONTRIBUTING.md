@@ -1,21 +1,14 @@
-If you want help us to fix bugs or add a extension please use our develop branch
+Prerequisites:
 
-At this time it was develop
+- Node and NPM
+- Gulp
 
-https://github.com/nostalgiaz/bootstrap-switch/tree/develop
+Flow:
 
-First step:
+- Checkout `develop` branch
+- Run `npm install` to get or update the dependencies
+- Run `gulp`. Gulp will run the default task and listen for further files changes
+- Work on the Coffeescript or LESS sources. Gulp will automatically update the build 
+- Once completed, submit a Pull Requests. Be sure to target `develop` as destination branch
 
-Please merge your branch develop with nostalgiaz/bootstrap-switch/tree/develop
-
-second step:
-
-Work in the branch develop for fixes
-
-third step:
-
-regularly reviews the branch develop for updates and then merge this with your branch develop
-
-fourth step:
-
-When you're done in your branch send us a PR to merge the two branches
+Thank you.

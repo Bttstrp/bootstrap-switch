@@ -38,13 +38,13 @@ $("[name='my-checkbox']").bootstrapSwitch();
 
 Enjoy.
 
-Less
+LESS
 ----
-If you want to use your bootstrap variables, include `bootstrap-switch.less` in your compilation stack. You can even choose among Bootstrap versions 2.3.2 or 3.*.* compatible source.
+If you want to use your custom Bootstrap variables, choose the appropriate `bootstrap-switch.less` source file among versions 2 and 3 and include it in your LESS stack.
 
 Supported browsers
 ------------------
-IE8+ and all the other modern browsers (until proven otherwise: submit a issue and let's see what we can do).
+IE9+ and all the other modern browsers (until proven otherwise: submit a issue and let's see what we can do).
 
 License
 -------
