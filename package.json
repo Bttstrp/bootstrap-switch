@@ -37,20 +37,15 @@
   "license": "Apache Version 2",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "matchdep": "~0.3.0",
-    "grunt": "~0.4.2",
-    "grunt-contrib-less": "~0.8.3",
-    "grunt-contrib-jshint": "~0.7.2",
-    "grunt-bump": "0.0.11",
-    "grunt-contrib-coffee": "~0.7.0",
-    "grunt-contrib-uglify": "~0.2.7",
-    "grunt-contrib-cssmin": "~0.7.0",
-    "grunt-coffeelint": "0.0.8",
-    "grunt-banner": "~0.2.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-connect": "~0.6.0",
-    "grunt-open": "~0.2.2",
-    "grunt-contrib-jasmine": "~0.5.2"
+    "gulp-clean": "~0.2.4",
+    "gulp-coffee": "~1.4.1",
+    "gulp-util": "~2.2.14",
+    "gulp-header": "~1.0.2",
+    "gulp-uglify": "~0.2.1",
+    "gulp-coffeelint": "~0.2.1",
+    "gulp": "~3.5.2",
+    "gulp-less": "~1.2.1",
+    "gulp-rename": "~1.0.0",
+    "gulp-open": "~0.2.8"
   }
 }
