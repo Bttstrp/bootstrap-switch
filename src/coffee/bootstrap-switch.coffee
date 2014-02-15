@@ -79,18 +79,6 @@
 
       @$element.prop("checked", not @options.state).trigger "change.bootstrapSwitch", skip
 
-    ###
-    TODO: refactor
-    toggleRadioState: (uncheck, skip) ->
-      $element = @$element.not ":checked"
-
-      if uncheck
-        $element.trigger "change.bootstrapSwitch", skip
-      else
-        $element.prop("checked", not @$element.is ":checked").trigger "change.bootstrapSwitch", skip
-      @$element
-    ###
-
     size: (value) ->
       return @options.size if typeof value is "undefined"
 

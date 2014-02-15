@@ -125,19 +125,6 @@
         return this.$element.prop("checked", !this.options.state).trigger("change.bootstrapSwitch", skip);
       };
 
-
-      /*
-      TODO: refactor
-      toggleRadioState: (uncheck, skip) ->
-        $element = @$element.not ":checked"
-      
-        if uncheck
-          $element.trigger "change.bootstrapSwitch", skip
-        else
-          $element.prop("checked", not @$element.is ":checked").trigger "change.bootstrapSwitch", skip
-        @$element
-       */
-
       BootstrapSwitch.prototype.size = function(value) {
         if (typeof value === "undefined") {
           return this.options.size;

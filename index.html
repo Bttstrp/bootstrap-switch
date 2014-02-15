@@ -270,13 +270,16 @@ $('.label-toggle-switch').on('switchChange', function (e, data) {
           <input type="checkbox" id="toggle-state-switch" checked>
           <br>
           <br>
-          <div id="toggle-state-switch-button-state" class="btn btn-default">State!</div>
-          <div id="toggle-state-switch-button-on" class="btn btn-default">On</div>
-          <div id="toggle-state-switch-button" class="btn btn-default">Toggle</div>
-          <div id="toggle-state-switch-button-off" class="btn btn-default">Off</div>
-          <pre class="language-javascript"><code>$('#toggle-state-switch').bootstrapSwitch('state'); // true || false
-$('#toggle-state-switch').bootstrapSwitch('toggleState');
-$('#toggle-state-switch').bootstrapSwitch('state', false); // true || false</code></pre>
+          <div id="toggle-state-switch-button-state" class="btn btn-default">Get State</div>
+          <div id="toggle-state-switch-button-on" class="btn btn-default">Set On</div>
+          <div id="toggle-state-switch-button-off" class="btn btn-default">Set Off</div>
+          <div id="toggle-state-switch-button" class="btn btn-default">Toggle State</div>
+          <pre class="language-javascript"><code>$('#toggle-state-switch').bootstrapSwitch('state'); // Get the state
+$('#toggle-state-switch').bootstrapSwitch('state', false); // Set the state as off
+$('#toggle-state-switch').bootstrapSwitch('state', false, false); // Set the state as off and do not trigger switchChange event
+$('#toggle-state-switch').bootstrapSwitch('toggleState'); // Toggle the state
+$('#toggle-state-switch').bootstrapSwitch('toggleState'); // Toggle the state and do not trigger switchChange event
+</code></pre>
         </section>
         <section id="destroy" class="section">
           <div class="page-header">
@@ -285,7 +288,7 @@ $('#toggle-state-switch').bootstrapSwitch('state', false); // true || false</cod
           <input type="checkbox" id="destroy-switch" checked>
           <br>
           <br>
-          <button id="btn-destroy-switch" class="btn btn-default">Destroy me!</button>
+          <button id="btn-destroy-switch" class="btn btn-default">Destroy Bootstrap Switch!</button>
           <pre class="language-javascript"><code>$('#destroy-switch').bootstrapSwitch('destroy');</code></pre>
         </section>
         <section id="disable" class="section">
@@ -308,8 +311,8 @@ $('#toggle-state-switch').bootstrapSwitch('state', false); // true || false</cod
           <br>
           <button id="btn-readonly-is" class="btn btn-default">Is readonly?</button>
           <button id="btn-readonly-toggle" class="btn btn-default">Toggle readonly</button>
-          <button id="btn-readonly-set" class="btn btn-default">Set readonly</button>
-          <button id="btn-readonly-remove" class="btn btn-default">Remove readonly</button>
+          <button id="btn-readonly-set" class="btn btn-default">Set Readonly</button>
+          <button id="btn-readonly-remove" class="btn btn-default">Remove Readonly</button>
           <pre class="language-javascript"><code>$('#disable-switch').bootstrapSwitch('disabled');
 $('#disable-switch').bootstrapSwitch('toggleDisabled');
 $('#disable-switch').bootstrapSwitch('disabled', true);  // true || false
