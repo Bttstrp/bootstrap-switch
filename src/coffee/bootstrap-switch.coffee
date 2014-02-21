@@ -35,7 +35,7 @@
           $div = $("<div>")
           $wrapper = $("<div>",
             class: "has-switch"
-            tabindex: 0
+            tabindex: $element.attr("tabindex") || 0
           )
           $form = $element.closest("form")
           changeState = ->
