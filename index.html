@@ -248,7 +248,7 @@ $('#label-switch').bootstrapSwitch('offText', 'O');</code></pre>
             <h3><a name="event-handler" class="anchor" href="#event-handler">Event Handler <small>JavaScript</small></a></h3>
           </div>
           <input type="checkbox" id="switch-change" checked>
-          <pre class="language-javascript"><code>$('#switch-change').on('switchChange', function (e, data) {
+          <pre class="language-javascript"><code>$('#switch-change').on('switch-change', function (e, data) {
   var $element = $(data.el),
       value = data.value;
 
@@ -266,7 +266,7 @@ $('#label-switch').bootstrapSwitch('offText', 'O');</code></pre>
           <pre class="language-javascript"><code>$('#label-toggle-switch').on('click', function(e, data) {
     $('.label-toggle-switch').bootstrapSwitch('toggleState');
 });
-$('.label-toggle-switch').on('switchChange', function (e, data) {
+$('.label-toggle-switch').on('switch-change', function (e, data) {
     alert(data.value);
 });</code></pre>
         </section>
