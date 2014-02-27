@@ -71,7 +71,7 @@
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 .bootstrap-switch.bootstrap-switch-mini {
-  min-width: 72px;
+  min-width: 71px;
 }
 .bootstrap-switch.bootstrap-switch-mini > div > span,
 .bootstrap-switch.bootstrap-switch-mini > div > label {
@@ -90,7 +90,7 @@
   margin-bottom: -1px;
 }
 .bootstrap-switch.bootstrap-switch-small {
-  min-width: 80px;
+  min-width: 79px;
 }
 .bootstrap-switch.bootstrap-switch-small > div > span,
 .bootstrap-switch.bootstrap-switch-small > div > label {
