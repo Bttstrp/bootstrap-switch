@@ -46,6 +46,7 @@
     "gulp": "~3.5.2",
     "gulp-less": "~1.2.1",
     "gulp-rename": "~1.0.0",
-    "gulp-open": "~0.2.8"
+    "gulp-open": "~0.2.8",
+    "gulp-load-plugins": "~0.3.0"
   }
 }
