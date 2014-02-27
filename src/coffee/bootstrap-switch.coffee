@@ -275,6 +275,9 @@
           @$div.css "margin-left", ""
           @$wrapper.addClass "#{@name}-animate" if @options.animate
 
+        "mouseleave.bootstrapSwitch": (e) =>
+          @$label.trigger "mouseup.bootstrapSwitch"
+
         "click.bootstrapSwitch": (e) =>
           e.preventDefault()
           e.stopImmediatePropagation()
