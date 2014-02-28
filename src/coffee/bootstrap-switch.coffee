@@ -1,23 +1,12 @@
-(($, window) ->
+do ($ = window.jQuery, window) ->
   "use strict"
 
   class BootstrapSwitch
-    defaults:
-      state: true
-      size: null
-      animate: true
-      disabled: false
-      readonly: false
-      onColor: "primary"
-      offColor: "default"
-      onText: "ON"
-      offText: "OFF"
-      labelText: "&nbsp;"
     name: "bootstrap-switch"
 
     constructor: (element, options = {}) ->
       @$element = $ element
-      @options = $.extend {}, @defaults, options,
+      @options = $.extend {}, $.fn.bootstrapSwitch.defaults, options,
         state: @$element.is ":checked"
         size: @$element.data "size"
         animate: @$element.data "animate"
@@ -38,7 +27,7 @@
         for: @$element.attr "id"
         html: @options.labelText
       @$wrapper = $ "<div>",
-        class: =>
+        "class": =>
           classes = ["#{@name}"]
 
           classes.push if @options.state then "#{@name}-on" else "#{@name}-off"
@@ -300,10 +289,10 @@
         , 1
       .data "bootstrap-switch", true
 
-  $.fn.extend bootstrapSwitch: (option, args...) ->
+  $.fn.bootstrapSwitch = (option, args...) ->
     ret = @
     @each ->
-      $this = $(@)
+      $this = $ @
       data = $this.data "bootstrap-switch"
 
       $this.data "bootstrap-switch", data = new BootstrapSwitch @, option if not data
@@ -311,4 +300,14 @@
     ret
 
   $.fn.bootstrapSwitch.Constructor = BootstrapSwitch
-) window.jQuery, window
+  $.fn.bootstrapSwitch.defaults =
+    state: true
+    size: null
+    animate: true
+    disabled: false
+    readonly: false
+    onColor: "primary"
+    offColor: "default"
+    onText: "ON"
+    offText: "OFF"
+    labelText: "&nbsp;"

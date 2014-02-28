@@ -26,19 +26,6 @@
     "use strict";
     var BootstrapSwitch;
     BootstrapSwitch = (function() {
-      BootstrapSwitch.prototype.defaults = {
-        state: true,
-        size: null,
-        animate: true,
-        disabled: false,
-        readonly: false,
-        onColor: "primary",
-        offColor: "default",
-        onText: "ON",
-        offText: "OFF",
-        labelText: "&nbsp;"
-      };
-
       BootstrapSwitch.prototype.name = "bootstrap-switch";
 
       function BootstrapSwitch(element, options) {
@@ -46,7 +33,7 @@
           options = {};
         }
         this.$element = $(element);
-        this.options = $.extend({}, this.defaults, options, {
+        this.options = $.extend({}, $.fn.bootstrapSwitch.defaults, options, {
           state: this.$element.is(":checked"),
           size: this.$element.data("size"),
           animate: this.$element.data("animate"),
@@ -413,26 +400,36 @@
       return BootstrapSwitch;
 
     })();
-    $.fn.extend({
-      bootstrapSwitch: function() {
-        var args, option, ret;
-        option = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-        ret = this;
-        this.each(function() {
-          var $this, data;
-          $this = $(this);
-          data = $this.data("bootstrap-switch");
-          if (!data) {
-            $this.data("bootstrap-switch", data = new BootstrapSwitch(this, option));
-          }
-          if (typeof option === "string") {
-            return ret = data[option].apply(data, args);
-          }
-        });
-        return ret;
-      }
-    });
-    return $.fn.bootstrapSwitch.Constructor = BootstrapSwitch;
+    $.fn.bootstrapSwitch = function() {
+      var args, option, ret;
+      option = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+      ret = this;
+      this.each(function() {
+        var $this, data;
+        $this = $(this);
+        data = $this.data("bootstrap-switch");
+        if (!data) {
+          $this.data("bootstrap-switch", data = new BootstrapSwitch(this, option));
+        }
+        if (typeof option === "string") {
+          return ret = data[option].apply(data, args);
+        }
+      });
+      return ret;
+    };
+    $.fn.bootstrapSwitch.Constructor = BootstrapSwitch;
+    return $.fn.bootstrapSwitch.defaults = {
+      state: true,
+      size: null,
+      animate: true,
+      disabled: false,
+      readonly: false,
+      onColor: "primary",
+      offColor: "default",
+      onText: "ON",
+      offText: "OFF",
+      labelText: "&nbsp;"
+    };
   })(window.jQuery, window);
 
 }).call(this);
