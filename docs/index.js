@@ -1,6 +1,9 @@
 $(function() {
+  // initialize highlight.js
+  hljs.initHighlightingOnLoad();
+
   // initialize all the inputs
-  $('input[type="checkbox"],[type="radio"]').not('#create-switch').bootstrapSwitch();
+  $('input[type="checkbox"],[type="radio"]').not('#create-switch').not('#events-switch').bootstrapSwitch();
 
   // dimension
   $('#btn-size-regular-switch').on('click', function () {
@@ -87,12 +90,17 @@ $(function() {
   });
 
   // event handler
-  $('#switch-change').on('switchChange', function (e, data) {
-    var $element = $(data.el),
-      value = data.value;
+  $('#events-switch').on({
+    init: function() {
+      console.log('Initialized!');
+    },
+    switchChange: function (e, data) {
+      var $element = $(data.el),
+        value = data.value;
 
-    console.log(e, $element, value);
-  });
+      console.log(e, $element, value);
+    }
+  }).bootstrapSwitch();
 
   // color
   $('#btn-color-on-switch').on('click', function() {

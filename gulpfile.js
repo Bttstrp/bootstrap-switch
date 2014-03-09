@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var plugins = require("gulp-load-plugins")();
+var plugins = require('gulp-load-plugins')();
 var pkg = require('./package.json');
 var name = pkg.name;
 var banner = [
@@ -74,20 +74,32 @@ gulp.task('less-bootstrap3', function() {
 
 gulp.task('clean', function() {
   gulp.src(['build/css', 'build/js'], { read: false })
-    .pipe(plugins.clean());
+    .pipe(plugins.clean()).on('error', plugins.util.log);
 });
 
-gulp.task('open', function(){
-  gulp.src('index.html')
-    .pipe(plugins.open());
+gulp.task('docs', function() {
+  gulp.src('docs/index.jade')
+    .pipe(plugins.jade())
+    .pipe(gulp.dest('./'));
 });
 
-gulp.task('watch', function () {
+gulp.task('connect', ['docs'], plugins.connect.server({
+  root: [__dirname],
+  livereload: false,
+  open: {
+    file: 'index.html'
+  }
+}));
+
+gulp.task('watch', function() {
   gulp.watch('src/coffee/' + name + '.coffee', ['coffee']);
   gulp.watch('src/less/bootstrap2/*.less', ['less-bootstrap2']);
   gulp.watch('src/less/bootstrap3/*.less', ['less-bootstrap3']);
+  gulp.watch('docs/index.jade', ['docs']);
 });
 
-gulp.task('default', ['clean'], function() {
-  gulp.start('coffee', 'less-bootstrap2', 'less-bootstrap3', 'open', 'watch')
+gulp.task('build', ['clean'], function() {
+  gulp.start('coffee', 'less-bootstrap2', 'less-bootstrap3');
 });
+
+gulp.task('default', ['build', 'docs', 'connect', 'watch']);

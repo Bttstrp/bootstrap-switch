@@ -26,24 +26,34 @@ do ($ = window.jQuery, window) ->
       @$label = $ "<label>",
         for: @$element.attr "id"
         html: @options.labelText
-      @$wrapper = $ "<div>",
-        "class": =>
-          classes = ["#{@name}"]
+      @$wrapper = $ "<div>"
 
-          classes.push if @options.state then "#{@name}-on" else "#{@name}-off"
-          classes.push "#{@name}-#{@options.size}" if @options.size?
-          classes.push "#{@name}-animate" if @options.animate
-          classes.push "#{@name}-disabled" if @options.disabled
-          classes.push "#{@name}-readonly" if @options.readonly
-          classes.push "#{@name}-id-#{@$element.attr("id")}" if @$element.attr "id"
-          classes.join " "
+      # add wrapper classes
+      @$wrapper.addClass  =>
+        classes = ["#{@name}"]
+
+        classes.push if @options.state then "#{@name}-on" else "#{@name}-off"
+        classes.push "#{@name}-#{@options.size}" if @options.size?
+        classes.push "#{@name}-animate" if @options.animate
+        classes.push "#{@name}-disabled" if @options.disabled
+        classes.push "#{@name}-readonly" if @options.readonly
+        classes.push "#{@name}-id-#{@$element.attr("id")}" if @$element.attr "id"
+        classes.join " "
+
+      # set up events
+      @$element.on "init", => @options.on.init.call()
+      @$element.on "switchChange", => @options.on.switchChange.call()
 
       # reassign elements after dom modification
       @$div = @$element.wrap($("<div>")).parent()
       @$wrapper = @$div.wrap(@$wrapper).parent()
 
-      # insert handles and label
-      @$element.before(@$on).before(@$label).before @$off
+      # insert handles and label and trigger event
+      @$element
+      .before(@$on)
+      .before(@$label)
+      .before(@$off)
+      .trigger "init"
 
       @_elementHandlers()
       @_handleHandlers()
@@ -311,3 +321,7 @@ do ($ = window.jQuery, window) ->
     onText: "ON"
     offText: "OFF"
     labelText: "&nbsp;"
+    on:
+      init: ->
+      switchChange: ->
+

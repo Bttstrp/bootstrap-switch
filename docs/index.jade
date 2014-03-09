@@ -1,0 +1,219 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='Turn checkboxes and radio buttons in toggle switches.')
+    meta(name='author', content='Mattia Larentis, Emanuele Marchi and Peter Stein')
+    title Bootstrap Switch · Turn checkboxes and radio buttons in toggle switches
+    link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css')
+    link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css')
+    link(rel='stylesheet', href='build/css/bootstrap3/bootstrap-switch.css')
+    link(rel='stylesheet', href='docs/highlight.css')
+    link(rel='stylesheet', href='docs/index.css')
+    script.
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-43092768-1']);
+      _gaq.push(['_trackPageview']);
+      (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+      })();
+  body
+    header.navbar.navbar-default.navbar-fixed-top.header(role='banner')
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='../') Bootstrap Switch
+        nav#collapse.collapse.navbar-collapse(role='navigation')
+          ul.nav.navbar-nav
+            li: a(href='https://github.com/nostalgiaz/bootstrap-switch/archive/3.0.zip') Download 3RC
+            li: a(href='#getting-started') Getting Started
+            li.dropdown
+              a(href='#documentation', data-toggle='dropdown')
+                | Documentation
+                span.caret
+              ul.dropdown-menu
+                li: a(href='#options') Options
+                li: a(href='#methods') Methods
+                //-
+                  li: a(href='#size') Size
+                  li: a(href='#colors') Colors
+                  li: a(href='#animation') Animation
+                  li: a(href='#disabled') Disabled &sol; Readonly
+                  li: a(href='#text') Text
+                  li: a(href='#label-text') Label Text
+                  li: a(href='#icon-label-text') Icon Label Text
+                  li: a(href='#event-handlers') Event Handlers
+                  li: a(href='#label-event-handler') Label Event Handlers
+                  li: a(href='#state') State
+                  li: a(href='#destroy') Destroy
+                  li: a(href='#disable') Disable &sol; Readonly
+                  li: a(href='#radio') Radio
+                  li: a(href='#form') Form
+                  li: a(href='#modal') Modal
+            li: a(href='#examples') Examples
+            li: a(href='https://github.com/nostalgiaz/bootstrap-switch/issues') Bug reports
+
+
+    .container
+      h1#title Bootstrap Switch
+      p.lead Turn checkboxes and radio buttons in toggle switches.
+      a(href='https://github.com/nostalgiaz/bootstrap-switch/archive/3.0.zip', class='btn btn-lg btn-primary') Download Bootstrap Switch 3 Release Candidate
+
+      #getting-started
+        h1.page-header Getting Started
+        p Include the dependencies: jQuery, Bootstrap and Bootstrap Switch CSS + Javascript.
+        pre: code
+            [...]
+            &lt;link href="bootstrap.css" rel="stylesheet"&gt;
+            &lt;link href="bootstrap-switch.css" rel="stylesheet"&gt;
+            &lt;script src="jquery.js"&gt;&lt;/script&gt;
+            &lt;script src="bootstrap-switch.js"&gt;&lt;/script&gt;
+            [...]
+
+      #options
+        h1.page-header Options
+        table.table.table-bordered.table-striped.table-responsive
+          thead
+            tr
+              th Name
+              th Type
+              th Description
+              th Values
+              th Default
+          tbody
+            tr
+              td state
+              td Boolean
+              td The checkbox state
+              td true, false
+              td 'checked' attribute or true
+            tr
+              td size
+              td String | Null
+              td The checkbox state
+              td null, 'mini', 'small', 'large'
+              td null
+            tr
+              td animate
+              td Boolean
+              td Animate the switch
+              td true, false
+              td true
+            tr
+              td disabled
+              td Boolean
+              td Disable state
+              td true, false
+              td 'disabled' attribute or false
+            tr
+              td readonly
+              td Boolean
+              td Readonly state
+              td true, false
+              td 'readonly' attribute or false
+            tr
+              td onColor
+              td String
+              td Color of the left side of the switch
+              td 'primary', 'info', 'success', 'warning', 'danger', 'default'
+              td 'primary'
+            tr
+              td offColor
+              td String
+              td Color of the right side of the switch
+              td 'primary', 'info', 'success', 'warning', 'danger', 'default'
+              td 'default'
+            tr
+              td onText
+              td String
+              td Text of the left side of the switch
+              td String
+              td 'ON'
+            tr
+              td offText
+              td String
+              td Text of the right side of the switch
+              td String
+              td 'OFF'
+            tr
+              td labelText
+              td String
+              td Text of the center handle of the switch
+              td String
+              td '&nbsp;'
+            tr
+              td on
+              td Object
+              td(colspan='3') Callback functions collection
+            tr
+              td on.init
+              td Function
+              td Callback function to execute on initialization
+              td Function
+              td function() {}
+            tr
+              td on.switchChange
+              td Function
+              td Callback function to execute on switch state change
+              td Function
+              td function() {}
+
+      #methods
+        h1.page-header Methods
+
+        p In Bootstrap Switch, every option is also a method.
+        p You can call a method in this way:
+        pre: code $('input[name="my-checkbox"]').bootstrapSwitch('state', true);
+
+        h2 Additional Methods
+
+        table.table.table-bordered.table-striped.table-responsive
+          thead
+            tr
+              th Name
+              th Description
+          tbody
+            tr
+              td toggleState
+              td Toggle the switch state
+            tr
+              td toggleDisabled
+              td Toggle the disabled state
+            tr
+              td toggleReadonly
+              td Toggle the readonly state
+            tr
+              td destroy
+              td Destroy the instance of Bootstrap Switch
+
+      #examples
+        h1.page-header Examples
+
+        .row
+          .col-sm-6
+            input(type='checkbox', id='toggle-state-switch' checked)
+          .col-sm-6
+            button(type='button', id='toggle-state-switch-button-state', class='btn btn-default') Get State
+            &nbsp;
+            button(type='button', id='toggle-state-switch-button-on', class='btn btn-default') Set On
+            &nbsp;
+            button(type='button', id='toggle-state-switch-button-off', class='btn btn-default') Set Off
+            &nbsp;
+            button(type='button', id='toggle-state-switch-button', class='btn btn-default') Toggle State
+
+    script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+    script(src='http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js')
+    script(src='build/js/bootstrap-switch.js')
+    script(src='docs/highlight.js')
+    script(src='docs/index.js')
