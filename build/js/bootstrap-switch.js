@@ -81,19 +81,19 @@
             return classes.join(" ");
           };
         })(this));
-        this.$element.on("init", (function(_this) {
+        this.$element.on("init.bootstrapSwitch", (function(_this) {
           return function() {
-            return _this.options.on.init.call();
+            return _this.options.onInit.apply(_this.$element[0], arguments);
           };
         })(this));
-        this.$element.on("switchChange", (function(_this) {
+        this.$element.on("switchChange.bootstrapSwitch", (function(_this) {
           return function() {
-            return _this.options.on.switchChange.call();
+            return _this.options.onSwitchChange.apply(_this.$element[0], arguments);
           };
         })(this));
         this.$div = this.$element.wrap($("<div>")).parent();
         this.$wrapper = this.$div.wrap(this.$wrapper).parent();
-        this.$element.before(this.$on).before(this.$label).before(this.$off).trigger("init");
+        this.$element.before(this.$on).before(this.$label).before(this.$off).trigger("init.bootstrapSwitch");
         this._elementHandlers();
         this._handleHandlers();
         this._labelHandlers();
@@ -263,10 +263,7 @@
                 if (_this.$element.is(":radio")) {
                   $("[name='" + (_this.$element.attr('name')) + "']").not(_this.$element).prop("checked", false).trigger("change.bootstrapSwitch", true);
                 }
-                return _this.$element.trigger("switchChange", {
-                  el: _this.$element,
-                  value: checked
-                });
+                return _this.$element.trigger("switchChange.bootstrapSwitch", [checked]);
               }
             };
           })(this),
@@ -438,10 +435,8 @@
       onText: "ON",
       offText: "OFF",
       labelText: "&nbsp;",
-      on: {
-        init: function() {},
-        switchChange: function() {}
-      }
+      onInit: function() {},
+      onSwitchChange: function() {}
     };
   })(window.jQuery, window);
 

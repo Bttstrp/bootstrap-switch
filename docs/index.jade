@@ -7,11 +7,11 @@ html(lang='en')
     meta(name='description', content='Turn checkboxes and radio buttons in toggle switches.')
     meta(name='author', content='Mattia Larentis, Emanuele Marchi and Peter Stein')
     title Bootstrap Switch · Turn checkboxes and radio buttons in toggle switches
-    link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css')
-    link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css')
-    link(rel='stylesheet', href='build/css/bootstrap3/bootstrap-switch.css')
-    link(rel='stylesheet', href='docs/highlight.css')
-    link(rel='stylesheet', href='docs/index.css')
+    link(href='http://fonts.googleapis.com/css?family=Roboto:400,700', rel='stylesheet')
+    link(href='docs/lib/css/bootstrap.min.css', rel='stylesheet')
+    link(href='docs/lib/css/highlight.css', rel='stylesheet')
+    link(href='build/css/bootstrap3/bootstrap-switch.css', rel='stylesheet')
+    link(href='docs/index.css', rel='stylesheet')
     script.
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-43092768-1']);
@@ -45,6 +45,8 @@ html(lang='en')
               ul.dropdown-menu
                 li: a(href='#options') Options
                 li: a(href='#methods') Methods
+                li: a(href='#events') Events
+
                 //-
                   li: a(href='#size') Size
                   li: a(href='#colors') Colors
@@ -73,7 +75,8 @@ html(lang='en')
       #getting-started
         h1.page-header Getting Started
         p Include the dependencies: jQuery, Bootstrap and Bootstrap Switch CSS + Javascript.
-        pre: code
+        pre
+          code
             [...]
             &lt;link href="bootstrap.css" rel="stylesheet"&gt;
             &lt;link href="bootstrap-switch.css" rel="stylesheet"&gt;
@@ -100,10 +103,10 @@ html(lang='en')
               td 'checked' attribute or true
             tr
               td size
-              td String | Null
+              td String
               td The checkbox state
-              td null, 'mini', 'small', 'large'
-              td null
+              td 'mini', 'small', 'normal', 'large'
+              td 'normal'
             tr
               td animate
               td Boolean
@@ -153,17 +156,13 @@ html(lang='en')
               td String
               td '&nbsp;'
             tr
-              td on
-              td Object
-              td(colspan='3') Callback functions collection
-            tr
-              td on.init
+              td onInit
               td Function
               td Callback function to execute on initialization
               td Function
               td function() {}
             tr
-              td on.switchChange
+              td onSwitchChange
               td Function
               td Callback function to execute on switch state change
               td Function
@@ -197,23 +196,51 @@ html(lang='en')
               td destroy
               td Destroy the instance of Bootstrap Switch
 
+      #events
+        h1.page-header Events
+        table.table.table-bordered.table-striped.table-responsive
+          thead
+            tr
+              th Name
+              th Description
+              th Parameters
+          tbody
+            tr
+              td init
+              td Triggered on initialization. 'this' refers to the DOM element.
+              td
+                | event <a href="https://api.jquery.com/category/events/event-object/" target="_blank">jQuery Event object</a>
+            tr
+              td switchChange
+              td Triggered on switch state change. 'this' refers to the DOM element.
+              td
+                | event (<a href="https://api.jquery.com/category/events/event-object/" target="_blank">jQuery Event object</a>),
+                | state (true | false)
+
       #examples
         h1.page-header Examples
+          h2 State
+          .row
+            .col-sm-6
+              input(type='checkbox', id='toggle-state-switch' checked)
+            .col-sm-6
+              .btn-group.pull-right
+                button(type='button', id='toggle-state-switch-button-state', class='btn btn-default') Get State
+                &nbsp;
+                button(type='button', id='toggle-state-switch-button-on', class='btn btn-default') Set On
+                &nbsp;
+                button(type='button', id='toggle-state-switch-button-off', class='btn btn-default') Set Off
+                &nbsp;
+                button(type='button', id='toggle-state-switch-button', class='btn btn-default') Toggle State
 
-        .row
-          .col-sm-6
-            input(type='checkbox', id='toggle-state-switch' checked)
-          .col-sm-6
-            button(type='button', id='toggle-state-switch-button-state', class='btn btn-default') Get State
-            &nbsp;
-            button(type='button', id='toggle-state-switch-button-on', class='btn btn-default') Set On
-            &nbsp;
-            button(type='button', id='toggle-state-switch-button-off', class='btn btn-default') Set Off
-            &nbsp;
-            button(type='button', id='toggle-state-switch-button', class='btn btn-default') Toggle State
+          .row
+            .col-sm-6
+              input(type='checkbox', id='toggle-state-switch' checked)
 
-    script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
-    script(src='http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js')
+        <p>Working on this...</p>
+
+    script(src='docs/lib/js/jquery.min.js')
+    script(src='docs/lib/js/bootstrap.min.js')
+    script(src='docs/lib/js/highlight.js')
     script(src='build/js/bootstrap-switch.js')
-    script(src='docs/highlight.js')
     script(src='docs/index.js')

@@ -29,7 +29,7 @@ do ($ = window.jQuery, window) ->
       @$wrapper = $ "<div>"
 
       # add wrapper classes
-      @$wrapper.addClass  =>
+      @$wrapper.addClass =>
         classes = ["#{@name}"]
 
         classes.push if @options.state then "#{@name}-on" else "#{@name}-off"
@@ -41,8 +41,8 @@ do ($ = window.jQuery, window) ->
         classes.join " "
 
       # set up events
-      @$element.on "init", => @options.on.init.call()
-      @$element.on "switchChange", => @options.on.switchChange.call()
+      @$element.on "init.bootstrapSwitch", => @options.onInit.apply @$element[0], arguments
+      @$element.on "switchChange.bootstrapSwitch", => @options.onSwitchChange.apply @$element[0], arguments
 
       # reassign elements after dom modification
       @$div = @$element.wrap($("<div>")).parent()
@@ -53,7 +53,7 @@ do ($ = window.jQuery, window) ->
       .before(@$on)
       .before(@$label)
       .before(@$off)
-      .trigger "init"
+      .trigger "init.bootstrapSwitch"
 
       @_elementHandlers()
       @_handleHandlers()
@@ -194,7 +194,7 @@ do ($ = window.jQuery, window) ->
 
           unless skip
             $("[name='#{@$element.attr('name')}']").not(@$element).prop("checked", false).trigger "change.bootstrapSwitch", true if @$element.is ":radio"
-            @$element.trigger "switchChange", el: @$element, value: checked
+            @$element.trigger "switchChange.bootstrapSwitch", [checked]
 
         "focus.bootstrapSwitch": (e) =>
           e.preventDefault()
@@ -321,7 +321,6 @@ do ($ = window.jQuery, window) ->
     onText: "ON"
     offText: "OFF"
     labelText: "&nbsp;"
-    on:
-      init: ->
-      switchChange: ->
+    onInit: ->
+    onSwitchChange: ->
 

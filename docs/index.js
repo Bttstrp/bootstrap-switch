@@ -5,6 +5,7 @@ $(function() {
   // initialize all the inputs
   $('input[type="checkbox"],[type="radio"]').not('#create-switch').not('#events-switch').bootstrapSwitch();
 
+  /*
   // dimension
   $('#btn-size-regular-switch').on('click', function () {
     $('#dimension-switch').bootstrapSwitch('size', '');
@@ -94,7 +95,7 @@ $(function() {
     init: function() {
       console.log('Initialized!');
     },
-    switchChange: function (e, data) {
+    switchChange: function ($element, data) {
       var $element = $(data.el),
         value = data.value;
 
@@ -126,4 +127,5 @@ $(function() {
     console.log("ok");
     $('.radio2').bootstrapSwitch('toggleRadioState', true);
   });
+  */
 });

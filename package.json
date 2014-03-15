@@ -37,7 +37,6 @@
   "license": "Apache Version 2",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "gulp-clean": "~0.2.4",
     "gulp-coffee": "~1.4.1",
     "gulp-util": "~2.2.14",
     "gulp-header": "~1.0.2",
