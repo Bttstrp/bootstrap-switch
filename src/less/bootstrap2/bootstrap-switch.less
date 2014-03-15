@@ -1,6 +1,6 @@
-@bootstrap-switch-name: bootstrap-switch;
+@bootstrap-switch-base: bootstrap-switch;
 
-.@{bootstrap-switch-name} {
+.@{bootstrap-switch-base} {
   display: inline-block;
   cursor: pointer;
   .border-radius(5px);
@@ -15,33 +15,25 @@
   min-width: 100px;
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
-  &.@{bootstrap-switch-name}-mini {
+  &.@{bootstrap-switch-base}-mini {
     min-width: 71px;
 
-    > div > span,
-    > div > label {
+    .@{bootstrap-switch-base}-handle-on,
+    .@{bootstrap-switch-base}-handle-off,
+    .@{bootstrap-switch-base}-label {
       padding-bottom: 4px;
       padding-top: 4px;
       font-size: 10px;
       line-height: 9px;
     }
-
-    .@{bootstrap-switch-name}-mini-icons {
-      height: 1.20em;
-      line-height: 9px;
-      vertical-align: text-top;
-      text-align: center;
-      transform: scale(0.6);
-      margin-top: -1px;
-      margin-bottom: -1px;
-    }
   }
 
-  &.@{bootstrap-switch-name}-small {
+  &.@{bootstrap-switch-base}-small {
     min-width: 79px;
 
-    > div > span,
-    > div > label {
+    .@{bootstrap-switch-base}-handle-on,
+    .@{bootstrap-switch-base}-handle-off,
+    .@{bootstrap-switch-base}-label {
       padding-bottom: 3px;
       padding-top: 3px;
       font-size: 12px;
@@ -49,11 +41,12 @@
     }
   }
 
-  &.@{bootstrap-switch-name}-large {
+  &.@{bootstrap-switch-base}-large {
     min-width: 120px;
 
-    > div > span,
-    > div > label {
+    .@{bootstrap-switch-base}-handle-on,
+    .@{bootstrap-switch-base}-handle-off,
+    .@{bootstrap-switch-base}-label {
       padding-bottom: 9px;
       padding-top: 9px;
       font-size: 16px;
@@ -61,120 +54,123 @@
     }
   }
 
-  &.@{bootstrap-switch-name}-animate {
+  &.@{bootstrap-switch-base}-animate {
 
-    > div {
+    .@{bootstrap-switch-base}-container {
       .transition(margin-left 0.5s);
     }
   }
 
-  &.@{bootstrap-switch-name}-on {
+  &.@{bootstrap-switch-base}-on {
 
-    > div {
+    .@{bootstrap-switch-base}-container {
       margin-left: 0%;
+    }
 
-      > label {
-        .border-right-radius(4px);
-      }
+    .@{bootstrap-switch-base}-label {
+      .border-right-radius(4px);
     }
   }
 
-  &.@{bootstrap-switch-name}-off {
+  &.@{bootstrap-switch-base}-off {
 
-    > div {
+    .@{bootstrap-switch-base}-container {
       margin-left: -50%;
+    }
 
-      > label {
-        .border-left-radius(4px);
-      }
+    .@{bootstrap-switch-base}-label {
+      .border-left-radius(4px);
     }
   }
 
-  &.@{bootstrap-switch-name}-disabled,
-  &.@{bootstrap-switch-name}-readonly {
+  &.@{bootstrap-switch-base}-disabled,
+  &.@{bootstrap-switch-base}-readonly {
     .opacity(50);
     cursor: default !important;
 
-    > div > span,
-    > div > label {
+    .@{bootstrap-switch-base}-handle-on,
+    .@{bootstrap-switch-base}-handle-off,
+    .@{bootstrap-switch-base}-label {
       cursor: default !important;
     }
   }
 
-  &.@{bootstrap-switch-name}-focused {
+  &.@{bootstrap-switch-base}-focused {
     border-color: rgba(82, 168, 236, .8);
     outline: 0;
     outline: thin dotted \9;
-    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)");
+    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82, 168, 236, .6)");
   }
 
-  > div {
+  .@{bootstrap-switch-base}-container {
     display: inline-block;
     width: 150%;
     top: 0;
     .border-radius(4px);
     .translate3d(0, 0, 0);
+  }
 
-    > span,
-    > label {
-      .box-sizing(border-box);
-      cursor: pointer;
-      display: inline-block !important;
-      height: 100%;
-      padding-bottom: 4px;
-      padding-top: 4px;
-      font-size: 14px;
-      line-height: 20px;
+  .@{bootstrap-switch-base}-handle-on,
+  .@{bootstrap-switch-base}-handle-off,
+  .@{bootstrap-switch-base}-label {
+    .box-sizing(border-box);
+    cursor: pointer;
+    display: inline-block !important;
+    height: 100%;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .@{bootstrap-switch-base}-handle-on,
+  .@{bootstrap-switch-base}-handle-off {
+    text-align: center;
+    z-index: 1;
+    width: 33.333333333%;
+
+    &.@{bootstrap-switch-base}-primary {
+      .buttonBackground(@btnPrimaryBackgroundHighlight, @btnPrimaryBackground);
     }
 
-    > span {
-      text-align: center;
-      z-index: 1;
-      width: 33.333333333%;
-
-      &.@{bootstrap-switch-name}-handle-on {
-        .border-left-radius(4px);
-      }
-
-      &.@{bootstrap-switch-name}-handle-off {
-        .border-right-radius(4px);
-      }
-
-      &.@{bootstrap-switch-name}-primary {
-        .buttonBackground(@btnPrimaryBackgroundHighlight, @btnPrimaryBackground);
-      }
-
-      &.@{bootstrap-switch-name}-info {
-        .buttonBackground(@btnInfoBackgroundHighlight, @btnInfoBackground);
-      }
-
-      &.@{bootstrap-switch-name}-success {
-        .buttonBackground(@btnSuccessBackgroundHighlight, @btnSuccessBackground);
-      }
-
-      &.@{bootstrap-switch-name}-warning {
-        .buttonBackground(@btnWarningBackgroundHighlight, @btnWarningBackground);
-      }
-
-      &.@{bootstrap-switch-name}-danger {
-        .buttonBackground(@btnDangerBackgroundHighlight, @btnDangerBackground);
-      }
-
-      &.@{bootstrap-switch-name}-default {
-        .buttonBackground(@btnBackgroundHighlight, @btnBackground, @grayDark, 0 1px 1px rgba(255,255,255,.75));
-      }
+    &.@{bootstrap-switch-base}-info {
+      .buttonBackground(@btnInfoBackgroundHighlight, @btnInfoBackground);
     }
 
-    > label {
-      text-align: center;
-      margin-top: -1px;
-      margin-bottom: -1px;
-      z-index: 100;
-      width: 33.333333333%;
-      border-left: 1px solid @btnBorder;
-      border-right: 1px solid @btnBorder;
-      .buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark);
+    &.@{bootstrap-switch-base}-success {
+      .buttonBackground(@btnSuccessBackgroundHighlight, @btnSuccessBackground);
     }
+
+    &.@{bootstrap-switch-base}-warning {
+      .buttonBackground(@btnWarningBackgroundHighlight, @btnWarningBackground);
+    }
+
+    &.@{bootstrap-switch-base}-danger {
+      .buttonBackground(@btnDangerBackgroundHighlight, @btnDangerBackground);
+    }
+
+    &.@{bootstrap-switch-base}-default {
+      .buttonBackground(@btnBackgroundHighlight, @btnBackground, @grayDark, 0 1px 1px rgba(255,255,255,.75));
+    }
+  }
+
+  .@{bootstrap-switch-base}-handle-on {
+    .border-left-radius(4px);
+  }
+
+  .@{bootstrap-switch-base}-handle-off {
+    .border-right-radius(4px);
+  }
+
+  .@{bootstrap-switch-base}-label {
+    text-align: center;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    z-index: 100;
+    width: 33.333333333%;
+    border-left: 1px solid @btnBorder;
+    border-right: 1px solid @btnBorder;
+    .buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark);
   }
 
   input[type='radio'],
@@ -186,4 +182,3 @@
     z-index: -1;
   }
 }
-

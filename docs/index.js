@@ -2,6 +2,17 @@ $(function() {
   // initialize highlight.js
   hljs.initHighlightingOnLoad();
 
+  $('input[name="download-version"]').on({
+    'init.bootstrapSwitch': function(e) {
+      var state = $(this).is(':checked');
+      $('#download-' + (state ? '2' : '3')).hide();
+    },
+    'switchChange.bootstrapSwitch': function(e, state) {
+      $('#download-3')[state ? 'show' : 'hide']();
+      $('#download-2')[state ? 'hide' : 'show']();
+    }
+  });
+
   // initialize all the inputs
   $('input[type="checkbox"],[type="radio"]').not('#create-switch').not('#events-switch').bootstrapSwitch();
 

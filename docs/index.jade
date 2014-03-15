@@ -25,7 +25,7 @@ html(lang='en')
         s.parentNode.insertBefore(ga, s);
       })();
   body
-    header.navbar.navbar-default.navbar-fixed-top.header(role='banner')
+    header.navbar.navbar-default.navbar-fixed-top.top(role='banner')
       .container
         .navbar-header
           button.navbar-toggle(type='button', data-toggle='collapse', data-target='#collapse')
@@ -66,11 +66,15 @@ html(lang='en')
             li: a(href='#examples') Examples
             li: a(href='https://github.com/nostalgiaz/bootstrap-switch/issues') Bug reports
 
-
     .container
-      h1#title Bootstrap Switch
-      p.lead Turn checkboxes and radio buttons in toggle switches.
-      a(href='https://github.com/nostalgiaz/bootstrap-switch/archive/3.0.zip', class='btn btn-lg btn-primary') Download Bootstrap Switch 3 Release Candidate
+      .header
+        h1.title Bootstrap Switch
+        p.lead Turn checkboxes and radio buttons in toggle switches.
+        p Choose your version:
+        p: input(type='checkbox', name='download-version', checked, data-size='large', data-on-text='3 RC', data-off-text='2.0.1')
+        p
+          a(href='https://github.com/nostalgiaz/bootstrap-switch/archive/3.0.zip', id='download-3', class='btn btn-lg btn-primary') Download 3 (Release candidate)
+          a(href='https://github.com/nostalgiaz/bootstrap-switch/archive/master.zip', id='download-2' class='btn btn-lg btn-primary') Download 2.0.1
 
       #getting-started
         h1.page-header Getting Started
@@ -154,19 +158,19 @@ html(lang='en')
               td String
               td Text of the center handle of the switch
               td String
-              td '&nbsp;'
+              td '&amp;nbsp;'
             tr
               td onInit
               td Function
               td Callback function to execute on initialization
               td Function
-              td function() {}
+              td function(event) {}
             tr
               td onSwitchChange
               td Function
               td Callback function to execute on switch state change
               td Function
-              td function() {}
+              td function(event, state) {}
 
       #methods
         h1.page-header Methods
@@ -198,6 +202,16 @@ html(lang='en')
 
       #events
         h1.page-header Events
+
+        p You can register to the emitted events as follow:
+        pre
+          code
+            | $('inputy[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+            |   console.log(this); // DOM element
+            |   console.log(event); // jQuery event
+            |   console.log(state); // true | false
+            | });
+
         table.table.table-bordered.table-striped.table-responsive
           thead
             tr
@@ -232,10 +246,6 @@ html(lang='en')
                 button(type='button', id='toggle-state-switch-button-off', class='btn btn-default') Set Off
                 &nbsp;
                 button(type='button', id='toggle-state-switch-button', class='btn btn-default') Toggle State
-
-          .row
-            .col-sm-6
-              input(type='checkbox', id='toggle-state-switch' checked)
 
         <p>Working on this...</p>
 

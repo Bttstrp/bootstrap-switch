@@ -4,7 +4,7 @@ body {
   padding-bottom: 50px;
 }
 
-#title {
+.title {
   font-size: 5em;
   letter-spacing: -2px;
 }
@@ -13,12 +13,8 @@ body {
   text-align: left;
 }
 
-#main {
+.header {
   text-align: center;
-}
-
-.section {
-  padding-top: 20px;
 }
 
 #github {

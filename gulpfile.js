@@ -102,5 +102,6 @@ gulp.task('watch', ['connect'], function() {
 
 });
 
-gulp.task('build', ['coffee', 'less-bootstrap2', 'less-bootstrap3']);
+gulp.task('less', ['less-bootstrap2', 'less-bootstrap3']);
+gulp.task('build', ['coffee', 'less']);
 gulp.task('default', ['connect', 'build', 'docs', 'watch']);

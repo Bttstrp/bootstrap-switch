@@ -18,35 +18,40 @@ do ($ = window.jQuery, window) ->
         offText: @$element.data "off-text"
         labelText: @$element.data "label-text"
       @$on = $ "<span>",
-        class: "#{@name}-handle-on #{@name}-#{@options.onColor}"
+        class: "#{@options.classes.base}-#{@options.classes.handleOn} #{@options.classes.base}-#{@options.onColor}"
         html: @options.onText
       @$off = $ "<span>",
-        class: "#{@name}-handle-off #{@name}-#{@options.offColor}"
+        class: "#{@options.classes.base}-#{@options.classes.handleOff} #{@options.classes.base}-#{@options.offColor}"
         html: @options.offText
       @$label = $ "<label>",
+        class: "#{@options.classes.base}-#{@options.classes.label}"
         for: @$element.attr "id"
         html: @options.labelText
       @$wrapper = $ "<div>"
+      @$container = $ "<div>",
+        class: "#{@options.classes.base}-#{@options.classes.container}"
 
       # add wrapper classes
       @$wrapper.addClass =>
-        classes = ["#{@name}"]
+        classes = ["#{@options.classes.base}"]
 
-        classes.push if @options.state then "#{@name}-on" else "#{@name}-off"
-        classes.push "#{@name}-#{@options.size}" if @options.size?
-        classes.push "#{@name}-animate" if @options.animate
-        classes.push "#{@name}-disabled" if @options.disabled
-        classes.push "#{@name}-readonly" if @options.readonly
-        classes.push "#{@name}-id-#{@$element.attr("id")}" if @$element.attr "id"
+        classes.push if @options.state then "#{@options.classes.base}-#{@options.classes.modifiers.on}" else "#{@options.classes.base}-#{@options.classes.modifiers.off}"
+        classes.push "#{@options.classes.base}-#{@options.size}" if @options.size?
+        classes.push "#{@options.classes.base}-#{@options.classes.modifiers.animate}" if @options.animate
+        classes.push "#{@options.classes.base}-#{@options.classes.modifiers.disabled}" if @options.disabled
+        classes.push "#{@options.classes.base}-#{@options.classes.modifiers.readonly}" if @options.readonly
+        classes.push "#{@options.classes.base}-id-#{@$element.attr("id")}" if @$element.attr "id"
         classes.join " "
 
       # set up events
       @$element.on "init.bootstrapSwitch", => @options.onInit.apply @$element[0], arguments
       @$element.on "switchChange.bootstrapSwitch", => @options.onSwitchChange.apply @$element[0], arguments
 
+      console.log @$container
+
       # reassign elements after dom modification
-      @$div = @$element.wrap($("<div>")).parent()
-      @$wrapper = @$div.wrap(@$wrapper).parent()
+      @$container = @$element.wrap(@$container).parent()
+      @$wrapper = @$container.wrap(@$wrapper).parent()
 
       # insert handles and label and trigger event
       @$element
@@ -81,8 +86,8 @@ do ($ = window.jQuery, window) ->
     size: (value) ->
       return @options.size if typeof value is "undefined"
 
-      @$wrapper.removeClass "#{@name}-#{@options.size}" if @options.size?
-      @$wrapper.addClass "#{@name}-#{value}"
+      @$wrapper.removeClass "#{@options.classes.base}-#{@options.size}" if @options.size?
+      @$wrapper.addClass "#{@options.classes.base}-#{value}"
       @options.size = value
       @$element
 
@@ -91,7 +96,7 @@ do ($ = window.jQuery, window) ->
 
       value = not not value
 
-      @$wrapper[if value then "addClass" else "removeClass"]("#{@name}-animate")
+      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.classes.base}-#{@options.classes.modifiers.animate}")
       @options.animate = value
       @$element
 
@@ -100,14 +105,14 @@ do ($ = window.jQuery, window) ->
 
       value = not not value
 
-      @$wrapper[if value then "addClass" else "removeClass"]("#{@name}-disabled")
+      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.classes.base}-#{@options.classes.modifiers.disabled}")
       @$element.prop "disabled", value
       @options.disabled = value
       @$element
 
     toggleDisabled: ->
       @$element.prop "disabled", not @options.disabled
-      @$wrapper.toggleClass "#{@name}-disabled"
+      @$wrapper.toggleClass "#{@options.classes.base}-#{@options.classes.modifiers.disabled}"
       @options.disabled = not @options.disabled
       @$element
 
@@ -116,14 +121,14 @@ do ($ = window.jQuery, window) ->
 
       value = not not value
 
-      @$wrapper[if value then "addClass" else "removeClass"]("#{@name}-readonly")
+      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.classes.base}-#{@options.classes.modifiers.readonly}")
       @$element.prop "readonly", value
       @options.readonly = value
       @$element
 
     toggleReadonly: ->
       @$element.prop "readonly", not @options.readonly
-      @$wrapper.toggleClass "#{@name}-readonly"
+      @$wrapper.toggleClass "#{@options.classes.base}-#{@options.classes.modifiers.readonly}"
       @options.readonly = not @options.readonly
       @$element
 
@@ -132,8 +137,8 @@ do ($ = window.jQuery, window) ->
 
       return color if typeof value is "undefined"
 
-      @$on.removeClass "#{@name}-#{color}" if color?
-      @$on.addClass "#{@name}-#{value}"
+      @$on.removeClass "#{@options.classes.base}-#{color}" if color?
+      @$on.addClass "#{@options.classes.base}-#{value}"
       @options.onColor = value
       @$element
 
@@ -142,8 +147,8 @@ do ($ = window.jQuery, window) ->
 
       return color if typeof value is "undefined"
 
-      @$off.removeClass "#{@name}-#{color}" if color?
-      @$off.addClass "#{@name}-#{value}"
+      @$off.removeClass "#{@options.classes.base}-#{color}" if color?
+      @$off.addClass "#{@options.classes.base}-#{value}"
       @options.offColor = value
       @$element
 
@@ -172,7 +177,7 @@ do ($ = window.jQuery, window) ->
       $form = @$element.closest "form"
 
       $form.off("reset.bootstrapSwitch").removeData "bootstrap-switch" if $form.length
-      @$div.children().not(@$element).remove()
+      @$container.children().not(@$element).remove()
       @$element.unwrap().unwrap().off(".bootstrapSwitch").removeData "bootstrap-switch"
       @$element
 
@@ -189,8 +194,8 @@ do ($ = window.jQuery, window) ->
 
           @options.state = checked
           @$wrapper
-          .removeClass(if checked then "#{@name}-off" else "#{@name}-on")
-          .addClass if checked then "#{@name}-on" else "#{@name}-off"
+          .removeClass(if checked then "#{@options.classes.base}-#{@options.classes.modifiers.off}" else "#{@options.classes.base}-#{@options.classes.modifiers.on}")
+          .addClass if checked then "#{@options.classes.base}-#{@options.classes.modifiers.on}" else "#{@options.classes.base}-#{@options.classes.modifiers.off}"
 
           unless skip
             $("[name='#{@$element.attr('name')}']").not(@$element).prop("checked", false).trigger "change.bootstrapSwitch", true if @$element.is ":radio"
@@ -201,14 +206,14 @@ do ($ = window.jQuery, window) ->
           e.stopPropagation()
           e.stopImmediatePropagation()
 
-          @$wrapper.addClass "#{@name}-focused"
+          @$wrapper.addClass "#{@options.classes.base}-#{@options.classes.modifiers.focused}"
 
         "blur.bootstrapSwitch": (e) =>
           e.preventDefault()
           e.stopPropagation()
           e.stopImmediatePropagation()
 
-          @$wrapper.removeClass "#{@name}-focused"
+          @$wrapper.removeClass "#{@options.classes.base}-#{@options.classes.modifiers.focused}"
 
         "keydown.bootstrapSwitch": (e) =>
           return if not e.which or @options.disabled or @options.readonly
@@ -256,23 +261,23 @@ do ($ = window.jQuery, window) ->
           else if percent > right
             percent = right
 
-          @$div.css "margin-left", "#{percent - right}%"
+          @$container.css "margin-left", "#{percent - right}%"
           @$element.trigger "focus.bootstrapSwitch"
 
         "mousedown.bootstrapSwitch": (e) =>
           return if @drag or @options.disabled or @options.readonly
 
           @drag = true
-          @$wrapper.removeClass "#{@name}-animate" if @options.animate
+          @$wrapper.removeClass "#{@options.classes.base}-#{@options.classes.modifiers.animate}" if @options.animate
           @$element.trigger "focus.bootstrapSwitch"
 
         "mouseup.bootstrapSwitch": (e) =>
           return unless @drag
 
           @drag = false
-          @$element.prop("checked", (parseInt(@$div.css("margin-left"), 10) > -25)).trigger "change.bootstrapSwitch"
-          @$div.css "margin-left", ""
-          @$wrapper.addClass "#{@name}-animate" if @options.animate
+          @$element.prop("checked", (parseInt(@$container.css("margin-left"), 10) > -25)).trigger "change.bootstrapSwitch"
+          @$container.css "margin-left", ""
+          @$wrapper.addClass "#{@options.classes.base}-#{@options.classes.modifiers.animate}" if @options.animate
 
         "mouseleave.bootstrapSwitch": (e) =>
           @$label.trigger "mouseup.bootstrapSwitch"
@@ -321,6 +326,20 @@ do ($ = window.jQuery, window) ->
     onText: "ON"
     offText: "OFF"
     labelText: "&nbsp;"
+    classes:
+      base: "bootstrap-switch"
+      container: "container"
+      wrapper: "wrapper"
+      handleOn: "handle-on"
+      handleOff: "handle-off"
+      label: "label"
+      modifiers:
+        on: "on"
+        off: "off"
+        focused: "focused"
+        animate: "animate"
+        disabled: "disabled"
+        readonly: "readonly"
     onInit: ->
     onSwitchChange: ->
 

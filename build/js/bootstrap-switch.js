@@ -46,37 +46,41 @@
           labelText: this.$element.data("label-text")
         });
         this.$on = $("<span>", {
-          "class": "" + this.name + "-handle-on " + this.name + "-" + this.options.onColor,
+          "class": "" + this.options.classes.base + "-" + this.options.classes.handleOn + " " + this.options.classes.base + "-" + this.options.onColor,
           html: this.options.onText
         });
         this.$off = $("<span>", {
-          "class": "" + this.name + "-handle-off " + this.name + "-" + this.options.offColor,
+          "class": "" + this.options.classes.base + "-" + this.options.classes.handleOff + " " + this.options.classes.base + "-" + this.options.offColor,
           html: this.options.offText
         });
         this.$label = $("<label>", {
+          "class": "" + this.options.classes.base + "-" + this.options.classes.label,
           "for": this.$element.attr("id"),
           html: this.options.labelText
         });
         this.$wrapper = $("<div>");
+        this.$container = $("<div>", {
+          "class": "" + this.options.classes.base + "-" + this.options.classes.container
+        });
         this.$wrapper.addClass((function(_this) {
           return function() {
             var classes;
-            classes = ["" + _this.name];
-            classes.push(_this.options.state ? "" + _this.name + "-on" : "" + _this.name + "-off");
+            classes = ["" + _this.options.classes.base];
+            classes.push(_this.options.state ? "" + _this.options.classes.base + "-" + _this.options.classes.modifiers.on : "" + _this.options.classes.base + "-" + _this.options.classes.modifiers.off);
             if (_this.options.size != null) {
-              classes.push("" + _this.name + "-" + _this.options.size);
+              classes.push("" + _this.options.classes.base + "-" + _this.options.size);
             }
             if (_this.options.animate) {
-              classes.push("" + _this.name + "-animate");
+              classes.push("" + _this.options.classes.base + "-" + _this.options.classes.modifiers.animate);
             }
             if (_this.options.disabled) {
-              classes.push("" + _this.name + "-disabled");
+              classes.push("" + _this.options.classes.base + "-" + _this.options.classes.modifiers.disabled);
             }
             if (_this.options.readonly) {
-              classes.push("" + _this.name + "-readonly");
+              classes.push("" + _this.options.classes.base + "-" + _this.options.classes.modifiers.readonly);
             }
             if (_this.$element.attr("id")) {
-              classes.push("" + _this.name + "-id-" + (_this.$element.attr("id")));
+              classes.push("" + _this.options.classes.base + "-id-" + (_this.$element.attr("id")));
             }
             return classes.join(" ");
           };
@@ -91,8 +95,9 @@
             return _this.options.onSwitchChange.apply(_this.$element[0], arguments);
           };
         })(this));
-        this.$div = this.$element.wrap($("<div>")).parent();
-        this.$wrapper = this.$div.wrap(this.$wrapper).parent();
+        console.log(this.$container);
+        this.$container = this.$element.wrap(this.$container).parent();
+        this.$wrapper = this.$container.wrap(this.$wrapper).parent();
         this.$element.before(this.$on).before(this.$label).before(this.$off).trigger("init.bootstrapSwitch");
         this._elementHandlers();
         this._handleHandlers();
@@ -126,9 +131,9 @@
           return this.options.size;
         }
         if (this.options.size != null) {
-          this.$wrapper.removeClass("" + this.name + "-" + this.options.size);
+          this.$wrapper.removeClass("" + this.options.classes.base + "-" + this.options.size);
         }
-        this.$wrapper.addClass("" + this.name + "-" + value);
+        this.$wrapper.addClass("" + this.options.classes.base + "-" + value);
         this.options.size = value;
         return this.$element;
       };
@@ -138,7 +143,7 @@
           return this.options.animate;
         }
         value = !!value;
-        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.name + "-animate");
+        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.options.classes.base + "-" + this.options.classes.modifiers.animate);
         this.options.animate = value;
         return this.$element;
       };
@@ -148,7 +153,7 @@
           return this.options.disabled;
         }
         value = !!value;
-        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.name + "-disabled");
+        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.options.classes.base + "-" + this.options.classes.modifiers.disabled);
         this.$element.prop("disabled", value);
         this.options.disabled = value;
         return this.$element;
@@ -156,7 +161,7 @@
 
       BootstrapSwitch.prototype.toggleDisabled = function() {
         this.$element.prop("disabled", !this.options.disabled);
-        this.$wrapper.toggleClass("" + this.name + "-disabled");
+        this.$wrapper.toggleClass("" + this.options.classes.base + "-" + this.options.classes.modifiers.disabled);
         this.options.disabled = !this.options.disabled;
         return this.$element;
       };
@@ -166,7 +171,7 @@
           return this.options.readonly;
         }
         value = !!value;
-        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.name + "-readonly");
+        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.options.classes.base + "-" + this.options.classes.modifiers.readonly);
         this.$element.prop("readonly", value);
         this.options.readonly = value;
         return this.$element;
@@ -174,7 +179,7 @@
 
       BootstrapSwitch.prototype.toggleReadonly = function() {
         this.$element.prop("readonly", !this.options.readonly);
-        this.$wrapper.toggleClass("" + this.name + "-readonly");
+        this.$wrapper.toggleClass("" + this.options.classes.base + "-" + this.options.classes.modifiers.readonly);
         this.options.readonly = !this.options.readonly;
         return this.$element;
       };
@@ -186,9 +191,9 @@
           return color;
         }
         if (color != null) {
-          this.$on.removeClass("" + this.name + "-" + color);
+          this.$on.removeClass("" + this.options.classes.base + "-" + color);
         }
-        this.$on.addClass("" + this.name + "-" + value);
+        this.$on.addClass("" + this.options.classes.base + "-" + value);
         this.options.onColor = value;
         return this.$element;
       };
@@ -200,9 +205,9 @@
           return color;
         }
         if (color != null) {
-          this.$off.removeClass("" + this.name + "-" + color);
+          this.$off.removeClass("" + this.options.classes.base + "-" + color);
         }
-        this.$off.addClass("" + this.name + "-" + value);
+        this.$off.addClass("" + this.options.classes.base + "-" + value);
         this.options.offColor = value;
         return this.$element;
       };
@@ -240,7 +245,7 @@
         if ($form.length) {
           $form.off("reset.bootstrapSwitch").removeData("bootstrap-switch");
         }
-        this.$div.children().not(this.$element).remove();
+        this.$container.children().not(this.$element).remove();
         this.$element.unwrap().unwrap().off(".bootstrapSwitch").removeData("bootstrap-switch");
         return this.$element;
       };
@@ -258,7 +263,7 @@
                 return;
               }
               _this.options.state = checked;
-              _this.$wrapper.removeClass(checked ? "" + _this.name + "-off" : "" + _this.name + "-on").addClass(checked ? "" + _this.name + "-on" : "" + _this.name + "-off");
+              _this.$wrapper.removeClass(checked ? "" + _this.options.classes.base + "-" + _this.options.classes.modifiers.off : "" + _this.options.classes.base + "-" + _this.options.classes.modifiers.on).addClass(checked ? "" + _this.options.classes.base + "-" + _this.options.classes.modifiers.on : "" + _this.options.classes.base + "-" + _this.options.classes.modifiers.off);
               if (!skip) {
                 if (_this.$element.is(":radio")) {
                   $("[name='" + (_this.$element.attr('name')) + "']").not(_this.$element).prop("checked", false).trigger("change.bootstrapSwitch", true);
@@ -272,7 +277,7 @@
               e.preventDefault();
               e.stopPropagation();
               e.stopImmediatePropagation();
-              return _this.$wrapper.addClass("" + _this.name + "-focused");
+              return _this.$wrapper.addClass("" + _this.options.classes.base + "-" + _this.options.classes.modifiers.focused);
             };
           })(this),
           "blur.bootstrapSwitch": (function(_this) {
@@ -280,7 +285,7 @@
               e.preventDefault();
               e.stopPropagation();
               e.stopImmediatePropagation();
-              return _this.$wrapper.removeClass("" + _this.name + "-focused");
+              return _this.$wrapper.removeClass("" + _this.options.classes.base + "-" + _this.options.classes.modifiers.focused);
             };
           })(this),
           "keydown.bootstrapSwitch": (function(_this) {
@@ -341,7 +346,7 @@
               } else if (percent > right) {
                 percent = right;
               }
-              _this.$div.css("margin-left", "" + (percent - right) + "%");
+              _this.$container.css("margin-left", "" + (percent - right) + "%");
               return _this.$element.trigger("focus.bootstrapSwitch");
             };
           })(this),
@@ -352,7 +357,7 @@
               }
               _this.drag = true;
               if (_this.options.animate) {
-                _this.$wrapper.removeClass("" + _this.name + "-animate");
+                _this.$wrapper.removeClass("" + _this.options.classes.base + "-" + _this.options.classes.modifiers.animate);
               }
               return _this.$element.trigger("focus.bootstrapSwitch");
             };
@@ -363,10 +368,10 @@
                 return;
               }
               _this.drag = false;
-              _this.$element.prop("checked", parseInt(_this.$div.css("margin-left"), 10) > -25).trigger("change.bootstrapSwitch");
-              _this.$div.css("margin-left", "");
+              _this.$element.prop("checked", parseInt(_this.$container.css("margin-left"), 10) > -25).trigger("change.bootstrapSwitch");
+              _this.$container.css("margin-left", "");
               if (_this.options.animate) {
-                return _this.$wrapper.addClass("" + _this.name + "-animate");
+                return _this.$wrapper.addClass("" + _this.options.classes.base + "-" + _this.options.classes.modifiers.animate);
               }
             };
           })(this),
@@ -435,6 +440,22 @@
       onText: "ON",
       offText: "OFF",
       labelText: "&nbsp;",
+      classes: {
+        base: "bootstrap-switch",
+        container: "container",
+        wrapper: "wrapper",
+        handleOn: "handle-on",
+        handleOff: "handle-off",
+        label: "label",
+        modifiers: {
+          on: "on",
+          off: "off",
+          focused: "focused",
+          animate: "animate",
+          disabled: "disabled",
+          readonly: "readonly"
+        }
+      },
       onInit: function() {},
       onSwitchChange: function() {}
     };

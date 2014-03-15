@@ -1,6 +1,6 @@
-@bootstrap-switch-name: bootstrap-switch;
+@bootstrap-switch-base: bootstrap-switch;
 
-.@{bootstrap-switch-name} {
+.@{bootstrap-switch-base} {
   display: inline-block;
   cursor: pointer;
   border-radius: @border-radius-base;
@@ -15,33 +15,25 @@
   min-width: 100px;
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
-  &.@{bootstrap-switch-name}-mini {
+  &.@{bootstrap-switch-base}-mini {
     min-width: 71px;
 
-    > div > span,
-    > div > label {
+    .@{bootstrap-switch-base}-handle-on,
+    .@{bootstrap-switch-base}-handle-off,
+    .@{bootstrap-switch-base}-label {
       padding-bottom: 4px;
       padding-top: 4px;
       font-size: 10px;
       line-height: 9px;
     }
-
-    .@{bootstrap-switch-name}-mini-icons {
-      height: 1.20em;
-      line-height: 9px;
-      vertical-align: text-top;
-      text-align: center;
-      transform: scale(0.6);
-      margin-top: -1px;
-      margin-bottom: -1px;
-    }
   }
 
-  &.@{bootstrap-switch-name}-small {
+  &.@{bootstrap-switch-base}-small {
     min-width: 79px;
 
-    > div > span,
-    > div > label {
+    .@{bootstrap-switch-base}-handle-on,
+    .@{bootstrap-switch-base}-handle-off,
+    .@{bootstrap-switch-base}-label {
       padding-bottom: 3px;
       padding-top: 3px;
       font-size: 12px;
@@ -49,11 +41,12 @@
     }
   }
 
-  &.@{bootstrap-switch-name}-large {
+  &.@{bootstrap-switch-base}-large {
     min-width: 120px;
 
-    > div > span,
-    > div > label {
+    .@{bootstrap-switch-base}-handle-on,
+    .@{bootstrap-switch-base}-handle-off,
+    .@{bootstrap-switch-base}-label {
       padding-bottom: 9px;
       padding-top: 9px;
       font-size: 16px;
@@ -61,128 +54,128 @@
     }
   }
 
-  &.@{bootstrap-switch-name}-animate {
+  &.@{bootstrap-switch-base}-animate {
 
-    > div {
+    .@{bootstrap-switch-base}-container {
       .transition(margin-left 0.5s);
     }
   }
 
-  &.@{bootstrap-switch-name}-on {
+  &.@{bootstrap-switch-base}-on {
 
-    > div {
+    .@{bootstrap-switch-base}-container {
       margin-left: 0%;
+    }
 
-      > label {
-        .border-right-radius(@border-radius-base - 1);
-      }
+    .@{bootstrap-switch-base}-label {
+      .border-right-radius(@border-radius-base - 1);
     }
   }
 
-  &.@{bootstrap-switch-name}-off {
+  &.@{bootstrap-switch-base}-off {
 
-    > div {
+    .@{bootstrap-switch-base}-container {
       margin-left: -50%;
+    }
 
-      > label {
-        .border-left-radius(@border-radius-base - 1);
-      }
+    .@{bootstrap-switch-base}-label {
+      .border-left-radius(@border-radius-base - 1);
     }
   }
 
-  &.@{bootstrap-switch-name}-disabled,
-  &.@{bootstrap-switch-name}-readonly {
+  &.@{bootstrap-switch-base}-disabled,
+  &.@{bootstrap-switch-base}-readonly {
     .opacity(.5);
     cursor: default !important;
 
-    > div > span,
-    > div > label {
+    .@{bootstrap-switch-base}-handle-on,
+    .@{bootstrap-switch-base}-handle-off,
+    .@{bootstrap-switch-base}-label {
       cursor: default !important;
     }
   }
 
-  &.@{bootstrap-switch-name}-focused {
+  &.@{bootstrap-switch-base}-focused {
     @color-rgba: rgba(red(@input-border-focus), green(@input-border-focus), blue(@input-border-focus), .6);
     border-color: @input-border-focus;
     outline: 0;
     .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @{color-rgba}");
   }
 
-  > div {
+  .@{bootstrap-switch-base}-container {
     display: inline-block;
     width: 150%;
     top: 0;
     border-radius: @border-radius-base;
     .translate3d(0, 0, 0);
+  }
 
-    > span,
-    > label {
-      .box-sizing(border-box);
-      cursor: pointer;
-      display: inline-block !important;
-      height: 100%;
-      padding-bottom: 4px;
-      padding-top: 4px;
-      font-size: 14px;
-      line-height: 20px;
+  .@{bootstrap-switch-base}-handle-on,
+  .@{bootstrap-switch-base}-handle-off,
+  .@{bootstrap-switch-base}-label {
+    .box-sizing(border-box);
+    cursor: pointer;
+    display: inline-block !important;
+    height: 100%;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .@{bootstrap-switch-base}-handle-on,
+  .@{bootstrap-switch-base}-handle-off {
+    text-align: center;
+    z-index: 1;
+    width: 33.333333333%;
+
+    &.@{bootstrap-switch-base}-primary {
+      color: #fff;
+      background: @btn-primary-bg;
     }
 
-    > span {
-      text-align: center;
-      z-index: 1;
-      width: 33.333333333%;
-
-      &.@{bootstrap-switch-name}-handle-on {
-        color: #f00;
-        .border-left-radius(@border-radius-base - 1);
-      }
-
-      &.@{bootstrap-switch-name}-handle-off {
-        color: #000;
-        background: @gray-lighter;
-        .border-right-radius(@border-radius-base - 1);
-      }
-
-      &.@{bootstrap-switch-name}-primary {
-        color: #fff;
-        background: @btn-primary-bg;
-      }
-
-      &.@{bootstrap-switch-name}-info {
-        color: #fff;
-        background: @btn-info-bg;
-      }
-
-      &.@{bootstrap-switch-name}-success {
-        color: #fff;
-        background: @btn-success-bg;
-      }
-
-      &.@{bootstrap-switch-name}-warning {
-        background: @btn-warning-bg;
-        color: #fff;
-      }
-
-      &.@{bootstrap-switch-name}-danger {
-        color: #fff;
-        background: @btn-danger-bg;
-      }
-
-      &.@{bootstrap-switch-name}-default {
-        color: #000;
-        background: @gray-lighter;
-      }
+    &.@{bootstrap-switch-base}-info {
+      color: #fff;
+      background: @btn-info-bg;
     }
 
-    > label {
-      text-align: center;
-      margin-top: -1px;
-      margin-bottom: -1px;
-      z-index: 100;
-      width: 33.333333333%;
-      color: @btn-default-color;
-      background: @btn-default-bg;
+    &.@{bootstrap-switch-base}-success {
+      color: #fff;
+      background: @btn-success-bg;
     }
+
+    &.@{bootstrap-switch-base}-warning {
+      background: @btn-warning-bg;
+      color: #fff;
+    }
+
+    &.@{bootstrap-switch-base}-danger {
+      color: #fff;
+      background: @btn-danger-bg;
+    }
+
+    &.@{bootstrap-switch-base}-default {
+      color: #000;
+      background: @gray-lighter;
+    }
+  }
+
+  .@{bootstrap-switch-base}-handle-on {
+    .border-left-radius(@border-radius-base - 1);
+  }
+
+  .@{bootstrap-switch-base}-handle-off {
+    .border-right-radius(@border-radius-base - 1);
+  }
+
+  .@{bootstrap-switch-base}-label {
+    text-align: center;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    z-index: 100;
+    width: 33.333333333%;
+    color: @btn-default-color;
+    background: @btn-default-bg;
   }
 
   input[type='radio'],

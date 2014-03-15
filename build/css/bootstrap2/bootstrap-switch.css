@@ -73,27 +73,20 @@
 .bootstrap-switch.bootstrap-switch-mini {
   min-width: 71px;
 }
-.bootstrap-switch.bootstrap-switch-mini > div > span,
-.bootstrap-switch.bootstrap-switch-mini > div > label {
+.bootstrap-switch.bootstrap-switch-mini .bootstrap-switch-handle-on,
+.bootstrap-switch.bootstrap-switch-mini .bootstrap-switch-handle-off,
+.bootstrap-switch.bootstrap-switch-mini .bootstrap-switch-label {
   padding-bottom: 4px;
   padding-top: 4px;
   font-size: 10px;
   line-height: 9px;
 }
-.bootstrap-switch.bootstrap-switch-mini .bootstrap-switch-mini-icons {
-  height: 1.20em;
-  line-height: 9px;
-  vertical-align: text-top;
-  text-align: center;
-  transform: scale(0.6);
-  margin-top: -1px;
-  margin-bottom: -1px;
-}
 .bootstrap-switch.bootstrap-switch-small {
   min-width: 79px;
 }
-.bootstrap-switch.bootstrap-switch-small > div > span,
-.bootstrap-switch.bootstrap-switch-small > div > label {
+.bootstrap-switch.bootstrap-switch-small .bootstrap-switch-handle-on,
+.bootstrap-switch.bootstrap-switch-small .bootstrap-switch-handle-off,
+.bootstrap-switch.bootstrap-switch-small .bootstrap-switch-label {
   padding-bottom: 3px;
   padding-top: 3px;
   font-size: 12px;
@@ -102,23 +95,24 @@
 .bootstrap-switch.bootstrap-switch-large {
   min-width: 120px;
 }
-.bootstrap-switch.bootstrap-switch-large > div > span,
-.bootstrap-switch.bootstrap-switch-large > div > label {
+.bootstrap-switch.bootstrap-switch-large .bootstrap-switch-handle-on,
+.bootstrap-switch.bootstrap-switch-large .bootstrap-switch-handle-off,
+.bootstrap-switch.bootstrap-switch-large .bootstrap-switch-label {
   padding-bottom: 9px;
   padding-top: 9px;
   font-size: 16px;
   line-height: normal;
 }
-.bootstrap-switch.bootstrap-switch-animate > div {
+.bootstrap-switch.bootstrap-switch-animate .bootstrap-switch-container {
   -webkit-transition: margin-left 0.5s;
   -moz-transition: margin-left 0.5s;
   -o-transition: margin-left 0.5s;
   transition: margin-left 0.5s;
 }
-.bootstrap-switch.bootstrap-switch-on > div {
+.bootstrap-switch.bootstrap-switch-on .bootstrap-switch-container {
   margin-left: 0%;
 }
-.bootstrap-switch.bootstrap-switch-on > div > label {
+.bootstrap-switch.bootstrap-switch-on .bootstrap-switch-label {
   -webkit-border-top-right-radius: 4px;
   -moz-border-radius-topright: 4px;
   border-top-right-radius: 4px;
@@ -126,10 +120,10 @@
   -moz-border-radius-bottomright: 4px;
   border-bottom-right-radius: 4px;
 }
-.bootstrap-switch.bootstrap-switch-off > div {
+.bootstrap-switch.bootstrap-switch-off .bootstrap-switch-container {
   margin-left: -50%;
 }
-.bootstrap-switch.bootstrap-switch-off > div > label {
+.bootstrap-switch.bootstrap-switch-off .bootstrap-switch-label {
   -webkit-border-top-left-radius: 4px;
   -moz-border-radius-topleft: 4px;
   border-top-left-radius: 4px;
@@ -143,21 +137,23 @@
   filter: alpha(opacity=50);
   cursor: default !important;
 }
-.bootstrap-switch.bootstrap-switch-disabled > div > span,
-.bootstrap-switch.bootstrap-switch-readonly > div > span,
-.bootstrap-switch.bootstrap-switch-disabled > div > label,
-.bootstrap-switch.bootstrap-switch-readonly > div > label {
+.bootstrap-switch.bootstrap-switch-disabled .bootstrap-switch-handle-on,
+.bootstrap-switch.bootstrap-switch-readonly .bootstrap-switch-handle-on,
+.bootstrap-switch.bootstrap-switch-disabled .bootstrap-switch-handle-off,
+.bootstrap-switch.bootstrap-switch-readonly .bootstrap-switch-handle-off,
+.bootstrap-switch.bootstrap-switch-disabled .bootstrap-switch-label,
+.bootstrap-switch.bootstrap-switch-readonly .bootstrap-switch-label {
   cursor: default !important;
 }
 .bootstrap-switch.bootstrap-switch-focused {
   border-color: rgba(82, 168, 236, 0.8);
   outline: 0;
   outline: thin dotted \9;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
-  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82, 168, 236, .6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82, 168, 236, .6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82, 168, 236, .6);
 }
-.bootstrap-switch > div {
+.bootstrap-switch .bootstrap-switch-container {
   display: inline-block;
   width: 150%;
   top: 0;
@@ -169,8 +165,9 @@
   -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-.bootstrap-switch > div > span,
-.bootstrap-switch > div > label {
+.bootstrap-switch .bootstrap-switch-handle-on,
+.bootstrap-switch .bootstrap-switch-handle-off,
+.bootstrap-switch .bootstrap-switch-label {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -182,28 +179,14 @@
   font-size: 14px;
   line-height: 20px;
 }
-.bootstrap-switch > div > span {
+.bootstrap-switch .bootstrap-switch-handle-on,
+.bootstrap-switch .bootstrap-switch-handle-off {
   text-align: center;
   z-index: 1;
   width: 33.333333333%;
 }
-.bootstrap-switch > div > span.bootstrap-switch-handle-on {
-  -webkit-border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px;
-  border-top-left-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomleft: 4px;
-  border-bottom-left-radius: 4px;
-}
-.bootstrap-switch > div > span.bootstrap-switch-handle-off {
-  -webkit-border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px;
-  border-top-right-radius: 4px;
-  -webkit-border-bottom-right-radius: 4px;
-  -moz-border-radius-bottomright: 4px;
-  border-bottom-right-radius: 4px;
-}
-.bootstrap-switch > div > span.bootstrap-switch-primary {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #005fcc;
@@ -220,21 +203,30 @@
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
-.bootstrap-switch > div > span.bootstrap-switch-primary:hover,
-.bootstrap-switch > div > span.bootstrap-switch-primary:focus,
-.bootstrap-switch > div > span.bootstrap-switch-primary:active,
-.bootstrap-switch > div > span.bootstrap-switch-primary.active,
-.bootstrap-switch > div > span.bootstrap-switch-primary.disabled,
-.bootstrap-switch > div > span.bootstrap-switch-primary[disabled] {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary:hover,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary:hover,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary:focus,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary:focus,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary:active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary:active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary.active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary.active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary.disabled,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary.disabled,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary[disabled],
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary[disabled] {
   color: #ffffff;
   background-color: #0088cc;
   *background-color: #0077b3;
 }
-.bootstrap-switch > div > span.bootstrap-switch-primary:active,
-.bootstrap-switch > div > span.bootstrap-switch-primary.active {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary:active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary:active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary.active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary.active {
   background-color: #006699 \9;
 }
-.bootstrap-switch > div > span.bootstrap-switch-info {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #41a7c5;
@@ -251,21 +243,30 @@
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
-.bootstrap-switch > div > span.bootstrap-switch-info:hover,
-.bootstrap-switch > div > span.bootstrap-switch-info:focus,
-.bootstrap-switch > div > span.bootstrap-switch-info:active,
-.bootstrap-switch > div > span.bootstrap-switch-info.active,
-.bootstrap-switch > div > span.bootstrap-switch-info.disabled,
-.bootstrap-switch > div > span.bootstrap-switch-info[disabled] {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info:hover,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info:hover,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info:focus,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info:focus,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info:active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info:active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info.active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info.active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info.disabled,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info.disabled,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info[disabled],
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info[disabled] {
   color: #ffffff;
   background-color: #5bc0de;
   *background-color: #46b8da;
 }
-.bootstrap-switch > div > span.bootstrap-switch-info:active,
-.bootstrap-switch > div > span.bootstrap-switch-info.active {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info:active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info:active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info.active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info.active {
   background-color: #31b0d5 \9;
 }
-.bootstrap-switch > div > span.bootstrap-switch-success {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #58b058;
@@ -282,21 +283,30 @@
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
-.bootstrap-switch > div > span.bootstrap-switch-success:hover,
-.bootstrap-switch > div > span.bootstrap-switch-success:focus,
-.bootstrap-switch > div > span.bootstrap-switch-success:active,
-.bootstrap-switch > div > span.bootstrap-switch-success.active,
-.bootstrap-switch > div > span.bootstrap-switch-success.disabled,
-.bootstrap-switch > div > span.bootstrap-switch-success[disabled] {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success:hover,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success:hover,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success:focus,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success:focus,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success:active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success:active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success.active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success.active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success.disabled,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success.disabled,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success[disabled],
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success[disabled] {
   color: #ffffff;
   background-color: #62c462;
   *background-color: #4fbd4f;
 }
-.bootstrap-switch > div > span.bootstrap-switch-success:active,
-.bootstrap-switch > div > span.bootstrap-switch-success.active {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success:active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success:active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success.active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success.active {
   background-color: #42b142 \9;
 }
-.bootstrap-switch > div > span.bootstrap-switch-warning {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #f9a123;
@@ -313,21 +323,30 @@
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
-.bootstrap-switch > div > span.bootstrap-switch-warning:hover,
-.bootstrap-switch > div > span.bootstrap-switch-warning:focus,
-.bootstrap-switch > div > span.bootstrap-switch-warning:active,
-.bootstrap-switch > div > span.bootstrap-switch-warning.active,
-.bootstrap-switch > div > span.bootstrap-switch-warning.disabled,
-.bootstrap-switch > div > span.bootstrap-switch-warning[disabled] {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning:hover,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning:hover,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning:focus,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning:focus,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning:active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning:active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning.active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning.active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning.disabled,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning.disabled,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning[disabled],
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning[disabled] {
   color: #ffffff;
   background-color: #fbb450;
   *background-color: #faa937;
 }
-.bootstrap-switch > div > span.bootstrap-switch-warning:active,
-.bootstrap-switch > div > span.bootstrap-switch-warning.active {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning:active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning:active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning.active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning.active {
   background-color: #fa9f1e \9;
 }
-.bootstrap-switch > div > span.bootstrap-switch-danger {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #d14641;
@@ -344,21 +363,30 @@
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
-.bootstrap-switch > div > span.bootstrap-switch-danger:hover,
-.bootstrap-switch > div > span.bootstrap-switch-danger:focus,
-.bootstrap-switch > div > span.bootstrap-switch-danger:active,
-.bootstrap-switch > div > span.bootstrap-switch-danger.active,
-.bootstrap-switch > div > span.bootstrap-switch-danger.disabled,
-.bootstrap-switch > div > span.bootstrap-switch-danger[disabled] {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger:hover,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger:hover,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger:focus,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger:focus,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger:active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger:active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger.active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger.active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger.disabled,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger.disabled,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger[disabled],
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger[disabled] {
   color: #ffffff;
   background-color: #ee5f5b;
   *background-color: #ec4844;
 }
-.bootstrap-switch > div > span.bootstrap-switch-danger:active,
-.bootstrap-switch > div > span.bootstrap-switch-danger.active {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger:active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger:active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger.active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger.active {
   background-color: #e9322d \9;
 }
-.bootstrap-switch > div > span.bootstrap-switch-default {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default {
   color: #333333;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   background-color: #f0f0f0;
@@ -375,21 +403,45 @@
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
-.bootstrap-switch > div > span.bootstrap-switch-default:hover,
-.bootstrap-switch > div > span.bootstrap-switch-default:focus,
-.bootstrap-switch > div > span.bootstrap-switch-default:active,
-.bootstrap-switch > div > span.bootstrap-switch-default.active,
-.bootstrap-switch > div > span.bootstrap-switch-default.disabled,
-.bootstrap-switch > div > span.bootstrap-switch-default[disabled] {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default:hover,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default:hover,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default:focus,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default:focus,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default:active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default:active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default.active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default.active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default.disabled,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default.disabled,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default[disabled],
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default[disabled] {
   color: #333333;
   background-color: #ffffff;
   *background-color: #f2f2f2;
 }
-.bootstrap-switch > div > span.bootstrap-switch-default:active,
-.bootstrap-switch > div > span.bootstrap-switch-default.active {
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default:active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default:active,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default.active,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default.active {
   background-color: #e6e6e6 \9;
 }
-.bootstrap-switch > div > label {
+.bootstrap-switch .bootstrap-switch-handle-on {
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  border-bottom-left-radius: 4px;
+}
+.bootstrap-switch .bootstrap-switch-handle-off {
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  border-bottom-right-radius: 4px;
+}
+.bootstrap-switch .bootstrap-switch-label {
   text-align: center;
   margin-top: -1px;
   margin-bottom: -1px;
@@ -413,18 +465,18 @@
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
-.bootstrap-switch > div > label:hover,
-.bootstrap-switch > div > label:focus,
-.bootstrap-switch > div > label:active,
-.bootstrap-switch > div > label.active,
-.bootstrap-switch > div > label.disabled,
-.bootstrap-switch > div > label[disabled] {
+.bootstrap-switch .bootstrap-switch-label:hover,
+.bootstrap-switch .bootstrap-switch-label:focus,
+.bootstrap-switch .bootstrap-switch-label:active,
+.bootstrap-switch .bootstrap-switch-label.active,
+.bootstrap-switch .bootstrap-switch-label.disabled,
+.bootstrap-switch .bootstrap-switch-label[disabled] {
   color: #333333;
   background-color: #e6e6e6;
   *background-color: #d9d9d9;
 }
-.bootstrap-switch > div > label:active,
-.bootstrap-switch > div > label.active {
+.bootstrap-switch .bootstrap-switch-label:active,
+.bootstrap-switch .bootstrap-switch-label.active {
   background-color: #cccccc \9;
 }
 .bootstrap-switch input[type='radio'],
