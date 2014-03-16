@@ -281,7 +281,7 @@ do ($ = window.jQuery, window) ->
           return unless @drag
 
           @drag = false
-          @$element.prop("checked", (parseInt(@$container.css("margin-left"), 10) > -25)).trigger "change.bootstrapSwitch"
+          @$element.prop("checked", parseInt(@$container.css("margin-left"), 10) < -(@$container.width() / 6)).trigger "change.bootstrapSwitch"
           @$container.css "margin-left", ""
           @$wrapper.addClass "#{@options.baseClass}-#{@options.animateModifierClass}" if @options.animate
 

@@ -381,7 +381,7 @@
                 return;
               }
               _this.drag = false;
-              _this.$element.prop("checked", parseInt(_this.$container.css("margin-left"), 10) > -25).trigger("change.bootstrapSwitch");
+              _this.$element.prop("checked", parseInt(_this.$container.css("margin-left"), 10) < -(_this.$container.width() / 6)).trigger("change.bootstrapSwitch");
               _this.$container.css("margin-left", "");
               if (_this.options.animate) {
                 return _this.$wrapper.addClass("" + _this.options.baseClass + "-" + _this.options.animateModifierClass);
