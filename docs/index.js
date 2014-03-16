@@ -1,4 +1,5 @@
 $(function() {
+  var stateSwitch = $('#state-switch')
   // initialize highlight.js
   hljs.initHighlightingOnLoad();
 
@@ -16,6 +17,20 @@ $(function() {
   // initialize all the inputs
   $('input[type="checkbox"],[type="radio"]').not('#create-switch').not('#events-switch').bootstrapSwitch();
 
+  // state
+  $('#state-switch-toggle').on('click', function () {
+    stateSwitch.bootstrapSwitch('toggleState');
+  });
+  $('#state-switch-on').on('click', function () {
+    stateSwitch.bootstrapSwitch('state', true);
+  });
+  $('#state-switch-off').on('click', function () {
+    stateSwitch.bootstrapSwitch('state', false);
+  });
+  $('#state-switch-state').on('click', function () {
+    alert(stateSwitch.bootstrapSwitch('state'));
+  });
+
   /*
   // dimension
   $('#btn-size-regular-switch').on('click', function () {
@@ -31,19 +46,7 @@ $(function() {
     $('#dimension-switch').bootstrapSwitch('size', 'large');
   });
 
-  // state
-  $('#toggle-state-switch-button').on('click', function () {
-    $('#toggle-state-switch').bootstrapSwitch('toggleState');
-  });
-  $('#toggle-state-switch-button-on').on('click', function () {
-    $('#toggle-state-switch').bootstrapSwitch('state', true);
-  });
-  $('#toggle-state-switch-button-off').on('click', function () {
-    $('#toggle-state-switch').bootstrapSwitch('state', false);
-  });
-  $('#toggle-state-switch-button-state').on('click', function () {
-    alert($('#toggle-state-switch').bootstrapSwitch('state'));
-  });
+
 
   // destroy
   $('#btn-destroy-switch').on('click', function () {

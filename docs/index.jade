@@ -46,23 +46,6 @@ html(lang='en')
                 li: a(href='#options') Options
                 li: a(href='#methods') Methods
                 li: a(href='#events') Events
-
-                //-
-                  li: a(href='#size') Size
-                  li: a(href='#colors') Colors
-                  li: a(href='#animation') Animation
-                  li: a(href='#disabled') Disabled &sol; Readonly
-                  li: a(href='#text') Text
-                  li: a(href='#label-text') Label Text
-                  li: a(href='#icon-label-text') Icon Label Text
-                  li: a(href='#event-handlers') Event Handlers
-                  li: a(href='#label-event-handler') Label Event Handlers
-                  li: a(href='#state') State
-                  li: a(href='#destroy') Destroy
-                  li: a(href='#disable') Disable &sol; Readonly
-                  li: a(href='#radio') Radio
-                  li: a(href='#form') Form
-                  li: a(href='#modal') Modal
             li: a(href='#examples') Examples
             li: a(href='https://github.com/nostalgiaz/bootstrap-switch/issues') Bug reports
 
@@ -134,43 +117,115 @@ html(lang='en')
               td String
               td Color of the left side of the switch
               td 'primary', 'info', 'success', 'warning', 'danger', 'default'
-              td 'primary'
+              td: 'primary'
             tr
               td offColor
               td String
               td Color of the right side of the switch
               td 'primary', 'info', 'success', 'warning', 'danger', 'default'
-              td 'default'
+              td: 'default'
             tr
               td onText
               td String
               td Text of the left side of the switch
               td String
-              td 'ON'
+              td: 'ON'
             tr
               td offText
               td String
               td Text of the right side of the switch
               td String
-              td 'OFF'
+              td: 'OFF'
             tr
               td labelText
               td String
               td Text of the center handle of the switch
               td String
-              td '&amp;nbsp;'
+              td: '&amp;nbsp;'
+            tr
+              td baseClass
+              td String
+              td Prefix of every other used class
+              td String
+              td 'bootstrap-switch'
+            tr
+              td wrapperClass
+              td String | Array
+              td Container element class(es)
+              td String | Array
+              td 'wrapper'
+            tr
+              td containerClass
+              td String | Array
+              td Wrapper element class(es)
+              td String | Array
+              td 'container'
+            tr
+              td handleOnClass
+              td String | Array
+              td Handle On element class(es)
+              td String | Array
+              td 'handle-on'
+            tr
+              td handleOffClass
+              td String | Array
+              td Handle Off element class(es)
+              td String | Array
+              td 'handle-off'
+            tr
+              td labelClass
+              td String | Array
+              td Label element class(es)
+              td String | Array
+              td 'label'
+            tr
+              td onModifierClass
+              td String
+              td On Modifier class, used when the switch state is true
+              td String
+              td 'on'
+            tr
+              td offModifierClass
+              td String
+              td Off Modifier class, used when the switch state is false
+              td String
+              td 'off'
+            tr
+              td focusedModifierClass
+              td String
+              td Focused Modifier class, used when the switch is focused
+              td String
+              td 'focused'
+            tr
+              td animateModifierClass
+              td String
+              td Animate Modifier class, used to apply CSS animation to the switch
+              td String
+              td 'animate'
+            tr
+              td disabledModifierClass
+              td String
+              td Disabled Modifier class, used the switch is disabled
+              td String
+              td 'disabled'
+            tr
+              td readonlyModifierClass
+              td String
+              td Readonly Modifier class, used the switch is readonly
+              td String
+              td 'readonly'
             tr
               td onInit
               td Function
               td Callback function to execute on initialization
               td Function
-              td function(event) {}
+              td: pre: code.javascript function(event, state) {}
             tr
               td onSwitchChange
               td Function
               td Callback function to execute on switch state change
               td Function
-              td function(event, state) {}
+              td: pre: code.javascript function(event, state) {}
 
       #methods
         h1.page-header Methods
@@ -223,7 +278,7 @@ html(lang='en')
               td init
               td Triggered on initialization. 'this' refers to the DOM element.
               td
-                | event <a href="https://api.jquery.com/category/events/event-object/" target="_blank">jQuery Event object</a>
+                | event (<a href="https://api.jquery.com/category/events/event-object/" target="_blank">jQuery Event object</a>)
             tr
               td switchChange
               td Triggered on switch state change. 'this' refers to the DOM element.
@@ -236,16 +291,16 @@ html(lang='en')
           h2 State
           .row
             .col-sm-6
-              input(type='checkbox', id='toggle-state-switch' checked)
+              input(type='checkbox', id='state-switch' checked)
             .col-sm-6
               .btn-group.pull-right
-                button(type='button', id='toggle-state-switch-button-state', class='btn btn-default') Get State
+                button(type='button', id='state-switch-state', class='btn btn-default') Get State
                 &nbsp;
-                button(type='button', id='toggle-state-switch-button-on', class='btn btn-default') Set On
+                button(type='button', id='state-switch-on', class='btn btn-default') Set On
                 &nbsp;
-                button(type='button', id='toggle-state-switch-button-off', class='btn btn-default') Set Off
+                button(type='button', id='state-switch-off', class='btn btn-default') Set Off
                 &nbsp;
-                button(type='button', id='toggle-state-switch-button', class='btn btn-default') Toggle State
+                button(type='button', id='state-switch-toggle', class='btn btn-default') Toggle State
 
         <p>Working on this...</p>
 

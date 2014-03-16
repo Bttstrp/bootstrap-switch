@@ -17,37 +17,43 @@ do ($ = window.jQuery, window) ->
         onText: @$element.data "on-text"
         offText: @$element.data "off-text"
         labelText: @$element.data "label-text"
-      @$on = $ "<span>",
-        class: "#{@options.classes.base}-#{@options.classes.handleOn} #{@options.classes.base}-#{@options.onColor}"
-        html: @options.onText
-      @$off = $ "<span>",
-        class: "#{@options.classes.base}-#{@options.classes.handleOff} #{@options.classes.base}-#{@options.offColor}"
-        html: @options.offText
+      @$wrapper = $ "<div>"
+      @$container = $ "<div>"
+      @$on = $ "<span>", html: @options.onText
+      @$off = $ "<span>", html: @options.offText
       @$label = $ "<label>",
-        class: "#{@options.classes.base}-#{@options.classes.label}"
         for: @$element.attr "id"
         html: @options.labelText
-      @$wrapper = $ "<div>"
-      @$container = $ "<div>",
-        class: "#{@options.classes.base}-#{@options.classes.container}"
 
-      # add wrapper classes
-      @$wrapper.addClass =>
-        classes = ["#{@options.classes.base}"]
+      addClasses = (cls) =>
+        if not $.isArray cls
+          return "#{@options.baseClass}-#{cls}"
 
-        classes.push if @options.state then "#{@options.classes.base}-#{@options.classes.modifiers.on}" else "#{@options.classes.base}-#{@options.classes.modifiers.off}"
-        classes.push "#{@options.classes.base}-#{@options.size}" if @options.size?
-        classes.push "#{@options.classes.base}-#{@options.classes.modifiers.animate}" if @options.animate
-        classes.push "#{@options.classes.base}-#{@options.classes.modifiers.disabled}" if @options.disabled
-        classes.push "#{@options.classes.base}-#{@options.classes.modifiers.readonly}" if @options.readonly
-        classes.push "#{@options.classes.base}-id-#{@$element.attr("id")}" if @$element.attr "id"
+        classes = []
+        for c in cls
+          classes.push "#{@options.baseClass}-#{c}"
         classes.join " "
 
-      # set up events
-      @$element.on "init.bootstrapSwitch", => @options.onInit.apply @$element[0], arguments
-      @$element.on "switchChange.bootstrapSwitch", => @options.onSwitchChange.apply @$element[0], arguments
+      # add classes to elements
+      @$wrapper.addClass =>
+        classes = ["#{@options.baseClass}", "#{@options.baseClass}-#{@options.wrapperClass}"]
 
-      console.log @$container
+        classes.push if @options.state then "#{@options.baseClass}-#{@options.onModifierClass}" else "#{@options.baseClass}-#{@options.offModifierClass}"
+        classes.push "#{@options.baseClass}-#{@options.size}" if @options.size?
+        classes.push "#{@options.baseClass}-#{@options.animateModifierClass}" if @options.animate
+        classes.push "#{@options.baseClass}-#{@options.disabledModifierClass}" if @options.disabled
+        classes.push "#{@options.baseClass}-#{@options.readonlyModifierClass}" if @options.readonly
+        classes.push "#{@options.baseClass}-id-#{@$element.attr("id")}" if @$element.attr "id"
+        classes.join " "
+
+      @$container.addClass addClasses @options.containerClass
+      @$on.addClass "#{addClasses @options.handleOnClass} #{@options.baseClass}-#{@options.onColor}"
+      @$off.addClass "#{addClasses @options.handleOffClass} #{@options.baseClass}-#{@options.offColor}"
+      @$label.addClass addClasses @options.labelClass
+
+      # set up events
+      @$element.on "init.bootstrapSwitch", => @options.onInit.apply element, arguments
+      @$element.on "switchChange.bootstrapSwitch", => @options.onSwitchChange.apply element, arguments
 
       # reassign elements after dom modification
       @$container = @$element.wrap(@$container).parent()
@@ -86,8 +92,8 @@ do ($ = window.jQuery, window) ->
     size: (value) ->
       return @options.size if typeof value is "undefined"
 
-      @$wrapper.removeClass "#{@options.classes.base}-#{@options.size}" if @options.size?
-      @$wrapper.addClass "#{@options.classes.base}-#{value}"
+      @$wrapper.removeClass "#{@options.baseClass}-#{@options.size}" if @options.size?
+      @$wrapper.addClass "#{@options.baseClass}-#{value}"
       @options.size = value
       @$element
 
@@ -96,7 +102,7 @@ do ($ = window.jQuery, window) ->
 
       value = not not value
 
-      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.classes.base}-#{@options.classes.modifiers.animate}")
+      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.baseClass}-#{@options.animateModifierClass}")
       @options.animate = value
       @$element
 
@@ -105,14 +111,14 @@ do ($ = window.jQuery, window) ->
 
       value = not not value
 
-      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.classes.base}-#{@options.classes.modifiers.disabled}")
+      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.baseClass}-#{@options.disabledModifierClass}")
       @$element.prop "disabled", value
       @options.disabled = value
       @$element
 
     toggleDisabled: ->
       @$element.prop "disabled", not @options.disabled
-      @$wrapper.toggleClass "#{@options.classes.base}-#{@options.classes.modifiers.disabled}"
+      @$wrapper.toggleClass "#{@options.baseClass}-#{@options.disabledModifierClass}"
       @options.disabled = not @options.disabled
       @$element
 
@@ -121,14 +127,14 @@ do ($ = window.jQuery, window) ->
 
       value = not not value
 
-      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.classes.base}-#{@options.classes.modifiers.readonly}")
+      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.baseClass}-#{@options.readonlyModifierClass}")
       @$element.prop "readonly", value
       @options.readonly = value
       @$element
 
     toggleReadonly: ->
       @$element.prop "readonly", not @options.readonly
-      @$wrapper.toggleClass "#{@options.classes.base}-#{@options.classes.modifiers.readonly}"
+      @$wrapper.toggleClass "#{@options.baseClass}-#{@options.readonlyModifierClass}"
       @options.readonly = not @options.readonly
       @$element
 
@@ -137,8 +143,8 @@ do ($ = window.jQuery, window) ->
 
       return color if typeof value is "undefined"
 
-      @$on.removeClass "#{@options.classes.base}-#{color}" if color?
-      @$on.addClass "#{@options.classes.base}-#{value}"
+      @$on.removeClass "#{@options.baseClass}-#{color}" if color?
+      @$on.addClass "#{@options.baseClass}-#{value}"
       @options.onColor = value
       @$element
 
@@ -147,8 +153,8 @@ do ($ = window.jQuery, window) ->
 
       return color if typeof value is "undefined"
 
-      @$off.removeClass "#{@options.classes.base}-#{color}" if color?
-      @$off.addClass "#{@options.classes.base}-#{value}"
+      @$off.removeClass "#{@options.baseClass}-#{color}" if color?
+      @$off.addClass "#{@options.baseClass}-#{value}"
       @options.offColor = value
       @$element
 
@@ -194,8 +200,8 @@ do ($ = window.jQuery, window) ->
 
           @options.state = checked
           @$wrapper
-          .removeClass(if checked then "#{@options.classes.base}-#{@options.classes.modifiers.off}" else "#{@options.classes.base}-#{@options.classes.modifiers.on}")
-          .addClass if checked then "#{@options.classes.base}-#{@options.classes.modifiers.on}" else "#{@options.classes.base}-#{@options.classes.modifiers.off}"
+          .removeClass(if checked then "#{@options.baseClass}-#{@options.offModifierClass}" else "#{@options.baseClass}-#{@options.onModifierClass}")
+          .addClass if checked then "#{@options.baseClass}-#{@options.onModifierClass}" else "#{@options.baseClass}-#{@options.offModifierClass}"
 
           unless skip
             $("[name='#{@$element.attr('name')}']").not(@$element).prop("checked", false).trigger "change.bootstrapSwitch", true if @$element.is ":radio"
@@ -206,14 +212,14 @@ do ($ = window.jQuery, window) ->
           e.stopPropagation()
           e.stopImmediatePropagation()
 
-          @$wrapper.addClass "#{@options.classes.base}-#{@options.classes.modifiers.focused}"
+          @$wrapper.addClass "#{@options.baseClass}-#{@options.focusedModifierClass}"
 
         "blur.bootstrapSwitch": (e) =>
           e.preventDefault()
           e.stopPropagation()
           e.stopImmediatePropagation()
 
-          @$wrapper.removeClass "#{@options.classes.base}-#{@options.classes.modifiers.focused}"
+          @$wrapper.removeClass "#{@options.baseClass}-#{@options.focusedModifierClass}"
 
         "keydown.bootstrapSwitch": (e) =>
           return if not e.which or @options.disabled or @options.readonly
@@ -268,7 +274,7 @@ do ($ = window.jQuery, window) ->
           return if @drag or @options.disabled or @options.readonly
 
           @drag = true
-          @$wrapper.removeClass "#{@options.classes.base}-#{@options.classes.modifiers.animate}" if @options.animate
+          @$wrapper.removeClass "#{@options.baseClass}-#{@options.animateModifierClass}" if @options.animate
           @$element.trigger "focus.bootstrapSwitch"
 
         "mouseup.bootstrapSwitch": (e) =>
@@ -277,7 +283,7 @@ do ($ = window.jQuery, window) ->
           @drag = false
           @$element.prop("checked", (parseInt(@$container.css("margin-left"), 10) > -25)).trigger "change.bootstrapSwitch"
           @$container.css "margin-left", ""
-          @$wrapper.addClass "#{@options.classes.base}-#{@options.classes.modifiers.animate}" if @options.animate
+          @$wrapper.addClass "#{@options.baseClass}-#{@options.animateModifierClass}" if @options.animate
 
         "mouseleave.bootstrapSwitch": (e) =>
           @$label.trigger "mouseup.bootstrapSwitch"
@@ -326,20 +332,18 @@ do ($ = window.jQuery, window) ->
     onText: "ON"
     offText: "OFF"
     labelText: "&nbsp;"
-    classes:
-      base: "bootstrap-switch"
-      container: "container"
-      wrapper: "wrapper"
-      handleOn: "handle-on"
-      handleOff: "handle-off"
-      label: "label"
-      modifiers:
-        on: "on"
-        off: "off"
-        focused: "focused"
-        animate: "animate"
-        disabled: "disabled"
-        readonly: "readonly"
+    baseClass: "bootstrap-switch"
+    wrapperClass: "wrapper"
+    containerClass: "container"
+    handleOnClass: "handle-on"
+    handleOffClass: "handle-off"
+    labelClass: "label"
+    onModifierClass: "on"
+    offModifierClass: "off"
+    focusedModifierClass: "focused"
+    animateModifierClass: "animate"
+    disabledModifierClass: "disabled"
+    readonlyModifierClass: "readonly"
     onInit: ->
     onSwitchChange: ->
 
