@@ -255,10 +255,12 @@ do ($ = window.jQuery, window) ->
 
     _labelHandlers: ->
       @$label.on
-        "mousemove.bootstrapSwitch": (e) =>
+        "mousemove.bootstrapSwitch touchmove.bootstrapSwitch": (e) =>
           return unless @drag
 
-          percent = ((e.pageX - @$wrapper.offset().left) / @$wrapper.width()) * 100
+          e.preventDefault()
+
+          percent = (((e.pageX or e.originalEvent.touches[0].pageX) - @$wrapper.offset().left) / @$wrapper.width()) * 100
           left = 25
           right = 75
 
@@ -270,30 +272,27 @@ do ($ = window.jQuery, window) ->
           @$container.css "margin-left", "#{percent - right}%"
           @$element.trigger "focus.bootstrapSwitch"
 
-        "mousedown.bootstrapSwitch": (e) =>
+        "mousedown.bootstrapSwitch touchstart.bootstrapSwitch": (e) =>
           return if @drag or @options.disabled or @options.readonly
+
+          e.preventDefault()
 
           @drag = true
           @$wrapper.removeClass "#{@options.baseClass}-#{@options.animateModifierClass}" if @options.animate
           @$element.trigger "focus.bootstrapSwitch"
 
-        "mouseup.bootstrapSwitch": (e) =>
+        "mouseup.bootstrapSwitch touchend.bootstrapSwitch": (e) =>
           return unless @drag
 
+          e.preventDefault()
+
           @drag = false
-          @$element.prop("checked", parseInt(@$container.css("margin-left"), 10) < -(@$container.width() / 6)).trigger "change.bootstrapSwitch"
+          @$element.prop("checked", parseInt(@$container.css("margin-left"), 10) > -(@$container.width() / 6)).trigger "change.bootstrapSwitch"
           @$container.css "margin-left", ""
           @$wrapper.addClass "#{@options.baseClass}-#{@options.animateModifierClass}" if @options.animate
 
         "mouseleave.bootstrapSwitch": (e) =>
           @$label.trigger "mouseup.bootstrapSwitch"
-
-        "click.bootstrapSwitch": (e) =>
-          e.preventDefault()
-          e.stopImmediatePropagation()
-
-          @toggleState()
-          @$element.trigger "focus.bootstrapSwitch"
 
     _formHandler: ->
       $form = @$element.closest "form"

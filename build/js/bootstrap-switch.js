@@ -345,13 +345,14 @@
 
       BootstrapSwitch.prototype._labelHandlers = function() {
         return this.$label.on({
-          "mousemove.bootstrapSwitch": (function(_this) {
+          "mousemove.bootstrapSwitch touchmove.bootstrapSwitch": (function(_this) {
             return function(e) {
               var left, percent, right;
               if (!_this.drag) {
                 return;
               }
-              percent = ((e.pageX - _this.$wrapper.offset().left) / _this.$wrapper.width()) * 100;
+              e.preventDefault();
+              percent = (((e.pageX || e.originalEvent.touches[0].pageX) - _this.$wrapper.offset().left) / _this.$wrapper.width()) * 100;
               left = 25;
               right = 75;
               if (percent < left) {
@@ -363,11 +364,12 @@
               return _this.$element.trigger("focus.bootstrapSwitch");
             };
           })(this),
-          "mousedown.bootstrapSwitch": (function(_this) {
+          "mousedown.bootstrapSwitch touchstart.bootstrapSwitch": (function(_this) {
             return function(e) {
               if (_this.drag || _this.options.disabled || _this.options.readonly) {
                 return;
               }
+              e.preventDefault();
               _this.drag = true;
               if (_this.options.animate) {
                 _this.$wrapper.removeClass("" + _this.options.baseClass + "-" + _this.options.animateModifierClass);
@@ -375,13 +377,14 @@
               return _this.$element.trigger("focus.bootstrapSwitch");
             };
           })(this),
-          "mouseup.bootstrapSwitch": (function(_this) {
+          "mouseup.bootstrapSwitch touchend.bootstrapSwitch": (function(_this) {
             return function(e) {
               if (!_this.drag) {
                 return;
               }
+              e.preventDefault();
               _this.drag = false;
-              _this.$element.prop("checked", parseInt(_this.$container.css("margin-left"), 10) < -(_this.$container.width() / 6)).trigger("change.bootstrapSwitch");
+              _this.$element.prop("checked", parseInt(_this.$container.css("margin-left"), 10) > -(_this.$container.width() / 6)).trigger("change.bootstrapSwitch");
               _this.$container.css("margin-left", "");
               if (_this.options.animate) {
                 return _this.$wrapper.addClass("" + _this.options.baseClass + "-" + _this.options.animateModifierClass);
@@ -391,14 +394,6 @@
           "mouseleave.bootstrapSwitch": (function(_this) {
             return function(e) {
               return _this.$label.trigger("mouseup.bootstrapSwitch");
-            };
-          })(this),
-          "click.bootstrapSwitch": (function(_this) {
-            return function(e) {
-              e.preventDefault();
-              e.stopImmediatePropagation();
-              _this.toggleState();
-              return _this.$element.trigger("focus.bootstrapSwitch");
             };
           })(this)
         });
