@@ -17,13 +17,6 @@ do ($ = window.jQuery, window) ->
         onText: @$element.data "on-text"
         offText: @$element.data "off-text"
         labelText: @$element.data "label-text"
-      @$wrapper = $ "<div>"
-      @$container = $ "<div>"
-      @$on = $ "<span>", html: @options.onText
-      @$off = $ "<span>", html: @options.offText
-      @$label = $ "<label>",
-        for: @$element.attr "id"
-        html: @options.labelText
 
       addClasses = (cls) =>
         if not $.isArray cls
@@ -34,22 +27,29 @@ do ($ = window.jQuery, window) ->
           classes.push "#{@options.baseClass}-#{c}"
         classes.join " "
 
-      # add classes to elements
-      @$wrapper.addClass =>
-        classes = ["#{@options.baseClass}", "#{@options.baseClass}-#{@options.wrapperClass}"]
+      @$wrapper = $ "<div>",
+        class: do =>
+          classes = ["#{@options.baseClass}", "#{@options.baseClass}-#{@options.wrapperClass}"]
 
-        classes.push if @options.state then "#{@options.baseClass}-#{@options.onModifierClass}" else "#{@options.baseClass}-#{@options.offModifierClass}"
-        classes.push "#{@options.baseClass}-#{@options.size}" if @options.size?
-        classes.push "#{@options.baseClass}-#{@options.animateModifierClass}" if @options.animate
-        classes.push "#{@options.baseClass}-#{@options.disabledModifierClass}" if @options.disabled
-        classes.push "#{@options.baseClass}-#{@options.readonlyModifierClass}" if @options.readonly
-        classes.push "#{@options.baseClass}-id-#{@$element.attr("id")}" if @$element.attr "id"
-        classes.join " "
-
-      @$container.addClass addClasses @options.containerClass
-      @$on.addClass "#{addClasses @options.handleOnClass} #{@options.baseClass}-#{@options.onColor}"
-      @$off.addClass "#{addClasses @options.handleOffClass} #{@options.baseClass}-#{@options.offColor}"
-      @$label.addClass addClasses @options.labelClass
+          classes.push if @options.state then "#{@options.baseClass}-#{@options.onModifierClass}" else "#{@options.baseClass}-#{@options.offModifierClass}"
+          classes.push "#{@options.baseClass}-#{@options.size}" if @options.size?
+          classes.push "#{@options.baseClass}-#{@options.animateModifierClass}" if @options.animate
+          classes.push "#{@options.baseClass}-#{@options.disabledModifierClass}" if @options.disabled
+          classes.push "#{@options.baseClass}-#{@options.readonlyModifierClass}" if @options.readonly
+          classes.push "#{@options.baseClass}-id-#{@$element.attr("id")}" if @$element.attr "id"
+          classes.join " "
+      @$container = $ "<div>",
+        class: addClasses @options.containerClass
+      @$on = $ "<span>",
+        html: @options.onText,
+        class: "#{addClasses @options.handleOnClass} #{@options.baseClass}-#{@options.onColor}"
+      @$off = $ "<span>",
+        html: @options.offText,
+        class: "#{addClasses @options.handleOffClass} #{@options.baseClass}-#{@options.offColor}"
+      @$label = $ "<label>",
+        for: @$element.attr "id"
+        html: @options.labelText
+        class: addClasses @options.labelClass
 
       # set up events
       @$element.on "init.bootstrapSwitch", => @options.onInit.apply element, arguments

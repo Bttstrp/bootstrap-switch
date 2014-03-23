@@ -46,18 +46,6 @@
           offText: this.$element.data("off-text"),
           labelText: this.$element.data("label-text")
         });
-        this.$wrapper = $("<div>");
-        this.$container = $("<div>");
-        this.$on = $("<span>", {
-          html: this.options.onText
-        });
-        this.$off = $("<span>", {
-          html: this.options.offText
-        });
-        this.$label = $("<label>", {
-          "for": this.$element.attr("id"),
-          html: this.options.labelText
-        });
         addClasses = (function(_this) {
           return function(cls) {
             var c, classes, _i, _len;
@@ -72,33 +60,47 @@
             return classes.join(" ");
           };
         })(this);
-        this.$wrapper.addClass((function(_this) {
-          return function() {
-            var classes;
-            classes = ["" + _this.options.baseClass, "" + _this.options.baseClass + "-" + _this.options.wrapperClass];
-            classes.push(_this.options.state ? "" + _this.options.baseClass + "-" + _this.options.onModifierClass : "" + _this.options.baseClass + "-" + _this.options.offModifierClass);
-            if (_this.options.size != null) {
-              classes.push("" + _this.options.baseClass + "-" + _this.options.size);
-            }
-            if (_this.options.animate) {
-              classes.push("" + _this.options.baseClass + "-" + _this.options.animateModifierClass);
-            }
-            if (_this.options.disabled) {
-              classes.push("" + _this.options.baseClass + "-" + _this.options.disabledModifierClass);
-            }
-            if (_this.options.readonly) {
-              classes.push("" + _this.options.baseClass + "-" + _this.options.readonlyModifierClass);
-            }
-            if (_this.$element.attr("id")) {
-              classes.push("" + _this.options.baseClass + "-id-" + (_this.$element.attr("id")));
-            }
-            return classes.join(" ");
-          };
-        })(this));
-        this.$container.addClass(addClasses(this.options.containerClass));
-        this.$on.addClass("" + (addClasses(this.options.handleOnClass)) + " " + this.options.baseClass + "-" + this.options.onColor);
-        this.$off.addClass("" + (addClasses(this.options.handleOffClass)) + " " + this.options.baseClass + "-" + this.options.offColor);
-        this.$label.addClass(addClasses(this.options.labelClass));
+        this.$wrapper = $("<div>", {
+          "class": (function(_this) {
+            return function() {
+              var classes;
+              classes = ["" + _this.options.baseClass, "" + _this.options.baseClass + "-" + _this.options.wrapperClass];
+              classes.push(_this.options.state ? "" + _this.options.baseClass + "-" + _this.options.onModifierClass : "" + _this.options.baseClass + "-" + _this.options.offModifierClass);
+              if (_this.options.size != null) {
+                classes.push("" + _this.options.baseClass + "-" + _this.options.size);
+              }
+              if (_this.options.animate) {
+                classes.push("" + _this.options.baseClass + "-" + _this.options.animateModifierClass);
+              }
+              if (_this.options.disabled) {
+                classes.push("" + _this.options.baseClass + "-" + _this.options.disabledModifierClass);
+              }
+              if (_this.options.readonly) {
+                classes.push("" + _this.options.baseClass + "-" + _this.options.readonlyModifierClass);
+              }
+              if (_this.$element.attr("id")) {
+                classes.push("" + _this.options.baseClass + "-id-" + (_this.$element.attr("id")));
+              }
+              return classes.join(" ");
+            };
+          })(this)()
+        });
+        this.$container = $("<div>", {
+          "class": addClasses(this.options.containerClass)
+        });
+        this.$on = $("<span>", {
+          html: this.options.onText,
+          "class": "" + (addClasses(this.options.handleOnClass)) + " " + this.options.baseClass + "-" + this.options.onColor
+        });
+        this.$off = $("<span>", {
+          html: this.options.offText,
+          "class": "" + (addClasses(this.options.handleOffClass)) + " " + this.options.baseClass + "-" + this.options.offColor
+        });
+        this.$label = $("<label>", {
+          "for": this.$element.attr("id"),
+          html: this.options.labelText,
+          "class": addClasses(this.options.labelClass)
+        });
         this.$element.on("init.bootstrapSwitch", (function(_this) {
           return function() {
             return _this.options.onInit.apply(element, arguments);
