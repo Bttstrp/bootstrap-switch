@@ -186,34 +186,6 @@
                 <td>'wrapper'</td>
               </tr>
               <tr>
-                <td>containerClass</td>
-                <td>String | Array</td>
-                <td>Wrapper element class(es)</td>
-                <td>String | Array</td>
-                <td>'container'</td>
-              </tr>
-              <tr>
-                <td>handleOnClass</td>
-                <td>String | Array</td>
-                <td>Handle On element class(es)</td>
-                <td>String | Array</td>
-                <td>'handle-on'</td>
-              </tr>
-              <tr>
-                <td>handleOffClass</td>
-                <td>String | Array</td>
-                <td>Handle Off element class(es)</td>
-                <td>String | Array</td>
-                <td>'handle-off'</td>
-              </tr>
-              <tr>
-                <td>labelClass</td>
-                <td>String | Array</td>
-                <td>Label element class(es)</td>
-                <td>String | Array</td>
-                <td>'label'</td>
-              </tr>
-              <tr>
                 <td>onModifierClass</td>
                 <td>String</td>
                 <td>On Modifier class, used when the switch state is true</td>
@@ -280,7 +252,9 @@
           <h2>Methods</h2>
           <p>In Bootstrap Switch, every option is also a method.</p>
           <p>You can call a method in this way:</p>
-          <pre><code>$('input[name="my-checkbox"]').bootstrapSwitch('state', true);</code></pre>
+          <pre><code>$('input[name="my-checkbox"]').bootstrapSwitch('state'[, true][, true]);</code></pre>
+          <p>If the second parameter is not specified, the current option is returned.</p>
+          <p>Pass 'true' to 'state' as third parameter, or to 'toggleState' as second parameter in order to avoid the `switchChange` event execution.</p>
         </div>
         <div id="additional-methods">
           <h2>Additional Methods</h2>
@@ -314,7 +288,7 @@
         <div id="events">
           <h2>Events</h2>
           <p>You can register to the emitted events as follow:</p>
-          <pre><code>$('inputy[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+          <pre><code>$('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
   console.log(this); // DOM element
   console.log(event); // jQuery event
   console.log(state); // true | false
@@ -343,218 +317,187 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div id="examples">
+          <h2>Examples<small>To be included</small></h2>
           <!--
-          #examples
-            h2 Examples
-              h2 State
-              .row
-                .col-sm-6
-                  input(type='checkbox', id='state-switch' checked)
-                .col-sm-6
-                  .btn-group.pull-right
-                    button(type='button', id='state-switch-state', class='btn btn-default') Get State
-                    &nbsp;
-                    button(type='button', id='state-switch-on', class='btn btn-default') Set On
-                    &nbsp;
-                    button(type='button', id='state-switch-off', class='btn btn-default') Set Off
-                    &nbsp;
-                    button(type='button', id='state-switch-toggle', class='btn btn-default') Toggle State
-                    
-          <p>Working on this...</p>
-          
+          h3 State
+          .row
+            .col-sm-6
+              input(type='checkbox', id='state-switch' checked)
+            .col-sm-6
+              .btn-group.pull-right
+                button(type='button', id='state-switch-state', class='btn btn-default') Get State
+                &nbsp;
+                button(type='button', id='state-switch-on', class='btn btn-default') Set On
+                &nbsp;
+                button(type='button', id='state-switch-off', class='btn btn-default') Set Off
+                &nbsp;
+                button(type='button', id='state-switch-toggle', class='btn btn-default') Toggle State
+                
           -->
         </div>
       </div>
       <div id="documentation-2">
-        <h1 class="page-header">Documentation 2.0.1</h1>
-        <div id="options">
-          <h2>Options</h2>
-          <table class="table table-bordered table-striped table-responsive">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Values</th>
-                <th>Default</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>state</td>
-                <td>Boolean</td>
-                <td>The checkbox state</td>
-                <td>true, false</td>
-                <td>'checked' attribute or true</td>
-              </tr>
-              <tr>
-                <td>size</td>
-                <td>String</td>
-                <td>The checkbox state</td>
-                <td>'mini', 'small', 'normal', 'large'</td>
-                <td>'normal'</td>
-              </tr>
-              <tr>
-                <td>animate</td>
-                <td>Boolean</td>
-                <td>Animate the switch</td>
-                <td>true, false</td>
-                <td>true</td>
-              </tr>
-              <tr>
-                <td>disabled</td>
-                <td>Boolean</td>
-                <td>Disable state</td>
-                <td>true, false</td>
-                <td>'disabled' attribute or false</td>
-              </tr>
-              <tr>
-                <td>readonly</td>
-                <td>Boolean</td>
-                <td>Readonly state</td>
-                <td>true, false</td>
-                <td>'readonly' attribute or false</td>
-              </tr>
-              <tr>
-                <td>onColor</td>
-                <td>String</td>
-                <td>Color of the left side of the switch</td>
-                <td>'primary', 'info', 'success', 'warning', 'danger', 'default'</td>
-                <td>'primary'</td>
-              </tr>
-              <tr>
-                <td>offColor</td>
-                <td>String</td>
-                <td>Color of the right side of the switch</td>
-                <td>'primary', 'info', 'success', 'warning', 'danger', 'default'</td>
-                <td>'default'</td>
-              </tr>
-              <tr>
-                <td>onText</td>
-                <td>String</td>
-                <td>Text of the left side of the switch</td>
-                <td>String</td>
-                <td>'ON'</td>
-              </tr>
-              <tr>
-                <td>offText</td>
-                <td>String</td>
-                <td>Text of the right side of the switch</td>
-                <td>String</td>
-                <td>'OFF'</td>
-              </tr>
-              <tr>
-                <td>labelText</td>
-                <td>String</td>
-                <td>Text of the center handle of the switch</td>
-                <td>String</td>
-                <td>'&amp;nbsp;'</td>
-              </tr>
-              <tr>
-                <td>baseClass</td>
-                <td>String</td>
-                <td>Prefix of every other used class</td>
-                <td>String</td>
-                <td>'bootstrap-switch'</td>
-              </tr>
-              <tr>
-                <td>wrapperClass</td>
-                <td>String | Array</td>
-                <td>Container element class(es)</td>
-                <td>String | Array</td>
-                <td>'wrapper'</td>
-              </tr>
-              <tr>
-                <td>containerClass</td>
-                <td>String | Array</td>
-                <td>Wrapper element class(es)</td>
-                <td>String | Array</td>
-                <td>'container'</td>
-              </tr>
-              <tr>
-                <td>handleOnClass</td>
-                <td>String | Array</td>
-                <td>Handle On element class(es)</td>
-                <td>String | Array</td>
-                <td>'handle-on'</td>
-              </tr>
-              <tr>
-                <td>handleOffClass</td>
-                <td>String | Array</td>
-                <td>Handle Off element class(es)</td>
-                <td>String | Array</td>
-                <td>'handle-off'</td>
-              </tr>
-              <tr>
-                <td>labelClass</td>
-                <td>String | Array</td>
-                <td>Label element class(es)</td>
-                <td>String | Array</td>
-                <td>'label'</td>
-              </tr>
-              <tr>
-                <td>onModifierClass</td>
-                <td>String</td>
-                <td>On Modifier class, used when the switch state is true</td>
-                <td>String</td>
-                <td>'on'</td>
-              </tr>
-              <tr>
-                <td>offModifierClass</td>
-                <td>String</td>
-                <td>Off Modifier class, used when the switch state is false</td>
-                <td>String</td>
-                <td>'off'</td>
-              </tr>
-              <tr>
-                <td>focusedModifierClass</td>
-                <td>String</td>
-                <td>Focused Modifier class, used when the switch is focused</td>
-                <td>String</td>
-                <td>'focused'</td>
-              </tr>
-              <tr>
-                <td>animateModifierClass</td>
-                <td>String</td>
-                <td>Animate Modifier class, used to apply CSS animation to the switch</td>
-                <td>String</td>
-                <td>'animate'</td>
-              </tr>
-              <tr>
-                <td>disabledModifierClass</td>
-                <td>String</td>
-                <td>Disabled Modifier class, used the switch is disabled</td>
-                <td>String</td>
-                <td>'disabled'</td>
-              </tr>
-              <tr>
-                <td>readonlyModifierClass</td>
-                <td>String</td>
-                <td>Readonly Modifier class, used the switch is readonly</td>
-                <td>String</td>
-                <td>'readonly'</td>
-              </tr>
-              <tr>
-                <td>onInit</td>
-                <td>Function</td>
-                <td>Callback function to execute on initialization</td>
-                <td>Function</td>
-                <td>
-                  <pre><code class="javascript">function(event, state) {}</code></pre>
-                </td>
-              </tr>
-              <tr>
-                <td>onSwitchChange</td>
-                <td>Function</td>
-                <td>Callback function to execute on switch state change</td>
-                <td>Function</td>
-                <td>
-                  <pre><code class="javascript">function(event, state) {}</code></pre>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <h1 class="page-header">Documentation 2.0.1<small>To be included</small></h1>
+        <!--
+        #options
+          h2 Options
+          table.table.table-bordered.table-striped.table-responsive
+            thead
+              tr
+                th Name
+                th Type
+                th Description
+                th Values
+                th Default
+            tbody
+              tr
+                td state
+                td Boolean
+                td The checkbox state
+                td true, false
+                td 'checked' attribute or true
+              tr
+                td size
+                td String
+                td The checkbox state
+                td 'mini', 'small', 'normal', 'large'
+                td 'normal'
+              tr
+                td animate
+                td Boolean
+                td Animate the switch
+                td true, false
+                td true
+              tr
+                td disabled
+                td Boolean
+                td Disable state
+                td true, false
+                td 'disabled' attribute or false
+              tr
+                td readonly
+                td Boolean
+                td Readonly state
+                td true, false
+                td 'readonly' attribute or false
+              tr
+                td onColor
+                td String
+                td Color of the left side of the switch
+                td 'primary', 'info', 'success', 'warning', 'danger', 'default'
+                td: 'primary'
+              tr
+                td offColor
+                td String
+                td Color of the right side of the switch
+                td 'primary', 'info', 'success', 'warning', 'danger', 'default'
+                td: 'default'
+              tr
+                td onText
+                td String
+                td Text of the left side of the switch
+                td String
+                td: 'ON'
+              tr
+                td offText
+                td String
+                td Text of the right side of the switch
+                td String
+                td: 'OFF'
+              tr
+                td labelText
+                td String
+                td Text of the center handle of the switch
+                td String
+                td: '&amp;nbsp;'
+              tr
+                td baseClass
+                td String
+                td Prefix of every other used class
+                td String
+                td 'bootstrap-switch'
+              tr
+                td wrapperClass
+                td String | Array
+                td Container element class(es)
+                td String | Array
+                td 'wrapper'
+              tr
+                td containerClass
+                td String | Array
+                td Wrapper element class(es)
+                td String | Array
+                td 'container'
+              tr
+                td handleOnClass
+                td String | Array
+                td Handle On element class(es)
+                td String | Array
+                td 'handle-on'
+              tr
+                td handleOffClass
+                td String | Array
+                td Handle Off element class(es)
+                td String | Array
+                td 'handle-off'
+              tr
+                td labelClass
+                td String | Array
+                td Label element class(es)
+                td String | Array
+                td 'label'
+              tr
+                td onModifierClass
+                td String
+                td On Modifier class, used when the switch state is true
+                td String
+                td 'on'
+              tr
+                td offModifierClass
+                td String
+                td Off Modifier class, used when the switch state is false
+                td String
+                td 'off'
+              tr
+                td focusedModifierClass
+                td String
+                td Focused Modifier class, used when the switch is focused
+                td String
+                td 'focused'
+              tr
+                td animateModifierClass
+                td String
+                td Animate Modifier class, used to apply CSS animation to the switch
+                td String
+                td 'animate'
+              tr
+                td disabledModifierClass
+                td String
+                td Disabled Modifier class, used the switch is disabled
+                td String
+                td 'disabled'
+              tr
+                td readonlyModifierClass
+                td String
+                td Readonly Modifier class, used the switch is readonly
+                td String
+                td 'readonly'
+              tr
+                td onInit
+                td Function
+                td Callback function to execute on initialization
+                td Function
+                td: pre: code.javascript function(event, state) {}
+              tr
+                td onSwitchChange
+                td Function
+                td Callback function to execute on switch state change
+                td Function
+                td: pre: code.javascript function(event, state) {}
+                
+        -->
       </div>
     </div>
     <script src="docs/lib/js/jquery.min.js"></script>
