@@ -25,7 +25,7 @@
       "url": "http://www.bdmdesign.org"
     }
   ],
-  "main": "build/js/bootstrap-switch.js",
+  "main": "dist/js/bootstrap-switch.js",
   "dependencies": {
     "jquery": ">=1.9.0"
   },

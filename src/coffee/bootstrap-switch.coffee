@@ -17,19 +17,17 @@ do ($ = window.jQuery, window) ->
         onText: @$element.data "on-text"
         offText: @$element.data "off-text"
         labelText: @$element.data "label-text"
-
-      addClasses = (cls) =>
-        if not $.isArray cls
-          return "#{@options.baseClass}-#{cls}"
-
-        classes = []
-        for c in cls
-          classes.push "#{@options.baseClass}-#{c}"
-        classes.join " "
-
       @$wrapper = $ "<div>",
         class: do =>
-          classes = ["#{@options.baseClass}", "#{@options.baseClass}-#{@options.wrapperClass}"]
+          classes = ["#{@options.baseClass}"]
+
+          classes.push do =>
+            unless $.isArray @options.wrapperClass
+              return "#{@options.baseClass}-#{@options.wrapperClass}"
+
+            cls = []
+            for c in @options.wrapperClass
+              cls.push "#{@options.baseClass}-#{c}"
 
           classes.push if @options.state then "#{@options.baseClass}-#{@options.onModifierClass}" else "#{@options.baseClass}-#{@options.offModifierClass}"
           classes.push "#{@options.baseClass}-#{@options.size}" if @options.size?
@@ -39,17 +37,17 @@ do ($ = window.jQuery, window) ->
           classes.push "#{@options.baseClass}-id-#{@$element.attr("id")}" if @$element.attr "id"
           classes.join " "
       @$container = $ "<div>",
-        class: addClasses @options.containerClass
+        class: "#{@options.baseClass}-container"
       @$on = $ "<span>",
         html: @options.onText,
-        class: "#{addClasses @options.handleOnClass} #{@options.baseClass}-#{@options.onColor}"
+        class: "#{@options.baseClass}-handle-on #{@options.baseClass}-#{@options.onColor}"
       @$off = $ "<span>",
         html: @options.offText,
-        class: "#{addClasses @options.handleOffClass} #{@options.baseClass}-#{@options.offColor}"
+        class: "#{@options.baseClass}-handle-off #{@options.baseClass}-#{@options.offColor}"
       @$label = $ "<label>",
         for: @$element.attr "id"
         html: @options.labelText
-        class: addClasses @options.labelClass
+        class: "#{@options.baseClass}-label"
 
       # set up events
       @$element.on "init.bootstrapSwitch", => @options.onInit.apply element, arguments
@@ -177,6 +175,86 @@ do ($ = window.jQuery, window) ->
 
       @$label.html value
       @options.labelText = value
+      @$element
+
+    baseClass: (value) ->
+      @options.baseClass
+
+    wrapperClass: (value) ->
+      return @options.wrapperClass if typeof value is "undefined"
+
+      getClasses = (classes) =>
+        unless $.isArray classes
+          return "#{@options.baseClass}-#{classes}"
+
+        cls = []
+        for c in classes
+          cls.push "#{@options.baseClass}-#{c}"
+        cls.join " "
+
+      @$wrapper.removeClass getClasses @options.wrapperClass
+      @$wrapper.addClass getClasses value
+      @options.wrapperClass = value
+      @$element
+
+    onModifierClass: (value) ->
+      return @options.onModifierClass if typeof value is "undefined"
+
+      if @$wrapper.hasClass "#{@options.baseClass}-#{@options.onModifierClass}"
+        @$wrapper
+        .removeClass("#{@options.baseClass}-#{@options.onModifierClass}")
+        .addClass("#{@options.baseClass}-#{value}")
+      @options.onModifierClass = value
+      @$element
+
+    offModifierClass: (value) ->
+      return @options.offModifierClass if typeof value is "undefined"
+
+      if @$wrapper.hasClass "#{@options.baseClass}-#{@options.offModifierClass}"
+        @$wrapper
+        .removeClass("#{@options.baseClass}-#{@options.offModifierClass}")
+        .addClass("#{@options.baseClass}-#{value}")
+      @options.offModifierClass = value
+      @$element
+
+    focusedModifierClass: (value) ->
+      return @options.focusedModifierClass if typeof value is "undefined"
+
+      if @$wrapper.hasClass "#{@options.baseClass}-#{@options.focusedModifierClass}"
+        @$wrapper
+        .removeClass("#{@options.baseClass}-#{@options.focusedModifierClass}")
+        .addClass("#{@options.baseClass}-#{value}")
+      @options.focusedModifierClass = value
+      @$element
+
+    animateModifierClass: (value) ->
+      return @options.animateModifierClass if typeof value is "undefined"
+
+      if @$wrapper.hasClass "#{@options.baseClass}-#{@options.animateModifierClass}"
+        @$wrapper
+        .removeClass("#{@options.baseClass}-#{@options.animateModifierClass}")
+        .addClass("#{@options.baseClass}-#{value}")
+      @options.animateModifierClass = value
+      @$element
+
+    disabledModifierClass: (value) ->
+      return @options.disabledModifierClass if typeof value is "undefined"
+
+      if @$wrapper.hasClass "#{@options.baseClass}-#{@options.disabledModifierClass}"
+        @$wrapper
+        .removeClass("#{@options.baseClass}-#{@options.disabledModifierClass}")
+        .addClass("#{@options.baseClass}-#{value}")
+      @options.disabledModifierClass = value
+      @$element
+
+    readonlyModifierClass: (value) ->
+      return @options.readonlyModifierClass if typeof value is "undefined"
+
+      if @$wrapper.hasClass "#{@options.baseClass}-#{@options.readonlyModifierClass}"
+        @$wrapper
+        .removeClass("#{@options.baseClass}-#{@options.readonlyModifierClass}")
+        .addClass("#{@options.baseClass}-#{value}")
+      @options.readonlyModifierClass = value
       @$element
 
     destroy: ->
@@ -315,7 +393,7 @@ do ($ = window.jQuery, window) ->
       $this = $ @
       data = $this.data "bootstrap-switch"
 
-      $this.data "bootstrap-switch", data = new BootstrapSwitch @, option if not data
+      $this.data "bootstrap-switch", data = new BootstrapSwitch @, option unless data
       ret = data[option].apply data, args if typeof option is "string"
     ret
 
@@ -333,10 +411,12 @@ do ($ = window.jQuery, window) ->
     labelText: "&nbsp;"
     baseClass: "bootstrap-switch"
     wrapperClass: "wrapper"
+    ###
     containerClass: "container"
     handleOnClass: "handle-on"
     handleOffClass: "handle-off"
     labelClass: "label"
+    ###
     onModifierClass: "on"
     offModifierClass: "off"
     focusedModifierClass: "focused"

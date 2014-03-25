@@ -3,11 +3,17 @@
   "description": "Turn checkboxes and radio buttons in toggle switches.",
   "version": "3.0.0",
   "main": [
-    "build/js/bootstrap-switch.js",
-    "build/css/bootstrap3/bootstrap-switch.css"
+    "dist/js/bootstrap-switch.js",
+    "dist/css/bootstrap3/bootstrap-switch.css"
   ],
   "ignore": [
-    "docs"
+    "docs",
+    "test",
+    "CNAME",
+    "composer.json"
+    "CONTRIBUTING.md"
+    "gulpfile.js"
+    "index.html"
   ],
   "dependencies": {
     "jquery": ">=1.9.0"

@@ -1,21 +1,566 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Turn checkboxes and radio buttons in toggle switches."><meta name="author" content="Mattia Larentis, Emanuele Marchi and Peter Stein"><title>Bootstrap Switch · Turn checkboxes and radio buttons in toggle switches</title><link href="http://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"><link href="docs/lib/css/bootstrap.min.css" rel="stylesheet"><link href="docs/lib/css/highlight.css" rel="stylesheet"><link href="build/css/bootstrap3/bootstrap-switch.css" rel="stylesheet"><link href="docs/index.css" rel="stylesheet"><script>var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-43092768-1']);
-_gaq.push(['_trackPageview']);
-(function () {
-  var ga = document.createElement('script');
-  ga.type = 'text/javascript';
-  ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0];
-  s.parentNode.insertBefore(ga, s);
-})();</script></head><body><header role="banner" class="navbar navbar-default navbar-fixed-top top"><div class="container"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="../" class="navbar-brand">Bootstrap Switch</a></div><nav id="collapse" role="navigation" class="collapse navbar-collapse"><ul class="nav navbar-nav"><li><a href="https://github.com/nostalgiaz/bootstrap-switch/archive/3.0.zip">Download 3RC</a></li><li><a href="#getting-started">Getting Started</a></li><li class="dropdown"><a href="#documentation" data-toggle="dropdown">Documentation<span class="caret"></span></a><ul class="dropdown-menu"><li><a href="#options">Options</a></li><li><a href="#methods">Methods</a></li><li><a href="#events">Events</a></li></ul></li><li><a href="#examples">Examples</a></li><li><a href="https://github.com/nostalgiaz/bootstrap-switch/issues">Bug reports</a></li></ul></nav></div></header><div class="container"><div class="header"><h1 class="title">Bootstrap Switch</h1><p class="lead">Turn checkboxes and radio buttons in toggle switches.</p><p>Choose your version:</p><p><input type="checkbox" name="download-version" checked data-size="large" data-on-text="3 RC" data-off-text="2.0.1"></p><p><a href="https://github.com/nostalgiaz/bootstrap-switch/archive/3.0.zip" id="download-3" class="btn btn-lg btn-primary">Download 3 (Release candidate)</a><a href="https://github.com/nostalgiaz/bootstrap-switch/archive/master.zip" id="download-2" class="btn btn-lg btn-primary">Download 2.0.1</a></p></div><div id="getting-started"><h1 class="page-header">Getting Started</h1><p>Include the dependencies: jQuery, Bootstrap and Bootstrap Switch CSS + Javascript.</p><pre><code>[...]
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Turn checkboxes and radio buttons in toggle switches.">
+    <meta name="author" content="Mattia Larentis, Emanuele Marchi and Peter Stein">
+    <title>Bootstrap Switch · Turn checkboxes and radio buttons in toggle switches</title>
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link href="docs/lib/css/bootstrap.min.css" rel="stylesheet">
+    <link href="docs/lib/css/highlight.css" rel="stylesheet">
+    <link href="dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+    <link href="docs/index.css" rel="stylesheet">
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-43092768-1']);
+      _gaq.push(['_trackPageview']);
+      (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </head>
+  <body>
+    <header role="banner" class="navbar navbar-default navbar-fixed-top top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" data-toggle="collapse" data-target="#collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="../" class="navbar-brand">Bootstrap Switch</a>
+        </div>
+        <nav id="collapse" role="navigation" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown"><a href="#" data-toggle="dropdown">Download<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="https://github.com/nostalgiaz/bootstrap-switch/archive/3.0.zip">3 (Release candidate)</a></li>
+                <li><a href="https://github.com/nostalgiaz/bootstrap-switch/archive/master.zip">2.0.1</a></li>
+              </ul>
+            </li>
+            <li><a href="#getting-started">Getting Started</a></li>
+            <li class="dropdown"><a href="#documentation-3" data-toggle="dropdown">Documentation 3<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#options">Options</a></li>
+                <li><a href="#methods">Methods</a></li>
+                <li><a href="#additional-methods">Additional Methods</a></li>
+                <li><a href="#events">Events</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="#documentation-2" data-toggle="dropdown">Documentation 2.0.1<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#options">Options</a></li>
+                <li><a href="#methods">Methods</a></li>
+                <li><a href="#events">Events</a></li>
+              </ul>
+            </li>
+            <li><a href="https://github.com/nostalgiaz/bootstrap-switch/issues">Bug reports</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <div class="header">
+        <h2 class="title">Bootstrap Switch</h2>
+        <p class="lead">Turn checkboxes and radio buttons in toggle switches.</p>
+        <p>Download your version:</p>
+        <p>
+          <input type="checkbox" name="download-version" checked data-size="large" data-on-text="3 RC" data-off-text="2.0.1">
+        </p>
+        <p><a href="https://github.com/nostalgiaz/bootstrap-switch/archive/3.0.zip" id="download-3" class="btn btn-lg btn-primary">Download 3 (Release candidate)</a><a href="https://github.com/nostalgiaz/bootstrap-switch/archive/master.zip" id="download-2" class="btn btn-lg btn-primary">Download 2.0.1 (Stable)</a></p>
+      </div>
+      <div id="getting-started">
+        <h1 class="page-header">Getting Started</h1>
+        <p>Include the dependencies: jQuery, Bootstrap and Bootstrap Switch CSS + Javascript.</p>
+        <pre><code>[...]
 &lt;link href="bootstrap.css" rel="stylesheet"&gt;
 &lt;link href="bootstrap-switch.css" rel="stylesheet"&gt;
 &lt;script src="jquery.js"&gt;&lt;/script&gt;
 &lt;script src="bootstrap-switch.js"&gt;&lt;/script&gt;
-[...]</code></pre></div><div id="options"><h1 class="page-header">Options</h1><table class="table table-bordered table-striped table-responsive"><thead><tr><th>Name</th><th>Type</th><th>Description</th><th>Values</th><th>Default</th></tr></thead><tbody><tr><td>state</td><td>Boolean</td><td>The checkbox state</td><td>true, false</td><td>'checked' attribute or true</td></tr><tr><td>size</td><td>String</td><td>The checkbox state</td><td>'mini', 'small', 'normal', 'large'</td><td>'normal'</td></tr><tr><td>animate</td><td>Boolean</td><td>Animate the switch</td><td>true, false</td><td>true</td></tr><tr><td>disabled</td><td>Boolean</td><td>Disable state</td><td>true, false</td><td>'disabled' attribute or false</td></tr><tr><td>readonly</td><td>Boolean</td><td>Readonly state</td><td>true, false</td><td>'readonly' attribute or false</td></tr><tr><td>onColor</td><td>String</td><td>Color of the left side of the switch</td><td>'primary', 'info', 'success', 'warning', 'danger', 'default'</td><td>'primary'</td></tr><tr><td>offColor</td><td>String</td><td>Color of the right side of the switch</td><td>'primary', 'info', 'success', 'warning', 'danger', 'default'</td><td>'default'</td></tr><tr><td>onText</td><td>String</td><td>Text of the left side of the switch</td><td>String</td><td>'ON'</td></tr><tr><td>offText</td><td>String</td><td>Text of the right side of the switch</td><td>String</td><td>'OFF'</td></tr><tr><td>labelText</td><td>String</td><td>Text of the center handle of the switch</td><td>String</td><td>'&amp;nbsp;'</td></tr><tr><td>baseClass</td><td>String</td><td>Prefix of every other used class</td><td>String</td><td>'bootstrap-switch'</td></tr><tr><td>wrapperClass</td><td>String | Array</td><td>Container element class(es)</td><td>String | Array</td><td>'wrapper'</td></tr><tr><td>containerClass</td><td>String | Array</td><td>Wrapper element class(es)</td><td>String | Array</td><td>'container'</td></tr><tr><td>handleOnClass</td><td>String | Array</td><td>Handle On element class(es)</td><td>String | Array</td><td>'handle-on'</td></tr><tr><td>handleOffClass</td><td>String | Array</td><td>Handle Off element class(es)</td><td>String | Array</td><td>'handle-off'</td></tr><tr><td>labelClass</td><td>String | Array</td><td>Label element class(es)</td><td>String | Array</td><td>'label'</td></tr><tr><td>onModifierClass</td><td>String</td><td>On Modifier class, used when the switch state is true</td><td>String</td><td>'on'</td></tr><tr><td>offModifierClass</td><td>String</td><td>Off Modifier class, used when the switch state is false</td><td>String</td><td>'off'</td></tr><tr><td>focusedModifierClass</td><td>String</td><td>Focused Modifier class, used when the switch is focused</td><td>String</td><td>'focused'</td></tr><tr><td>animateModifierClass</td><td>String</td><td>Animate Modifier class, used to apply CSS animation to the switch</td><td>String</td><td>'animate'</td></tr><tr><td>disabledModifierClass</td><td>String</td><td>Disabled Modifier class, used the switch is disabled</td><td>String</td><td>'disabled'</td></tr><tr><td>readonlyModifierClass</td><td>String</td><td>Readonly Modifier class, used the switch is readonly</td><td>String</td><td>'readonly'</td></tr><tr><td>onInit</td><td>Function</td><td>Callback function to execute on initialization</td><td>Function</td><td><pre><code class="javascript">function(event, state) {}</code></pre></td></tr><tr><td>onSwitchChange</td><td>Function</td><td>Callback function to execute on switch state change</td><td>Function</td><td><pre><code class="javascript">function(event, state) {}</code></pre></td></tr></tbody></table></div><div id="methods"><h1 class="page-header">Methods</h1><p>In Bootstrap Switch, every option is also a method.</p><p>You can call a method in this way:</p><pre><code>$('input[name="my-checkbox"]').bootstrapSwitch('state', true);</code></pre><h2>Additional Methods</h2><table class="table table-bordered table-striped table-responsive"><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody><tr><td>toggleState</td><td>Toggle the switch state</td></tr><tr><td>toggleDisabled</td><td>Toggle the disabled state</td></tr><tr><td>toggleReadonly</td><td>Toggle the readonly state</td></tr><tr><td>destroy</td><td>Destroy the instance of Bootstrap Switch</td></tr></tbody></table></div><div id="events"><h1 class="page-header">Events</h1><p>You can register to the emitted events as follow:</p><pre><code>$('inputy[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+[...]</code></pre>
+        <p>Add your checkbox.</p>
+        <pre><code>&lt;input type="checkbox" name="my-checkbox" checked&gt;</code></pre>
+        <p>Initialize Bootstrap Switch.</p>
+        <pre><code>$("[name='my-checkbox']").bootstrapSwitch();</code></pre>
+        <p>Enjoy.</p>
+      </div>
+      <div id="documentation-3">
+        <h1 class="page-header">Documentation 3</h1>
+        <div id="options">
+          <h2>Options</h2>
+          <table class="table table-bordered table-striped table-responsive">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Values</th>
+                <th>Default</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>state</td>
+                <td>Boolean</td>
+                <td>The checkbox state</td>
+                <td>true, false</td>
+                <td>'checked' attribute or true</td>
+              </tr>
+              <tr>
+                <td>size</td>
+                <td>String</td>
+                <td>The checkbox state</td>
+                <td>'mini', 'small', 'normal', 'large'</td>
+                <td>'normal'</td>
+              </tr>
+              <tr>
+                <td>animate</td>
+                <td>Boolean</td>
+                <td>Animate the switch</td>
+                <td>true, false</td>
+                <td>true</td>
+              </tr>
+              <tr>
+                <td>disabled</td>
+                <td>Boolean</td>
+                <td>Disable state</td>
+                <td>true, false</td>
+                <td>'disabled' attribute or false</td>
+              </tr>
+              <tr>
+                <td>readonly</td>
+                <td>Boolean</td>
+                <td>Readonly state</td>
+                <td>true, false</td>
+                <td>'readonly' attribute or false</td>
+              </tr>
+              <tr>
+                <td>onColor</td>
+                <td>String</td>
+                <td>Color of the left side of the switch</td>
+                <td>'primary', 'info', 'success', 'warning', 'danger', 'default'</td>
+                <td>'primary'</td>
+              </tr>
+              <tr>
+                <td>offColor</td>
+                <td>String</td>
+                <td>Color of the right side of the switch</td>
+                <td>'primary', 'info', 'success', 'warning', 'danger', 'default'</td>
+                <td>'default'</td>
+              </tr>
+              <tr>
+                <td>onText</td>
+                <td>String</td>
+                <td>Text of the left side of the switch</td>
+                <td>String</td>
+                <td>'ON'</td>
+              </tr>
+              <tr>
+                <td>offText</td>
+                <td>String</td>
+                <td>Text of the right side of the switch</td>
+                <td>String</td>
+                <td>'OFF'</td>
+              </tr>
+              <tr>
+                <td>labelText</td>
+                <td>String</td>
+                <td>Text of the center handle of the switch</td>
+                <td>String</td>
+                <td>'&amp;nbsp;'</td>
+              </tr>
+              <tr>
+                <td>baseClass</td>
+                <td>String</td>
+                <td>Prefix of every other used class</td>
+                <td>String</td>
+                <td>'bootstrap-switch'</td>
+              </tr>
+              <tr>
+                <td>wrapperClass</td>
+                <td>String | Array</td>
+                <td>Container element class(es)</td>
+                <td>String | Array</td>
+                <td>'wrapper'</td>
+              </tr>
+              <tr>
+                <td>containerClass</td>
+                <td>String | Array</td>
+                <td>Wrapper element class(es)</td>
+                <td>String | Array</td>
+                <td>'container'</td>
+              </tr>
+              <tr>
+                <td>handleOnClass</td>
+                <td>String | Array</td>
+                <td>Handle On element class(es)</td>
+                <td>String | Array</td>
+                <td>'handle-on'</td>
+              </tr>
+              <tr>
+                <td>handleOffClass</td>
+                <td>String | Array</td>
+                <td>Handle Off element class(es)</td>
+                <td>String | Array</td>
+                <td>'handle-off'</td>
+              </tr>
+              <tr>
+                <td>labelClass</td>
+                <td>String | Array</td>
+                <td>Label element class(es)</td>
+                <td>String | Array</td>
+                <td>'label'</td>
+              </tr>
+              <tr>
+                <td>onModifierClass</td>
+                <td>String</td>
+                <td>On Modifier class, used when the switch state is true</td>
+                <td>String</td>
+                <td>'on'</td>
+              </tr>
+              <tr>
+                <td>offModifierClass</td>
+                <td>String</td>
+                <td>Off Modifier class, used when the switch state is false</td>
+                <td>String</td>
+                <td>'off'</td>
+              </tr>
+              <tr>
+                <td>focusedModifierClass</td>
+                <td>String</td>
+                <td>Focused Modifier class, used when the switch is focused</td>
+                <td>String</td>
+                <td>'focused'</td>
+              </tr>
+              <tr>
+                <td>animateModifierClass</td>
+                <td>String</td>
+                <td>Animate Modifier class, used to apply CSS animation to the switch</td>
+                <td>String</td>
+                <td>'animate'</td>
+              </tr>
+              <tr>
+                <td>disabledModifierClass</td>
+                <td>String</td>
+                <td>Disabled Modifier class, used the switch is disabled</td>
+                <td>String</td>
+                <td>'disabled'</td>
+              </tr>
+              <tr>
+                <td>readonlyModifierClass</td>
+                <td>String</td>
+                <td>Readonly Modifier class, used the switch is readonly</td>
+                <td>String</td>
+                <td>'readonly'</td>
+              </tr>
+              <tr>
+                <td>onInit</td>
+                <td>Function</td>
+                <td>Callback function to execute on initialization</td>
+                <td>Function</td>
+                <td>
+                  <pre><code class="javascript">function(event, state) {}</code></pre>
+                </td>
+              </tr>
+              <tr>
+                <td>onSwitchChange</td>
+                <td>Function</td>
+                <td>Callback function to execute on switch state change</td>
+                <td>Function</td>
+                <td>
+                  <pre><code class="javascript">function(event, state) {}</code></pre>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="methods">
+          <h2>Methods</h2>
+          <p>In Bootstrap Switch, every option is also a method.</p>
+          <p>You can call a method in this way:</p>
+          <pre><code>$('input[name="my-checkbox"]').bootstrapSwitch('state', true);</code></pre>
+        </div>
+        <div id="additional-methods">
+          <h2>Additional Methods</h2>
+          <table class="table table-bordered table-striped table-responsive">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>toggleState</td>
+                <td>Toggle the switch state</td>
+              </tr>
+              <tr>
+                <td>toggleDisabled</td>
+                <td>Toggle the disabled state</td>
+              </tr>
+              <tr>
+                <td>toggleReadonly</td>
+                <td>Toggle the readonly state</td>
+              </tr>
+              <tr>
+                <td>destroy</td>
+                <td>Destroy the instance of Bootstrap Switch</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="events">
+          <h2>Events</h2>
+          <p>You can register to the emitted events as follow:</p>
+          <pre><code>$('inputy[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
   console.log(this); // DOM element
   console.log(event); // jQuery event
   console.log(state); // true | false
-});</code></pre><table class="table table-bordered table-striped table-responsive"><thead><tr><th>Name</th><th>Description</th><th>Parameters</th></tr></thead><tbody><tr><td>init</td><td>Triggered on initialization. 'this' refers to the DOM element.</td><td>event (<a href="https://api.jquery.com/category/events/event-object/" target="_blank">jQuery Event object</a>)</td></tr><tr><td>switchChange</td><td>Triggered on switch state change. 'this' refers to the DOM element.</td><td>event (<a href="https://api.jquery.com/category/events/event-object/" target="_blank">jQuery Event object</a>),
-state (true | false)</td></tr></tbody></table></div><div id="examples"><h1 class="page-header">Examples<h2>State</h2><div class="row"><div class="col-sm-6"><input type="checkbox" id="state-switch" checked></div><div class="col-sm-6"><div class="btn-group pull-right"><button type="button" id="state-switch-state" class="btn btn-default">Get State</button>&nbsp;<button type="button" id="state-switch-on" class="btn btn-default">Set On</button>&nbsp;<button type="button" id="state-switch-off" class="btn btn-default">Set Off</button>&nbsp;<button type="button" id="state-switch-toggle" class="btn btn-default">Toggle State</button></div></div></div></h1><p>Working on this...</p></div></div><script src="docs/lib/js/jquery.min.js"></script><script src="docs/lib/js/bootstrap.min.js"></script><script src="docs/lib/js/highlight.js"></script><script src="build/js/bootstrap-switch.js"></script><script src="docs/index.js"></script></body></html>
+});</code></pre>
+          <table class="table table-bordered table-striped table-responsive">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Parameters</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>init</td>
+                <td>Triggered on initialization. 'this' refers to the DOM element.</td>
+                <td>event (<a href="https://api.jquery.com/category/events/event-object/" target="_blank">jQuery Event object</a>)</td>
+              </tr>
+              <tr>
+                <td>switchChange</td>
+                <td>Triggered on switch state change. 'this' refers to the DOM element.</td>
+                <td>
+                  event (<a href="https://api.jquery.com/category/events/event-object/" target="_blank">jQuery Event object</a>),
+                  state (true | false)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!--
+          #examples
+            h2 Examples
+              h2 State
+              .row
+                .col-sm-6
+                  input(type='checkbox', id='state-switch' checked)
+                .col-sm-6
+                  .btn-group.pull-right
+                    button(type='button', id='state-switch-state', class='btn btn-default') Get State
+                    &nbsp;
+                    button(type='button', id='state-switch-on', class='btn btn-default') Set On
+                    &nbsp;
+                    button(type='button', id='state-switch-off', class='btn btn-default') Set Off
+                    &nbsp;
+                    button(type='button', id='state-switch-toggle', class='btn btn-default') Toggle State
+                    
+          <p>Working on this...</p>
+          
+          -->
+        </div>
+      </div>
+      <div id="documentation-2">
+        <h1 class="page-header">Documentation 2.0.1</h1>
+        <div id="options">
+          <h2>Options</h2>
+          <table class="table table-bordered table-striped table-responsive">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Values</th>
+                <th>Default</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>state</td>
+                <td>Boolean</td>
+                <td>The checkbox state</td>
+                <td>true, false</td>
+                <td>'checked' attribute or true</td>
+              </tr>
+              <tr>
+                <td>size</td>
+                <td>String</td>
+                <td>The checkbox state</td>
+                <td>'mini', 'small', 'normal', 'large'</td>
+                <td>'normal'</td>
+              </tr>
+              <tr>
+                <td>animate</td>
+                <td>Boolean</td>
+                <td>Animate the switch</td>
+                <td>true, false</td>
+                <td>true</td>
+              </tr>
+              <tr>
+                <td>disabled</td>
+                <td>Boolean</td>
+                <td>Disable state</td>
+                <td>true, false</td>
+                <td>'disabled' attribute or false</td>
+              </tr>
+              <tr>
+                <td>readonly</td>
+                <td>Boolean</td>
+                <td>Readonly state</td>
+                <td>true, false</td>
+                <td>'readonly' attribute or false</td>
+              </tr>
+              <tr>
+                <td>onColor</td>
+                <td>String</td>
+                <td>Color of the left side of the switch</td>
+                <td>'primary', 'info', 'success', 'warning', 'danger', 'default'</td>
+                <td>'primary'</td>
+              </tr>
+              <tr>
+                <td>offColor</td>
+                <td>String</td>
+                <td>Color of the right side of the switch</td>
+                <td>'primary', 'info', 'success', 'warning', 'danger', 'default'</td>
+                <td>'default'</td>
+              </tr>
+              <tr>
+                <td>onText</td>
+                <td>String</td>
+                <td>Text of the left side of the switch</td>
+                <td>String</td>
+                <td>'ON'</td>
+              </tr>
+              <tr>
+                <td>offText</td>
+                <td>String</td>
+                <td>Text of the right side of the switch</td>
+                <td>String</td>
+                <td>'OFF'</td>
+              </tr>
+              <tr>
+                <td>labelText</td>
+                <td>String</td>
+                <td>Text of the center handle of the switch</td>
+                <td>String</td>
+                <td>'&amp;nbsp;'</td>
+              </tr>
+              <tr>
+                <td>baseClass</td>
+                <td>String</td>
+                <td>Prefix of every other used class</td>
+                <td>String</td>
+                <td>'bootstrap-switch'</td>
+              </tr>
+              <tr>
+                <td>wrapperClass</td>
+                <td>String | Array</td>
+                <td>Container element class(es)</td>
+                <td>String | Array</td>
+                <td>'wrapper'</td>
+              </tr>
+              <tr>
+                <td>containerClass</td>
+                <td>String | Array</td>
+                <td>Wrapper element class(es)</td>
+                <td>String | Array</td>
+                <td>'container'</td>
+              </tr>
+              <tr>
+                <td>handleOnClass</td>
+                <td>String | Array</td>
+                <td>Handle On element class(es)</td>
+                <td>String | Array</td>
+                <td>'handle-on'</td>
+              </tr>
+              <tr>
+                <td>handleOffClass</td>
+                <td>String | Array</td>
+                <td>Handle Off element class(es)</td>
+                <td>String | Array</td>
+                <td>'handle-off'</td>
+              </tr>
+              <tr>
+                <td>labelClass</td>
+                <td>String | Array</td>
+                <td>Label element class(es)</td>
+                <td>String | Array</td>
+                <td>'label'</td>
+              </tr>
+              <tr>
+                <td>onModifierClass</td>
+                <td>String</td>
+                <td>On Modifier class, used when the switch state is true</td>
+                <td>String</td>
+                <td>'on'</td>
+              </tr>
+              <tr>
+                <td>offModifierClass</td>
+                <td>String</td>
+                <td>Off Modifier class, used when the switch state is false</td>
+                <td>String</td>
+                <td>'off'</td>
+              </tr>
+              <tr>
+                <td>focusedModifierClass</td>
+                <td>String</td>
+                <td>Focused Modifier class, used when the switch is focused</td>
+                <td>String</td>
+                <td>'focused'</td>
+              </tr>
+              <tr>
+                <td>animateModifierClass</td>
+                <td>String</td>
+                <td>Animate Modifier class, used to apply CSS animation to the switch</td>
+                <td>String</td>
+                <td>'animate'</td>
+              </tr>
+              <tr>
+                <td>disabledModifierClass</td>
+                <td>String</td>
+                <td>Disabled Modifier class, used the switch is disabled</td>
+                <td>String</td>
+                <td>'disabled'</td>
+              </tr>
+              <tr>
+                <td>readonlyModifierClass</td>
+                <td>String</td>
+                <td>Readonly Modifier class, used the switch is readonly</td>
+                <td>String</td>
+                <td>'readonly'</td>
+              </tr>
+              <tr>
+                <td>onInit</td>
+                <td>Function</td>
+                <td>Callback function to execute on initialization</td>
+                <td>Function</td>
+                <td>
+                  <pre><code class="javascript">function(event, state) {}</code></pre>
+                </td>
+              </tr>
+              <tr>
+                <td>onSwitchChange</td>
+                <td>Function</td>
+                <td>Callback function to execute on switch state change</td>
+                <td>Function</td>
+                <td>
+                  <pre><code class="javascript">function(event, state) {}</code></pre>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src="docs/lib/js/jquery.min.js"></script>
+    <script src="docs/lib/js/bootstrap.min.js"></script>
+    <script src="docs/lib/js/highlight.js"></script>
+    <script src="dist/js/bootstrap-switch.js"></script>
+    <script src="docs/index.js"></script>
+  </body>
+</html>

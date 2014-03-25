@@ -35,11 +35,11 @@ gulp.task('coffee', function() {
     }))
     .pipe(plugins.coffee()).on('error', plugins.util.log)
     .pipe(plugins.header(banner, { pkg: pkg }))
-    .pipe(gulp.dest('build/js'))
+    .pipe(gulp.dest('dist/js'))
     .pipe(plugins.uglify())
     .pipe(plugins.header(banner, { pkg: pkg }))
     .pipe(plugins.rename({ suffix: '.min' }))
-    .pipe(gulp.dest('build/js'));
+    .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('less-bootstrap2', function() {
@@ -47,14 +47,14 @@ gulp.task('less-bootstrap2', function() {
     .pipe(plugins.less())
     .pipe(plugins.header(banner, { pkg: pkg }))
     .pipe(plugins.rename({ basename: name }))
-    .pipe(gulp.dest('build/css/bootstrap2'))
+    .pipe(gulp.dest('dist/css/bootstrap2'))
     .pipe(plugins.less({
       compress: true,
       cleancss: true
     }))
     .pipe(plugins.header(banner, { pkg: pkg }))
     .pipe(plugins.rename({ suffix: '.min' }))
-    .pipe(gulp.dest('build/css/bootstrap2'));
+    .pipe(gulp.dest('dist/css/bootstrap2'));
 });
 
 gulp.task('less-bootstrap3', function() {
@@ -62,19 +62,19 @@ gulp.task('less-bootstrap3', function() {
     .pipe(plugins.less())
     .pipe(plugins.header(banner, { pkg: pkg }))
     .pipe(plugins.rename({ basename: name }))
-    .pipe(gulp.dest('build/css/bootstrap3'))
+    .pipe(gulp.dest('dist/css/bootstrap3'))
     .pipe(plugins.less({
       compress: true,
       cleancss: true
     }))
     .pipe(plugins.header(banner, { pkg: pkg }))
     .pipe(plugins.rename({ suffix: '.min' }))
-    .pipe(gulp.dest('build/css/bootstrap3'));
+    .pipe(gulp.dest('dist/css/bootstrap3'));
 });
 
 gulp.task('docs', function() {
   gulp.src('docs/index.jade')
-    .pipe(plugins.jade())
+    .pipe(plugins.jade({ pretty: true }))
     .pipe(gulp.dest('./'));
 });
 

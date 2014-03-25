@@ -23,7 +23,7 @@
   "extra": {
     "component": {
       "scripts": [
-        "build/js/bootstrap-switch.js"
+        "dist/js/bootstrap-switch.js"
       ],
       "shim": {
         "exports": "BootstrapSwitch"

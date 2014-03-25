@@ -29,7 +29,6 @@
       BootstrapSwitch.prototype.name = "bootstrap-switch";
 
       function BootstrapSwitch(element, options) {
-        var addClasses;
         if (options == null) {
           options = {};
         }
@@ -46,25 +45,25 @@
           offText: this.$element.data("off-text"),
           labelText: this.$element.data("label-text")
         });
-        addClasses = (function(_this) {
-          return function(cls) {
-            var c, classes, _i, _len;
-            if (!$.isArray(cls)) {
-              return "" + _this.options.baseClass + "-" + cls;
-            }
-            classes = [];
-            for (_i = 0, _len = cls.length; _i < _len; _i++) {
-              c = cls[_i];
-              classes.push("" + _this.options.baseClass + "-" + c);
-            }
-            return classes.join(" ");
-          };
-        })(this);
         this.$wrapper = $("<div>", {
           "class": (function(_this) {
             return function() {
               var classes;
-              classes = ["" + _this.options.baseClass, "" + _this.options.baseClass + "-" + _this.options.wrapperClass];
+              classes = ["" + _this.options.baseClass];
+              classes.push((function() {
+                var c, cls, _i, _len, _ref, _results;
+                if (!$.isArray(_this.options.wrapperClass)) {
+                  return "" + _this.options.baseClass + "-" + _this.options.wrapperClass;
+                }
+                cls = [];
+                _ref = _this.options.wrapperClass;
+                _results = [];
+                for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                  c = _ref[_i];
+                  _results.push(cls.push("" + _this.options.baseClass + "-" + c));
+                }
+                return _results;
+              })());
               classes.push(_this.options.state ? "" + _this.options.baseClass + "-" + _this.options.onModifierClass : "" + _this.options.baseClass + "-" + _this.options.offModifierClass);
               if (_this.options.size != null) {
                 classes.push("" + _this.options.baseClass + "-" + _this.options.size);
@@ -86,20 +85,20 @@
           })(this)()
         });
         this.$container = $("<div>", {
-          "class": addClasses(this.options.containerClass)
+          "class": "" + this.options.baseClass + "-container"
         });
         this.$on = $("<span>", {
           html: this.options.onText,
-          "class": "" + (addClasses(this.options.handleOnClass)) + " " + this.options.baseClass + "-" + this.options.onColor
+          "class": "" + this.options.baseClass + "-handle-on " + this.options.baseClass + "-" + this.options.onColor
         });
         this.$off = $("<span>", {
           html: this.options.offText,
-          "class": "" + (addClasses(this.options.handleOffClass)) + " " + this.options.baseClass + "-" + this.options.offColor
+          "class": "" + this.options.baseClass + "-handle-off " + this.options.baseClass + "-" + this.options.offColor
         });
         this.$label = $("<label>", {
           "for": this.$element.attr("id"),
           html: this.options.labelText,
-          "class": addClasses(this.options.labelClass)
+          "class": "" + this.options.baseClass + "-label"
         });
         this.$element.on("init.bootstrapSwitch", (function(_this) {
           return function() {
@@ -251,6 +250,101 @@
         }
         this.$label.html(value);
         this.options.labelText = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.baseClass = function(value) {
+        return this.options.baseClass;
+      };
+
+      BootstrapSwitch.prototype.wrapperClass = function(value) {
+        var getClasses;
+        if (typeof value === "undefined") {
+          return this.options.wrapperClass;
+        }
+        getClasses = (function(_this) {
+          return function(classes) {
+            var c, cls, _i, _len;
+            if (!$.isArray(classes)) {
+              return "" + _this.options.baseClass + "-" + classes;
+            }
+            cls = [];
+            for (_i = 0, _len = classes.length; _i < _len; _i++) {
+              c = classes[_i];
+              cls.push("" + _this.options.baseClass + "-" + c);
+            }
+            return cls.join(" ");
+          };
+        })(this);
+        this.$wrapper.removeClass(getClasses(this.options.wrapperClass));
+        this.$wrapper.addClass(getClasses(value));
+        this.options.wrapperClass = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.onModifierClass = function(value) {
+        if (typeof value === "undefined") {
+          return this.options.onModifierClass;
+        }
+        if (this.$wrapper.hasClass("" + this.options.baseClass + "-" + this.options.onModifierClass)) {
+          this.$wrapper.removeClass("" + this.options.baseClass + "-" + this.options.onModifierClass).addClass("" + this.options.baseClass + "-" + value);
+        }
+        this.options.onModifierClass = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.offModifierClass = function(value) {
+        if (typeof value === "undefined") {
+          return this.options.offModifierClass;
+        }
+        if (this.$wrapper.hasClass("" + this.options.baseClass + "-" + this.options.offModifierClass)) {
+          this.$wrapper.removeClass("" + this.options.baseClass + "-" + this.options.offModifierClass).addClass("" + this.options.baseClass + "-" + value);
+        }
+        this.options.offModifierClass = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.focusedModifierClass = function(value) {
+        if (typeof value === "undefined") {
+          return this.options.focusedModifierClass;
+        }
+        if (this.$wrapper.hasClass("" + this.options.baseClass + "-" + this.options.focusedModifierClass)) {
+          this.$wrapper.removeClass("" + this.options.baseClass + "-" + this.options.focusedModifierClass).addClass("" + this.options.baseClass + "-" + value);
+        }
+        this.options.focusedModifierClass = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.animateModifierClass = function(value) {
+        if (typeof value === "undefined") {
+          return this.options.animateModifierClass;
+        }
+        if (this.$wrapper.hasClass("" + this.options.baseClass + "-" + this.options.animateModifierClass)) {
+          this.$wrapper.removeClass("" + this.options.baseClass + "-" + this.options.animateModifierClass).addClass("" + this.options.baseClass + "-" + value);
+        }
+        this.options.animateModifierClass = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.disabledModifierClass = function(value) {
+        if (typeof value === "undefined") {
+          return this.options.disabledModifierClass;
+        }
+        if (this.$wrapper.hasClass("" + this.options.baseClass + "-" + this.options.disabledModifierClass)) {
+          this.$wrapper.removeClass("" + this.options.baseClass + "-" + this.options.disabledModifierClass).addClass("" + this.options.baseClass + "-" + value);
+        }
+        this.options.disabledModifierClass = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.readonlyModifierClass = function(value) {
+        if (typeof value === "undefined") {
+          return this.options.readonlyModifierClass;
+        }
+        if (this.$wrapper.hasClass("" + this.options.baseClass + "-" + this.options.readonlyModifierClass)) {
+          this.$wrapper.removeClass("" + this.options.baseClass + "-" + this.options.readonlyModifierClass).addClass("" + this.options.baseClass + "-" + value);
+        }
+        this.options.readonlyModifierClass = value;
         return this.$element;
       };
 
@@ -452,10 +546,13 @@
       labelText: "&nbsp;",
       baseClass: "bootstrap-switch",
       wrapperClass: "wrapper",
-      containerClass: "container",
-      handleOnClass: "handle-on",
-      handleOffClass: "handle-off",
-      labelClass: "label",
+
+      /*
+      containerClass: "container"
+      handleOnClass: "handle-on"
+      handleOffClass: "handle-off"
+      labelClass: "label"
+       */
       onModifierClass: "on",
       offModifierClass: "off",
       focusedModifierClass: "focused",
