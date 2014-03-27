@@ -17,6 +17,12 @@ do ($ = window.jQuery, window) ->
         onText: @$element.data "on-text"
         offText: @$element.data "off-text"
         labelText: @$element.data "label-text"
+        onModifierClass: "on"
+        offModifierClass: "off"
+        focusedModifierClass: "focused"
+        animateModifierClass: "animate"
+        disabledModifierClass: "disabled"
+        readonlyModifierClass: "readonly"
       @$wrapper = $ "<div>",
         class: do =>
           classes = ["#{@options.baseClass}"]
@@ -357,12 +363,6 @@ do ($ = window.jQuery, window) ->
     handleOffClass: "handle-off"
     labelClass: "label"
     ###
-    onModifierClass: "on"
-    offModifierClass: "off"
-    focusedModifierClass: "focused"
-    animateModifierClass: "animate"
-    disabledModifierClass: "disabled"
-    readonlyModifierClass: "readonly"
     onInit: ->
     onSwitchChange: ->
 

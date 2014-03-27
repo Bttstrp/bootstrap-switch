@@ -43,7 +43,13 @@
           offColor: this.$element.data("off-color"),
           onText: this.$element.data("on-text"),
           offText: this.$element.data("off-text"),
-          labelText: this.$element.data("label-text")
+          labelText: this.$element.data("label-text"),
+          onModifierClass: "on",
+          offModifierClass: "off",
+          focusedModifierClass: "focused",
+          animateModifierClass: "animate",
+          disabledModifierClass: "disabled",
+          readonlyModifierClass: "readonly"
         });
         this.$wrapper = $("<div>", {
           "class": (function(_this) {
@@ -487,12 +493,6 @@
       handleOffClass: "handle-off"
       labelClass: "label"
        */
-      onModifierClass: "on",
-      offModifierClass: "off",
-      focusedModifierClass: "focused",
-      animateModifierClass: "animate",
-      disabledModifierClass: "disabled",
-      readonlyModifierClass: "readonly",
       onInit: function() {},
       onSwitchChange: function() {}
     };
