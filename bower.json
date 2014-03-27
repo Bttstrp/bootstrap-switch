@@ -10,9 +10,9 @@
     "docs",
     "test",
     "CNAME",
-    "composer.json"
-    "CONTRIBUTING.md"
-    "gulpfile.js"
+    "composer.json",
+    "CONTRIBUTING.md",
+    "gulpfile.js",
     "index.html"
   ],
   "dependencies": {
