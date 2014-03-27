@@ -1,3 +1,5 @@
 .grunt
 node_modules
 components
+.idea/
+bower_components/

@@ -180,8 +180,11 @@ do ($ = window.jQuery, window) ->
     baseClass: (value) ->
       @options.baseClass
 
-    wrapperClass: (value) ->
-      return @options.wrapperClass if typeof value is "undefined"
+    getWrapperClass: () ->
+      return @options.wrapperClass
+
+    setWrapperClass: (value) ->
+      value = $.fn.bootstrapSwitch.defaults.wrapperClass if typeof value is "undefined"
 
       getClasses = (classes) =>
         unless $.isArray classes
