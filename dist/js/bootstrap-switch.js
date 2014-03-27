@@ -268,6 +268,9 @@
         if (typeof value === "undefined") {
           return this.options.wrapperClass;
         }
+        if (!value) {
+          value = $.fn.bootstrapSwitch.defaults.wrapperClass;
+        }
         getClasses = (function(_this) {
           return function(classes) {
             var c, cls, _i, _len;
