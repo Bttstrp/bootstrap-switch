@@ -197,66 +197,6 @@ do ($ = window.jQuery, window) ->
       @options.wrapperClass = value
       @$element
 
-    onModifierClass: (value) ->
-      return @options.onModifierClass if typeof value is "undefined"
-
-      if @$wrapper.hasClass "#{@options.baseClass}-#{@options.onModifierClass}"
-        @$wrapper
-        .removeClass("#{@options.baseClass}-#{@options.onModifierClass}")
-        .addClass("#{@options.baseClass}-#{value}")
-      @options.onModifierClass = value
-      @$element
-
-    offModifierClass: (value) ->
-      return @options.offModifierClass if typeof value is "undefined"
-
-      if @$wrapper.hasClass "#{@options.baseClass}-#{@options.offModifierClass}"
-        @$wrapper
-        .removeClass("#{@options.baseClass}-#{@options.offModifierClass}")
-        .addClass("#{@options.baseClass}-#{value}")
-      @options.offModifierClass = value
-      @$element
-
-    focusedModifierClass: (value) ->
-      return @options.focusedModifierClass if typeof value is "undefined"
-
-      if @$wrapper.hasClass "#{@options.baseClass}-#{@options.focusedModifierClass}"
-        @$wrapper
-        .removeClass("#{@options.baseClass}-#{@options.focusedModifierClass}")
-        .addClass("#{@options.baseClass}-#{value}")
-      @options.focusedModifierClass = value
-      @$element
-
-    animateModifierClass: (value) ->
-      return @options.animateModifierClass if typeof value is "undefined"
-
-      if @$wrapper.hasClass "#{@options.baseClass}-#{@options.animateModifierClass}"
-        @$wrapper
-        .removeClass("#{@options.baseClass}-#{@options.animateModifierClass}")
-        .addClass("#{@options.baseClass}-#{value}")
-      @options.animateModifierClass = value
-      @$element
-
-    disabledModifierClass: (value) ->
-      return @options.disabledModifierClass if typeof value is "undefined"
-
-      if @$wrapper.hasClass "#{@options.baseClass}-#{@options.disabledModifierClass}"
-        @$wrapper
-        .removeClass("#{@options.baseClass}-#{@options.disabledModifierClass}")
-        .addClass("#{@options.baseClass}-#{value}")
-      @options.disabledModifierClass = value
-      @$element
-
-    readonlyModifierClass: (value) ->
-      return @options.readonlyModifierClass if typeof value is "undefined"
-
-      if @$wrapper.hasClass "#{@options.baseClass}-#{@options.readonlyModifierClass}"
-        @$wrapper
-        .removeClass("#{@options.baseClass}-#{@options.readonlyModifierClass}")
-        .addClass("#{@options.baseClass}-#{value}")
-      @options.readonlyModifierClass = value
-      @$element
-
     destroy: ->
       $form = @$element.closest "form"
 
