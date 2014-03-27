@@ -257,10 +257,14 @@
         return this.options.baseClass;
       };
 
-      BootstrapSwitch.prototype.wrapperClass = function(value) {
+      BootstrapSwitch.prototype.getWrapperClass = function() {
+        return this.options.wrapperClass;
+      };
+
+      BootstrapSwitch.prototype.setWrapperClass = function(value) {
         var getClasses;
         if (typeof value === "undefined") {
-          return this.options.wrapperClass;
+          value = $.fn.bootstrapSwitch.defaults.wrapperClass;
         }
         getClasses = (function(_this) {
           return function(classes) {
