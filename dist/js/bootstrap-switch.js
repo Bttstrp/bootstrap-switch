@@ -43,7 +43,13 @@
           offColor: this.$element.data("off-color"),
           onText: this.$element.data("on-text"),
           offText: this.$element.data("off-text"),
-          labelText: this.$element.data("label-text")
+          labelText: this.$element.data("label-text"),
+          onModifierClass: "on",
+          offModifierClass: "off",
+          focusedModifierClass: "focused",
+          animateModifierClass: "animate",
+          disabledModifierClass: "disabled",
+          readonlyModifierClass: "readonly"
         });
         this.$wrapper = $("<div>", {
           "class": (function(_this) {
@@ -282,72 +288,6 @@
         return this.$element;
       };
 
-      BootstrapSwitch.prototype.onModifierClass = function(value) {
-        if (typeof value === "undefined") {
-          return this.options.onModifierClass;
-        }
-        if (this.$wrapper.hasClass("" + this.options.baseClass + "-" + this.options.onModifierClass)) {
-          this.$wrapper.removeClass("" + this.options.baseClass + "-" + this.options.onModifierClass).addClass("" + this.options.baseClass + "-" + value);
-        }
-        this.options.onModifierClass = value;
-        return this.$element;
-      };
-
-      BootstrapSwitch.prototype.offModifierClass = function(value) {
-        if (typeof value === "undefined") {
-          return this.options.offModifierClass;
-        }
-        if (this.$wrapper.hasClass("" + this.options.baseClass + "-" + this.options.offModifierClass)) {
-          this.$wrapper.removeClass("" + this.options.baseClass + "-" + this.options.offModifierClass).addClass("" + this.options.baseClass + "-" + value);
-        }
-        this.options.offModifierClass = value;
-        return this.$element;
-      };
-
-      BootstrapSwitch.prototype.focusedModifierClass = function(value) {
-        if (typeof value === "undefined") {
-          return this.options.focusedModifierClass;
-        }
-        if (this.$wrapper.hasClass("" + this.options.baseClass + "-" + this.options.focusedModifierClass)) {
-          this.$wrapper.removeClass("" + this.options.baseClass + "-" + this.options.focusedModifierClass).addClass("" + this.options.baseClass + "-" + value);
-        }
-        this.options.focusedModifierClass = value;
-        return this.$element;
-      };
-
-      BootstrapSwitch.prototype.animateModifierClass = function(value) {
-        if (typeof value === "undefined") {
-          return this.options.animateModifierClass;
-        }
-        if (this.$wrapper.hasClass("" + this.options.baseClass + "-" + this.options.animateModifierClass)) {
-          this.$wrapper.removeClass("" + this.options.baseClass + "-" + this.options.animateModifierClass).addClass("" + this.options.baseClass + "-" + value);
-        }
-        this.options.animateModifierClass = value;
-        return this.$element;
-      };
-
-      BootstrapSwitch.prototype.disabledModifierClass = function(value) {
-        if (typeof value === "undefined") {
-          return this.options.disabledModifierClass;
-        }
-        if (this.$wrapper.hasClass("" + this.options.baseClass + "-" + this.options.disabledModifierClass)) {
-          this.$wrapper.removeClass("" + this.options.baseClass + "-" + this.options.disabledModifierClass).addClass("" + this.options.baseClass + "-" + value);
-        }
-        this.options.disabledModifierClass = value;
-        return this.$element;
-      };
-
-      BootstrapSwitch.prototype.readonlyModifierClass = function(value) {
-        if (typeof value === "undefined") {
-          return this.options.readonlyModifierClass;
-        }
-        if (this.$wrapper.hasClass("" + this.options.baseClass + "-" + this.options.readonlyModifierClass)) {
-          this.$wrapper.removeClass("" + this.options.baseClass + "-" + this.options.readonlyModifierClass).addClass("" + this.options.baseClass + "-" + value);
-        }
-        this.options.readonlyModifierClass = value;
-        return this.$element;
-      };
-
       BootstrapSwitch.prototype.destroy = function() {
         var $form;
         $form = this.$element.closest("form");
@@ -553,12 +493,6 @@
       handleOffClass: "handle-off"
       labelClass: "label"
        */
-      onModifierClass: "on",
-      offModifierClass: "off",
-      focusedModifierClass: "focused",
-      animateModifierClass: "animate",
-      disabledModifierClass: "disabled",
-      readonlyModifierClass: "readonly",
       onInit: function() {},
       onSwitchChange: function() {}
     };
