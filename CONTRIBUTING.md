@@ -1,7 +1,14 @@
-If you want help to fix bugs or propose a feature:
+Prerequisites:
+
+- Node and NPM
+- Gulp
+
+Flow:
 
 - Checkout `develop` branch
-- Always work on this branch for fixes
-- Once done, submit us your Pull Requests. Always pick `develop` as destination branch
+- Run `npm install` to get or update the dependencies
+- Run `gulp`. Gulp will run the default task and listen for further files changes
+- Work on the Coffeescript or LESS sources. Gulp will automatically build for you
+- Once completed, submit a Pull Requests. Be sure to target `develop` as destination branch
 
 Thank you.

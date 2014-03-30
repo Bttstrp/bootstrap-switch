@@ -1,7 +1,6 @@
-@import "variables";
-@import "mixins";
+@bootstrap-switch-base: bootstrap-switch;
 
-.has-switch {
+.@{bootstrap-switch-base} {
   display: inline-block;
   cursor: pointer;
   border-radius: @border-radius-base;
@@ -14,36 +13,27 @@
   .user-select(none);
   vertical-align: middle;
   min-width: 100px;
-  .form-control-focus();
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
-  &.switch-mini {
-    min-width: 72px;
+  &.@{bootstrap-switch-base}-mini {
+    min-width: 71px;
 
-    span,
-    label {
+    .@{bootstrap-switch-base}-handle-on,
+    .@{bootstrap-switch-base}-handle-off,
+    .@{bootstrap-switch-base}-label {
       padding-bottom: 4px;
       padding-top: 4px;
       font-size: 10px;
       line-height: 9px;
     }
-
-    i.switch-mini-icons {
-      height: 1.20em;
-      line-height: 9px;
-      vertical-align: text-top;
-      text-align: center;
-      transform: scale(0.6);
-      margin-top: -1px;
-      margin-bottom: -1px;
-    }
   }
 
-  &.switch-small {
-    min-width: 80px;
+  &.@{bootstrap-switch-base}-small {
+    min-width: 79px;
 
-    span,
-    label {
+    .@{bootstrap-switch-base}-handle-on,
+    .@{bootstrap-switch-base}-handle-off,
+    .@{bootstrap-switch-base}-label {
       padding-bottom: 3px;
       padding-top: 3px;
       font-size: 12px;
@@ -51,11 +41,12 @@
     }
   }
 
-  &.switch-large {
+  &.@{bootstrap-switch-base}-large {
     min-width: 120px;
 
-    span,
-    label {
+    .@{bootstrap-switch-base}-handle-on,
+    .@{bootstrap-switch-base}-handle-off,
+    .@{bootstrap-switch-base}-label {
       padding-bottom: 9px;
       padding-top: 9px;
       font-size: 16px;
@@ -63,55 +54,67 @@
     }
   }
 
-  &.switch-animate {
+  &.@{bootstrap-switch-base}-animate {
 
-    > div {
-      .transition(left 0.5s);
+    .@{bootstrap-switch-base}-container {
+      .transition(margin-left 0.5s);
     }
   }
 
-  &.switch-off {
+  &.@{bootstrap-switch-base}-on {
 
-    > div {
-      left: -50%;
+    .@{bootstrap-switch-base}-container {
+      margin-left: 0%;
+    }
+
+    .@{bootstrap-switch-base}-label {
+      .border-right-radius(@border-radius-base - 1);
     }
   }
 
-  &.switch-on {
+  &.@{bootstrap-switch-base}-off {
 
-    > div {
-      left: 0%;
+    .@{bootstrap-switch-base}-container {
+      margin-left: -50%;
+    }
+
+    .@{bootstrap-switch-base}-label {
+      .border-left-radius(@border-radius-base - 1);
     }
   }
 
-  &.disabled {
+  &.@{bootstrap-switch-base}-disabled,
+  &.@{bootstrap-switch-base}-readonly {
     .opacity(.5);
     cursor: default !important;
 
-    span,
-    label {
+    .@{bootstrap-switch-base}-handle-on,
+    .@{bootstrap-switch-base}-handle-off,
+    .@{bootstrap-switch-base}-label {
       cursor: default !important;
     }
   }
 
-  > div {
+  &.@{bootstrap-switch-base}-focused {
+    @color-rgba: rgba(red(@input-border-focus), green(@input-border-focus), blue(@input-border-focus), .6);
+    border-color: @input-border-focus;
+    outline: 0;
+    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @{color-rgba}");
+  }
+
+  .@{bootstrap-switch-base}-container {
     display: inline-block;
     width: 150%;
-    position: relative;
     top: 0;
+    border-radius: @border-radius-base;
     .translate3d(0, 0, 0);
   }
 
-  input[type=radio],
-  input[type=checkbox] {
-    display: none;
-  }
-
-  span,
-  label {
+  .@{bootstrap-switch-base}-handle-on,
+  .@{bootstrap-switch-base}-handle-off,
+  .@{bootstrap-switch-base}-label {
     .box-sizing(border-box);
     cursor: pointer;
-    position: relative;
     display: inline-block !important;
     height: 100%;
     padding-bottom: 4px;
@@ -120,66 +123,67 @@
     line-height: 20px;
   }
 
-  label {
+  .@{bootstrap-switch-base}-handle-on,
+  .@{bootstrap-switch-base}-handle-off {
+    text-align: center;
+    z-index: 1;
+    width: 33.333333333%;
+
+    &.@{bootstrap-switch-base}-primary {
+      color: #fff;
+      background: @btn-primary-bg;
+    }
+
+    &.@{bootstrap-switch-base}-info {
+      color: #fff;
+      background: @btn-info-bg;
+    }
+
+    &.@{bootstrap-switch-base}-success {
+      color: #fff;
+      background: @btn-success-bg;
+    }
+
+    &.@{bootstrap-switch-base}-warning {
+      background: @btn-warning-bg;
+      color: #fff;
+    }
+
+    &.@{bootstrap-switch-base}-danger {
+      color: #fff;
+      background: @btn-danger-bg;
+    }
+
+    &.@{bootstrap-switch-base}-default {
+      color: #000;
+      background: @gray-lighter;
+    }
+  }
+
+  .@{bootstrap-switch-base}-handle-on {
+    .border-left-radius(@border-radius-base - 1);
+  }
+
+  .@{bootstrap-switch-base}-handle-off {
+    .border-right-radius(@border-radius-base - 1);
+  }
+
+  .@{bootstrap-switch-base}-label {
     text-align: center;
     margin-top: -1px;
     margin-bottom: -1px;
     z-index: 100;
     width: 33.333333333%;
+    color: @btn-default-color;
     background: @btn-default-bg;
-
-    i {
-      color: #000;
-      text-shadow: 0 1px 0 #fff;
-      line-height: 18px;
-      pointer-events: none;
-    }
   }
 
-  span {
-    text-align: center;
-    z-index: 1;
-    width: 33.333333333%;
-
-    &.switch-left {
-      color: #f00;
-      .border-left-radius(@border-radius-base);
-    }
-
-    &.switch-right {
-      color: #000;
-      background: @gray-lighter;
-    }
-
-    &.switch-primary,
-    &.switch-left {
-      color: #fff;
-      background: @btn-primary-bg;
-    }
-
-    &.switch-info {
-      color: #fff;
-      background: @btn-info-bg;
-    }
-
-    &.switch-success {
-      color: #fff;
-      background: @btn-success-bg;
-    }
-
-    &.switch-warning {
-      background: @btn-warning-bg;
-      color: #fff;
-    }
-
-    &.switch-danger {
-      color: #fff;
-      background: @btn-danger-bg;
-    }
-
-    &.switch-default {
-      color: #000;
-      background: @gray-lighter;
-    }
+  input[type='radio'],
+  input[type='checkbox'] {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    .opacity(0);
+    z-index: -1;
   }
 }

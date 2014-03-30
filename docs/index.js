@@ -1,7 +1,49 @@
 $(function() {
-  // initialize all the inputs
-  $('input[type="checkbox"],[type="radio"]').not('#create-switch').bootstrapSwitch();
+  var $window = $(window);
+  var $stateSwitch = $('#state-switch');
+  var sectionTop = $('.top').outerHeight() + 20;
 
+  // initialize highlight.js
+  hljs.initHighlightingOnLoad();
+
+  // navigation
+  $('a[href^="#"]').on('click', function(event) {
+    event.preventDefault();
+    var $target = $($(this).attr('href'));
+
+    if ($target.length) {
+      $window.scrollTop($target.offset().top - sectionTop);
+    }
+  });
+
+  $('input[name="download-version"]').on({
+    'init.bootstrapSwitch': function() {
+      $('#download-' + ($(this).is(':checked') ? '2' : '3')).hide();
+    },
+    'switchChange.bootstrapSwitch': function(event, state) {
+      $('#download-3')[state ? 'show' : 'hide']();
+      $('#download-2')[state ? 'hide' : 'show']();
+    }
+  });
+
+  // initialize all the inputs
+  $('input[type="checkbox"],[type="radio"]').not('#create-switch').not('#events-switch').bootstrapSwitch();
+
+  // state
+  $('#state-switch-toggle').on('click', function () {
+    $stateSwitch.bootstrapSwitch('toggleState');
+  });
+  $('#state-switch-on').on('click', function () {
+    $stateSwitch.bootstrapSwitch('state', true);
+  });
+  $('#state-switch-off').on('click', function () {
+    $stateSwitch.bootstrapSwitch('state', false);
+  });
+  $('#state-switch-state').on('click', function () {
+    alert($stateSwitch.bootstrapSwitch('state'));
+  });
+
+  /*
   // dimension
   $('#btn-size-regular-switch').on('click', function () {
     $('#dimension-switch').bootstrapSwitch('size', '');
@@ -16,19 +58,7 @@ $(function() {
     $('#dimension-switch').bootstrapSwitch('size', 'large');
   });
 
-  // state
-  $('#toggle-state-switch-button').on('click', function () {
-    $('#toggle-state-switch').bootstrapSwitch('toggleState');
-  });
-  $('#toggle-state-switch-button-on').on('click', function () {
-    $('#toggle-state-switch').bootstrapSwitch('state', true);
-  });
-  $('#toggle-state-switch-button-off').on('click', function () {
-    $('#toggle-state-switch').bootstrapSwitch('state', false);
-  });
-  $('#toggle-state-switch-button-state').on('click', function () {
-    alert($('#toggle-state-switch').bootstrapSwitch('state'));
-  });
+
 
   // destroy
   $('#btn-destroy-switch').on('click', function () {
@@ -82,17 +112,22 @@ $(function() {
   $('#label-toggle-switch').on('click', function(e, data) {
     $('.label-toggle-switch').bootstrapSwitch('toggleState');
   });
-  $('.label-toggle-switch').on('switchChange', function(e, data) {
+  $('.label-toggle-switch').on('switch-change', function(e, data) {
     alert(data.value);
   });
 
   // event handler
-  $('#switch-change').on('switchChange', function (e, data) {
-    var $element = $(data.el),
-      value = data.value;
+  $('#events-switch').on({
+    init: function() {
+      console.log('Initialized!');
+    },
+    switchChange: function ($element, data) {
+      var $element = $(data.el),
+        value = data.value;
 
-    console.log(e, $element, value);
-  });
+      console.log(e, $element, value);
+    }
+  }).bootstrapSwitch();
 
   // color
   $('#btn-color-on-switch').on('click', function() {
@@ -118,4 +153,5 @@ $(function() {
     console.log("ok");
     $('.radio2').bootstrapSwitch('toggleRadioState', true);
   });
+  */
 });

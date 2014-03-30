@@ -1,0 +1,541 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='Turn checkboxes and radio buttons in toggle switches.')
+    meta(name='author', content='Mattia Larentis, Emanuele Marchi and Peter Stein')
+    title Bootstrap Switch · Turn checkboxes and radio buttons in toggle switches
+    link(href='http://fonts.googleapis.com/css?family=Roboto:400,700', rel='stylesheet')
+    link(href='docs/lib/css/bootstrap.min.css', rel='stylesheet')
+    link(href='docs/lib/css/highlight.css', rel='stylesheet')
+    link(href='dist/css/bootstrap3/bootstrap-switch.css', rel='stylesheet')
+    link(href='docs/index.css', rel='stylesheet')
+    script.
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-43092768-1']);
+      _gaq.push(['_trackPageview']);
+      (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+      })();
+  body
+    a(href='https://github.com/nostalgiaz/bootstrap-switch', id='github')
+      img(src='https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png', alt='Fork me on GitHub')
+
+    header.navbar.navbar-default.navbar-fixed-top.top(role='banner')
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='../') Bootstrap Switch <strong>3</strong>
+        nav#collapse.collapse.navbar-collapse(role='navigation')
+          ul.nav.navbar-nav
+            li.dropdown
+              a(href='#', data-toggle='dropdown')
+                | Download
+                span.caret
+              ul.dropdown-menu
+                li: a(href='https://github.com/nostalgiaz/bootstrap-switch/archive/3.0.zip') 3 (Stable)
+                li: a(href='https://github.com/nostalgiaz/bootstrap-switch/archive/master.zip') 2.0.1 (Legacy)
+            li: a(href='#new') What's new
+            li: a(href='#start') Start
+            li.dropdown
+              a(href='#', data-toggle='dropdown')
+                | Documentation
+                span.caret
+              ul.dropdown-menu
+                li.dropdown-header Version 3 (Stable)
+                li: a(href='#options-3') Options
+                li: a(href='#methods-3') Methods
+                li: a(href='#events-3') Events
+                li.divider
+                li.dropdown-header Version 2.0.1 (Legacy)
+                li: a(href='#options-2') Options
+                li: a(href='#methods-2') Methods
+                li: a(href='#events-2') Events
+            li: a(href='https://github.com/nostalgiaz/bootstrap-switch/issues') Bug reports
+
+    .container
+      .header
+        h2.title Bootstrap Switch <strong>3</strong> <span class="old-version">2.0.1</span>
+
+        p.lead Turn checkboxes and radio buttons in toggle switches.
+        p Select the version to download:
+        p: input(type='checkbox', name='download-version', checked, data-size='large', data-on-text='3', data-off-text='2.0.1')
+        p
+          a(href='https://github.com/nostalgiaz/bootstrap-switch/archive/3.0.zip', id='download-3', class='btn btn-lg btn-primary') Download 3
+          a(href='https://github.com/nostalgiaz/bootstrap-switch/archive/master.zip', id='download-2' class='btn btn-lg btn-primary') Download 2.0.1
+        br
+        br
+        iframe(src='http://ghbtns.com/github-btn.html?user=nostalgiaz&repo=bootstrap-switch&type=watch&count=true&size=large', allowtransparency='true', frameborder='0', scrolling='0', width='184', height='30')
+        iframe(src='http://ghbtns.com/github-btn.html?user=nostalgiaz&repo=bootstrap-switch&type=fork&count=true&size=large', allowtransparency='true', frameborder='0', scrolling='0', width='144', height='30')
+        br
+        br
+        br
+
+      .alert.alert-info
+        p
+          | <strong>Documentation in progress!</strong><br>
+          | It might not seem, but it's actually a lot of work. The goal is to make it as cleanest, most readable and
+          | understandable as possible.<br>
+          | If you feel there is something missing, submit a
+          | <a href="https://github.com/nostalgiaz/bootstrap-switch/pulls">pull request</a> with your changes. Every
+          | help is needed. Many thanks.
+
+      #new
+        h1.page-header What's new in version 3
+
+        ul
+          li API redesign for a more intuitive use
+          li Entire code source rewriting focused on cleanliness and performance
+          li Initialization options can be passed as JavaScript object or written as <code>data-*</code>
+          li Plugin constructor publicly available from <code>$.fn.bootstrapSwitch.Constructor</code>
+          li Plugin instance publicly available calling <code>.data('bootstrap-switch')</code>
+          li Global overridable defaults options
+          li Improved flexibility with <code>baseClass</code> and <code>wrapperClass</code> options
+          li New <code>onInit</code> event
+          li Event namespacing
+          li Full Bootstrap 3 support
+          li A lot of fixed bug, as usual
+
+      #start
+        h1.page-header Getting Started
+
+        p Include the dependencies: jQuery, Bootstrap and Bootstrap Switch CSS + Javascript.
+        pre: code
+          | [...]
+          | &lt;link href="bootstrap.css" rel="stylesheet"&gt;
+          | &lt;link href="bootstrap-switch.css" rel="stylesheet"&gt;
+          | &lt;script src="jquery.js"&gt;&lt;/script&gt;
+          | &lt;script src="bootstrap-switch.js"&gt;&lt;/script&gt;
+          | [...]
+
+        p Add your checkbox.
+        pre: code &lt;input type="checkbox" name="my-checkbox" checked&gt;
+
+        p Initialize Bootstrap Switch.
+        pre: code $("[name='my-checkbox']").bootstrapSwitch();
+
+        p Enjoy.
+
+      #documentation-3
+        h1.page-header Documentation <small>Version 3 (Stable)</small>
+
+        #options-3
+          h2.page-header Options
+
+          table.table.table-bordered.table-striped.table-responsive
+            thead
+              tr
+                th Name
+                th Type
+                th Description
+                th Values
+                th Default
+            tbody
+              tr
+                td state
+                td Boolean
+                td The checkbox state
+                td true, false
+                td 'checked' attribute or true
+              tr
+                td size
+                td String
+                td The checkbox state
+                td null, 'mini', 'small', 'normal', 'large'
+                td null
+              tr
+                td animate
+                td Boolean
+                td Animate the switch
+                td true, false
+                td true
+              tr
+                td disabled
+                td Boolean
+                td Disable state
+                td true, false
+                td 'disabled' attribute or false
+              tr
+                td readonly
+                td Boolean
+                td Readonly state
+                td true, false
+                td 'readonly' attribute or false
+              tr
+                td onColor
+                td String
+                td Color of the left side of the switch
+                td 'primary', 'info', 'success', 'warning', 'danger', 'default'
+                td 'primary'
+              tr
+                td offColor
+                td String
+                td Color of the right side of the switch
+                td 'primary', 'info', 'success', 'warning', 'danger', 'default'
+                td 'default'
+              tr
+                td onText
+                td String
+                td Text of the left side of the switch
+                td String
+                td 'ON'
+              tr
+                td offText
+                td String
+                td Text of the right side of the switch
+                td String
+                td 'OFF'
+              tr
+                td labelText
+                td String
+                td Text of the center handle of the switch
+                td String
+                td '&amp;nbsp;'
+              tr
+                td baseClass
+                td String
+                td Global class prefix
+                td String
+                td 'bootstrap-switch'
+              tr
+                td wrapperClass
+                td String | Array
+                td Container element class(es)
+                td String | Array
+                td 'wrapper'
+              tr
+                td onInit
+                td Function
+                td Callback function to execute on initialization
+                td Function
+                td: pre: code.javascript function(event, state) {}
+              tr
+                td onSwitchChange
+                td Function
+                td Callback function to execute on switch state change
+                td Function
+                td: pre: code.javascript function(event, state) {}
+
+          h3 Global Defaults Overriding
+
+          p Follow the jQuery convention to override the default options of the library. For instance:
+          pre
+            code
+              | $.fn.bootstrapSwitch.defaults.size = 'large';
+              | $.fn.bootstrapSwitch.defaults.onColor = 'success';
+
+        #methods-3
+          h2.page-header Methods
+
+          p In Bootstrap Switch, every option is also a method.
+          p If the second parameter is omitted, the method return the current value.
+          p You can invoke methods as follows:
+          pre: code $('input[name="my-checkbox"]').bootstrapSwitch('state', true, true);
+
+          h3 Additional Methods
+
+          table.table.table-bordered.table-striped.table-responsive
+            thead
+              tr
+                th Name
+                th Description
+            tbody
+              tr
+                td toggleState
+                td Toggle the switch state
+              tr
+                td toggleDisabled
+                td Toggle the disabled state
+              tr
+                td toggleReadonly
+                td Toggle the readonly state
+              tr
+                td destroy
+                td Destroy the instance of Bootstrap Switch
+
+          h3 Special Behaviours
+
+          ul
+            li The method <code>state</code> can receive an optional third parameter <code>skip</code>. if true, <code>switchChange</code> event is not executed. The default is false.
+            li The method <code>toggleState</code> can receive an optional second parameter <code>skip</code>. if true, <code>switchChange</code> event is not executed. The default is false.
+            li The method <code>wrapperClass</code> can accepts a falsy value as second parameter. If so, it resets the class to its default.
+
+        #events-3
+          h2.page-header Events
+
+          p
+            | All the events are namespaced, therefore always append <code>.bootstrapSwitch</code> when you
+            | attach your handlers.<br>
+            | You can register to the emitted events as follow:
+
+          pre: code
+            | $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+            |   console.log(this); // DOM element
+            |   console.log(event); // jQuery event
+            |   console.log(state); // true | false
+            | });
+
+          table.table.table-bordered.table-striped.table-responsive
+            thead
+              tr
+                th Name
+                th Description
+                th Parameters
+            tbody
+              tr
+                td init
+                td Triggered on initialization. 'this' refers to the DOM element.
+                td
+                  | event (<a href="https://api.jquery.com/category/events/event-object/" target="_blank">jQuery Event object</a>)
+              tr
+                td switchChange
+                td Triggered on switch state change. 'this' refers to the DOM element.
+                td
+                  | event (<a href="https://api.jquery.com/category/events/event-object/" target="_blank">jQuery Event object</a>),
+                  | state (true | false)
+
+        #examples-3
+          h2.page-header Examples
+
+          p To be included
+          //
+            h3 State
+            .row
+              .col-sm-6
+                input(type='checkbox', id='state-switch' checked)
+              .col-sm-6
+                .btn-group.pull-right
+                  button(type='button', id='state-switch-state', class='btn btn-default') Get State
+                  &nbsp;
+                  button(type='button', id='state-switch-on', class='btn btn-default') Set On
+                  &nbsp;
+                  button(type='button', id='state-switch-off', class='btn btn-default') Set Off
+                  &nbsp;
+                  button(type='button', id='state-switch-toggle', class='btn btn-default') Toggle State
+
+      #documentation-2
+        h1.page-header Documentation <small>version 2.0.1 (Legacy)</small>
+
+        #options-2
+          h2.page-header Options
+
+          .alert.alert-warning
+            p
+              | All the options are accepted only using <code>data-*</code> attributes on the input element.<br>
+              | The exceptions are <code>checked</code>, <code>disabled</code> and <code>readonly</code> which are
+              | proprietary input attributes.<br>
+              | There isn't any way to specify the options in JavaScript during initialization.
+
+          table.table.table-bordered.table-striped.table-responsive
+            thead
+              tr
+                th Name
+                th Type
+                th Description
+                th Values
+                th Default
+            tbody
+              tr
+                td state
+                td Boolean
+                td The checkbox state
+                td true, false
+                td 'checked' attribute or true
+              tr
+                td size
+                td String
+                td The checkbox state
+                td '', 'mini', 'small', 'normal', 'large'
+                td ''
+              tr
+                td animate
+                td Boolean
+                td Animate the switch
+                td true, false
+                td true
+              tr
+                td disabled
+                td Boolean
+                td Disable state
+                td true, false
+                td 'disabled' attribute or false
+              tr
+                td readonly
+                td Boolean
+                td Readonly state
+                td true, false
+                td 'readonly' attribute or false
+              tr
+                td on
+                td String
+                td Color of the left side of the switch
+                td 'primary', 'info', 'success', 'warning', 'danger', 'default'
+                td null
+              tr
+                td off
+                td String
+                td Color of the right side of the switch
+                td 'primary', 'info', 'success', 'warning', 'danger', 'default'
+                td null
+              tr
+                td on-label
+                td String
+                td Text of the left side of the switch
+                td String
+                td 'ON'
+              tr
+                td off-label
+                td String
+                td Text of the right side of the switch
+                td String
+                td 'OFF'
+              tr
+                td text-label
+                td String
+                td Text of the center handle of the switch
+                td String
+                td '&amp;nbsp;'
+              tr
+                td label-icon
+                td String
+                td Text of the center handle of the switch. Use to include external services icons
+                td String
+                td null
+
+        #methods-2
+          h2.page-header Methods
+
+          table.table.table-bordered.table-striped.table-responsive
+            thead
+              tr
+                th Name
+                th Description
+                th Accepted Values
+                th Returned Values
+            tbody
+              tr
+                td state
+                td Get checkbox state
+                td
+                td true, false
+              tr
+                td setState
+                td Set checkbox state
+                td (value: true, false)[, skip: true, <strong>false</strong>]
+                td jQuery Object (input element)
+              tr
+                td toggleState
+                td Toggle checkbox state
+                td [skip: true, <strong>false</strong>]
+                td jQuery Object (input element)
+              tr
+                td toggleRadioState
+                td Toggle radio state
+                td [skip: true, <strong>false</strong>]
+                td jQuery Object (input element)
+              tr
+                td toggleRadioStateAllowUncheck
+                td Toggle radio state allowing uncheck of the radio input
+                td [uncheck: true, <strong>false</strong> | skip: true, <strong>false</strong>]
+                td jQuery Object (input element)
+              tr
+                td setSizeClass
+                td Set the size of the switch
+                td '', 'mini', 'small', 'normal', 'large'
+                td jQuery Object (input element)
+              tr
+                td setAnimated
+                td Animate the switch
+                td true, false
+                td jQuery Object (input element)
+              tr
+                td isDisabled
+                td Get disabled state
+                td
+                td true, false
+              tr
+                td setDisabled
+                td Set disable state
+                td true, false
+                td jQuery Object (input element)
+              tr
+                td toggleDisabled
+                td Toggle disabled state
+                td
+                td jQuery Object (input element)
+              tr
+                td isReadOnly
+                td Get Readonly state
+                td
+                td true, false
+              tr
+                td setReadOnly
+                td Set Readonly state
+                td true, false
+                td jQuery Object (input element)
+              tr
+                td toggleReadOnly
+                td Toggle readonly state
+                td
+                td jQuery Object (input element)
+              tr
+                td setOnClass
+                td Color of the left side of the switch
+                td 'primary', 'info', 'success', 'warning', 'danger', 'default'
+                td jQuery Object (input element)
+              tr
+                td setOffClass
+                td Color of the right side of the switch
+                td 'primary', 'info', 'success', 'warning', 'danger', 'default'
+                td jQuery Object (input element)
+              tr
+                td setOnLabel
+                td Text of the left side of the switch
+                td String
+                td jQuery Object (input element)
+              tr
+                td setOffLabel
+                td Text of the right side of the switch
+                td String
+                td jQuery Object (input element)
+              tr
+                td setTextLabel
+                td Text of the center handle of the switch
+                td String
+                td null
+              tr
+                td setTextIcon
+                td Text of the center handle of the switch. Use to include external services icons
+                td String
+                td null
+              tr
+                td destroy
+                td Destroy the instance of Bootstrap Switch
+                td
+                td jQuery Object (input element)
+
+        #events-2
+          h2.page-header Events
+
+          p
+            | The only event triggered it <code>switch-change</code>. It returns two parameters: <code>event</code> and
+            | <code>data</code>.<br>
+            | The latter is an object that include <code>el</code> (the input DOM element) and <code>value</code> (the
+            | new input state)
+
+    script(src='docs/lib/js/jquery.min.js')
+    script(src='docs/lib/js/bootstrap.min.js')
+    script(src='docs/lib/js/highlight.js')
+    script(src='dist/js/bootstrap-switch.js')
+    script(src='docs/index.js')
