@@ -44,44 +44,26 @@
           onText: this.$element.data("on-text"),
           offText: this.$element.data("off-text"),
           labelText: this.$element.data("label-text"),
-          onModifierClass: "on",
-          offModifierClass: "off",
-          focusedModifierClass: "focused",
-          animateModifierClass: "animate",
-          disabledModifierClass: "disabled",
-          readonlyModifierClass: "readonly"
+          baseClass: this.$element.data("base-class"),
+          wrapperClass: this.$element.data("wrapper-class")
         });
         this.$wrapper = $("<div>", {
           "class": (function(_this) {
             return function() {
               var classes;
-              classes = ["" + _this.options.baseClass];
-              classes.push((function() {
-                var c, cls, _i, _len, _ref, _results;
-                if (!$.isArray(_this.options.wrapperClass)) {
-                  return "" + _this.options.baseClass + "-" + _this.options.wrapperClass;
-                }
-                cls = [];
-                _ref = _this.options.wrapperClass;
-                _results = [];
-                for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-                  c = _ref[_i];
-                  _results.push(cls.push("" + _this.options.baseClass + "-" + c));
-                }
-                return _results;
-              })());
-              classes.push(_this.options.state ? "" + _this.options.baseClass + "-" + _this.options.onModifierClass : "" + _this.options.baseClass + "-" + _this.options.offModifierClass);
+              classes = ["" + _this.options.baseClass].concat(_this._getClasses(_this.options.wrapperClass));
+              classes.push(_this.options.state ? "" + _this.options.baseClass + "-on" : "" + _this.options.baseClass + "-off");
               if (_this.options.size != null) {
                 classes.push("" + _this.options.baseClass + "-" + _this.options.size);
               }
               if (_this.options.animate) {
-                classes.push("" + _this.options.baseClass + "-" + _this.options.animateModifierClass);
+                classes.push("" + _this.options.baseClass + "-animate");
               }
               if (_this.options.disabled) {
-                classes.push("" + _this.options.baseClass + "-" + _this.options.disabledModifierClass);
+                classes.push("" + _this.options.baseClass + "-disabled");
               }
               if (_this.options.readonly) {
-                classes.push("" + _this.options.baseClass + "-" + _this.options.readonlyModifierClass);
+                classes.push("" + _this.options.baseClass + "-readonly");
               }
               if (_this.$element.attr("id")) {
                 classes.push("" + _this.options.baseClass + "-id-" + (_this.$element.attr("id")));
@@ -153,7 +135,9 @@
         if (this.options.size != null) {
           this.$wrapper.removeClass("" + this.options.baseClass + "-" + this.options.size);
         }
-        this.$wrapper.addClass("" + this.options.baseClass + "-" + value);
+        if (value) {
+          this.$wrapper.addClass("" + this.options.baseClass + "-" + value);
+        }
         this.options.size = value;
         return this.$element;
       };
@@ -163,7 +147,7 @@
           return this.options.animate;
         }
         value = !!value;
-        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.options.baseClass + "-" + this.options.animateModifierClass);
+        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.options.baseClass + "-animate");
         this.options.animate = value;
         return this.$element;
       };
@@ -173,7 +157,7 @@
           return this.options.disabled;
         }
         value = !!value;
-        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.options.baseClass + "-" + this.options.disabledModifierClass);
+        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.options.baseClass + "-disabled");
         this.$element.prop("disabled", value);
         this.options.disabled = value;
         return this.$element;
@@ -181,7 +165,7 @@
 
       BootstrapSwitch.prototype.toggleDisabled = function() {
         this.$element.prop("disabled", !this.options.disabled);
-        this.$wrapper.toggleClass("" + this.options.baseClass + "-" + this.options.disabledModifierClass);
+        this.$wrapper.toggleClass("" + this.options.baseClass + "-disabled");
         this.options.disabled = !this.options.disabled;
         return this.$element;
       };
@@ -191,7 +175,7 @@
           return this.options.readonly;
         }
         value = !!value;
-        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.options.baseClass + "-" + this.options.readonlyModifierClass);
+        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.options.baseClass + "-readonly");
         this.$element.prop("readonly", value);
         this.options.readonly = value;
         return this.$element;
@@ -199,7 +183,7 @@
 
       BootstrapSwitch.prototype.toggleReadonly = function() {
         this.$element.prop("readonly", !this.options.readonly);
-        this.$wrapper.toggleClass("" + this.options.baseClass + "-" + this.options.readonlyModifierClass);
+        this.$wrapper.toggleClass("" + this.options.baseClass + "-readonly");
         this.options.readonly = !this.options.readonly;
         return this.$element;
       };
@@ -264,29 +248,14 @@
       };
 
       BootstrapSwitch.prototype.wrapperClass = function(value) {
-        var getClasses;
         if (typeof value === "undefined") {
           return this.options.wrapperClass;
         }
         if (!value) {
           value = $.fn.bootstrapSwitch.defaults.wrapperClass;
         }
-        getClasses = (function(_this) {
-          return function(classes) {
-            var c, cls, _i, _len;
-            if (!$.isArray(classes)) {
-              return "" + _this.options.baseClass + "-" + classes;
-            }
-            cls = [];
-            for (_i = 0, _len = classes.length; _i < _len; _i++) {
-              c = classes[_i];
-              cls.push("" + _this.options.baseClass + "-" + c);
-            }
-            return cls.join(" ");
-          };
-        })(this);
-        this.$wrapper.removeClass(getClasses(this.options.wrapperClass));
-        this.$wrapper.addClass(getClasses(value));
+        this.$wrapper.removeClass(this._getClasses(this.options.wrapperClass).join(" "));
+        this.$wrapper.addClass(this._getClasses(value).join(" "));
         this.options.wrapperClass = value;
         return this.$element;
       };
@@ -315,7 +284,7 @@
                 return;
               }
               _this.options.state = checked;
-              _this.$wrapper.removeClass(checked ? "" + _this.options.baseClass + "-" + _this.options.offModifierClass : "" + _this.options.baseClass + "-" + _this.options.onModifierClass).addClass(checked ? "" + _this.options.baseClass + "-" + _this.options.onModifierClass : "" + _this.options.baseClass + "-" + _this.options.offModifierClass);
+              _this.$wrapper.removeClass(checked ? "" + _this.options.baseClass + "-off" : "" + _this.options.baseClass + "-on").addClass(checked ? "" + _this.options.baseClass + "-on" : "" + _this.options.baseClass + "-off");
               if (!skip) {
                 if (_this.$element.is(":radio")) {
                   $("[name='" + (_this.$element.attr('name')) + "']").not(_this.$element).prop("checked", false).trigger("change.bootstrapSwitch", true);
@@ -329,7 +298,7 @@
               e.preventDefault();
               e.stopPropagation();
               e.stopImmediatePropagation();
-              return _this.$wrapper.addClass("" + _this.options.baseClass + "-" + _this.options.focusedModifierClass);
+              return _this.$wrapper.addClass("" + _this.options.baseClass + "-focused");
             };
           })(this),
           "blur.bootstrapSwitch": (function(_this) {
@@ -337,7 +306,7 @@
               e.preventDefault();
               e.stopPropagation();
               e.stopImmediatePropagation();
-              return _this.$wrapper.removeClass("" + _this.options.baseClass + "-" + _this.options.focusedModifierClass);
+              return _this.$wrapper.removeClass("" + _this.options.baseClass + "-focused");
             };
           })(this),
           "keydown.bootstrapSwitch": (function(_this) {
@@ -411,7 +380,7 @@
               e.preventDefault();
               _this.drag = true;
               if (_this.options.animate) {
-                _this.$wrapper.removeClass("" + _this.options.baseClass + "-" + _this.options.animateModifierClass);
+                _this.$wrapper.removeClass("" + _this.options.baseClass + "-animate");
               }
               return _this.$element.trigger("focus.bootstrapSwitch");
             };
@@ -426,7 +395,7 @@
               _this.$element.prop("checked", parseInt(_this.$container.css("margin-left"), 10) > -(_this.$container.width() / 6)).trigger("change.bootstrapSwitch");
               _this.$container.css("margin-left", "");
               if (_this.options.animate) {
-                return _this.$wrapper.addClass("" + _this.options.baseClass + "-" + _this.options.animateModifierClass);
+                return _this.$wrapper.addClass("" + _this.options.baseClass + "-animate");
               }
             };
           })(this),
@@ -453,6 +422,19 @@
             });
           }, 1);
         }).data("bootstrap-switch", true);
+      };
+
+      BootstrapSwitch.prototype._getClasses = function(classes) {
+        var c, cls, _i, _len;
+        if (!$.isArray(classes)) {
+          return ["" + this.options.baseClass + "-" + classes];
+        }
+        cls = [];
+        for (_i = 0, _len = classes.length; _i < _len; _i++) {
+          c = classes[_i];
+          cls.push("" + this.options.baseClass + "-" + c);
+        }
+        return cls;
       };
 
       return BootstrapSwitch;
@@ -489,13 +471,6 @@
       labelText: "&nbsp;",
       baseClass: "bootstrap-switch",
       wrapperClass: "wrapper",
-
-      /*
-      containerClass: "container"
-      handleOnClass: "handle-on"
-      handleOffClass: "handle-off"
-      labelClass: "label"
-       */
       onInit: function() {},
       onSwitchChange: function() {}
     };

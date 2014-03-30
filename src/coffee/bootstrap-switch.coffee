@@ -17,29 +17,17 @@ do ($ = window.jQuery, window) ->
         onText: @$element.data "on-text"
         offText: @$element.data "off-text"
         labelText: @$element.data "label-text"
-        onModifierClass: "on"
-        offModifierClass: "off"
-        focusedModifierClass: "focused"
-        animateModifierClass: "animate"
-        disabledModifierClass: "disabled"
-        readonlyModifierClass: "readonly"
+        baseClass: @$element.data "base-class"
+        wrapperClass: @$element.data "wrapper-class"
       @$wrapper = $ "<div>",
         class: do =>
-          classes = ["#{@options.baseClass}"]
+          classes = ["#{@options.baseClass}"].concat @_getClasses @options.wrapperClass
 
-          classes.push do =>
-            unless $.isArray @options.wrapperClass
-              return "#{@options.baseClass}-#{@options.wrapperClass}"
-
-            cls = []
-            for c in @options.wrapperClass
-              cls.push "#{@options.baseClass}-#{c}"
-
-          classes.push if @options.state then "#{@options.baseClass}-#{@options.onModifierClass}" else "#{@options.baseClass}-#{@options.offModifierClass}"
+          classes.push if @options.state then "#{@options.baseClass}-on" else "#{@options.baseClass}-off"
           classes.push "#{@options.baseClass}-#{@options.size}" if @options.size?
-          classes.push "#{@options.baseClass}-#{@options.animateModifierClass}" if @options.animate
-          classes.push "#{@options.baseClass}-#{@options.disabledModifierClass}" if @options.disabled
-          classes.push "#{@options.baseClass}-#{@options.readonlyModifierClass}" if @options.readonly
+          classes.push "#{@options.baseClass}-animate" if @options.animate
+          classes.push "#{@options.baseClass}-disabled" if @options.disabled
+          classes.push "#{@options.baseClass}-readonly" if @options.readonly
           classes.push "#{@options.baseClass}-id-#{@$element.attr("id")}" if @$element.attr "id"
           classes.join " "
       @$container = $ "<div>",
@@ -97,7 +85,7 @@ do ($ = window.jQuery, window) ->
       return @options.size if typeof value is "undefined"
 
       @$wrapper.removeClass "#{@options.baseClass}-#{@options.size}" if @options.size?
-      @$wrapper.addClass "#{@options.baseClass}-#{value}"
+      @$wrapper.addClass "#{@options.baseClass}-#{value}" if value
       @options.size = value
       @$element
 
@@ -106,7 +94,7 @@ do ($ = window.jQuery, window) ->
 
       value = not not value
 
-      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.baseClass}-#{@options.animateModifierClass}")
+      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.baseClass}-animate")
       @options.animate = value
       @$element
 
@@ -115,14 +103,14 @@ do ($ = window.jQuery, window) ->
 
       value = not not value
 
-      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.baseClass}-#{@options.disabledModifierClass}")
+      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.baseClass}-disabled")
       @$element.prop "disabled", value
       @options.disabled = value
       @$element
 
     toggleDisabled: ->
       @$element.prop "disabled", not @options.disabled
-      @$wrapper.toggleClass "#{@options.baseClass}-#{@options.disabledModifierClass}"
+      @$wrapper.toggleClass "#{@options.baseClass}-disabled"
       @options.disabled = not @options.disabled
       @$element
 
@@ -131,14 +119,14 @@ do ($ = window.jQuery, window) ->
 
       value = not not value
 
-      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.baseClass}-#{@options.readonlyModifierClass}")
+      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.baseClass}-readonly")
       @$element.prop "readonly", value
       @options.readonly = value
       @$element
 
     toggleReadonly: ->
       @$element.prop "readonly", not @options.readonly
-      @$wrapper.toggleClass "#{@options.baseClass}-#{@options.readonlyModifierClass}"
+      @$wrapper.toggleClass "#{@options.baseClass}-readonly"
       @options.readonly = not @options.readonly
       @$element
 
@@ -189,19 +177,10 @@ do ($ = window.jQuery, window) ->
     wrapperClass: (value) ->
       return @options.wrapperClass if typeof value is "undefined"
 
-      value = $.fn.bootstrapSwitch.defaults.wrapperClass if !value
+      value = $.fn.bootstrapSwitch.defaults.wrapperClass unless value
 
-      getClasses = (classes) =>
-        unless $.isArray classes
-          return "#{@options.baseClass}-#{classes}"
-
-        cls = []
-        for c in classes
-          cls.push "#{@options.baseClass}-#{c}"
-        cls.join " "
-
-      @$wrapper.removeClass getClasses @options.wrapperClass
-      @$wrapper.addClass getClasses value
+      @$wrapper.removeClass @_getClasses(@options.wrapperClass).join " "
+      @$wrapper.addClass @_getClasses(value).join " "
       @options.wrapperClass = value
       @$element
 
@@ -226,8 +205,8 @@ do ($ = window.jQuery, window) ->
 
           @options.state = checked
           @$wrapper
-          .removeClass(if checked then "#{@options.baseClass}-#{@options.offModifierClass}" else "#{@options.baseClass}-#{@options.onModifierClass}")
-          .addClass if checked then "#{@options.baseClass}-#{@options.onModifierClass}" else "#{@options.baseClass}-#{@options.offModifierClass}"
+          .removeClass(if checked then "#{@options.baseClass}-off" else "#{@options.baseClass}-on")
+          .addClass if checked then "#{@options.baseClass}-on" else "#{@options.baseClass}-off"
 
           unless skip
             $("[name='#{@$element.attr('name')}']").not(@$element).prop("checked", false).trigger "change.bootstrapSwitch", true if @$element.is ":radio"
@@ -238,14 +217,14 @@ do ($ = window.jQuery, window) ->
           e.stopPropagation()
           e.stopImmediatePropagation()
 
-          @$wrapper.addClass "#{@options.baseClass}-#{@options.focusedModifierClass}"
+          @$wrapper.addClass "#{@options.baseClass}-focused"
 
         "blur.bootstrapSwitch": (e) =>
           e.preventDefault()
           e.stopPropagation()
           e.stopImmediatePropagation()
 
-          @$wrapper.removeClass "#{@options.baseClass}-#{@options.focusedModifierClass}"
+          @$wrapper.removeClass "#{@options.baseClass}-focused"
 
         "keydown.bootstrapSwitch": (e) =>
           return if not e.which or @options.disabled or @options.readonly
@@ -304,7 +283,7 @@ do ($ = window.jQuery, window) ->
           e.preventDefault()
 
           @drag = true
-          @$wrapper.removeClass "#{@options.baseClass}-#{@options.animateModifierClass}" if @options.animate
+          @$wrapper.removeClass "#{@options.baseClass}-animate" if @options.animate
           @$element.trigger "focus.bootstrapSwitch"
 
         "mouseup.bootstrapSwitch touchend.bootstrapSwitch": (e) =>
@@ -315,7 +294,7 @@ do ($ = window.jQuery, window) ->
           @drag = false
           @$element.prop("checked", parseInt(@$container.css("margin-left"), 10) > -(@$container.width() / 6)).trigger "change.bootstrapSwitch"
           @$container.css "margin-left", ""
-          @$wrapper.addClass "#{@options.baseClass}-#{@options.animateModifierClass}" if @options.animate
+          @$wrapper.addClass "#{@options.baseClass}-animate" if @options.animate
 
         "mouseleave.bootstrapSwitch": (e) =>
           @$label.trigger "mouseup.bootstrapSwitch"
@@ -334,6 +313,14 @@ do ($ = window.jQuery, window) ->
           .each -> $(@).bootstrapSwitch "state", false
         , 1
       .data "bootstrap-switch", true
+
+    _getClasses: (classes) ->
+      return ["#{@options.baseClass}-#{classes}"] unless $.isArray classes
+
+      cls = []
+      for c in classes
+        cls.push "#{@options.baseClass}-#{c}"
+      cls
 
   $.fn.bootstrapSwitch = (option, args...) ->
     ret = @
@@ -359,12 +346,6 @@ do ($ = window.jQuery, window) ->
     labelText: "&nbsp;"
     baseClass: "bootstrap-switch"
     wrapperClass: "wrapper"
-    ###
-    containerClass: "container"
-    handleOnClass: "handle-on"
-    handleOffClass: "handle-off"
-    labelClass: "label"
-    ###
     onInit: ->
     onSwitchChange: ->
 

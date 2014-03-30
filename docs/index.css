@@ -17,6 +17,11 @@ body {
   text-align: center;
 }
 
+.old-version {
+  color: #ccc;
+  text-decoration: line-through;
+}
+
 #github {
   display: none;
   position: fixed;
@@ -32,6 +37,10 @@ body {
   margin-top: 80px;
   padding-top: 40px;
   padding-bottom: 40px;
+}
+
+.hljs {
+  background-color: transparent;
 }
 
 @media (min-width: 768px) {
