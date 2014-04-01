@@ -310,7 +310,7 @@ do ($ = window.jQuery, window) ->
           $form
           .find("input")
           .filter( -> $(@).data "bootstrap-switch")
-          .each -> $(@).bootstrapSwitch "state", false
+          .each -> $(@).bootstrapSwitch "state", @checked
         , 1
       .data "bootstrap-switch", true
 
