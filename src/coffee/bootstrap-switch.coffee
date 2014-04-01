@@ -6,7 +6,7 @@ do ($ = window.jQuery, window) ->
 
     constructor: (element, options = {}) ->
       @$element = $ element
-      @options = $.extend {}, $.fn.bootstrapSwitch.defaults, options,
+      @elementOverides =
         state: @$element.is ":checked"
         size: @$element.data "size"
         animate: @$element.data "animate"
@@ -19,6 +19,7 @@ do ($ = window.jQuery, window) ->
         labelText: @$element.data "label-text"
         baseClass: @$element.data "base-class"
         wrapperClass: @$element.data "wrapper-class"
+      @options = $.extend {}, $.fn.bootstrapSwitch.defaults, elementOverides, options
       @$wrapper = $ "<div>",
         class: do =>
           classes = ["#{@options.baseClass}"].concat @_getClasses @options.wrapperClass

@@ -33,7 +33,7 @@
           options = {};
         }
         this.$element = $(element);
-        this.options = $.extend({}, $.fn.bootstrapSwitch.defaults, options, {
+        this.elementOverides = {
           state: this.$element.is(":checked"),
           size: this.$element.data("size"),
           animate: this.$element.data("animate"),
@@ -46,7 +46,8 @@
           labelText: this.$element.data("label-text"),
           baseClass: this.$element.data("base-class"),
           wrapperClass: this.$element.data("wrapper-class")
-        });
+        };
+        this.options = $.extend({}, $.fn.bootstrapSwitch.defaults, elementOverides, options);
         this.$wrapper = $("<div>", {
           "class": (function(_this) {
             return function() {
