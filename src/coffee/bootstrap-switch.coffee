@@ -6,7 +6,7 @@ do ($ = window.jQuery, window) ->
 
     constructor: (element, options = {}) ->
       @$element = $ element
-      @elementOverides =
+      elementOverides =
         state: @$element.is ":checked"
         size: @$element.data "size"
         animate: @$element.data "animate"

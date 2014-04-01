@@ -29,11 +29,12 @@
       BootstrapSwitch.prototype.name = "bootstrap-switch";
 
       function BootstrapSwitch(element, options) {
+        var elementOverides;
         if (options == null) {
           options = {};
         }
         this.$element = $(element);
-        this.elementOverides = {
+        elementOverides = {
           state: this.$element.is(":checked"),
           size: this.$element.data("size"),
           animate: this.$element.data("animate"),
