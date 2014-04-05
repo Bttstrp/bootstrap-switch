@@ -43,6 +43,9 @@ If you want to use your bootstrap variables, include `bootstrap-switch.less` in 
 ## AngularJs
 A custom directive is available [here](https://github.com/frapontillo/angular-bootstrap-switch)
 
+## NuGet
+A NuGet package is available [here](https://github.com/blachniet/bootstrap-switch-nuget)
+
 ## Supported browsers
 
 IE8+ and all the other modern browsers (until proven otherwise: submit a issue and let's see what we can do).
