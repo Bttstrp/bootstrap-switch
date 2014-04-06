@@ -83,8 +83,16 @@
     }
   }
 
+  &.@{bootstrap-switch-base}-indeterminate {
+
+    .@{bootstrap-switch-base}-container {
+      margin-left: -25%;
+    }
+  }
+
   &.@{bootstrap-switch-base}-disabled,
-  &.@{bootstrap-switch-base}-readonly {
+  &.@{bootstrap-switch-base}-readonly,
+  &.@{bootstrap-switch-base}-indeterminate {
     .opacity(50);
     cursor: default !important;
 

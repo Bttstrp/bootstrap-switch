@@ -2,8 +2,6 @@ do ($ = window.jQuery, window) ->
   "use strict"
 
   class BootstrapSwitch
-    name: "bootstrap-switch"
-
     constructor: (element, options = {}) ->
       @$element = $ element
       @options = $.extend {}, $.fn.bootstrapSwitch.defaults, options,
@@ -12,6 +10,7 @@ do ($ = window.jQuery, window) ->
         animate: @$element.data "animate"
         disabled: @$element.is ":disabled"
         readonly: @$element.is "[readonly]"
+        indeterminate: @$element.data "indeterminate"
         onColor: @$element.data "on-color"
         offColor: @$element.data "off-color"
         onText: @$element.data "on-text"
@@ -28,6 +27,7 @@ do ($ = window.jQuery, window) ->
           classes.push "#{@options.baseClass}-animate" if @options.animate
           classes.push "#{@options.baseClass}-disabled" if @options.disabled
           classes.push "#{@options.baseClass}-readonly" if @options.readonly
+          classes.push "#{@options.baseClass}-indeterminate" if @options.indeterminate
           classes.push "#{@options.baseClass}-id-#{@$element.attr("id")}" if @$element.attr "id"
           classes.join " "
       @$container = $ "<div>",
@@ -42,6 +42,9 @@ do ($ = window.jQuery, window) ->
         for: @$element.attr "id"
         html: @options.labelText
         class: "#{@options.baseClass}-label"
+
+      # indeterminate state
+      @$element.prop "indeterminate", true if @options.indeterminate
 
       # set up events
       @$element.on "init.bootstrapSwitch", => @options.onInit.apply element, arguments
@@ -69,7 +72,7 @@ do ($ = window.jQuery, window) ->
 
     state: (value, skip) ->
       return @options.state if typeof value is "undefined"
-      return @$element if @options.disabled or @options.readonly
+      return @$element if @options.disabled or @options.readonly or @options.indeterminate
 
       value = not not value
 
@@ -77,7 +80,7 @@ do ($ = window.jQuery, window) ->
       @$element
 
     toggleState: (skip) ->
-      return @$element if @options.disabled or @options.readonly
+      return @$element if @options.disabled or @options.readonly or @options.indeterminate
 
       @$element.prop("checked", not @options.state).trigger "change.bootstrapSwitch", skip
 
@@ -128,6 +131,22 @@ do ($ = window.jQuery, window) ->
       @$element.prop "readonly", not @options.readonly
       @$wrapper.toggleClass "#{@options.baseClass}-readonly"
       @options.readonly = not @options.readonly
+      @$element
+
+    indeterminate: (value) ->
+      return @options.indeterminate if typeof value is "undefined"
+
+      value = not not value
+
+      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.baseClass}-indeterminate")
+      @$element.prop "indeterminate", value
+      @options.indeterminate = value
+      @$element
+
+    toggleIndeterminate: ->
+      @$element.prop "indeterminate", not @options.indeterminate
+      @$wrapper.toggleClass "#{@options.baseClass}-indeterminate"
+      @options.indeterminate = not @options.indeterminate
       @$element
 
     onColor: (value) ->
@@ -209,7 +228,11 @@ do ($ = window.jQuery, window) ->
           .addClass if checked then "#{@options.baseClass}-on" else "#{@options.baseClass}-off"
 
           unless skip
-            $("[name='#{@$element.attr('name')}']").not(@$element).prop("checked", false).trigger "change.bootstrapSwitch", true if @$element.is ":radio"
+            if @$element.is ":radio"
+              $("[name='#{@$element.attr('name')}']")
+              .not(@$element)
+              .prop("checked", false)
+              .trigger "change.bootstrapSwitch", true
             @$element.trigger "switchChange.bootstrapSwitch", [checked]
 
         "focus.bootstrapSwitch": (e) =>
@@ -227,7 +250,7 @@ do ($ = window.jQuery, window) ->
           @$wrapper.removeClass "#{@options.baseClass}-focused"
 
         "keydown.bootstrapSwitch": (e) =>
-          return if not e.which or @options.disabled or @options.readonly
+          return if not e.which or @options.disabled or @options.readonly or @options.indeterminate
 
           switch e.which
             when 32
@@ -265,7 +288,8 @@ do ($ = window.jQuery, window) ->
 
           e.preventDefault()
 
-          percent = (((e.pageX or e.originalEvent.touches[0].pageX) - @$wrapper.offset().left) / @$wrapper.width()) * 100
+          pageX = e.pageX or e.originalEvent.touches[0].pageX
+          percent = ((pageX - @$wrapper.offset().left) / @$wrapper.width()) * 100
           left = 25
           right = 75
 
@@ -278,7 +302,7 @@ do ($ = window.jQuery, window) ->
           @$element.trigger "focus.bootstrapSwitch"
 
         "mousedown.bootstrapSwitch touchstart.bootstrapSwitch": (e) =>
-          return if @drag or @options.disabled or @options.readonly
+          return if @drag or @options.disabled or @options.readonly or @options.indeterminate
 
           e.preventDefault()
 
@@ -292,7 +316,9 @@ do ($ = window.jQuery, window) ->
           e.preventDefault()
 
           @drag = false
-          @$element.prop("checked", parseInt(@$container.css("margin-left"), 10) > -(@$container.width() / 6)).trigger "change.bootstrapSwitch"
+          @$element
+          .prop("checked", parseInt(@$container.css("margin-left"), 10) > -(@$container.width() / 6))
+          .trigger "change.bootstrapSwitch"
           @$container.css "margin-left", ""
           @$wrapper.addClass "#{@options.baseClass}-animate" if @options.animate
 
@@ -339,6 +365,7 @@ do ($ = window.jQuery, window) ->
     animate: true
     disabled: false
     readonly: false
+    indeterminate: false
     onColor: "primary"
     offColor: "default"
     onText: "ON"
