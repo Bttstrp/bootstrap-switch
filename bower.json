@@ -9,11 +9,15 @@
   "ignore": [
     "docs",
     "test",
+    "src",
     "CNAME",
+    "coffeelint.json",
     "composer.json",
     "CONTRIBUTING.md",
+    "gulpfile.coffee",
     "gulpfile.js",
-    "index.html"
+    "index.html",
+    "package.json"
   ],
   "dependencies": {
     "jquery": ">=1.9.0"
