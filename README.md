@@ -43,6 +43,9 @@ If you want to use your bootstrap variables, include `bootstrap-switch.less` in 
 ## AngularJs
 A custom directive is available [here](https://github.com/frapontillo/angular-bootstrap-switch)
 
+## KnockoutJs
+A Knockout binding handler is available [here](https://github.com/pauloortins/knockout-bootstrap-switch)
+
 ## NuGet
 A NuGet package is available [here](https://github.com/blachniet/bootstrap-switch-nuget)
 
