@@ -281,6 +281,10 @@ do ($ = window.jQuery, window) ->
         @state true
         @$element.trigger "focus.bootstrapSwitch"
 
+      @$label.on "click.bootstrapSwitch", (e) =>
+        @toggleState()
+        @$element.trigger "focus.bootstrapSwitch"
+
     _labelHandlers: ->
       @$label.on
         "mousemove.bootstrapSwitch touchmove.bootstrapSwitch": (e) =>

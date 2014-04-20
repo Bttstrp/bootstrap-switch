@@ -366,9 +366,15 @@
             return _this.$element.trigger("focus.bootstrapSwitch");
           };
         })(this));
-        return this.$off.on("click.bootstrapSwitch", (function(_this) {
+        this.$off.on("click.bootstrapSwitch", (function(_this) {
           return function(e) {
             _this.state(true);
+            return _this.$element.trigger("focus.bootstrapSwitch");
+          };
+        })(this));
+        return this.$label.on("click.bootstrapSwitch", (function(_this) {
+          return function(e) {
+            _this.toggleState();
             return _this.$element.trigger("focus.bootstrapSwitch");
           };
         })(this));
