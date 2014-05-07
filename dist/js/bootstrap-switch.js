@@ -427,6 +427,12 @@
             return function(e) {
               return _this.$label.trigger("mouseup.bootstrapSwitch");
             };
+          })(this),
+          "click.bootstrapSwitch": (function(_this) {
+            return function(e) {
+              _this.toggleState();
+              return _this.$element.trigger('focus.bootstrapSwitch');
+            };
           })(this)
         });
       };
