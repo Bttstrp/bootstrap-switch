@@ -137,6 +137,7 @@ html(lang='en')
             thead
               tr
                 th Name
+                th Attribute
                 th Type
                 th Description
                 th Values
@@ -144,34 +145,39 @@ html(lang='en')
             tbody
               tr
                 td state
+                td checked
                 td Boolean
                 td The checkbox state
                 td true, false
-                td 'checked' attribute or true
+                td true
               tr
                 td size
+                td data-size
                 td String
                 td The checkbox state
                 td null, 'mini', 'small', 'normal', 'large'
                 td null
               tr
                 td animate
+                td data-animate
                 td Boolean
                 td Animate the switch
                 td true, false
                 td true
               tr
                 td disabled
+                td disabled
                 td Boolean
                 td Disable state
                 td true, false
-                td 'disabled' attribute or false
+                td false
               tr
+                td readonly
                 td readonly
                 td Boolean
                 td Readonly state
                 td true, false
-                td 'readonly' attribute or false
+                td false
               tr
                 td indeterminate
                 td Boolean
@@ -180,54 +186,63 @@ html(lang='en')
                 td false
               tr
                 td onColor
+                td data-on-color
                 td String
                 td Color of the left side of the switch
                 td 'primary', 'info', 'success', 'warning', 'danger', 'default'
                 td 'primary'
               tr
                 td offColor
+                td data-off-color
                 td String
                 td Color of the right side of the switch
                 td 'primary', 'info', 'success', 'warning', 'danger', 'default'
                 td 'default'
               tr
                 td onText
+                td data-on-text
                 td String
                 td Text of the left side of the switch
                 td String
                 td 'ON'
               tr
                 td offText
+                td data-off-text
                 td String
                 td Text of the right side of the switch
                 td String
                 td 'OFF'
               tr
                 td labelText
+                td data-label-text
                 td String
                 td Text of the center handle of the switch
                 td String
                 td '&amp;nbsp;'
               tr
                 td baseClass
+                td data-base-class
                 td String
                 td Global class prefix
                 td String
                 td 'bootstrap-switch'
               tr
                 td wrapperClass
+                td data-wrapper-class
                 td String | Array
                 td Container element class(es)
                 td String | Array
                 td 'wrapper'
               tr
                 td onInit
+                td
                 td Function
                 td Callback function to execute on initialization
                 td Function
                 td: pre: code.javascript function(event, state) {}
               tr
                 td onSwitchChange
+                td
                 td Function
                 td Callback function to execute on switch state change
                 td Function
@@ -338,10 +353,10 @@ html(lang='en')
 
           .alert.alert-warning
             p
-              | All the options are accepted only using <code>data-*</code> attributes on the input element.<br>
-              | The exceptions are <code>checked</code>, <code>disabled</code> and <code>readonly</code> which are
-              | proprietary input attributes.<br>
-              | There isn't any way to specify the options in JavaScript during initialization.
+              | All the options are accepted only using <code>data-*</code> attributes on the element.<br>
+              | <code>checked</code>, <code>disabled</code> and <code>readonly</code> are exception to the rule, being
+              | default HTML input attributes.<br>
+              | Therefore, there is not any way to specify the options in JavaScript during initialization.
 
           table.table.table-bordered.table-striped.table-responsive
             thead
