@@ -37,17 +37,20 @@
   "license": "Apache Version 2",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "gulp-coffee": "~1.4.1",
+    "gulp-coffee": "~1.4.2",
     "gulp-util": "~2.2.14",
     "gulp-header": "~1.0.2",
     "gulp-uglify": "~0.2.1",
     "gulp-coffeelint": "~0.3.2",
-    "gulp": "~3.6.2",
+    "gulp": "~3.6.1",
     "gulp-less": "~1.2.3",
     "gulp-rename": "~1.2.0",
     "gulp-open": "~0.2.8",
     "gulp-load-plugins": "~0.5.0",
-    "gulp-jade": "~0.4.2",
-    "gulp-connect": "~2.0.4"
+    "gulp-jade": "~0.5.0",
+    "run-sequence": "~0.3.6",
+    "gulp-connect": "~2.0.5",
+    "coffee-script": "~1.7.1",
+    "gulp-changed": "~0.3.0"
   }
 }
