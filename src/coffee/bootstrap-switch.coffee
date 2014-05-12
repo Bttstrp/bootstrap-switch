@@ -317,7 +317,12 @@ do ($ = window.jQuery, window) ->
 
           @drag = false
           @$element
-          .prop("checked", parseInt(@$container.css("margin-left"), 10) > -(@$container.width() / 6))
+          .prop("checked",
+            if @$container.prop("style").marginLeft == ""
+              !@$element.prop 'checked'
+            else
+              parseInt(@$container.css("margin-left"), 10) > -(@$container.width() / 6)
+          )
           .trigger "change.bootstrapSwitch"
           @$container.css "margin-left", ""
           @$wrapper.addClass "#{@options.baseClass}-animate" if @options.animate
