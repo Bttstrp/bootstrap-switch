@@ -1,5 +1,5 @@
 /* ========================================================================
- * bootstrap-switch - v3.0.0
+ * bootstrap-switch - v3.0.1
  * http://www.bootstrap-switch.org
  * ========================================================================
  * Copyright 2012-2013 Mattia Larentis
@@ -431,7 +431,7 @@
           "click.bootstrapSwitch": (function(_this) {
             return function(e) {
               _this.toggleState();
-              return _this.$element.trigger('focus.bootstrapSwitch');
+              return _this.$element.trigger("focus.bootstrapSwitch");
             };
           })(this)
         });

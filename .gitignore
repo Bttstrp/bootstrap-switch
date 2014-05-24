@@ -1,6 +1,4 @@
 .grunt
 npm-debug.log
 node_modules
-components
-.idea/
-bower_components/
+bower_components

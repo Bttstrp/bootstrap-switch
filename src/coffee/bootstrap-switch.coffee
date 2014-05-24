@@ -324,10 +324,10 @@ do ($ = window.jQuery, window) ->
 
         "mouseleave.bootstrapSwitch": (e) =>
           @$label.trigger "mouseup.bootstrapSwitch"
-        
+
         "click.bootstrapSwitch": (e) =>
           @toggleState()
-          @$element.trigger 'focus.bootstrapSwitch'
+          @$element.trigger "focus.bootstrapSwitch"
 
     _formHandler: ->
       $form = @$element.closest "form"

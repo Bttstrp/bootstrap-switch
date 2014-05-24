@@ -114,7 +114,7 @@
     },
     "no_unnecessary_double_quotes": {
         "name": "no_unnecessary_double_quotes",
-        "level": "error"
+        "level": "ignore"
     },
     "no_debugger": {
         "name": "no_debugger",
