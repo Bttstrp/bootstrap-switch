@@ -5,7 +5,7 @@ name = pkg.name
 
 SOURCE_PATH = './src'
 DIST_PATH = './dist'
-DOCS_PATH = './docs'
+DOCS_PATH = "./docs"
 SERVER_HOST = 'localhost'
 SERVER_PORT = 3000
 BANNER = """
@@ -78,7 +78,7 @@ gulp.task 'less-bootstrap3', ->
 
 gulp.task 'docs', ->
   gulp
-  .src "#{DOCS_PATH}/index.jade"
+  .src "#{SOURCE_PATH}/docs/*.jade"
   .pipe plugins.changed './'
   .pipe plugins.jade pretty: true
   .pipe gulp.dest './'
@@ -99,11 +99,11 @@ gulp.task 'watch', ['connect'], ->
   gulp.watch "#{SOURCE_PATH}/coffee/#{name}.coffee", ['coffee']
   gulp.watch "#{SOURCE_PATH}/less/bootstrap2/*.less", ['less-bootstrap2']
   gulp.watch "#{SOURCE_PATH}/less/bootstrap3/*.less", ['less-bootstrap3']
-  gulp.watch "#{DOCS_PATH}/index.jade", ['docs']
+  gulp.watch "#{SOURCE_PATH}/docs/*.jade", ['docs']
   gulp.watch [
     "#{DIST_PATH}/js/**/*.js"
     "#{DIST_PATH}/css/**/*.css"
-    './index.html'
+    './*.html'
   ]
   .on 'change', (event) ->
     gulp.src event.path

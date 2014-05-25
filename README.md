@@ -2,8 +2,6 @@
 [![Dependency Status](https://david-dm.org/nostalgiaz/bootstrap-switch.svg?theme=shields.io)](https://david-dm.org/nostalgiaz/bootstrap-switch)
 [![devDependency Status](https://david-dm.org/nostalgiaz/bootstrap-switch/dev-status.svg?theme=shields.io)](https://david-dm.org/nostalgiaz/bootstrap-switch#info=devDependencies)
 [![NPM Version](http://img.shields.io/npm/v/bootstrap-switch.svg)](https://www.npmjs.org/)
-[![Gittip nostalgiaz](http://img.shields.io/gittip/nostalgiaz.svg)](https://www.gittip.com/nostalgiaz)
-[![Gittip LostCrew](http://img.shields.io/gittip/LostCrew.svg)](https://www.gittip.com/LostCrew)
 
 Turn checkboxes and radio buttons in toggle switches.
 
@@ -54,7 +52,7 @@ A NuGet package is available [here](https://github.com/blachniet/bootstrap-switc
 
 ## Supported browsers
 
-IE8+ and all the other modern browsers (until proven otherwise: submit a issue and let's see what we can do).
+IE9+ and all the other modern browsers.
 
 ## License
 

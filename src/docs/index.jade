@@ -1,0 +1,64 @@
+extends main
+
+block content
+  .header
+    h2.title Bootstrap Switch <strong>3</strong> <span class="old-version">2.0.1</span>
+
+    p.lead Turn checkboxes and radio buttons in toggle switches.
+    p Select the version to download:
+    p: input(type='checkbox', name='download-version', checked, data-size='large', data-on-text='3', data-off-text='2.0.1')
+    p
+      a(href='https://github.com/nostalgiaz/bootstrap-switch/archive/master.zip', id='download-3', class='btn btn-lg btn-primary') Download 3
+      a(href='https://github.com/nostalgiaz/bootstrap-switch/archive/v2.0.1.zip', id='download-2' class='btn btn-lg btn-primary') Download 2.0.1
+    br
+    br
+    iframe(src='http://ghbtns.com/github-btn.html?user=nostalgiaz&repo=bootstrap-switch&type=watch&count=true&size=large', allowtransparency='true', frameborder='0', scrolling='0', width='184', height='30')
+    iframe(src='http://ghbtns.com/github-btn.html?user=nostalgiaz&repo=bootstrap-switch&type=fork&count=true&size=large', allowtransparency='true', frameborder='0', scrolling='0', width='144', height='30')
+    br
+    br
+    br
+
+  .alert.alert-info
+    p
+      | <strong>Documentation in progress!</strong><br>
+      | It might not seem, but it's actually a lot of work. The goal is to make it as cleanest, most readable and
+      | understandable as possible.<br>
+      | If you feel there is something missing, submit a
+      | <a href="https://github.com/nostalgiaz/bootstrap-switch/pulls">pull request</a> with your changes. Every
+      | help is needed. Many thanks.
+
+  #new
+    h1.page-header What's new in version 3
+
+    ul
+      li API redesign for a more intuitive use
+      li Entire code source rewriting focused on cleanliness and performance
+      li Initialization options can be passed as JavaScript object or written as <code>data-*</code>
+      li Plugin constructor publicly available from <code>$.fn.bootstrapSwitch.Constructor</code>
+      li Plugin instance publicly available calling <code>.data('bootstrap-switch')</code>
+      li Global overridable defaults options
+      li Improved flexibility with <code>baseClass</code> and <code>wrapperClass</code> options
+      li New <code>onInit</code> event
+      li Event namespacing
+      li Full Bootstrap 3 support
+      li A lot of fixed bug, as usual
+
+  #start
+    h1.page-header Getting Started
+
+    p Include the dependencies: jQuery, Bootstrap and Bootstrap Switch CSS + Javascript.
+    pre: code
+      | [...]
+      | &lt;link href="bootstrap.css" rel="stylesheet"&gt;
+      | &lt;link href="bootstrap-switch.css" rel="stylesheet"&gt;
+      | &lt;script src="jquery.js"&gt;&lt;/script&gt;
+      | &lt;script src="bootstrap-switch.js"&gt;&lt;/script&gt;
+      | [...]
+
+    p Add your checkbox.
+    pre: code &lt;input type="checkbox" name="my-checkbox" checked&gt;
+
+    p Initialize Bootstrap Switch.
+    pre: code $("[name='my-checkbox']").bootstrapSwitch();
+
+    p Enjoy.

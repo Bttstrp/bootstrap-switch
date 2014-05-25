@@ -1,0 +1,219 @@
+extends main
+
+block content
+  h1.page-header Documentation 3 (Stable)
+
+  #options-3
+    h2.page-header Options
+
+    table.table.table-bordered.table-striped.table-responsive
+      thead
+        tr
+          th Name
+          th Attribute
+          th Type
+          th Description
+          th Values
+          th Default
+      tbody
+        tr
+          td state
+          td checked
+          td Boolean
+          td The checkbox state
+          td true, false
+          td true
+        tr
+          td size
+          td data-size
+          td String
+          td The checkbox state
+          td null, 'mini', 'small', 'normal', 'large'
+          td null
+        tr
+          td animate
+          td data-animate
+          td Boolean
+          td Animate the switch
+          td true, false
+          td true
+        tr
+          td disabled
+          td disabled
+          td Boolean
+          td Disable state
+          td true, false
+          td false
+        tr
+          td readonly
+          td readonly
+          td Boolean
+          td Readonly state
+          td true, false
+          td false
+        tr
+          td indeterminate
+          td Boolean
+          td indeterminate state
+          td true, false
+          td false
+        tr
+          td onColor
+          td data-on-color
+          td String
+          td Color of the left side of the switch
+          td 'primary', 'info', 'success', 'warning', 'danger', 'default'
+          td 'primary'
+        tr
+          td offColor
+          td data-off-color
+          td String
+          td Color of the right side of the switch
+          td 'primary', 'info', 'success', 'warning', 'danger', 'default'
+          td 'default'
+        tr
+          td onText
+          td data-on-text
+          td String
+          td Text of the left side of the switch
+          td String
+          td 'ON'
+        tr
+          td offText
+          td data-off-text
+          td String
+          td Text of the right side of the switch
+          td String
+          td 'OFF'
+        tr
+          td labelText
+          td data-label-text
+          td String
+          td Text of the center handle of the switch
+          td String
+          td '&amp;nbsp;'
+        tr
+          td baseClass
+          td data-base-class
+          td String
+          td Global class prefix
+          td String
+          td 'bootstrap-switch'
+        tr
+          td wrapperClass
+          td data-wrapper-class
+          td String | Array
+          td Container element class(es)
+          td String | Array
+          td 'wrapper'
+        tr
+          td onInit
+          td
+          td Function
+          td Callback function to execute on initialization
+          td Function
+          td: pre: code.javascript function(event, state) {}
+        tr
+          td onSwitchChange
+          td
+          td Function
+          td Callback function to execute on switch state change
+          td Function
+          td: pre: code.javascript function(event, state) {}
+
+    h3 Global Defaults Overriding
+
+    p Follow the jQuery convention to override the default options of the library. For instance:
+    pre
+      code
+        | $.fn.bootstrapSwitch.defaults.size = 'large';
+        | $.fn.bootstrapSwitch.defaults.onColor = 'success';
+
+  #methods-3
+    h2.page-header Methods
+
+    p In Bootstrap Switch, every option is also a method.
+    p If the second parameter is omitted, the method return the current value.
+    p You can invoke methods as follows:
+    pre: code $('input[name="my-checkbox"]').bootstrapSwitch('state', true, true);
+
+    h3 Additional Methods
+
+    table.table.table-bordered.table-striped.table-responsive
+      thead
+        tr
+          th Name
+          th Description
+      tbody
+        tr
+          td toggleState
+          td Toggle the switch state
+        tr
+          td toggleDisabled
+          td Toggle the disabled state
+        tr
+          td toggleReadonly
+          td Toggle the readonly state
+        tr
+          td destroy
+          td Destroy the instance of Bootstrap Switch
+
+    h3 Special Behaviours
+
+    ul
+      li The method <code>state</code> can receive an optional third parameter <code>skip</code>. if true, <code>switchChange</code> event is not executed. The default is false.
+      li The method <code>toggleState</code> can receive an optional second parameter <code>skip</code>. if true, <code>switchChange</code> event is not executed. The default is false.
+      li The method <code>wrapperClass</code> can accepts a falsy value as second parameter. If so, it resets the class to its default.
+
+  #events-3
+    h2.page-header Events
+
+    p
+      | All the events are namespaced, therefore always append <code>.bootstrapSwitch</code> when you
+      | attach your handlers.<br>
+      | You can register to the emitted events as follow:
+
+    pre: code
+      | $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+      |   console.log(this); // DOM element
+      |   console.log(event); // jQuery event
+      |   console.log(state); // true | false
+      | });
+
+    table.table.table-bordered.table-striped.table-responsive
+      thead
+        tr
+          th Name
+          th Description
+          th Parameters
+      tbody
+        tr
+          td init
+          td Triggered on initialization. 'this' refers to the DOM element.
+          td
+            | event (<a href="https://api.jquery.com/category/events/event-object/" target="_blank">jQuery Event object</a>)
+        tr
+          td switchChange
+          td Triggered on switch state change. 'this' refers to the DOM element.
+          td
+            | event (<a href="https://api.jquery.com/category/events/event-object/" target="_blank">jQuery Event object</a>),
+            | state (true | false)
+
+  #examples-3
+    h2.page-header Examples
+
+    p To be included
+    //
+      h3 State
+      .row
+        .col-sm-6
+          input(type='checkbox', id='state-switch' checked)
+        .col-sm-6
+          .btn-group.pull-right
+            button(type='button', id='state-switch-state', class='btn btn-default') Get State
+            &nbsp;
+            button(type='button', id='state-switch-on', class='btn btn-default') Set On
+            &nbsp;
+            button(type='button', id='state-switch-off', class='btn btn-default') Set Off
+            &nbsp;
+            button(type='button', id='state-switch-toggle', class='btn btn-default') Toggle State

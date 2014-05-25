@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Turn checkboxes and radio buttons in toggle switches.">
+    <meta name="author" content="Mattia Larentis, Emanuele Marchi and Peter Stein">
+    <title>Bootstrap Switch · Turn checkboxes and radio buttons in toggle switches</title>
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link href="docs/css/bootstrap.min.css" rel="stylesheet">
+    <link href="docs/css/highlight.css" rel="stylesheet">
+    <link href="dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+    <link href="docs/css/main.css" rel="stylesheet">
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-43092768-1']);
+      _gaq.push(['_trackPageview']);
+      (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </head>
+  <body><a href="https://github.com/nostalgiaz/bootstrap-switch" id="github"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    <header role="banner" class="navbar navbar-default navbar-fixed-top top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" data-toggle="collapse" data-target="#collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="../" class="navbar-brand">Bootstrap Switch <strong>3</strong></a>
+        </div>
+        <nav id="collapse" role="navigation" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown"><a href="#" data-toggle="dropdown">Download<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="https://github.com/nostalgiaz/bootstrap-switch/archive/master.zip">3 (Stable)</a></li>
+                <li><a href="https://github.com/nostalgiaz/bootstrap-switch/archive/v2.0.1.zip">2.0.1 (Legacy)</a></li>
+              </ul>
+            </li>
+            <li><a href="#new">What's new</a></li>
+            <li><a href="#start">Start</a></li>
+            <li class="dropdown"><a href="#" data-toggle="dropdown">Documentation<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/documentation-3.html">Version 3 (Stable)</a></li>
+                <li><a href="/documentation-2.html">Version 2.0.1 (Legacy)</a></li>
+              </ul>
+            </li>
+            <li><a href="https://github.com/nostalgiaz/bootstrap-switch/issues">Bug reports</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container content">
+      <h1 class="page-header">Documentation 2.0.1 (Legacy)</h1>
+      <div id="options-2">
+        <h2 class="page-header">Options</h2>
+        <div class="alert alert-warning">
+          <p>
+            All the options are accepted only using <code>data-*</code> attributes on the element.<br>
+            <code>checked</code>, <code>disabled</code> and <code>readonly</code> are exception to the rule, being
+            default HTML input attributes.<br>
+            Therefore, there is not any way to specify the options in JavaScript during initialization.
+          </p>
+        </div>
+        <table class="table table-bordered table-striped table-responsive">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Values</th>
+              <th>Default</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>state</td>
+              <td>Boolean</td>
+              <td>The checkbox state</td>
+              <td>true, false</td>
+              <td>'checked' attribute or true</td>
+            </tr>
+            <tr>
+              <td>size</td>
+              <td>String</td>
+              <td>The checkbox state</td>
+              <td>'', 'mini', 'small', 'normal', 'large'</td>
+              <td>''</td>
+            </tr>
+            <tr>
+              <td>animate</td>
+              <td>Boolean</td>
+              <td>Animate the switch</td>
+              <td>true, false</td>
+              <td>true</td>
+            </tr>
+            <tr>
+              <td>disabled</td>
+              <td>Boolean</td>
+              <td>Disable state</td>
+              <td>true, false</td>
+              <td>'disabled' attribute or false</td>
+            </tr>
+            <tr>
+              <td>readonly</td>
+              <td>Boolean</td>
+              <td>Readonly state</td>
+              <td>true, false</td>
+              <td>'readonly' attribute or false</td>
+            </tr>
+            <tr>
+              <td>on</td>
+              <td>String</td>
+              <td>Color of the left side of the switch</td>
+              <td>'primary', 'info', 'success', 'warning', 'danger', 'default'</td>
+              <td>null</td>
+            </tr>
+            <tr>
+              <td>off</td>
+              <td>String</td>
+              <td>Color of the right side of the switch</td>
+              <td>'primary', 'info', 'success', 'warning', 'danger', 'default'</td>
+              <td>null</td>
+            </tr>
+            <tr>
+              <td>on-label</td>
+              <td>String</td>
+              <td>Text of the left side of the switch</td>
+              <td>String</td>
+              <td>'ON'</td>
+            </tr>
+            <tr>
+              <td>off-label</td>
+              <td>String</td>
+              <td>Text of the right side of the switch</td>
+              <td>String</td>
+              <td>'OFF'</td>
+            </tr>
+            <tr>
+              <td>text-label</td>
+              <td>String</td>
+              <td>Text of the center handle of the switch</td>
+              <td>String</td>
+              <td>'&amp;nbsp;'</td>
+            </tr>
+            <tr>
+              <td>label-icon</td>
+              <td>String</td>
+              <td>Text of the center handle of the switch. Use to include external services icons</td>
+              <td>String</td>
+              <td>null</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="methods-2">
+        <h2 class="page-header">Methods</h2>
+        <table class="table table-bordered table-striped table-responsive">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Accepted Values</th>
+              <th>Returned Values</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>state</td>
+              <td>Get checkbox state</td>
+              <td></td>
+              <td>true, false</td>
+            </tr>
+            <tr>
+              <td>setState</td>
+              <td>Set checkbox state</td>
+              <td>(value: true, false)[, skip: true, <strong>false</strong>]</td>
+              <td>jQuery Object (input element)</td>
+            </tr>
+            <tr>
+              <td>toggleState</td>
+              <td>Toggle checkbox state</td>
+              <td>[skip: true, <strong>false</strong>]</td>
+              <td>jQuery Object (input element)</td>
+            </tr>
+            <tr>
+              <td>toggleRadioState</td>
+              <td>Toggle radio state</td>
+              <td>[skip: true, <strong>false</strong>]</td>
+              <td>jQuery Object (input element)</td>
+            </tr>
+            <tr>
+              <td>toggleRadioStateAllowUncheck</td>
+              <td>Toggle radio state allowing uncheck of the radio input</td>
+              <td>[uncheck: true, <strong>false</strong> | skip: true, <strong>false</strong>]</td>
+              <td>jQuery Object (input element)</td>
+            </tr>
+            <tr>
+              <td>setSizeClass</td>
+              <td>Set the size of the switch</td>
+              <td>'', 'mini', 'small', 'normal', 'large'</td>
+              <td>jQuery Object (input element)</td>
+            </tr>
+            <tr>
+              <td>setAnimated</td>
+              <td>Animate the switch</td>
+              <td>true, false</td>
+              <td>jQuery Object (input element)</td>
+            </tr>
+            <tr>
+              <td>isDisabled</td>
+              <td>Get disabled state</td>
+              <td></td>
+              <td>true, false</td>
+            </tr>
+            <tr>
+              <td>setDisabled</td>
+              <td>Set disable state</td>
+              <td>true, false</td>
+              <td>jQuery Object (input element)</td>
+            </tr>
+            <tr>
+              <td>toggleDisabled</td>
+              <td>Toggle disabled state</td>
+              <td></td>
+              <td>jQuery Object (input element)</td>
+            </tr>
+            <tr>
+              <td>isReadOnly</td>
+              <td>Get Readonly state</td>
+              <td></td>
+              <td>true, false</td>
+            </tr>
+            <tr>
+              <td>setReadOnly</td>
+              <td>Set Readonly state</td>
+              <td>true, false</td>
+              <td>jQuery Object (input element)</td>
+            </tr>
+            <tr>
+              <td>toggleReadOnly</td>
+              <td>Toggle readonly state</td>
+              <td></td>
+              <td>jQuery Object (input element)</td>
+            </tr>
+            <tr>
+              <td>setOnClass</td>
+              <td>Color of the left side of the switch</td>
+              <td>'primary', 'info', 'success', 'warning', 'danger', 'default'</td>
+              <td>jQuery Object (input element)</td>
+            </tr>
+            <tr>
+              <td>setOffClass</td>
+              <td>Color of the right side of the switch</td>
+              <td>'primary', 'info', 'success', 'warning', 'danger', 'default'</td>
+              <td>jQuery Object (input element)</td>
+            </tr>
+            <tr>
+              <td>setOnLabel</td>
+              <td>Text of the left side of the switch</td>
+              <td>String</td>
+              <td>jQuery Object (input element)</td>
+            </tr>
+            <tr>
+              <td>setOffLabel</td>
+              <td>Text of the right side of the switch</td>
+              <td>String</td>
+              <td>jQuery Object (input element)</td>
+            </tr>
+            <tr>
+              <td>setTextLabel</td>
+              <td>Text of the center handle of the switch</td>
+              <td>String</td>
+              <td>null</td>
+            </tr>
+            <tr>
+              <td>setTextIcon</td>
+              <td>Text of the center handle of the switch. Use to include external services icons</td>
+              <td>String</td>
+              <td>null</td>
+            </tr>
+            <tr>
+              <td>destroy</td>
+              <td>Destroy the instance of Bootstrap Switch</td>
+              <td></td>
+              <td>jQuery Object (input element)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="events-2">
+        <h2 class="page-header">Events</h2>
+        <p>
+          The only event triggered it <code>switch-change</code>. It returns two parameters: <code>event</code> and
+          <code>data</code>.<br>
+          The latter is an object that include <code>el</code> (the input DOM element) and <code>value</code> (the
+          new input state)
+        </p>
+      </div>
+    </div>
+    <div class="container bottom">
+      <p>
+        Licensed under the
+        <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, Version 2.0</a>
+        · Created by
+        <a href="https://github.com/nostalgiaz" target="_blank">Mattia Larentis</a>
+        · Mantained by
+        <a href="https://github.com/lostcrew" target="_blank">Emanuele Marchi</a>
+      </p>
+    </div>
+    <script src="docs/js/jquery.min.js"></script>
+    <script src="docs/js/bootstrap.min.js"></script>
+    <script src="docs/js/highlight.js"></script>
+    <script src="dist/js/bootstrap-switch.js"></script>
+    <script src="docs/js/main.js"></script>
+  </body>
+</html>
