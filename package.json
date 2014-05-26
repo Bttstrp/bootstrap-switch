@@ -40,7 +40,7 @@
     "gulp-coffee": "~1.4.3",
     "gulp-util": "~2.2.14",
     "gulp-header": "~1.0.2",
-    "gulp-uglify": "~0.2.1",
+    "gulp-uglify": "~0.3.0",
     "gulp-coffeelint": "~0.3.3",
     "gulp": "~3.6.1",
     "gulp-less": "~1.2.3",

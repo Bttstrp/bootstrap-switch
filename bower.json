@@ -9,7 +9,6 @@
   "ignore": [
     "docs",
     "test",
-    "src",
     "CNAME",
     "coffeelint.json",
     "composer.json",
