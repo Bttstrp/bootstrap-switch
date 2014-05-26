@@ -203,14 +203,6 @@ do ($ = window.jQuery, window) ->
       @options.wrapperClass = value
       @$element
     
-    onSwitchChange: (value) ->
-      return @options.onSwitchChange if typeof value is "undefined"
-
-      value = $.fn.bootstrapSwitch.defaults.onSwitchChange unless value
-
-      @options.onSwitchChange = value
-      @$element
-
     onInit: (value) ->
       return @options.onInit if typeof value is "undefined"
 
@@ -219,6 +211,14 @@ do ($ = window.jQuery, window) ->
       @options.onInit = value
       @$element
     
+    onSwitchChange: (value) ->
+      return @options.onSwitchChange if typeof value is "undefined"
+
+      value = $.fn.bootstrapSwitch.defaults.onSwitchChange unless value
+
+      @options.onSwitchChange = value
+      @$element
+
     destroy: ->
       $form = @$element.closest "form"
 
