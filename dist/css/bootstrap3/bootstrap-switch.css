@@ -200,3 +200,7 @@
   filter: alpha(opacity=0);
   z-index: -1;
 }
+.bootstrap-switch input[type='radio'].form-control,
+.bootstrap-switch input[type='checkbox'].form-control {
+  height: auto;
+}
