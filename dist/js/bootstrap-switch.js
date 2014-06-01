@@ -322,7 +322,6 @@
             return function(e, skip) {
               var checked;
               e.preventDefault();
-              e.stopPropagation();
               e.stopImmediatePropagation();
               checked = _this.$element.is(":checked");
               if (checked === _this.options.state) {
@@ -341,16 +340,12 @@
           "focus.bootstrapSwitch": (function(_this) {
             return function(e) {
               e.preventDefault();
-              e.stopPropagation();
-              e.stopImmediatePropagation();
               return _this.$wrapper.addClass("" + _this.options.baseClass + "-focused");
             };
           })(this),
           "blur.bootstrapSwitch": (function(_this) {
             return function(e) {
               e.preventDefault();
-              e.stopPropagation();
-              e.stopImmediatePropagation();
               return _this.$wrapper.removeClass("" + _this.options.baseClass + "-focused");
             };
           })(this),
@@ -360,19 +355,12 @@
                 return;
               }
               switch (e.which) {
-                case 32:
-                  e.preventDefault();
-                  e.stopPropagation();
-                  e.stopImmediatePropagation();
-                  return _this.toggleState();
                 case 37:
                   e.preventDefault();
-                  e.stopPropagation();
                   e.stopImmediatePropagation();
                   return _this.state(false);
                 case 39:
                   e.preventDefault();
-                  e.stopPropagation();
                   e.stopImmediatePropagation();
                   return _this.state(true);
               }
@@ -401,14 +389,18 @@
           "mousemove.bootstrapSwitch touchmove.bootstrapSwitch": (function(_this) {
             return function(e) {
               var left, pageX, percent, right;
-              if (!_this.drag) {
+              if (!_this.isLabelDragging) {
                 return;
               }
               e.preventDefault();
+              _this.isLabelDragged = true;
               pageX = e.pageX || e.originalEvent.touches[0].pageX;
               percent = ((pageX - _this.$wrapper.offset().left) / _this.$wrapper.width()) * 100;
               left = 25;
               right = 75;
+              if (_this.options.animate) {
+                _this.$wrapper.removeClass("" + _this.options.baseClass + "-animate");
+              }
               if (percent < left) {
                 percent = left;
               } else if (percent > right) {
@@ -420,41 +412,36 @@
           })(this),
           "mousedown.bootstrapSwitch touchstart.bootstrapSwitch": (function(_this) {
             return function(e) {
-              if (_this.drag || _this.options.disabled || _this.options.readonly || _this.options.indeterminate) {
+              if (_this.isLabelDragging || _this.options.disabled || _this.options.readonly || _this.options.indeterminate) {
                 return;
               }
               e.preventDefault();
-              _this.drag = true;
-              if (_this.options.animate) {
-                _this.$wrapper.removeClass("" + _this.options.baseClass + "-animate");
-              }
+              _this.isLabelDragging = true;
               return _this.$element.trigger("focus.bootstrapSwitch");
             };
           })(this),
           "mouseup.bootstrapSwitch touchend.bootstrapSwitch": (function(_this) {
             return function(e) {
-              if (!_this.drag) {
+              if (!_this.isLabelDragging) {
                 return;
               }
               e.preventDefault();
-              _this.drag = false;
-              _this.$element.prop("checked", parseInt(_this.$container.css("margin-left"), 10) > -(_this.$container.width() / 6)).trigger("change.bootstrapSwitch");
-              _this.$container.css("margin-left", "");
-              if (_this.options.animate) {
-                return _this.$wrapper.addClass("" + _this.options.baseClass + "-animate");
+              if (_this.isLabelDragged) {
+                _this.isLabelDragged = false;
+                _this.state(parseInt(_this.$container.css("margin-left"), 10) > -(_this.$container.width() / 6));
+                _this.$container.css("margin-left", "");
+                if (_this.options.animate) {
+                  _this.$wrapper.addClass("" + _this.options.baseClass + "-animate");
+                }
+              } else {
+                _this.state(!_this.options.state);
               }
+              return _this.isLabelDragging = false;
             };
           })(this),
           "mouseleave.bootstrapSwitch": (function(_this) {
             return function(e) {
               return _this.$label.trigger("mouseup.bootstrapSwitch");
-            };
-          })(this),
-          "click.bootstrapSwitch": (function(_this) {
-            return function(e) {
-              e.preventDefault();
-              _this.toggleState();
-              return _this.$element.trigger("focus.bootstrapSwitch");
             };
           })(this)
         });

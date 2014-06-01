@@ -231,7 +231,6 @@ do ($ = window.jQuery, window) ->
       @$element.on
         "change.bootstrapSwitch": (e, skip) =>
           e.preventDefault()
-          e.stopPropagation()
           e.stopImmediatePropagation()
 
           checked = @$element.is ":checked"
@@ -253,37 +252,23 @@ do ($ = window.jQuery, window) ->
 
         "focus.bootstrapSwitch": (e) =>
           e.preventDefault()
-          e.stopPropagation()
-          e.stopImmediatePropagation()
-
           @$wrapper.addClass "#{@options.baseClass}-focused"
 
         "blur.bootstrapSwitch": (e) =>
           e.preventDefault()
-          e.stopPropagation()
-          e.stopImmediatePropagation()
-
           @$wrapper.removeClass "#{@options.baseClass}-focused"
 
         "keydown.bootstrapSwitch": (e) =>
           return if not e.which or @options.disabled or @options.readonly or @options.indeterminate
 
           switch e.which
-            when 32
-              e.preventDefault()
-              e.stopPropagation()
-              e.stopImmediatePropagation()
-
-              @toggleState()
             when 37
               e.preventDefault()
-              e.stopPropagation()
               e.stopImmediatePropagation()
 
               @state false
             when 39
               e.preventDefault()
-              e.stopPropagation()
               e.stopImmediatePropagation()
 
               @state true
@@ -300,15 +285,17 @@ do ($ = window.jQuery, window) ->
     _labelHandlers: ->
       @$label.on
         "mousemove.bootstrapSwitch touchmove.bootstrapSwitch": (e) =>
-          return unless @drag
+          return unless @isLabelDragging
 
           e.preventDefault()
 
+          @isLabelDragged = true
           pageX = e.pageX or e.originalEvent.touches[0].pageX
           percent = ((pageX - @$wrapper.offset().left) / @$wrapper.width()) * 100
           left = 25
           right = 75
 
+          @$wrapper.removeClass "#{@options.baseClass}-animate" if @options.animate
           if percent < left
             percent = left
           else if percent > right
@@ -318,34 +305,29 @@ do ($ = window.jQuery, window) ->
           @$element.trigger "focus.bootstrapSwitch"
 
         "mousedown.bootstrapSwitch touchstart.bootstrapSwitch": (e) =>
-          return if @drag or @options.disabled or @options.readonly or @options.indeterminate
+          return if @isLabelDragging or @options.disabled or @options.readonly or @options.indeterminate
 
           e.preventDefault()
 
-          @drag = true
-          @$wrapper.removeClass "#{@options.baseClass}-animate" if @options.animate
+          @isLabelDragging = true
           @$element.trigger "focus.bootstrapSwitch"
 
         "mouseup.bootstrapSwitch touchend.bootstrapSwitch": (e) =>
-          return unless @drag
+          return unless @isLabelDragging
 
           e.preventDefault()
 
-          @drag = false
-          @$element
-          .prop("checked", parseInt(@$container.css("margin-left"), 10) > -(@$container.width() / 6))
-          .trigger "change.bootstrapSwitch"
-          @$container.css "margin-left", ""
-          @$wrapper.addClass "#{@options.baseClass}-animate" if @options.animate
+          if @isLabelDragged
+            @isLabelDragged = false
+            @state parseInt(@$container.css("margin-left"), 10) > -(@$container.width() / 6)
+            @$container.css "margin-left", ""
+            @$wrapper.addClass "#{@options.baseClass}-animate" if @options.animate
+          else
+            @state not @options.state
+          @isLabelDragging = false
 
         "mouseleave.bootstrapSwitch": (e) =>
           @$label.trigger "mouseup.bootstrapSwitch"
-
-        "click.bootstrapSwitch": (e) =>
-          e.preventDefault()
-
-          @toggleState()
-          @$element.trigger "focus.bootstrapSwitch"
 
     _formHandler: ->
       $form = @$element.closest "form"
