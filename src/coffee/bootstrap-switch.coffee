@@ -342,6 +342,8 @@ do ($ = window.jQuery, window) ->
           @$label.trigger "mouseup.bootstrapSwitch"
 
         "click.bootstrapSwitch": (e) =>
+          e.preventDefault()
+
           @toggleState()
           @$element.trigger "focus.bootstrapSwitch"
 

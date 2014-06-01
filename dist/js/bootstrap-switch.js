@@ -452,6 +452,7 @@
           })(this),
           "click.bootstrapSwitch": (function(_this) {
             return function(e) {
+              e.preventDefault();
               _this.toggleState();
               return _this.$element.trigger("focus.bootstrapSwitch");
             };
