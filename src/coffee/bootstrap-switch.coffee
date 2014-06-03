@@ -4,7 +4,7 @@ do ($ = window.jQuery, window) ->
   class BootstrapSwitch
     constructor: (element, options = {}) ->
       @$element = $ element
-      @options = $.extend {}, $.fn.bootstrapSwitch.defaults, options,
+      @options = $.extend {}, $.fn.bootstrapSwitch.defaults,
         state: @$element.is ":checked"
         size: @$element.data "size"
         animate: @$element.data "animate"
@@ -18,6 +18,7 @@ do ($ = window.jQuery, window) ->
         labelText: @$element.data "label-text"
         baseClass: @$element.data "base-class"
         wrapperClass: @$element.data "wrapper-class"
+      , options
       @$wrapper = $ "<div>",
         class: do =>
           classes = ["#{@options.baseClass}"].concat @_getClasses @options.wrapperClass
@@ -320,8 +321,8 @@ do ($ = window.jQuery, window) ->
           if @isLabelDragged
             @isLabelDragged = false
             @state parseInt(@$container.css("margin-left"), 10) > -(@$container.width() / 6)
-            @$container.css "margin-left", ""
             @$wrapper.addClass "#{@options.baseClass}-animate" if @options.animate
+            @$container.css "margin-left", ""
           else
             @state not @options.state
           @isLabelDragging = false

@@ -31,7 +31,7 @@
           options = {};
         }
         this.$element = $(element);
-        this.options = $.extend({}, $.fn.bootstrapSwitch.defaults, options, {
+        this.options = $.extend({}, $.fn.bootstrapSwitch.defaults, {
           state: this.$element.is(":checked"),
           size: this.$element.data("size"),
           animate: this.$element.data("animate"),
@@ -45,7 +45,7 @@
           labelText: this.$element.data("label-text"),
           baseClass: this.$element.data("base-class"),
           wrapperClass: this.$element.data("wrapper-class")
-        });
+        }, options);
         this.$wrapper = $("<div>", {
           "class": (function(_this) {
             return function() {
@@ -429,10 +429,10 @@
               if (_this.isLabelDragged) {
                 _this.isLabelDragged = false;
                 _this.state(parseInt(_this.$container.css("margin-left"), 10) > -(_this.$container.width() / 6));
-                _this.$container.css("margin-left", "");
                 if (_this.options.animate) {
                   _this.$wrapper.addClass("" + _this.options.baseClass + "-animate");
                 }
+                _this.$container.css("margin-left", "");
               } else {
                 _this.state(!_this.options.state);
               }
