@@ -74,6 +74,7 @@ do ($ = window.jQuery, window) ->
     state: (value, skip) ->
       return @options.state if typeof value is "undefined"
       return @$element if @options.disabled or @options.readonly or @options.indeterminate
+      return @$element if @options.state and @$element.is ':radio'
 
       value = not not value
 
