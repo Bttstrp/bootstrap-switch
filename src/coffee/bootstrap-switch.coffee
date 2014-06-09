@@ -40,7 +40,6 @@ do ($ = window.jQuery, window) ->
         html: @options.offText,
         class: "#{@options.baseClass}-handle-off #{@options.baseClass}-#{@options.offColor}"
       @$label = $ "<label>",
-        for: @$element.attr "id"
         html: @options.labelText
         class: "#{@options.baseClass}-label"
 
