@@ -120,6 +120,9 @@
         if (this.options.disabled || this.options.readonly || this.options.indeterminate) {
           return this.$element;
         }
+        if (this.options.state && this.$element.is(':radio')) {
+          return this.$element;
+        }
         value = !!value;
         this.$element.prop("checked", value).trigger("change.bootstrapSwitch", skip);
         return this.$element;
