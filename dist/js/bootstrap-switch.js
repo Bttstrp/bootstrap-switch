@@ -44,7 +44,8 @@
           offText: this.$element.data("off-text"),
           labelText: this.$element.data("label-text"),
           baseClass: this.$element.data("base-class"),
-          wrapperClass: this.$element.data("wrapper-class")
+          wrapperClass: this.$element.data("wrapper-class"),
+          allowAllOff: this.$element.data("allow-all-off")
         }, options);
         this.$wrapper = $("<div>", {
           "class": (function(_this) {
@@ -120,7 +121,7 @@
         if (this.options.disabled || this.options.readonly || this.options.indeterminate) {
           return this.$element;
         }
-        if (this.options.state && this.$element.is(':radio')) {
+        if (this.options.state && !this.options.allowAllOff && this.$element.is(':radio')) {
           return this.$element;
         }
         value = !!value;
@@ -282,6 +283,14 @@
         this.$wrapper.removeClass(this._getClasses(this.options.wrapperClass).join(" "));
         this.$wrapper.addClass(this._getClasses(value).join(" "));
         this.options.wrapperClass = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.allowAllOff = function(value) {
+        if (typeof value === "undefined") {
+          return this.options.allowAllOff;
+        }
+        this.options.allowAllOff = value;
         return this.$element;
       };
 
@@ -514,6 +523,7 @@
       labelText: "&nbsp;",
       baseClass: "bootstrap-switch",
       wrapperClass: "wrapper",
+      allowAllOff: false,
       onInit: function() {},
       onSwitchChange: function() {}
     };
