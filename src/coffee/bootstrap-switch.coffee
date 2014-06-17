@@ -18,7 +18,7 @@ do ($ = window.jQuery, window) ->
         labelText: @$element.data "label-text"
         baseClass: @$element.data "base-class"
         wrapperClass: @$element.data "wrapper-class"
-        allowAllOff: @$element.data "allow-all-off"
+        radioAllOff: @$element.data "radio-all-off"
       , options
       @$wrapper = $ "<div>",
         class: do =>
@@ -74,7 +74,7 @@ do ($ = window.jQuery, window) ->
     state: (value, skip) ->
       return @options.state if typeof value is "undefined"
       return @$element if @options.disabled or @options.readonly or @options.indeterminate
-      return @$element if @options.state and not @options.allowAllOff and @$element.is ':radio'
+      return @$element if @options.state and not @options.radioAllOff and @$element.is ':radio'
 
       value = not not value
 
@@ -205,10 +205,10 @@ do ($ = window.jQuery, window) ->
       @options.wrapperClass = value
       @$element
 
-    allowAllOff: (value) ->
-      return @options.allowAllOff if typeof value is "undefined"
+    radioAllOff: (value) ->
+      return @options.radioAllOff if typeof value is "undefined"
 
-      @options.allowAllOff = value
+      @options.radioAllOff = value
       @$element
 
     onInit: (value) ->
@@ -385,7 +385,7 @@ do ($ = window.jQuery, window) ->
     labelText: "&nbsp;"
     baseClass: "bootstrap-switch"
     wrapperClass: "wrapper"
-    allowAllOff: false
+    radioAllOff: false
     onInit: ->
     onSwitchChange: ->
 

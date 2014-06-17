@@ -45,7 +45,7 @@
           labelText: this.$element.data("label-text"),
           baseClass: this.$element.data("base-class"),
           wrapperClass: this.$element.data("wrapper-class"),
-          allowAllOff: this.$element.data("allow-all-off")
+          radioAllOff: this.$element.data("radio-all-off")
         }, options);
         this.$wrapper = $("<div>", {
           "class": (function(_this) {
@@ -121,7 +121,7 @@
         if (this.options.disabled || this.options.readonly || this.options.indeterminate) {
           return this.$element;
         }
-        if (this.options.state && !this.options.allowAllOff && this.$element.is(':radio')) {
+        if (this.options.state && !this.options.radioAllOff && this.$element.is(':radio')) {
           return this.$element;
         }
         value = !!value;
@@ -286,11 +286,11 @@
         return this.$element;
       };
 
-      BootstrapSwitch.prototype.allowAllOff = function(value) {
+      BootstrapSwitch.prototype.radioAllOff = function(value) {
         if (typeof value === "undefined") {
-          return this.options.allowAllOff;
+          return this.options.radioAllOff;
         }
-        this.options.allowAllOff = value;
+        this.options.radioAllOff = value;
         return this.$element;
       };
 
@@ -523,7 +523,7 @@
       labelText: "&nbsp;",
       baseClass: "bootstrap-switch",
       wrapperClass: "wrapper",
-      allowAllOff: false,
+      radioAllOff: false,
       onInit: function() {},
       onSwitchChange: function() {}
     };
