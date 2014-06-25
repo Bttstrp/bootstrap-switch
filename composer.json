@@ -22,6 +22,10 @@
   ],
   "extra": {
     "component": {
+      "name": "bootstrap-switch",
+      "files": [
+        "dist/**"
+      ],
       "scripts": [
         "dist/js/bootstrap-switch.js"
       ],
