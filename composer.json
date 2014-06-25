@@ -1,5 +1,5 @@
 {
-  "name": "nostalgiaz/bootstrap-switch",
+  "name": "components/bootstrap-switch",
   "description": "Turn checkboxes and radio buttons in toggle switches.",
   "version": "3.0.2",
   "type": "component",
