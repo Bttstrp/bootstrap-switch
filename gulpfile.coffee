@@ -1,5 +1,5 @@
 gulp = require 'gulp'
-plugins = require('gulp-load-plugins')()
+$ = require('gulp-load-plugins')()
 pkg = require './package.json'
 name = pkg.name
 
@@ -36,55 +36,55 @@ BANNER = """
 gulp.task 'coffee', ->
   gulp
   .src "#{SOURCE_PATH}/coffee/#{name}.coffee"
-  .pipe plugins.changed "#{DIST_PATH}/js"
-  .pipe plugins.coffeelint './coffeelint.json'
-  .pipe plugins.coffeelint.reporter()
-    .on 'error', plugins.util.log
-  .pipe plugins.coffee()
-    .on 'error', plugins.util.log
-  .pipe plugins.header BANNER, pkg: pkg
+  .pipe $.changed "#{DIST_PATH}/js"
+  .pipe $.coffeelint './coffeelint.json'
+  .pipe $.coffeelint.reporter()
+    .on 'error', $.util.log
+  .pipe $.coffee()
+    .on 'error', $.util.log
+  .pipe $.header BANNER, pkg: pkg
   .pipe gulp.dest "#{DIST_PATH}/js"
-  .pipe plugins.uglify()
-  .pipe plugins.header BANNER, pkg: pkg
-  .pipe plugins.rename suffix: '.min'
+  .pipe $.uglify()
+  .pipe $.header BANNER, pkg: pkg
+  .pipe $.rename suffix: '.min'
   .pipe gulp.dest "#{DIST_PATH}/js"
 
 gulp.task 'less-bootstrap2', ->
   gulp
   .src "#{SOURCE_PATH}/less/bootstrap2/build.less"
-  .pipe plugins.changed "#{DIST_PATH}/css/bootstrap2"
-  .pipe plugins.less()
-    .on 'error', plugins.util.log
-  .pipe plugins.header BANNER, pkg: pkg
-  .pipe plugins.rename basename: name
+  .pipe $.changed "#{DIST_PATH}/css/bootstrap2"
+  .pipe $.less()
+    .on 'error', $.util.log
+  .pipe $.header BANNER, pkg: pkg
+  .pipe $.rename basename: name
   .pipe gulp.dest "#{DIST_PATH}/css/bootstrap2"
-  .pipe plugins.less compress: true, cleancss: true
-  .pipe plugins.header BANNER, pkg: pkg
-  .pipe plugins.rename suffix: '.min'
+  .pipe $.less compress: true, cleancss: true
+  .pipe $.header BANNER, pkg: pkg
+  .pipe $.rename suffix: '.min'
   .pipe gulp.dest "#{DIST_PATH}/css/bootstrap2"
 
 gulp.task 'less-bootstrap3', ->
   gulp
   .src "#{SOURCE_PATH}/less/bootstrap3/build.less"
-  .pipe plugins.changed "#{DIST_PATH}/css/bootstrap3"
-  .pipe plugins.less()
-  .pipe plugins.header BANNER, pkg: pkg
-  .pipe plugins.rename basename: name
+  .pipe $.changed "#{DIST_PATH}/css/bootstrap3"
+  .pipe $.less()
+  .pipe $.header BANNER, pkg: pkg
+  .pipe $.rename basename: name
   .pipe gulp.dest "#{DIST_PATH}/css/bootstrap3"
-  .pipe plugins.less compress: true, cleancss: true
-  .pipe plugins.header BANNER, pkg: pkg
-  .pipe plugins.rename suffix: '.min'
+  .pipe $.less compress: true, cleancss: true
+  .pipe $.header BANNER, pkg: pkg
+  .pipe $.rename suffix: '.min'
   .pipe gulp.dest "#{DIST_PATH}/css/bootstrap3"
 
 gulp.task 'docs', ->
   gulp
   .src "#{SOURCE_PATH}/docs/*.jade"
-  .pipe plugins.changed './'
-  .pipe plugins.jade pretty: true
+  .pipe $.changed './'
+  .pipe $.jade pretty: true
   .pipe gulp.dest './'
 
 gulp.task 'connect', ['docs'], ->
-  plugins.connect.server
+  $.connect.server
     root: [__dirname]
     host: SERVER_HOST
     port: SERVER_PORT
@@ -93,7 +93,7 @@ gulp.task 'connect', ['docs'], ->
 gulp.task 'open', ['connect'], ->
   gulp
   .src './index.html'
-  .pipe plugins.open '', url: "http://#{SERVER_HOST}:#{SERVER_PORT}"
+  .pipe $.open '', url: "http://#{SERVER_HOST}:#{SERVER_PORT}"
 
 gulp.task 'watch', ['connect'], ->
   gulp.watch "#{SOURCE_PATH}/coffee/#{name}.coffee", ['coffee']
@@ -107,7 +107,7 @@ gulp.task 'watch', ['connect'], ->
   ]
   .on 'change', (event) ->
     gulp.src event.path
-    .pipe plugins.connect.reload()
+    .pipe $.connect.reload()
 
 gulp.task 'server', ['connect', 'open', 'watch']
 gulp.task 'less', ['less-bootstrap2', 'less-bootstrap3']
