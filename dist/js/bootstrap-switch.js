@@ -344,8 +344,8 @@
                 if (_this.$element.is(":radio")) {
                   $("[name='" + (_this.$element.attr('name')) + "']").not(_this.$element).prop("checked", false).trigger("change.bootstrapSwitch", true);
                 }
-                return _this.$element.trigger("switchChange.bootstrapSwitch", [checked]);
               }
+              return _this.$element.trigger("switchChange.bootstrapSwitch", [checked]);
             };
           })(this),
           "focus.bootstrapSwitch": (function(_this) {
