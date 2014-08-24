@@ -1,14 +1,20 @@
 gulp = require 'gulp'
-$ = require('gulp-load-plugins')()
+$ = require('gulp-load-plugins') lazy: false
+extend = require('util')._extend
+karma = require('karma').server
+karmaConfig = require './karma.json'
 pkg = require './package.json'
 name = pkg.name
 
-SOURCE_PATH = './src'
-DIST_PATH = './dist'
-DOCS_PATH = "./docs"
-SERVER_HOST = 'localhost'
-SERVER_PORT = 3000
-BANNER = """
+paths =
+  src: './src'
+  dist: './dist'
+  test: './test'
+  docs: "./"
+server =
+  host: 'localhost'
+  port: 3000
+banner = """
   /* ========================================================================
    * <%= pkg.name %> - v<%= pkg.version %>
    * <%= pkg.homepage %>
@@ -35,74 +41,89 @@ BANNER = """
 
 gulp.task 'coffee', ->
   gulp
-  .src "#{SOURCE_PATH}/coffee/#{name}.coffee"
-  .pipe $.changed "#{DIST_PATH}/js"
+  .src "#{paths.src}/coffee/#{name}.coffee"
+  .pipe $.changed "#{paths.dist}/js"
   .pipe $.coffeelint './coffeelint.json'
   .pipe $.coffeelint.reporter()
     .on 'error', $.util.log
   .pipe $.coffee()
     .on 'error', $.util.log
-  .pipe $.header BANNER, pkg: pkg
-  .pipe gulp.dest "#{DIST_PATH}/js"
+  .pipe $.header banner, pkg: pkg
+  .pipe gulp.dest "#{paths.dist}/js"
+  .pipe gulp.dest paths.test
   .pipe $.uglify()
-  .pipe $.header BANNER, pkg: pkg
+  .pipe $.header banner, pkg: pkg
   .pipe $.rename suffix: '.min'
-  .pipe gulp.dest "#{DIST_PATH}/js"
+  .pipe gulp.dest "#{paths.dist}/js"
 
 gulp.task 'less-bootstrap2', ->
   gulp
-  .src "#{SOURCE_PATH}/less/bootstrap2/build.less"
-  .pipe $.changed "#{DIST_PATH}/css/bootstrap2"
+  .src "#{paths.src}/less/bootstrap2/build.less"
+  .pipe $.changed "#{paths.dist}/css/bootstrap2"
   .pipe $.less()
     .on 'error', $.util.log
-  .pipe $.header BANNER, pkg: pkg
+  .pipe $.header banner, pkg: pkg
   .pipe $.rename basename: name
-  .pipe gulp.dest "#{DIST_PATH}/css/bootstrap2"
+  .pipe gulp.dest "#{paths.dist}/css/bootstrap2"
   .pipe $.less compress: true, cleancss: true
-  .pipe $.header BANNER, pkg: pkg
+  .pipe $.header banner, pkg: pkg
   .pipe $.rename suffix: '.min'
-  .pipe gulp.dest "#{DIST_PATH}/css/bootstrap2"
+  .pipe gulp.dest "#{paths.dist}/css/bootstrap2"
 
 gulp.task 'less-bootstrap3', ->
   gulp
-  .src "#{SOURCE_PATH}/less/bootstrap3/build.less"
-  .pipe $.changed "#{DIST_PATH}/css/bootstrap3"
+  .src "#{paths.src}/less/bootstrap3/build.less"
+  .pipe $.changed "#{paths.dist}/css/bootstrap3"
   .pipe $.less()
-  .pipe $.header BANNER, pkg: pkg
+  .pipe $.header banner, pkg: pkg
   .pipe $.rename basename: name
-  .pipe gulp.dest "#{DIST_PATH}/css/bootstrap3"
+  .pipe gulp.dest "#{paths.dist}/css/bootstrap3"
   .pipe $.less compress: true, cleancss: true
-  .pipe $.header BANNER, pkg: pkg
+  .pipe $.header banner, pkg: pkg
   .pipe $.rename suffix: '.min'
-  .pipe gulp.dest "#{DIST_PATH}/css/bootstrap3"
+  .pipe gulp.dest "#{paths.dist}/css/bootstrap3"
 
 gulp.task 'docs', ->
   gulp
-  .src "#{SOURCE_PATH}/docs/*.jade"
-  .pipe $.changed './'
+  .src "#{paths.src}/docs/*.jade"
+  .pipe $.changed paths.docs
   .pipe $.jade pretty: true
-  .pipe gulp.dest './'
+  .pipe gulp.dest paths.docs
+
+gulp.task 'test-coffee', ['coffee'], ->
+  gulp
+  .src "#{paths.src}/coffee/#{name}.tests.coffee"
+  .pipe $.changed paths.test
+  .pipe $.coffeelint './coffeelint.json'
+  .pipe $.coffeelint.reporter()
+    .on 'error', $.util.log
+  .pipe $.coffee()
+    .on 'error', $.util.log
+  .pipe gulp.dest paths.test
+
+gulp.task 'test-go', ['test-coffee'], (done) ->
+  karma.start extend(karmaConfig, singleRun: true), done
 
 gulp.task 'connect', ['docs'], ->
   $.connect.server
     root: [__dirname]
-    host: SERVER_HOST
-    port: SERVER_PORT
+    host: server.host
+    port: server.port
     livereload: true
 
 gulp.task 'open', ['connect'], ->
   gulp
   .src './index.html'
-  .pipe $.open '', url: "http://#{SERVER_HOST}:#{SERVER_PORT}"
+  .pipe $.open '', url: "http://#{server.host}:#{server.port}"
 
 gulp.task 'watch', ['connect'], ->
-  gulp.watch "#{SOURCE_PATH}/coffee/#{name}.coffee", ['coffee']
-  gulp.watch "#{SOURCE_PATH}/less/bootstrap2/*.less", ['less-bootstrap2']
-  gulp.watch "#{SOURCE_PATH}/less/bootstrap3/*.less", ['less-bootstrap3']
-  gulp.watch "#{SOURCE_PATH}/docs/*.jade", ['docs']
+  gulp.watch "#{paths.src}/coffee/#{name}.coffee", ['coffee']
+  gulp.watch "#{paths.src}/less/bootstrap2/*.less", ['less-bootstrap2']
+  gulp.watch "#{paths.src}/less/bootstrap3/*.less", ['less-bootstrap3']
+  gulp.watch "#{paths.src}/docs/*.jade", ['docs']
   gulp.watch [
-    "#{DIST_PATH}/js/**/*.js"
-    "#{DIST_PATH}/css/**/*.css"
+    "#{paths.dist}/js/**/*.js"
+    "#{paths.dist}/css/**/*.css"
     './*.html'
   ]
   .on 'change', (event) ->
@@ -112,4 +133,5 @@ gulp.task 'watch', ['connect'], ->
 gulp.task 'server', ['connect', 'open', 'watch']
 gulp.task 'less', ['less-bootstrap2', 'less-bootstrap3']
 gulp.task 'dist', ['coffee', 'less']
+gulp.task 'test', ['coffee', 'test-coffee', 'test-go']
 gulp.task 'default', ['dist', 'docs', 'server']
