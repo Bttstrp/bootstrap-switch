@@ -93,7 +93,9 @@
   &.@{bootstrap-switch-base}-disabled,
   &.@{bootstrap-switch-base}-readonly,
   &.@{bootstrap-switch-base}-indeterminate {
-    .opacity(.5);
+    div * {
+      .opacity(.5);
+    }
     cursor: default !important;
 
     .@{bootstrap-switch-base}-handle-on,
