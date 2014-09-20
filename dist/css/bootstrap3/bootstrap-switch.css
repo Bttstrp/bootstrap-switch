@@ -95,9 +95,13 @@
 .bootstrap-switch.bootstrap-switch-disabled,
 .bootstrap-switch.bootstrap-switch-readonly,
 .bootstrap-switch.bootstrap-switch-indeterminate {
+  cursor: default !important;
+}
+.bootstrap-switch.bootstrap-switch-disabled div *,
+.bootstrap-switch.bootstrap-switch-readonly div *,
+.bootstrap-switch.bootstrap-switch-indeterminate div * {
   opacity: 0.5;
   filter: alpha(opacity=50);
-  cursor: default !important;
 }
 .bootstrap-switch.bootstrap-switch-disabled .bootstrap-switch-handle-on,
 .bootstrap-switch.bootstrap-switch-readonly .bootstrap-switch-handle-on,
