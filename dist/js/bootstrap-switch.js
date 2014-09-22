@@ -38,6 +38,7 @@
           disabled: this.$element.is(":disabled"),
           readonly: this.$element.is("[readonly]"),
           indeterminate: this.$element.data("indeterminate"),
+          inverse: this.$element.data("inverse"),
           onColor: this.$element.data("on-color"),
           offColor: this.$element.data("off-color"),
           onText: this.$element.data("on-text"),

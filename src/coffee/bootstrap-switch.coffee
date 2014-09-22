@@ -11,6 +11,7 @@ do ($ = window.jQuery, window) ->
         disabled: @$element.is ":disabled"
         readonly: @$element.is "[readonly]"
         indeterminate: @$element.data "indeterminate"
+        inverse: @$element.data "inverse"
         onColor: @$element.data "on-color"
         offColor: @$element.data "off-color"
         onText: @$element.data "on-text"
