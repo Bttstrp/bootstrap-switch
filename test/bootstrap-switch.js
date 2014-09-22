@@ -68,6 +68,9 @@
               if (_this.options.indeterminate) {
                 classes.push("" + _this.options.baseClass + "-indeterminate");
               }
+              if (_this.options.inverse) {
+                classes.push("" + _this.options.baseClass + "-inverse");
+              }
               if (_this.$element.attr("id")) {
                 classes.push("" + _this.options.baseClass + "-id-" + (_this.$element.attr("id")));
               }
@@ -105,7 +108,7 @@
         })(this));
         this.$container = this.$element.wrap(this.$container).parent();
         this.$wrapper = this.$container.wrap(this.$wrapper).parent();
-        this.$element.before(this.$on).before(this.$label).before(this.$off).trigger("init.bootstrapSwitch");
+        this.$element.before(this.options.inverse ? this.$off : this.$on).before(this.$label).before(this.options.inverse ? this.$on : this.$off).trigger("init.bootstrapSwitch");
         this._elementHandlers();
         this._handleHandlers();
         this._labelHandlers();
@@ -433,13 +436,15 @@
           })(this),
           "mouseup.bootstrapSwitch touchend.bootstrapSwitch": (function(_this) {
             return function(e) {
+              var state;
               if (!_this.isLabelDragging) {
                 return;
               }
               e.preventDefault();
               if (_this.isLabelDragged) {
+                state = parseInt(_this.$container.css("margin-left"), 10) > -(_this.$container.width() / 6);
                 _this.isLabelDragged = false;
-                _this.state(parseInt(_this.$container.css("margin-left"), 10) > -(_this.$container.width() / 6));
+                _this.state(_this.options.inverse ? !state : state);
                 if (_this.options.animate) {
                   _this.$wrapper.addClass("" + _this.options.baseClass + "-animate");
                 }
@@ -516,6 +521,7 @@
       disabled: false,
       readonly: false,
       indeterminate: false,
+      inverse: false,
       onColor: "primary",
       offColor: "default",
       onText: "ON",

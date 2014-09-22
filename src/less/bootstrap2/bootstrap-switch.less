@@ -54,14 +54,48 @@
     }
   }
 
-  &.@{bootstrap-switch-base}-animate {
+  &.@{bootstrap-switch-base}-disabled,
+  &.@{bootstrap-switch-base}-readonly,
+  &.@{bootstrap-switch-base}-indeterminate {
+    .opacity(50);
+    cursor: default !important;
 
-    .@{bootstrap-switch-base}-container {
-      .transition(margin-left 0.5s);
+    .@{bootstrap-switch-base}-handle-on,
+    .@{bootstrap-switch-base}-handle-off,
+    .@{bootstrap-switch-base}-label {
+      cursor: default !important;
     }
   }
 
-  &.@{bootstrap-switch-base}-on {
+  &.@{bootstrap-switch-base}-animate {
+
+    .@{bootstrap-switch-base}-container {
+      .transition(margin-left .5s);
+    }
+  }
+
+  &.@{bootstrap-switch-base}-inverse {
+
+    .@{bootstrap-switch-base}-handle-on {
+      .border-left-radius(0);
+      .border-right-radius(4px);
+    }
+
+    .@{bootstrap-switch-base}-handle-off {
+      .border-right-radius(0);
+      .border-left-radius(4px);
+    }
+  }
+
+  &.@{bootstrap-switch-base}-focused {
+    border-color: rgba(82, 168, 236, .8);
+    outline: 0;
+    outline: thin dotted \9;
+    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82, 168, 236, .6)");
+  }
+
+  &.@{bootstrap-switch-base}-on,
+  &.@{bootstrap-switch-base}-inverse.@{bootstrap-switch-base}-off {
 
     .@{bootstrap-switch-base}-container {
       margin-left: 0%;
@@ -72,7 +106,8 @@
     }
   }
 
-  &.@{bootstrap-switch-base}-off {
+  &.@{bootstrap-switch-base}-off,
+  &.@{bootstrap-switch-base}-inverse.@{bootstrap-switch-base}-on {
 
     .@{bootstrap-switch-base}-container {
       margin-left: -50%;
@@ -88,26 +123,6 @@
     .@{bootstrap-switch-base}-container {
       margin-left: -25%;
     }
-  }
-
-  &.@{bootstrap-switch-base}-disabled,
-  &.@{bootstrap-switch-base}-readonly,
-  &.@{bootstrap-switch-base}-indeterminate {
-    .opacity(50);
-    cursor: default !important;
-
-    .@{bootstrap-switch-base}-handle-on,
-    .@{bootstrap-switch-base}-handle-off,
-    .@{bootstrap-switch-base}-label {
-      cursor: default !important;
-    }
-  }
-
-  &.@{bootstrap-switch-base}-focused {
-    border-color: rgba(82, 168, 236, .8);
-    outline: 0;
-    outline: thin dotted \9;
-    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82, 168, 236, .6)");
   }
 
   .@{bootstrap-switch-base}-container {
@@ -162,14 +177,6 @@
     }
   }
 
-  .@{bootstrap-switch-base}-handle-on {
-    .border-left-radius(4px);
-  }
-
-  .@{bootstrap-switch-base}-handle-off {
-    .border-right-radius(4px);
-  }
-
   .@{bootstrap-switch-base}-label {
     text-align: center;
     margin-top: -1px;
@@ -179,6 +186,14 @@
     border-left: 1px solid @btnBorder;
     border-right: 1px solid @btnBorder;
     .buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark);
+  }
+
+  .@{bootstrap-switch-base}-handle-on {
+    .border-left-radius(4px);
+  }
+
+  .@{bootstrap-switch-base}-handle-off {
+    .border-right-radius(4px);
   }
 
   input[type='radio'],

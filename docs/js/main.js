@@ -16,6 +16,7 @@ $(function() {
     }
   });
 
+  // download switch
   $('input[name="download-version"]').on({
     'init.bootstrapSwitch': function() {
       $('#download-' + ($(this).is(':checked') ? '2' : '3')).hide();

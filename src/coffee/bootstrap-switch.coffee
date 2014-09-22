@@ -30,6 +30,7 @@ do ($ = window.jQuery, window) ->
           classes.push "#{@options.baseClass}-disabled" if @options.disabled
           classes.push "#{@options.baseClass}-readonly" if @options.readonly
           classes.push "#{@options.baseClass}-indeterminate" if @options.indeterminate
+          classes.push "#{@options.baseClass}-inverse" if @options.inverse
           classes.push "#{@options.baseClass}-id-#{@$element.attr("id")}" if @$element.attr "id"
           classes.join " "
       @$container = $ "<div>",
@@ -57,9 +58,9 @@ do ($ = window.jQuery, window) ->
 
       # insert handles and label and trigger event
       @$element
-      .before(@$on)
+      .before(if @options.inverse then @$off else @$on)
       .before(@$label)
-      .before(@$off)
+      .before(if @options.inverse then @$on else @$off)
       .trigger "init.bootstrapSwitch"
 
       @_elementHandlers()
@@ -326,8 +327,10 @@ do ($ = window.jQuery, window) ->
           e.preventDefault()
 
           if @isLabelDragged
+            state = parseInt(@$container.css("margin-left"), 10) > -(@$container.width() / 6)
+
             @isLabelDragged = false
-            @state parseInt(@$container.css("margin-left"), 10) > -(@$container.width() / 6)
+            @state if @options.inverse then not state else state
             @$wrapper.addClass "#{@options.baseClass}-animate" if @options.animate
             @$container.css "margin-left", ""
           else
@@ -378,6 +381,7 @@ do ($ = window.jQuery, window) ->
     disabled: false
     readonly: false
     indeterminate: false
+    inverse: false
     onColor: "primary"
     offColor: "default"
     onText: "ON"
