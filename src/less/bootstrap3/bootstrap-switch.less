@@ -54,14 +54,48 @@
     }
   }
 
-  &.@{bootstrap-switch-base}-animate {
+  &.@{bootstrap-switch-base}-disabled,
+  &.@{bootstrap-switch-base}-readonly,
+  &.@{bootstrap-switch-base}-indeterminate {
+    .opacity(.5);
+    cursor: default !important;
 
-    .@{bootstrap-switch-base}-container {
-      .transition(margin-left 0.5s);
+    .@{bootstrap-switch-base}-handle-on,
+    .@{bootstrap-switch-base}-handle-off,
+    .@{bootstrap-switch-base}-label {
+      cursor: default !important;
     }
   }
 
-  &.@{bootstrap-switch-base}-on {
+  &.@{bootstrap-switch-base}-animate {
+
+    .@{bootstrap-switch-base}-container {
+      .transition(margin-left .5s);
+    }
+  }
+
+  &.@{bootstrap-switch-base}-inverse {
+
+    .@{bootstrap-switch-base}-handle-on {
+      .border-left-radius(0);
+      .border-right-radius(@border-radius-base - 1);
+    }
+
+    .@{bootstrap-switch-base}-handle-off {
+      .border-right-radius(0);
+      .border-left-radius(@border-radius-base - 1);
+    }
+  }
+
+  &.@{bootstrap-switch-base}-focused {
+    @color-rgba: rgba(red(@input-border-focus), green(@input-border-focus), blue(@input-border-focus), .6);
+    border-color: @input-border-focus;
+    outline: 0;
+    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @{color-rgba}");
+  }
+
+  &.@{bootstrap-switch-base}-on,
+  &.@{bootstrap-switch-base}-inverse.@{bootstrap-switch-base}-off {
 
     .@{bootstrap-switch-base}-container {
       margin-left: 0%;
@@ -72,7 +106,8 @@
     }
   }
 
-  &.@{bootstrap-switch-base}-off {
+  &.@{bootstrap-switch-base}-off,
+  &.@{bootstrap-switch-base}-inverse.@{bootstrap-switch-base}-on {
 
     .@{bootstrap-switch-base}-container {
       margin-left: -50%;
@@ -88,26 +123,6 @@
     .@{bootstrap-switch-base}-container {
       margin-left: -25%;
     }
-  }
-
-  &.@{bootstrap-switch-base}-disabled,
-  &.@{bootstrap-switch-base}-readonly,
-  &.@{bootstrap-switch-base}-indeterminate {
-    .opacity(.5);
-    cursor: default !important;
-
-    .@{bootstrap-switch-base}-handle-on,
-    .@{bootstrap-switch-base}-handle-off,
-    .@{bootstrap-switch-base}-label {
-      cursor: default !important;
-    }
-  }
-
-  &.@{bootstrap-switch-base}-focused {
-    @color-rgba: rgba(red(@input-border-focus), green(@input-border-focus), blue(@input-border-focus), .6);
-    border-color: @input-border-focus;
-    outline: 0;
-    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @{color-rgba}");
   }
 
   .@{bootstrap-switch-base}-container {
@@ -168,14 +183,6 @@
     }
   }
 
-  .@{bootstrap-switch-base}-handle-on {
-    .border-left-radius(@border-radius-base - 1);
-  }
-
-  .@{bootstrap-switch-base}-handle-off {
-    .border-right-radius(@border-radius-base - 1);
-  }
-
   .@{bootstrap-switch-base}-label {
     text-align: center;
     margin-top: -1px;
@@ -184,6 +191,14 @@
     width: 33.333333333%;
     color: @btn-default-color;
     background: @btn-default-bg;
+  }
+
+  .@{bootstrap-switch-base}-handle-on {
+    .border-left-radius(@border-radius-base - 1);
+  }
+
+  .@{bootstrap-switch-base}-handle-off {
+    .border-right-radius(@border-radius-base - 1);
   }
 
   input[type='radio'],
