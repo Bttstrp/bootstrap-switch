@@ -12,6 +12,7 @@ do ($ = window.jQuery, window) ->
         readonly: @$element.is "[readonly]"
         indeterminate: @$element.data "indeterminate"
         inverse: @$element.data "inverse"
+        radioAllOff: @$element.data "radio-all-off"
         onColor: @$element.data "on-color"
         offColor: @$element.data "off-color"
         onText: @$element.data "on-text"
@@ -19,7 +20,6 @@ do ($ = window.jQuery, window) ->
         labelText: @$element.data "label-text"
         baseClass: @$element.data "base-class"
         wrapperClass: @$element.data "wrapper-class"
-        radioAllOff: @$element.data "radio-all-off"
       , options
       @$wrapper = $ "<div>",
         class: do =>
@@ -151,6 +151,21 @@ do ($ = window.jQuery, window) ->
       @$element.prop "indeterminate", not @options.indeterminate
       @$wrapper.toggleClass "#{@options.baseClass}-indeterminate"
       @options.indeterminate = not @options.indeterminate
+      @$element
+
+    inverse: (value) ->
+      return @options.inverse if typeof value is "undefined"
+
+      value = not not value
+
+      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.baseClass}-inverse")
+      $on = @$on.clone true
+      $off = @$off.clone true
+      @$on.replaceWith $off
+      @$off.replaceWith $on
+      @$on = $off
+      @$off = $on
+      @options.inverse = value
       @$element
 
     onColor: (value) ->
@@ -383,6 +398,7 @@ do ($ = window.jQuery, window) ->
     readonly: false
     indeterminate: false
     inverse: false
+    radioAllOff: false
     onColor: "primary"
     offColor: "default"
     onText: "ON"
@@ -390,7 +406,6 @@ do ($ = window.jQuery, window) ->
     labelText: "&nbsp;"
     baseClass: "bootstrap-switch"
     wrapperClass: "wrapper"
-    radioAllOff: false
     onInit: ->
     onSwitchChange: ->
 

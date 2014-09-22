@@ -39,14 +39,14 @@
           readonly: this.$element.is("[readonly]"),
           indeterminate: this.$element.data("indeterminate"),
           inverse: this.$element.data("inverse"),
+          radioAllOff: this.$element.data("radio-all-off"),
           onColor: this.$element.data("on-color"),
           offColor: this.$element.data("off-color"),
           onText: this.$element.data("on-text"),
           offText: this.$element.data("off-text"),
           labelText: this.$element.data("label-text"),
           baseClass: this.$element.data("base-class"),
-          wrapperClass: this.$element.data("wrapper-class"),
-          radioAllOff: this.$element.data("radio-all-off")
+          wrapperClass: this.$element.data("wrapper-class")
         }, options);
         this.$wrapper = $("<div>", {
           "class": (function(_this) {
@@ -215,6 +215,23 @@
         this.$element.prop("indeterminate", !this.options.indeterminate);
         this.$wrapper.toggleClass("" + this.options.baseClass + "-indeterminate");
         this.options.indeterminate = !this.options.indeterminate;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.inverse = function(value) {
+        var $off, $on;
+        if (typeof value === "undefined") {
+          return this.options.inverse;
+        }
+        value = !!value;
+        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.options.baseClass + "-inverse");
+        $on = this.$on.clone(true);
+        $off = this.$off.clone(true);
+        this.$on.replaceWith($off);
+        this.$off.replaceWith($on);
+        this.$on = $off;
+        this.$off = $on;
+        this.options.inverse = value;
         return this.$element;
       };
 
@@ -523,6 +540,7 @@
       readonly: false,
       indeterminate: false,
       inverse: false,
+      radioAllOff: false,
       onColor: "primary",
       offColor: "default",
       onText: "ON",
@@ -530,7 +548,6 @@
       labelText: "&nbsp;",
       baseClass: "bootstrap-switch",
       wrapperClass: "wrapper",
-      radioAllOff: false,
       onInit: function() {},
       onSwitchChange: function() {}
     };

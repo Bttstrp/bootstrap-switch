@@ -14,34 +14,16 @@ block content
     br
     iframe(src='http://ghbtns.com/github-btn.html?user=nostalgiaz&repo=bootstrap-switch&type=watch&count=true&size=large', allowtransparency='true', frameborder='0', scrolling='0', width='184', height='30')
     iframe(src='http://ghbtns.com/github-btn.html?user=nostalgiaz&repo=bootstrap-switch&type=fork&count=true&size=large', allowtransparency='true', frameborder='0', scrolling='0', width='144', height='30')
-    br
-    br
-    br
 
-  .alert.alert-info
-    p
-      | <strong>Documentation in progress!</strong><br>
-      | It might not seem, but it's actually a lot of work. The goal is to make it as cleanest, most readable and
-      | understandable as possible.<br>
-      | If you feel there is something missing, submit a
-      | <a href="https://github.com/nostalgiaz/bootstrap-switch/pulls">pull request</a> with your changes. Every
-      | help is needed. Many thanks.
-
-  #new
-    h1.page-header What's new in version 3
-
-    ul
-      li API redesign for a more intuitive use
-      li Entire code source rewriting focused on cleanliness and performance
-      li Initialization options can be passed as JavaScript object or written as <code>data-*</code>
-      li Plugin constructor publicly available from <code>$.fn.bootstrapSwitch.Constructor</code>
-      li Plugin instance publicly available calling <code>.data('bootstrap-switch')</code>
-      li Global overridable defaults options
-      li Improved flexibility with <code>baseClass</code> and <code>wrapperClass</code> options
-      li New <code>onInit</code> event
-      li Event namespacing
-      li Full Bootstrap 3 support
-      li A lot of fixed bug, as usual
+  //
+    .alert.alert-info
+      p
+        | <strong>Documentation in progress!</strong><br>
+        | It might not seem, but it's actually a lot of work. The goal is to make it as cleanest, most readable and
+        | understandable as possible.<br>
+        | If you feel there is something missing, submit a
+        | <a href="https://github.com/nostalgiaz/bootstrap-switch/pulls">pull request</a> with your changes. Every
+        | help is needed. Many thanks.
 
   #start
     h1.page-header Getting Started
@@ -62,3 +44,42 @@ block content
     pre: code $("[name='my-checkbox']").bootstrapSwitch();
 
     p Enjoy.
+
+  #examples
+    h1.page-header Examples
+
+    .row
+      .col-sm-6
+        h2.h4 State
+        p
+          input#switch-state(type='checkbox', checked)
+        p
+          button.btn.btn-default(type='button' data-state-toggle) Toggle
+          button.btn.btn-default(type='button', data-state-set='true') Set as true
+          button.btn.btn-default(type='button', data-state-set='false') Set as false
+          button.btn.btn-default(type='button', data-state-get) Get
+
+      .col-sm-6
+        h2.h4 Size
+        p
+          input#switch-size(type='checkbox', checked)
+        p
+          button.btn.btn-default(type='button', data-size-set='mini') Mini
+          button.btn.btn-default(type='button', data-size-set='small') Small
+          button.btn.btn-default(type='button', data-size-set='normal') Normal
+          button.btn.btn-default(type='button', data-size-set='large') Large
+
+      .col-sm-6
+        h2.h4 Animate
+        p
+          input#switch-animate(type='checkbox', checked)
+        p
+          button.btn.btn-default(type='button', data-animate-toggle) Toggle
+
+      .col-sm-6
+        h2.h4 Disabled
+        p
+          input#switch-disabled(type='checkbox', checked)
+        p
+          button.btn.btn-default(type='button', data-disabled-toggle) Toggle
+

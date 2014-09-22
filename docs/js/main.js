@@ -1,6 +1,6 @@
 $(function() {
   var $window = $(window);
-  var $stateSwitch = $('#state-switch');
+  var $switchState = $('#state-switch');
   var sectionTop = $('.top').outerHeight() + 20;
 
   // initialize highlight.js
@@ -31,16 +31,30 @@ $(function() {
   $('input[type="checkbox"],[type="radio"]').not('#create-switch').not('#events-switch').bootstrapSwitch();
 
   // state
-  $('#state-switch-toggle').on('click', function () {
-    $stateSwitch.bootstrapSwitch('toggleState');
+  var $switchState = $("#switch-state");
+  $('[data-state-toggle]').on('click', function() {
+    $switchState.bootstrapSwitch('toggleState');
   });
-  $('#state-switch-on').on('click', function () {
-    $stateSwitch.bootstrapSwitch('state', true);
+  $('[data-state-set]').on('click', function() {
+    $switchState.bootstrapSwitch('state', $(this).data('state-set'));
   });
-  $('#state-switch-off').on('click', function () {
-    $stateSwitch.bootstrapSwitch('state', false);
+  $('[data-state-get]').on('click', function() {
+    alert($switchState.bootstrapSwitch('state'));
   });
-  $('#state-switch-state').on('click', function () {
-    alert($stateSwitch.bootstrapSwitch('state'));
+
+  // size
+  $('[data-size-set]').on('click', function() {
+    $("#switch-size").bootstrapSwitch("size", $(this).data("size-set"));
+  });
+
+  // animate
+  var $switchAnimate = $("#switch-animate");
+  $('[data-animate-toggle]').on('click', function() {
+    $switchAnimate.bootstrapSwitch("animate", ! $switchAnimate.bootstrapSwitch("animate"));
+  });
+
+  // disabled
+  $('[data-disabled-toggle]').on('click', function() {
+    $("#switch-disabled").bootstrapSwitch("toggleDisabled");
   });
 });

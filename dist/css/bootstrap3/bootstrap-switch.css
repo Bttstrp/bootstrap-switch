@@ -129,7 +129,8 @@
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
 }
-.bootstrap-switch.bootstrap-switch-indeterminate .bootstrap-switch-container {
+.bootstrap-switch.bootstrap-switch-indeterminate .bootstrap-switch-container,
+.bootstrap-switch.bootstrap-switch-inverse.bootstrap-switch-indeterminate .bootstrap-switch-container {
   margin-left: -25%;
 }
 .bootstrap-switch .bootstrap-switch-container {
