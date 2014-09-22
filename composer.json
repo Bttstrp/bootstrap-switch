@@ -1,5 +1,5 @@
 {
-  "name": "nostalgiaz/bootstrap-switch",
+  "name": "components/bootstrap-switch",
   "description": "Turn checkboxes and radio buttons in toggle switches.",
   "version": "3.0.2",
   "type": "component",
@@ -10,7 +10,7 @@
     "js"
   ],
   "homepage": "http://www.bootstrap-switch.org",
-  "license": "Apache License, Version 2.0",
+  "license": "Apache License Version 2.0",
   "authors": [
     {
       "name": "Mattia Larentis",
@@ -22,6 +22,10 @@
   ],
   "extra": {
     "component": {
+      "name": "bootstrap-switch",
+      "files": [
+        "dist/**"
+      ],
       "scripts": [
         "dist/js/bootstrap-switch.js"
       ],
