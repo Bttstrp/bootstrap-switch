@@ -53,9 +53,23 @@ block content
           td false
         tr
           td indeterminate
-          td
+          td data-indeterminate
           td Boolean
-          td indeterminate state
+          td Indeterminate state
+          td true, false
+          td false
+        tr
+          td inverse
+          td data-inverse
+          td Boolean
+          td Inverse switch direction
+          td true, false
+          td false
+        tr
+          td radioAllOff
+          td data-radio-all-off
+          td Boolean
+          td Allow this radio button to be unchecked by the user
           td true, false
           td false
         tr
@@ -121,14 +135,6 @@ block content
           td Callback function to execute on switch state change
           td Function
           td: pre: code.javascript function(event, state) {}
-        tr
-          td radioAllOff
-          td data-radio-all-off
-          td Boolean
-          td Allow this radio button to be unchecked by the user
-          td true, false
-          td false
-
 
     h3 Global Defaults Overriding
 
@@ -158,11 +164,20 @@ block content
           td toggleState
           td Toggle the switch state
         tr
+          td toggleAnimate
+          td Toggle the animate option
+        tr
           td toggleDisabled
           td Toggle the disabled state
         tr
           td toggleReadonly
           td Toggle the readonly state
+        tr
+          td toggleIndeterminate
+          td Toggle the indeterminate state
+        tr
+          td toggleInverse
+          td Toggle the inverse option
         tr
           td destroy
           td Destroy the instance of Bootstrap Switch

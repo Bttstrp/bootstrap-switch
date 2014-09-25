@@ -40,8 +40,8 @@
                 <li><a href="https://github.com/nostalgiaz/bootstrap-switch/archive/v2.0.1.zip">2.0.1 (Legacy)</a></li>
               </ul>
             </li>
-            <li><a href="index.html#start">Start</a></li>
-            <li><a href="index.html#examples">Examples</a></li>
+            <li><a href="index.html">Start</a></li>
+            <li><a href="examples.html">Examples</a></li>
             <li class="dropdown"><a href="#" data-toggle="dropdown">Documentation<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/documentation-3.html">Version 3 (Stable)</a></li>
@@ -61,7 +61,7 @@
         <p>
           <input type="checkbox" name="download-version" checked data-size="large" data-on-text="3" data-off-text="2.0.1">
         </p>
-        <p><a href="https://github.com/nostalgiaz/bootstrap-switch/archive/master.zip" id="download-3" class="btn btn-lg btn-primary">Download 3</a><a href="https://github.com/nostalgiaz/bootstrap-switch/archive/v2.0.1.zip" id="download-2" class="btn btn-lg btn-primary">Download 2.0.1</a></p><br><br>
+        <p><a id="download-3" href="https://github.com/nostalgiaz/bootstrap-switch/archive/master.zip" class="btn btn-lg btn-primary">Download 3</a><a id="download-2" href="https://github.com/nostalgiaz/bootstrap-switch/archive/v2.0.1.zip" class="btn btn-lg btn-primary">Download 2.0.1</a></p><br><br>
         <iframe src="http://ghbtns.com/github-btn.html?user=nostalgiaz&amp;repo=bootstrap-switch&amp;type=watch&amp;count=true&amp;size=large" allowtransparency="true" frameborder="0" scrolling="0" width="184" height="30"></iframe>
         <iframe src="http://ghbtns.com/github-btn.html?user=nostalgiaz&amp;repo=bootstrap-switch&amp;type=fork&amp;count=true&amp;size=large" allowtransparency="true" frameborder="0" scrolling="0" width="144" height="30"></iframe>
       </div>
@@ -76,68 +76,20 @@
           | help is needed. Many thanks.
           
       -->
-      <div id="start">
-        <h1 class="page-header">Getting Started</h1>
-        <p>Include the dependencies: jQuery, Bootstrap and Bootstrap Switch CSS + Javascript.</p>
-        <pre><code>[...]
+      <h1 class="page-header">Getting Started</h1>
+      <p>Include the dependencies: jQuery, Bootstrap and Bootstrap Switch CSS + Javascript.</p>
+      <pre><code>[...]
 &lt;link href="bootstrap.css" rel="stylesheet"&gt;
 &lt;link href="bootstrap-switch.css" rel="stylesheet"&gt;
 &lt;script src="jquery.js"&gt;&lt;/script&gt;
 &lt;script src="bootstrap-switch.js"&gt;&lt;/script&gt;
 [...]</code></pre>
-        <p>Add your checkbox.</p>
-        <pre><code>&lt;input type="checkbox" name="my-checkbox" checked&gt;</code></pre>
-        <p>Initialize Bootstrap Switch.</p>
-        <pre><code>$("[name='my-checkbox']").bootstrapSwitch();</code></pre>
-        <p>Enjoy.</p>
-      </div>
-      <div id="examples">
-        <h1 class="page-header">Examples</h1>
-        <div class="row">
-          <div class="col-sm-6">
-            <h2 class="h4">State</h2>
-            <p>
-              <input id="switch-state" type="checkbox" checked>
-            </p>
-            <p>
-              <button type="button" data-state-toggle class="btn btn-default">Toggle</button>
-              <button type="button" data-state-set="true" class="btn btn-default">Set as true</button>
-              <button type="button" data-state-set="false" class="btn btn-default">Set as false</button>
-              <button type="button" data-state-get class="btn btn-default">Get</button>
-            </p>
-          </div>
-          <div class="col-sm-6">
-            <h2 class="h4">Size</h2>
-            <p>
-              <input id="switch-size" type="checkbox" checked>
-            </p>
-            <p>
-              <button type="button" data-size-set="mini" class="btn btn-default">Mini</button>
-              <button type="button" data-size-set="small" class="btn btn-default">Small</button>
-              <button type="button" data-size-set="normal" class="btn btn-default">Normal</button>
-              <button type="button" data-size-set="large" class="btn btn-default">Large</button>
-            </p>
-          </div>
-          <div class="col-sm-6">
-            <h2 class="h4">Animate</h2>
-            <p>
-              <input id="switch-animate" type="checkbox" checked>
-            </p>
-            <p>
-              <button type="button" data-animate-toggle class="btn btn-default">Toggle</button>
-            </p>
-          </div>
-          <div class="col-sm-6">
-            <h2 class="h4">Disabled</h2>
-            <p>
-              <input id="switch-disabled" type="checkbox" checked>
-            </p>
-            <p>
-              <button type="button" data-disabled-toggle class="btn btn-default">Toggle</button>
-            </p>
-          </div>
-        </div>
-      </div>
+      <p>Add your checkbox.</p>
+      <pre><code>&lt;input type="checkbox" name="my-checkbox" checked&gt;</code></pre>
+      <p>Initialize Bootstrap Switch.</p>
+      <pre><code>$("[name='my-checkbox']").bootstrapSwitch();</code></pre>
+      <p>Enjoy.</p>
+      <div class="text-center"><a href="examples.html" class="btn btn-lg btn-info">See Examples</a>&nbsp;<a href="documentation-3.html" class="btn btn-lg btn-default">Browse Documentation</a></div>
     </div>
     <div class="container bottom">
       <p>

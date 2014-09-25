@@ -40,8 +40,8 @@
                 <li><a href="https://github.com/nostalgiaz/bootstrap-switch/archive/v2.0.1.zip">2.0.1 (Legacy)</a></li>
               </ul>
             </li>
-            <li><a href="index.html#start">Start</a></li>
-            <li><a href="index.html#examples">Examples</a></li>
+            <li><a href="index.html">Start</a></li>
+            <li><a href="examples.html">Examples</a></li>
             <li class="dropdown"><a href="#" data-toggle="dropdown">Documentation<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/documentation-3.html">Version 3 (Stable)</a></li>
@@ -111,9 +111,25 @@
             </tr>
             <tr>
               <td>indeterminate</td>
-              <td></td>
+              <td>data-indeterminate</td>
               <td>Boolean</td>
-              <td>indeterminate state</td>
+              <td>Indeterminate state</td>
+              <td>true, false</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>inverse</td>
+              <td>data-inverse</td>
+              <td>Boolean</td>
+              <td>Inverse switch direction</td>
+              <td>true, false</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>radioAllOff</td>
+              <td>data-radio-all-off</td>
+              <td>Boolean</td>
+              <td>Allow this radio button to be unchecked by the user</td>
               <td>true, false</td>
               <td>false</td>
             </tr>
@@ -193,14 +209,6 @@
                 <pre><code class="javascript">function(event, state) {}</code></pre>
               </td>
             </tr>
-            <tr>
-              <td>radioAllOff</td>
-              <td>data-radio-all-off</td>
-              <td>Boolean</td>
-              <td>Allow this radio button to be unchecked by the user</td>
-              <td>true, false</td>
-              <td>false</td>
-            </tr>
           </tbody>
         </table>
         <h3>Global Defaults Overriding</h3>
@@ -228,12 +236,24 @@ $.fn.bootstrapSwitch.defaults.onColor = 'success';</code></pre>
               <td>Toggle the switch state</td>
             </tr>
             <tr>
+              <td>toggleAnimate</td>
+              <td>Toggle the animate option</td>
+            </tr>
+            <tr>
               <td>toggleDisabled</td>
               <td>Toggle the disabled state</td>
             </tr>
             <tr>
               <td>toggleReadonly</td>
               <td>Toggle the readonly state</td>
+            </tr>
+            <tr>
+              <td>toggleIndeterminate</td>
+              <td>Toggle the indeterminate state</td>
+            </tr>
+            <tr>
+              <td>toggleInverse</td>
+              <td>Toggle the inverse option</td>
             </tr>
             <tr>
               <td>destroy</td>

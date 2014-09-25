@@ -164,6 +164,12 @@
         return this.$element;
       };
 
+      BootstrapSwitch.prototype.toggleAnimate = function() {
+        this.$wrapper.toggleClass("" + this.options.baseClass + "-animate");
+        this.options.animate = !this.options.animate;
+        return this.$element;
+      };
+
       BootstrapSwitch.prototype.disabled = function(value) {
         if (typeof value === "undefined") {
           return this.options.disabled;
@@ -232,6 +238,19 @@
         this.$on = $off;
         this.$off = $on;
         this.options.inverse = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.toggleInverse = function() {
+        var $off, $on;
+        this.$wrapper.toggleClass("" + this.options.baseClass + "-inverse");
+        $on = this.$on.clone(true);
+        $off = this.$off.clone(true);
+        this.$on.replaceWith($off);
+        this.$off.replaceWith($on);
+        this.$on = $off;
+        this.$off = $on;
+        this.options.inverse = !this.options.inverse;
         return this.$element;
       };
 

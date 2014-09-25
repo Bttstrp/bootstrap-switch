@@ -105,6 +105,11 @@ do ($ = window.jQuery, window) ->
       @options.animate = value
       @$element
 
+    toggleAnimate: ->
+      @$wrapper.toggleClass "#{@options.baseClass}-animate"
+      @options.animate = not @options.animate
+      @$element
+
     disabled: (value) ->
       return @options.disabled if typeof value is "undefined"
 
@@ -166,6 +171,17 @@ do ($ = window.jQuery, window) ->
       @$on = $off
       @$off = $on
       @options.inverse = value
+      @$element
+
+    toggleInverse: ->
+      @$wrapper.toggleClass "#{@options.baseClass}-inverse"
+      $on = @$on.clone true
+      $off = @$off.clone true
+      @$on.replaceWith $off
+      @$off.replaceWith $on
+      @$on = $off
+      @$off = $on
+      @options.inverse = not @options.inverse
       @$element
 
     onColor: (value) ->

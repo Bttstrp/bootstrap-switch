@@ -8,8 +8,8 @@ block content
     p Select the version to download:
     p: input(type='checkbox', name='download-version', checked, data-size='large', data-on-text='3', data-off-text='2.0.1')
     p
-      a(href='https://github.com/nostalgiaz/bootstrap-switch/archive/master.zip', id='download-3', class='btn btn-lg btn-primary') Download 3
-      a(href='https://github.com/nostalgiaz/bootstrap-switch/archive/v2.0.1.zip', id='download-2' class='btn btn-lg btn-primary') Download 2.0.1
+      a.btn.btn-lg.btn-primary#download-3(href='https://github.com/nostalgiaz/bootstrap-switch/archive/master.zip') Download 3
+      a.btn.btn-lg.btn-primary#download-2(href='https://github.com/nostalgiaz/bootstrap-switch/archive/v2.0.1.zip') Download 2.0.1
     br
     br
     iframe(src='http://ghbtns.com/github-btn.html?user=nostalgiaz&repo=bootstrap-switch&type=watch&count=true&size=large', allowtransparency='true', frameborder='0', scrolling='0', width='184', height='30')
@@ -25,61 +25,27 @@ block content
         | <a href="https://github.com/nostalgiaz/bootstrap-switch/pulls">pull request</a> with your changes. Every
         | help is needed. Many thanks.
 
-  #start
-    h1.page-header Getting Started
+  h1.page-header Getting Started
 
-    p Include the dependencies: jQuery, Bootstrap and Bootstrap Switch CSS + Javascript.
-    pre: code
-      | [...]
-      | &lt;link href="bootstrap.css" rel="stylesheet"&gt;
-      | &lt;link href="bootstrap-switch.css" rel="stylesheet"&gt;
-      | &lt;script src="jquery.js"&gt;&lt;/script&gt;
-      | &lt;script src="bootstrap-switch.js"&gt;&lt;/script&gt;
-      | [...]
+  p Include the dependencies: jQuery, Bootstrap and Bootstrap Switch CSS + Javascript.
+  pre: code
+    | [...]
+    | &lt;link href="bootstrap.css" rel="stylesheet"&gt;
+    | &lt;link href="bootstrap-switch.css" rel="stylesheet"&gt;
+    | &lt;script src="jquery.js"&gt;&lt;/script&gt;
+    | &lt;script src="bootstrap-switch.js"&gt;&lt;/script&gt;
+    | [...]
 
-    p Add your checkbox.
-    pre: code &lt;input type="checkbox" name="my-checkbox" checked&gt;
+  p Add your checkbox.
+  pre: code &lt;input type="checkbox" name="my-checkbox" checked&gt;
 
-    p Initialize Bootstrap Switch.
-    pre: code $("[name='my-checkbox']").bootstrapSwitch();
+  p Initialize Bootstrap Switch.
+  pre: code $("[name='my-checkbox']").bootstrapSwitch();
 
-    p Enjoy.
+  p Enjoy.
 
-  #examples
-    h1.page-header Examples
-
-    .row
-      .col-sm-6
-        h2.h4 State
-        p
-          input#switch-state(type='checkbox', checked)
-        p
-          button.btn.btn-default(type='button' data-state-toggle) Toggle
-          button.btn.btn-default(type='button', data-state-set='true') Set as true
-          button.btn.btn-default(type='button', data-state-set='false') Set as false
-          button.btn.btn-default(type='button', data-state-get) Get
-
-      .col-sm-6
-        h2.h4 Size
-        p
-          input#switch-size(type='checkbox', checked)
-        p
-          button.btn.btn-default(type='button', data-size-set='mini') Mini
-          button.btn.btn-default(type='button', data-size-set='small') Small
-          button.btn.btn-default(type='button', data-size-set='normal') Normal
-          button.btn.btn-default(type='button', data-size-set='large') Large
-
-      .col-sm-6
-        h2.h4 Animate
-        p
-          input#switch-animate(type='checkbox', checked)
-        p
-          button.btn.btn-default(type='button', data-animate-toggle) Toggle
-
-      .col-sm-6
-        h2.h4 Disabled
-        p
-          input#switch-disabled(type='checkbox', checked)
-        p
-          button.btn.btn-default(type='button', data-disabled-toggle) Toggle
+  .text-center
+    a.btn.btn-lg.btn-info(href='examples.html') See Examples
+    | &nbsp;
+    a.btn.btn-lg.btn-default(href='documentation-3.html') Browse Documentation
 
