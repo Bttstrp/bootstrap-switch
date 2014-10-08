@@ -75,18 +75,26 @@ do ($ = window.jQuery, window) ->
 
     state: (value, skip) ->
       return @options.state if typeof value is "undefined"
-      return @$element if @options.disabled or @options.readonly or @options.indeterminate
+      return @$element if @options.disabled or @options.readonly
       return @$element if @options.state and not @options.radioAllOff and @$element.is ':radio'
 
-      value = not not value
+      if @options.indeterminate
+        @indeterminate false
+        value = true
+      else
+        value = not not value
 
       @$element.prop("checked", value).trigger "change.bootstrapSwitch", skip
       @$element
 
     toggleState: (skip) ->
-      return @$element if @options.disabled or @options.readonly or @options.indeterminate
+      return @$element if @options.disabled or @options.readonly
 
-      @$element.prop("checked", not @options.state).trigger "change.bootstrapSwitch", skip
+      if @options.indeterminate
+        @indeterminate false
+        @state true
+      else
+        @$element.prop("checked", not @options.state).trigger "change.bootstrapSwitch", skip
 
     size: (value) ->
       return @options.size if typeof value is "undefined"
@@ -300,7 +308,7 @@ do ($ = window.jQuery, window) ->
           @$wrapper.removeClass "#{@options.baseClass}-focused"
 
         "keydown.bootstrapSwitch": (e) =>
-          return if not e.which or @options.disabled or @options.readonly or @options.indeterminate
+          return if not e.which or @options.disabled or @options.readonly
 
           switch e.which
             when 37
@@ -346,7 +354,7 @@ do ($ = window.jQuery, window) ->
           @$element.trigger "focus.bootstrapSwitch"
 
         "mousedown.bootstrapSwitch touchstart.bootstrapSwitch": (e) =>
-          return if @isLabelDragging or @options.disabled or @options.readonly or @options.indeterminate
+          return if @isLabelDragging or @options.disabled or @options.readonly
 
           e.preventDefault()
 

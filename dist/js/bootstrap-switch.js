@@ -122,22 +122,32 @@
         if (typeof value === "undefined") {
           return this.options.state;
         }
-        if (this.options.disabled || this.options.readonly || this.options.indeterminate) {
+        if (this.options.disabled || this.options.readonly) {
           return this.$element;
         }
         if (this.options.state && !this.options.radioAllOff && this.$element.is(':radio')) {
           return this.$element;
         }
-        value = !!value;
+        if (this.options.indeterminate) {
+          this.indeterminate(false);
+          value = true;
+        } else {
+          value = !!value;
+        }
         this.$element.prop("checked", value).trigger("change.bootstrapSwitch", skip);
         return this.$element;
       };
 
       BootstrapSwitch.prototype.toggleState = function(skip) {
-        if (this.options.disabled || this.options.readonly || this.options.indeterminate) {
+        if (this.options.disabled || this.options.readonly) {
           return this.$element;
         }
-        return this.$element.prop("checked", !this.options.state).trigger("change.bootstrapSwitch", skip);
+        if (this.options.indeterminate) {
+          this.indeterminate(false);
+          return this.state(true);
+        } else {
+          return this.$element.prop("checked", !this.options.state).trigger("change.bootstrapSwitch", skip);
+        }
       };
 
       BootstrapSwitch.prototype.size = function(value) {
@@ -402,7 +412,7 @@
           })(this),
           "keydown.bootstrapSwitch": (function(_this) {
             return function(e) {
-              if (!e.which || _this.options.disabled || _this.options.readonly || _this.options.indeterminate) {
+              if (!e.which || _this.options.disabled || _this.options.readonly) {
                 return;
               }
               switch (e.which) {
@@ -463,7 +473,7 @@
           })(this),
           "mousedown.bootstrapSwitch touchstart.bootstrapSwitch": (function(_this) {
             return function(e) {
-              if (_this.isLabelDragging || _this.options.disabled || _this.options.readonly || _this.options.indeterminate) {
+              if (_this.isLabelDragging || _this.options.disabled || _this.options.readonly) {
                 return;
               }
               e.preventDefault();
