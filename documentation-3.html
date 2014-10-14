@@ -287,7 +287,11 @@ $.fn.bootstrapSwitch.defaults.onColor = 'success';</code></pre>
       </div>
       <div id="examples-3">
         <h2 class="page-header">Examples</h2>
-        <p>To be included</p>
+        <h3>How To Style The Switches</h3>
+        <p>Bootstrap Switch adds classes to the various elements that you can use to style them as you like. The class of each of the switch's element's (on and off) is determined by the values of the <code>data-on</code> and <code>data-off</code> attributes - corresponding to each of these values, a class is added with <code>bootstrap-switch-</code> prepended to the attributes value.</p>
+        <p>For example, if your attributes are <code>'data-off-color' = 'red', 'data-on-color' = 'green'</code>, then the corresponding HTML generated for the labels will look something like:</p>
+        <pre>&lt;span class=&quot;bootstrap-switch-handle-on bootstrap-switch-green&quot;&gt;On&lt;/span&gt;</pre>
+        <pre>&lt;span class=&quot;bootstrap-switch-handle-off bootstrap-switch-red&quot;&gt;Off&lt;/span&gt;</pre>
         <!--
         h3 State
         .row
