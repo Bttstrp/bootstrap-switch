@@ -2,7 +2,6 @@
 [![Dependency Status](https://david-dm.org/nostalgiaz/bootstrap-switch.svg?style=flat)](https://david-dm.org/nostalgiaz/bootstrap-switch)
 [![devDependency Status](https://david-dm.org/nostalgiaz/bootstrap-switch/dev-status.svg?style=flat)](https://david-dm.org/nostalgiaz/bootstrap-switch#info=devDependencies)
 [![NPM Version](http://img.shields.io/npm/v/bootstrap-switch.svg?style=flat)](https://www.npmjs.org/)
-[![](http://img.shields.io/github/issues/badges/shields.svg?style=flat)](https://github.com/nostalgiaz/bootstrap-switch/issues)
 
 Turn checkboxes and radio buttons in toggle switches.
 
