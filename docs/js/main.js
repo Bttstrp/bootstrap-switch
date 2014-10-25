@@ -1,21 +1,21 @@
 $(function() {
   var $window = $(window);
-  var $stateSwitch = $('#state-switch');
   var sectionTop = $('.top').outerHeight() + 20;
 
   // initialize highlight.js
   hljs.initHighlightingOnLoad();
 
   // navigation
-  $('a[href^="#"]').on('click', function(event) {
+  $('a[href*="#"]').on('click', function(event) {
     event.preventDefault();
-    var $target = $($(this).attr('href'));
+    var $target = $($(this).attr('href').slice('#'));
 
     if ($target.length) {
       $window.scrollTop($target.offset().top - sectionTop);
     }
   });
 
+  // download switch
   $('input[name="download-version"]').on({
     'init.bootstrapSwitch': function() {
       $('#download-' + ($(this).is(':checked') ? '2' : '3')).hide();
@@ -29,17 +29,33 @@ $(function() {
   // initialize all the inputs
   $('input[type="checkbox"],[type="radio"]').not('#create-switch').not('#events-switch').bootstrapSwitch();
 
-  // state
-  $('#state-switch-toggle').on('click', function () {
-    $stateSwitch.bootstrapSwitch('toggleState');
+  $('[data-get]').on("click", function() {
+    var type = $(this).data('get');
+
+    alert($('#switch-' + type).bootstrapSwitch(type));
   });
-  $('#state-switch-on').on('click', function () {
-    $stateSwitch.bootstrapSwitch('state', true);
+
+  $('[data-set]').on('click', function() {
+    var type = $(this).data('set');
+
+    $('#switch-' + type).bootstrapSwitch(type, $(this).data('value'));
   });
-  $('#state-switch-off').on('click', function () {
-    $stateSwitch.bootstrapSwitch('state', false);
+
+  $('[data-toggle]').on('click', function() {
+    var type = $(this).data('toggle');
+
+    $('#switch-' + type).bootstrapSwitch('toggle' + type.charAt(0).toUpperCase() + type.slice(1));
   });
-  $('#state-switch-state').on('click', function () {
-    alert($stateSwitch.bootstrapSwitch('state'));
+
+  $('[data-set-text]').on('change', function(event) {
+    event.preventDefault();
+    var type = $(this).data('set-text');
+    var value = $.trim($(this).val());
+
+    if ( ! value) {
+      return;
+    }
+
+    $('#switch-' + type).bootstrapSwitch(type, value);
   });
 });

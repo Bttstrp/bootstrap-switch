@@ -46,15 +46,20 @@ html(lang='en')
               ul.dropdown-menu
                 li: a(href='https://github.com/nostalgiaz/bootstrap-switch/archive/master.zip') 3 (Stable)
                 li: a(href='https://github.com/nostalgiaz/bootstrap-switch/archive/v2.0.1.zip') 2.0.1 (Legacy)
-            li: a(href='#new') What's new
-            li: a(href='#start') Start
+            li: a(href='index.html') Start
+            li: a(href='examples.html') Examples
             li.dropdown
               a(href='#', data-toggle='dropdown')
                 | Documentation
                 span.caret
               ul.dropdown-menu
-                li: a(href='/documentation-3.html') Version 3 (Stable)
-                li: a(href='/documentation-2.html') Version 2.0.1 (Legacy)
+                li.dropdown-header Version 3 (Stable)
+                li: a(href='/options-3.html') Options
+                li: a(href='/methods-3.html') Methods
+                li: a(href='/events-3.html') Events
+                li.divider
+                li.dropdown-header Version 2.0.1 (Legacy)
+                li: a(href='/documentation-2.html') Documentation
             li: a(href='https://github.com/nostalgiaz/bootstrap-switch/issues') Bug reports
 
     .container.content

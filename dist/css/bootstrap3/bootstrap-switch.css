@@ -71,27 +71,6 @@
   font-size: 16px;
   line-height: normal;
 }
-.bootstrap-switch.bootstrap-switch-animate .bootstrap-switch-container {
-  -webkit-transition: margin-left 0.5s;
-  transition: margin-left 0.5s;
-}
-.bootstrap-switch.bootstrap-switch-on .bootstrap-switch-container {
-  margin-left: 0%;
-}
-.bootstrap-switch.bootstrap-switch-on .bootstrap-switch-label {
-  border-bottom-right-radius: 3px;
-  border-top-right-radius: 3px;
-}
-.bootstrap-switch.bootstrap-switch-off .bootstrap-switch-container {
-  margin-left: -50%;
-}
-.bootstrap-switch.bootstrap-switch-off .bootstrap-switch-label {
-  border-bottom-left-radius: 3px;
-  border-top-left-radius: 3px;
-}
-.bootstrap-switch.bootstrap-switch-indeterminate .bootstrap-switch-container {
-  margin-left: -25%;
-}
 .bootstrap-switch.bootstrap-switch-disabled,
 .bootstrap-switch.bootstrap-switch-readonly,
 .bootstrap-switch.bootstrap-switch-indeterminate {
@@ -110,11 +89,49 @@
 .bootstrap-switch.bootstrap-switch-indeterminate .bootstrap-switch-label {
   cursor: default !important;
 }
+.bootstrap-switch.bootstrap-switch-animate .bootstrap-switch-container {
+  -webkit-transition: margin-left 0.5s;
+  transition: margin-left 0.5s;
+}
+.bootstrap-switch.bootstrap-switch-inverse .bootstrap-switch-handle-on {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.bootstrap-switch.bootstrap-switch-inverse .bootstrap-switch-handle-off {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
 .bootstrap-switch.bootstrap-switch-focused {
   border-color: #66afe9;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+.bootstrap-switch.bootstrap-switch-on .bootstrap-switch-container,
+.bootstrap-switch.bootstrap-switch-inverse.bootstrap-switch-off .bootstrap-switch-container {
+  margin-left: 0%;
+}
+.bootstrap-switch.bootstrap-switch-on .bootstrap-switch-label,
+.bootstrap-switch.bootstrap-switch-inverse.bootstrap-switch-off .bootstrap-switch-label {
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.bootstrap-switch.bootstrap-switch-off .bootstrap-switch-container,
+.bootstrap-switch.bootstrap-switch-inverse.bootstrap-switch-on .bootstrap-switch-container {
+  margin-left: -50%;
+}
+.bootstrap-switch.bootstrap-switch-off .bootstrap-switch-label,
+.bootstrap-switch.bootstrap-switch-inverse.bootstrap-switch-on .bootstrap-switch-label {
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.bootstrap-switch.bootstrap-switch-indeterminate .bootstrap-switch-container,
+.bootstrap-switch.bootstrap-switch-inverse.bootstrap-switch-indeterminate .bootstrap-switch-container {
+  margin-left: -25%;
 }
 .bootstrap-switch .bootstrap-switch-container {
   display: inline-block;
@@ -174,14 +191,6 @@
   color: #000;
   background: #eeeeee;
 }
-.bootstrap-switch .bootstrap-switch-handle-on {
-  border-bottom-left-radius: 3px;
-  border-top-left-radius: 3px;
-}
-.bootstrap-switch .bootstrap-switch-handle-off {
-  border-bottom-right-radius: 3px;
-  border-top-right-radius: 3px;
-}
 .bootstrap-switch .bootstrap-switch-label {
   text-align: center;
   margin-top: -1px;
@@ -190,6 +199,14 @@
   width: 33.333333333%;
   color: #333333;
   background: #ffffff;
+}
+.bootstrap-switch .bootstrap-switch-handle-on {
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.bootstrap-switch .bootstrap-switch-handle-off {
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
 }
 .bootstrap-switch input[type='radio'],
 .bootstrap-switch input[type='checkbox'] {

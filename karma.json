@@ -1,0 +1,19 @@
+{
+  "frameworks": ["jasmine"],
+  "files": [
+    "bower_components/jquery/dist/jquery.js",
+    "bower_components/bootstrap/dist/js/bootstrap.js",
+    "test/bootstrap-switch.js",
+    "test/bootstrap-switch.tests.js"
+  ],
+  "reporters": ["progress"],
+  "port": 9876,
+  "colors": true,
+  "autoWatch": true,
+  "browsers": ["Firefox"],
+  "singleRun": false,
+  "plugins": [
+    "karma-jasmine",
+    "karma-firefox-launcher"
+  ]
+}

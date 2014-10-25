@@ -38,14 +38,15 @@
           disabled: this.$element.is(":disabled"),
           readonly: this.$element.is("[readonly]"),
           indeterminate: this.$element.data("indeterminate"),
+          inverse: this.$element.data("inverse"),
+          radioAllOff: this.$element.data("radio-all-off"),
           onColor: this.$element.data("on-color"),
           offColor: this.$element.data("off-color"),
           onText: this.$element.data("on-text"),
           offText: this.$element.data("off-text"),
           labelText: this.$element.data("label-text"),
           baseClass: this.$element.data("base-class"),
-          wrapperClass: this.$element.data("wrapper-class"),
-          radioAllOff: this.$element.data("radio-all-off")
+          wrapperClass: this.$element.data("wrapper-class")
         }, options);
         this.$wrapper = $("<div>", {
           "class": (function(_this) {
@@ -67,6 +68,9 @@
               }
               if (_this.options.indeterminate) {
                 classes.push("" + _this.options.baseClass + "-indeterminate");
+              }
+              if (_this.options.inverse) {
+                classes.push("" + _this.options.baseClass + "-inverse");
               }
               if (_this.$element.attr("id")) {
                 classes.push("" + _this.options.baseClass + "-id-" + (_this.$element.attr("id")));
@@ -105,7 +109,7 @@
         })(this));
         this.$container = this.$element.wrap(this.$container).parent();
         this.$wrapper = this.$container.wrap(this.$wrapper).parent();
-        this.$element.before(this.$on).before(this.$label).before(this.$off).trigger("init.bootstrapSwitch");
+        this.$element.before(this.options.inverse ? this.$off : this.$on).before(this.$label).before(this.options.inverse ? this.$on : this.$off).trigger("init.bootstrapSwitch");
         this._elementHandlers();
         this._handleHandlers();
         this._labelHandlers();
@@ -118,22 +122,32 @@
         if (typeof value === "undefined") {
           return this.options.state;
         }
-        if (this.options.disabled || this.options.readonly || this.options.indeterminate) {
+        if (this.options.disabled || this.options.readonly) {
           return this.$element;
         }
         if (this.options.state && !this.options.radioAllOff && this.$element.is(':radio')) {
           return this.$element;
         }
-        value = !!value;
+        if (this.options.indeterminate) {
+          this.indeterminate(false);
+          value = true;
+        } else {
+          value = !!value;
+        }
         this.$element.prop("checked", value).trigger("change.bootstrapSwitch", skip);
         return this.$element;
       };
 
       BootstrapSwitch.prototype.toggleState = function(skip) {
-        if (this.options.disabled || this.options.readonly || this.options.indeterminate) {
+        if (this.options.disabled || this.options.readonly) {
           return this.$element;
         }
-        return this.$element.prop("checked", !this.options.state).trigger("change.bootstrapSwitch", skip);
+        if (this.options.indeterminate) {
+          this.indeterminate(false);
+          return this.state(true);
+        } else {
+          return this.$element.prop("checked", !this.options.state).trigger("change.bootstrapSwitch", skip);
+        }
       };
 
       BootstrapSwitch.prototype.size = function(value) {
@@ -157,6 +171,12 @@
         value = !!value;
         this.$wrapper[value ? "addClass" : "removeClass"]("" + this.options.baseClass + "-animate");
         this.options.animate = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.toggleAnimate = function() {
+        this.$wrapper.toggleClass("" + this.options.baseClass + "-animate");
+        this.options.animate = !this.options.animate;
         return this.$element;
       };
 
@@ -211,6 +231,36 @@
         this.$element.prop("indeterminate", !this.options.indeterminate);
         this.$wrapper.toggleClass("" + this.options.baseClass + "-indeterminate");
         this.options.indeterminate = !this.options.indeterminate;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.inverse = function(value) {
+        var $off, $on;
+        if (typeof value === "undefined") {
+          return this.options.inverse;
+        }
+        value = !!value;
+        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.options.baseClass + "-inverse");
+        $on = this.$on.clone(true);
+        $off = this.$off.clone(true);
+        this.$on.replaceWith($off);
+        this.$off.replaceWith($on);
+        this.$on = $off;
+        this.$off = $on;
+        this.options.inverse = value;
+        return this.$element;
+      };
+
+      BootstrapSwitch.prototype.toggleInverse = function() {
+        var $off, $on;
+        this.$wrapper.toggleClass("" + this.options.baseClass + "-inverse");
+        $on = this.$on.clone(true);
+        $off = this.$off.clone(true);
+        this.$on.replaceWith($off);
+        this.$off.replaceWith($on);
+        this.$on = $off;
+        this.$off = $on;
+        this.options.inverse = !this.options.inverse;
         return this.$element;
       };
 
@@ -362,7 +412,7 @@
           })(this),
           "keydown.bootstrapSwitch": (function(_this) {
             return function(e) {
-              if (!e.which || _this.options.disabled || _this.options.readonly || _this.options.indeterminate) {
+              if (!e.which || _this.options.disabled || _this.options.readonly) {
                 return;
               }
               switch (e.which) {
@@ -423,7 +473,7 @@
           })(this),
           "mousedown.bootstrapSwitch touchstart.bootstrapSwitch": (function(_this) {
             return function(e) {
-              if (_this.isLabelDragging || _this.options.disabled || _this.options.readonly || _this.options.indeterminate) {
+              if (_this.isLabelDragging || _this.options.disabled || _this.options.readonly) {
                 return;
               }
               e.preventDefault();
@@ -433,13 +483,15 @@
           })(this),
           "mouseup.bootstrapSwitch touchend.bootstrapSwitch": (function(_this) {
             return function(e) {
+              var state;
               if (!_this.isLabelDragging) {
                 return;
               }
               e.preventDefault();
               if (_this.isLabelDragged) {
+                state = parseInt(_this.$container.css("margin-left"), 10) > -(_this.$container.width() / 6);
                 _this.isLabelDragged = false;
-                _this.state(parseInt(_this.$container.css("margin-left"), 10) > -(_this.$container.width() / 6));
+                _this.state(_this.options.inverse ? !state : state);
                 if (_this.options.animate) {
                   _this.$wrapper.addClass("" + _this.options.baseClass + "-animate");
                 }
@@ -516,6 +568,8 @@
       disabled: false,
       readonly: false,
       indeterminate: false,
+      inverse: false,
+      radioAllOff: false,
       onColor: "primary",
       offColor: "default",
       onText: "ON",
@@ -523,7 +577,6 @@
       labelText: "&nbsp;",
       baseClass: "bootstrap-switch",
       wrapperClass: "wrapper",
-      radioAllOff: false,
       onInit: function() {},
       onSwitchChange: function() {}
     };
