@@ -7,9 +7,9 @@ pkg = require './package.json'
 name = pkg.name
 
 paths =
-  src: './src'
-  dist: './dist'
-  test: './test'
+  src: 'src'
+  dist: 'dist'
+  test: 'test'
   docs: "./"
 server =
   host: 'localhost'
@@ -43,7 +43,7 @@ gulp.task 'coffee', ->
   gulp
   .src "#{paths.src}/coffee/#{name}.coffee"
   .pipe $.changed "#{paths.dist}/js"
-  .pipe $.coffeelint './coffeelint.json'
+  .pipe $.coffeelint 'coffeelint.json'
   .pipe $.coffeelint.reporter()
     .on 'error', $.util.log
   .pipe $.coffee()
@@ -94,7 +94,7 @@ gulp.task 'test-coffee', ['coffee'], ->
   gulp
   .src "#{paths.src}/coffee/#{name}.tests.coffee"
   .pipe $.changed paths.test
-  .pipe $.coffeelint './coffeelint.json'
+  .pipe $.coffeelint 'coffeelint.json'
   .pipe $.coffeelint.reporter()
     .on 'error', $.util.log
   .pipe $.coffee()
@@ -113,7 +113,7 @@ gulp.task 'connect', ['docs'], ->
 
 gulp.task 'open', ['connect'], ->
   gulp
-  .src './index.html'
+  .src 'index.html'
   .pipe $.open '', url: "http://#{server.host}:#{server.port}"
 
 gulp.task 'watch', ['connect'], ->
@@ -124,7 +124,7 @@ gulp.task 'watch', ['connect'], ->
   gulp.watch [
     "#{paths.dist}/js/**/*.js"
     "#{paths.dist}/css/**/*.css"
-    './*.html'
+    '*.html'
   ]
   .on 'change', (event) ->
     gulp.src event.path

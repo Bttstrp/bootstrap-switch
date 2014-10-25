@@ -40,19 +40,17 @@
                 <li><a href="https://github.com/nostalgiaz/bootstrap-switch/archive/v2.0.1.zip">2.0.1 (Legacy)</a></li>
               </ul>
             </li>
-            <li><a href="#new">What's new</a></li>
-            <li><a href="#start">Start</a></li>
+            <li><a href="index.html">Start</a></li>
+            <li><a href="examples.html">Examples</a></li>
             <li class="dropdown"><a href="#" data-toggle="dropdown">Documentation<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li class="dropdown-header">Version 3 (Stable)</li>
-                <li><a href="#options-3">Options</a></li>
-                <li><a href="#methods-3">Methods</a></li>
-                <li><a href="#events-3">Events</a></li>
+                <li><a href="/options-3.html">Options</a></li>
+                <li><a href="/methods-3.html">Methods</a></li>
+                <li><a href="/events-3.html">Events</a></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">Version 2.0.1 (Legacy)</li>
-                <li><a href="#options-2">Options</a></li>
-                <li><a href="#methods-2">Methods</a></li>
-                <li><a href="#events-2">Events</a></li>
+                <li><a href="/documentation-2.html">Documentation</a></li>
               </ul>
             </li>
             <li><a href="https://github.com/nostalgiaz/bootstrap-switch/issues">Bug reports</a></li>
@@ -60,7 +58,68 @@
         </nav>
       </div>
     </header>
-    <p>try</p>
+    <div class="container content">
+      <h1 class="page-header">Methods &nbsp;<small>Version 3 (Stable)</small></h1>
+      <p>In Bootstrap Switch, every option is also a method.</p>
+      <p>If the second parameter is omitted, the method return the current value.</p>
+      <p>You can invoke methods as follows:</p>
+      <pre><code>$('input[name="my-checkbox"]').bootstrapSwitch('state', true, true);</code></pre>
+      <h2>Additional Methods</h2>
+      <table class="table table-bordered table-striped table-responsive">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>toggleState</td>
+            <td>Toggle the switch state</td>
+          </tr>
+          <tr>
+            <td>toggleAnimate</td>
+            <td>Toggle the animate option</td>
+          </tr>
+          <tr>
+            <td>toggleDisabled</td>
+            <td>Toggle the disabled state</td>
+          </tr>
+          <tr>
+            <td>toggleReadonly</td>
+            <td>Toggle the readonly state</td>
+          </tr>
+          <tr>
+            <td>toggleIndeterminate</td>
+            <td>Toggle the indeterminate state</td>
+          </tr>
+          <tr>
+            <td>toggleInverse</td>
+            <td>Toggle the inverse option</td>
+          </tr>
+          <tr>
+            <td>destroy</td>
+            <td>Destroy the instance of Bootstrap Switch</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>Special Behaviours</h2>
+      <ul>
+        <li>The method <code>state</code> can receive an optional third parameter <code>skip</code>. if true, <code>switchChange</code> event is not executed. The default is false.</li>
+        <li>The method <code>toggleState</code> can receive an optional second parameter <code>skip</code>. if true, <code>switchChange</code> event is not executed. The default is false.</li>
+        <li>The method <code>wrapperClass</code> can accepts a falsy value as second parameter. If so, it resets the class to its default.</li>
+      </ul>
+    </div>
+    <div class="container bottom">
+      <p>
+        Licensed under the
+        <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, Version 2.0</a>
+        · Created by
+        <a href="https://github.com/nostalgiaz" target="_blank">Mattia Larentis</a>
+        · Mantained by
+        <a href="https://github.com/lostcrew" target="_blank">Emanuele Marchi</a>
+      </p>
+    </div>
     <script src="docs/js/jquery.min.js"></script>
     <script src="docs/js/bootstrap.min.js"></script>
     <script src="docs/js/highlight.js"></script>
