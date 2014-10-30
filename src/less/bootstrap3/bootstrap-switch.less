@@ -194,6 +194,46 @@
     color: @btn-default-color;
     background: @btn-default-bg;
   }
+ 
+  &.@{bootstrap-switch-base}-on{
+  	.@{bootstrap-switch-base}-label {
+  	   	&.indicator-angle {
+	  		&:before{
+	    		content:" << ";		
+			}
+		}
+  	   	&.indicator-on-off {
+  			&:before{
+	  			content:" O ";		
+	  		}
+		}
+		&.indicator-pipe {
+  			&:before{
+	  			content:" || ";		
+	  		}
+	  	}	
+	}
+  }
+  
+  &.@{bootstrap-switch-base}-off{
+  	.@{bootstrap-switch-base}-label {
+  		&.indicator-angle {
+  			&:before{
+	  			content:" >> ";		
+	  		}
+	  	}
+  		&.indicator-on-off {
+  			&:before{
+	  		 content:" I ";		
+	  		}
+	  	}
+	  	&.indicator-pipe {
+  			&:before{
+	  		 content:" || ";		
+	  		}
+	  	}
+	 }
+  }	 
   
   .@{bootstrap-switch-base}-handle-on {
     .border-left-radius(@border-radius-base - 1);
@@ -202,41 +242,8 @@
   .@{bootstrap-switch-base}-handle-off {
     .border-right-radius(@border-radius-base - 1);
   }
-  
-  &.@{bootstrap-switch-base}-on{
-  	.@{bootstrap-switch-base}-label {
-  		&:before{
-	    content:" << ";		
-		}
-  	}
-  }
-  
-  &.@{bootstrap-switch-base}-off{
-  	.@{bootstrap-switch-base}-label {
-  		 &:before{
-	  		 content:" >> ";		
-	  	}
-  	}
-  }	
 
-    &.@{bootstrap-switch-base}-on{
-  	.@{bootstrap-switch-base}-label {
-  		&:before{
-	    content:" || ";		
-		}
-  	}
-  }
-  
-  &.@{bootstrap-switch-base}-off{
-  	.@{bootstrap-switch-base}-label {
-  		 &:before{
-	  		 content:" || ";		
-	  	}
-  	}
-  }	
-
-
-
+ 
   input[type='radio'],
   input[type='checkbox'] {
     position: absolute !important;
