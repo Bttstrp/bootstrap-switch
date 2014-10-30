@@ -193,7 +193,47 @@
     color: @btn-default-color;
     background: @btn-default-bg;
   }
-
+ 
+  &.@{bootstrap-switch-base}-on{
+  	.@{bootstrap-switch-base}-label {
+  	   	&.indicator-angle {
+	  		&:before{
+	    		content:" << ";		
+			}
+		}
+  	   	&.indicator-on-off {
+  			&:before{
+	  			content:" O ";		
+	  		}
+		}
+		&.indicator-pipe {
+  			&:before{
+	  			content:" || ";		
+	  		}
+	  	}	
+	}
+  }
+  
+  &.@{bootstrap-switch-base}-off{
+  	.@{bootstrap-switch-base}-label {
+  		&.indicator-angle {
+  			&:before{
+	  			content:" >> ";		
+	  		}
+	  	}
+  		&.indicator-on-off {
+  			&:before{
+	  		 content:" I ";		
+	  		}
+	  	}
+	  	&.indicator-pipe {
+  			&:before{
+	  		 content:" || ";		
+	  		}
+	  	}
+	 }
+  }	 
+  
   .@{bootstrap-switch-base}-handle-on {
     .border-left-radius(@border-radius-base - 1);
   }
@@ -202,6 +242,7 @@
     .border-right-radius(@border-radius-base - 1);
   }
 
+ 
   input[type='radio'],
   input[type='checkbox'] {
     position: absolute !important;

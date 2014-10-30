@@ -200,6 +200,24 @@
   color: #333333;
   background: #ffffff;
 }
+.bootstrap-switch.bootstrap-switch-on .bootstrap-switch-label.indicator-angle:before {
+  content: " << ";
+}
+.bootstrap-switch.bootstrap-switch-on .bootstrap-switch-label.indicator-on-off:before {
+  content: " O ";
+}
+.bootstrap-switch.bootstrap-switch-on .bootstrap-switch-label.indicator-pipe:before {
+  content: " || ";
+}
+.bootstrap-switch.bootstrap-switch-off .bootstrap-switch-label.indicator-angle:before {
+  content: " >> ";
+}
+.bootstrap-switch.bootstrap-switch-off .bootstrap-switch-label.indicator-on-off:before {
+  content: " I ";
+}
+.bootstrap-switch.bootstrap-switch-off .bootstrap-switch-label.indicator-pipe:before {
+  content: " || ";
+}
 .bootstrap-switch .bootstrap-switch-handle-on {
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
