@@ -27,7 +27,14 @@ $(function() {
   });
 
   // initialize all the inputs
-  $('input[type="checkbox"],[type="radio"]').not('#create-switch').not('#events-switch').bootstrapSwitch();
+  $('input[type="checkbox"],[type="radio"]')
+  .not('#create-switch')
+  .not('#events-switch')
+  .not('#switch-modal')
+  .one('switchChange.bootstrapSwitch', function(event, state) {
+    console.log(arguments);
+  })
+  .bootstrapSwitch();
 
   $('[data-get]').on("click", function() {
     var type = $(this).data('get');
@@ -47,15 +54,23 @@ $(function() {
     $('#switch-' + type).bootstrapSwitch('toggle' + type.charAt(0).toUpperCase() + type.slice(1));
   });
 
-  $('[data-set-text]').on('change', function(event) {
+  $('[data-set-value]').on('input', function(event) {
     event.preventDefault();
-    var type = $(this).data('set-text');
+    var type = $(this).data('set-value');
     var value = $.trim($(this).val());
 
-    if ( ! value) {
+    if ($(this).data('value') == value) {
       return;
     }
 
     $('#switch-' + type).bootstrapSwitch(type, value);
+  });
+
+  $('#modal-switch')
+  .on("shown.bs.modal", function() {
+    $('#switch-modal').bootstrapSwitch();
+  })
+  .on("hidden.bs.modal", function() {
+    $('#switch-modal').bootstrapSwitch('destroy');
   });
 });

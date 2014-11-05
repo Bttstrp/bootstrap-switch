@@ -7,7 +7,7 @@ block content
     .col-sm-6.col-lg-4
       h2.h4 State
       p
-        input#switch-state(type='checkbox', checked)
+        input#switch-state(type='checkbox',)
       .btn-group
         button.btn.btn-default(type='button' data-toggle='state') Toggle
         button.btn.btn-default(type='button', data-set='state', data-value='true') Set true
@@ -105,7 +105,7 @@ block content
         input#switch-onText(type='checkbox', checked, data-on-text='Yes')
       .row
         .col-sm-6
-          input.form-control(type='text', data-set-text='onText')
+          input.form-control(type='text', data-set-value='onText', value='Yes')
 
     .col-sm-6.col-lg-4
       h2.h4 Off Text
@@ -113,7 +113,7 @@ block content
         input#switch-offText(type='checkbox', data-off-text='No')
       .row
         .col-sm-6
-          input.form-control(type='text', data-set-text='offText')
+          input.form-control(type='text', data-set-value='offText', value='No')
 
     .col-sm-6.col-lg-4
       h2.h4 Label Text
@@ -121,7 +121,23 @@ block content
         input#switch-labelText(type='checkbox', data-label-text='Label')
       .row
         .col-sm-6
-          input.form-control(type='text', data-set-text='labelText')
+          input.form-control(type='text', data-set-value='labelText')
+
+    .col-sm-6.col-lg-4
+      h2.h4 Handle Width
+      p
+        input#switch-handleWidth(type='checkbox', data-handle-width='100')
+      .row
+        .col-sm-6
+          input.form-control(type='number', data-set-value='handleWidth', value='100')
+
+    .col-sm-6.col-lg-4
+      h2.h4 Label Width
+      p
+        input#switch-labelWidth(type='checkbox', data-label-width='100')
+      .row
+        .col-sm-6
+          input.form-control(type='number', data-set-value='labelWidth', value='100')
 
   br
   br
@@ -139,3 +155,20 @@ block content
         input.switch-radio2(type='radio', name='radio2', checked, data-radio-all-off='true')
         input.switch-radio2(type='radio', name='radio2', data-radio-all-off='true')
         input.switch-radio2(type='radio', name='radio2', data-radio-all-off='true')
+
+    br
+    hr
+
+    h2.h4 Inside a Modal
+    button.btn.btn-default(data-toggle='modal', data-target='#modal-switch') Open the modal
+    .modal.fade#modal-switch(tabindex='-1', role='dialog', aria-labelledby='modal-switch-label')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal')
+              span(aria-hidden='true') &times;
+              span.sr-only Close
+            .modal-title#modal-switch-label Modal title
+            .modal-body
+              input#switch-modal(type='checkbox', checked)
+

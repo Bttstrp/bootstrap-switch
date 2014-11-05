@@ -64,7 +64,7 @@
         <div class="col-sm-6 col-lg-4">
           <h2 class="h4">State</h2>
           <p>
-            <input id="switch-state" type="checkbox" checked>
+            <input id="switch-state" type="checkbox">
           </p>
           <div class="btn-group">
             <button type="button" data-toggle="state" class="btn btn-default">Toggle</button>
@@ -181,7 +181,7 @@
           </p>
           <div class="row">
             <div class="col-sm-6">
-              <input type="text" data-set-text="onText" class="form-control">
+              <input type="text" data-set-value="onText" value="Yes" class="form-control">
             </div>
           </div>
         </div>
@@ -192,7 +192,7 @@
           </p>
           <div class="row">
             <div class="col-sm-6">
-              <input type="text" data-set-text="offText" class="form-control">
+              <input type="text" data-set-value="offText" value="No" class="form-control">
             </div>
           </div>
         </div>
@@ -203,7 +203,29 @@
           </p>
           <div class="row">
             <div class="col-sm-6">
-              <input type="text" data-set-text="labelText" class="form-control">
+              <input type="text" data-set-value="labelText" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <h2 class="h4">Handle Width</h2>
+          <p>
+            <input id="switch-handleWidth" type="checkbox" data-handle-width="100">
+          </p>
+          <div class="row">
+            <div class="col-sm-6">
+              <input type="number" data-set-value="handleWidth" value="100" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <h2 class="h4">Label Width</h2>
+          <p>
+            <input id="switch-labelWidth" type="checkbox" data-label-width="100">
+          </p>
+          <div class="row">
+            <div class="col-sm-6">
+              <input type="number" data-set-value="labelWidth" value="100" class="form-control">
             </div>
           </div>
         </div>
@@ -222,6 +244,22 @@
             <input type="radio" name="radio2" checked data-radio-all-off="true" class="switch-radio2">
             <input type="radio" name="radio2" data-radio-all-off="true" class="switch-radio2">
             <input type="radio" name="radio2" data-radio-all-off="true" class="switch-radio2">
+          </div>
+        </div><br>
+        <hr>
+        <h2 class="h4">Inside a Modal</h2>
+        <button data-toggle="modal" data-target="#modal-switch" class="btn btn-default">Open the modal</button>
+        <div id="modal-switch" tabindex="-1" role="dialog" aria-labelledby="modal-switch-label" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" data-dismiss="modal" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <div id="modal-switch-label" class="modal-title">Modal title</div>
+                <div class="modal-body">
+                  <input id="switch-modal" type="checkbox" checked>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

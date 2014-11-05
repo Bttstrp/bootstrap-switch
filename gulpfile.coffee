@@ -45,7 +45,7 @@ gulp.task 'coffee', ->
   .pipe $.changed "#{paths.dist}/js"
   .pipe $.coffeelint 'coffeelint.json'
   .pipe $.coffeelint.reporter()
-    .on 'error', $.util.log
+  .pipe $.coffeelint.reporter("fail")
   .pipe $.coffee()
     .on 'error', $.util.log
   .pipe $.header banner, pkg: pkg
