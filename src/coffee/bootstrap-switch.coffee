@@ -43,7 +43,7 @@ do ($ = window.jQuery, window) ->
       @$off = $ "<span>",
         html: @options.offText,
         class: "#{@options.baseClass}-handle-off #{@options.baseClass}-#{@options.offColor}"
-      @$label = $ "<label>",
+      @$label = $ "<span>",
         html: @options.labelText
         class: "#{@options.baseClass}-label"
 
@@ -76,6 +76,7 @@ do ($ = window.jQuery, window) ->
       @_handleHandlers()
       @_labelHandlers()
       @_formHandler()
+      @_externalLabelHandler()
 
       @$element.trigger "init.bootstrapSwitch"
 
@@ -363,6 +364,7 @@ do ($ = window.jQuery, window) ->
           e.stopImmediatePropagation()
 
           state = @$element.is ":checked"
+
           @_containerPosition state
           return  if state is @options.state
 
@@ -449,6 +451,16 @@ do ($ = window.jQuery, window) ->
 
         "mouseleave.bootstrapSwitch": (e) =>
           @$label.trigger "mouseup.bootstrapSwitch"
+
+    _externalLabelHandler: ->
+      $externalLabel = @$element.closest("label")
+
+      $externalLabel.on "click", (event) =>
+        event.preventDefault()
+        event.stopImmediatePropagation()
+
+        # reimplement toggle state on external label only if it is not the target
+        @toggleState()  if event.target is $externalLabel[0]
 
     _formHandler: ->
       $form = @$element.closest "form"

@@ -31,9 +31,6 @@ $(function() {
   .not('#create-switch')
   .not('#events-switch')
   .not('#switch-modal')
-  .one('switchChange.bootstrapSwitch', function(event, state) {
-    console.log(arguments);
-  })
   .bootstrapSwitch();
 
   $('[data-get]').on("click", function() {

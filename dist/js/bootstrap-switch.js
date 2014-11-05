@@ -89,7 +89,7 @@
           html: this.options.offText,
           "class": "" + this.options.baseClass + "-handle-off " + this.options.baseClass + "-" + this.options.offColor
         });
-        this.$label = $("<label>", {
+        this.$label = $("<span>", {
           html: this.options.labelText,
           "class": "" + this.options.baseClass + "-label"
         });
@@ -121,6 +121,7 @@
         this._handleHandlers();
         this._labelHandlers();
         this._formHandler();
+        this._externalLabelHandler();
         this.$element.trigger("init.bootstrapSwitch");
       }
 
@@ -592,6 +593,20 @@
             };
           })(this)
         });
+      };
+
+      BootstrapSwitch.prototype._externalLabelHandler = function() {
+        var $externalLabel;
+        $externalLabel = this.$element.closest("label");
+        return $externalLabel.on("click", (function(_this) {
+          return function(event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            if (event.target === $externalLabel[0]) {
+              return _this.toggleState();
+            }
+          };
+        })(this));
       };
 
       BootstrapSwitch.prototype._formHandler = function() {
