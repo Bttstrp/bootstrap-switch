@@ -259,6 +259,7 @@ do ($ = window.jQuery, window) ->
 
       @options.handleWidth = value
       @_width()
+      @_containerPosition()
       @$element
 
     labelWidth: (value) ->
@@ -266,6 +267,7 @@ do ($ = window.jQuery, window) ->
 
       @options.labelWidth = value
       @_width()
+      @_containerPosition()
       @$element
 
     baseClass: (value) ->

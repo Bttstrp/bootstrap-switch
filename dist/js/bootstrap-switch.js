@@ -342,6 +342,7 @@
         }
         this.options.handleWidth = value;
         this._width();
+        this._containerPosition();
         return this.$element;
       };
 
@@ -351,6 +352,7 @@
         }
         this.options.labelWidth = value;
         this._width();
+        this._containerPosition();
         return this.$element;
       };
 
