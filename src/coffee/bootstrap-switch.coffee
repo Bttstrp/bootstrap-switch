@@ -518,4 +518,3 @@ do ($ = window.jQuery, window) ->
     wrapperClass: "wrapper"
     onInit: ->
     onSwitchChange: ->
-
