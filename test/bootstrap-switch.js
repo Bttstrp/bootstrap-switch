@@ -467,7 +467,11 @@
         if (!callback) {
           return;
         }
-        return this.$container.one($.support.transition.end, callback).emulateTransitionEnd(500);
+        if ($.support.transition) {
+          return this.$container.one("bsTransitionEnd", callback).emulateTransitionEnd(500);
+        } else {
+          return callback();
+        }
       };
 
       BootstrapSwitch.prototype._elementHandlers = function() {

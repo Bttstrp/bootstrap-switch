@@ -355,9 +355,12 @@ do ($ = window.jQuery, window) ->
 
       return  unless callback
 
-      @$container
-      .one($.support.transition.end, callback)
-      .emulateTransitionEnd 500
+      if $.support.transition
+        @$container
+        .one("bsTransitionEnd", callback)
+        .emulateTransitionEnd 500
+      else
+        callback()
 
     _elementHandlers: ->
       @$element.on
