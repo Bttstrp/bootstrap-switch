@@ -1,6 +1,7 @@
 $(function() {
   var $window = $(window);
   var sectionTop = $('.top').outerHeight() + 20;
+  var $createDestroy = $('#switch-create-destroy');
 
   // initialize highlight.js
   hljs.initHighlightingOnLoad();
@@ -27,33 +28,29 @@ $(function() {
   });
 
   // initialize all the inputs
-  $('input[type="checkbox"],[type="radio"]')
-  .not('#create-switch')
-  .not('#events-switch')
-  .not('#switch-modal')
-  .bootstrapSwitch();
+  $('input[type="checkbox"], input[type="radio"]:not("#switch-create-destroy, #switch-modal")').bootstrapSwitch();
 
-  $('[data-get]').on("click", function() {
-    var type = $(this).data('get');
+  $('[data-switch-get]').on("click", function() {
+    var type = $(this).data('switch-get');
 
     alert($('#switch-' + type).bootstrapSwitch(type));
   });
 
-  $('[data-set]').on('click', function() {
-    var type = $(this).data('set');
+  $('[data-switch-set]').on('click', function() {
+    var type = $(this).data('switch-set');
 
-    $('#switch-' + type).bootstrapSwitch(type, $(this).data('value'));
+    $('#switch-' + type).bootstrapSwitch(type, $(this).data('switch-value'));
   });
 
-  $('[data-toggle]').on('click', function() {
-    var type = $(this).data('toggle');
+  $('[data-switch-toggle]').on('click', function() {
+    var type = $(this).data('switch-toggle');
 
     $('#switch-' + type).bootstrapSwitch('toggle' + type.charAt(0).toUpperCase() + type.slice(1));
   });
 
-  $('[data-set-value]').on('input', function(event) {
+  $('[data-switch-set-value]').on('input', function(event) {
     event.preventDefault();
-    var type = $(this).data('set-value');
+    var type = $(this).data('switch-set-value');
     var value = $.trim($(this).val());
 
     if ($(this).data('value') == value) {
@@ -63,11 +60,12 @@ $(function() {
     $('#switch-' + type).bootstrapSwitch(type, value);
   });
 
-  $('#modal-switch')
-  .on("shown.bs.modal", function() {
-    $('#switch-modal').bootstrapSwitch();
-  })
-  .on("hidden.bs.modal", function() {
-    $('#switch-modal').bootstrapSwitch('destroy');
+  $('[data-switch-create-destroy]').on('click', function() {
+    var isSwitch = $createDestroy.data('bootstrap-switch');
+
+    $createDestroy.bootstrapSwitch(isSwitch ? 'destroy' : null);
+    $(this).button(isSwitch ? 'reset' : 'destroy');
   });
+
+  $('#modal-switch');
 });

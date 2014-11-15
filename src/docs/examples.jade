@@ -7,63 +7,63 @@ block content
     .col-sm-6.col-lg-4
       h2.h4 State
       p
-        input#switch-state(type='checkbox',)
+        input#switch-state(type='checkbox', checked)
       .btn-group
-        button.btn.btn-default(type='button' data-toggle='state') Toggle
-        button.btn.btn-default(type='button', data-set='state', data-value='true') Set true
-        button.btn.btn-default(type='button', data-set='state', data-value='false') Set false
-        button.btn.btn-default(type='button', data-get='state') Get
+        button.btn.btn-default(type='button' data-switch-toggle='state') Toggle
+        button.btn.btn-default(type='button', data-switch-set='state', data-switch-value='true') Set true
+        button.btn.btn-default(type='button', data-switch-set='state', data-switch-value='false') Set false
+        button.btn.btn-default(type='button', data-switch-get='state') Get
 
     .col-sm-6.col-lg-4
       h2.h4 Size
       p
         input#switch-size(type='checkbox', checked, data-size='mini')
       .btn-group
-        button.btn.btn-default(type='button', data-set='size', data-value='mini') Mini
-        button.btn.btn-default(type='button', data-set='size', data-value='small') Small
-        button.btn.btn-default(type='button', data-set='size', data-value='normal') Normal
-        button.btn.btn-default(type='button', data-set='size', data-value='large') Large
-        button.btn.btn-default(type='button', data-get='size') Get
+        button.btn.btn-default(type='button', data-switch-set='size', data-switch-value='mini') Mini
+        button.btn.btn-default(type='button', data-switch-set='size', data-switch-value='small') Small
+        button.btn.btn-default(type='button', data-switch-set='size', data-switch-value='normal') Normal
+        button.btn.btn-default(type='button', data-switch-set='size', data-switch-value='large') Large
+        button.btn.btn-default(type='button', data-switch-get='size') Get
 
     .col-sm-6.col-lg-4
       h2.h4 Animate
       p
         input#switch-animate(type='checkbox', checked)
       p
-        button.btn.btn-default(type='button', data-toggle='animate') Toggle
-        button.btn.btn-default(type='button', data-get='animate') Get
+        button.btn.btn-default(type='button', data-switch-toggle='animate') Toggle
+        button.btn.btn-default(type='button', data-switch-get='animate') Get
 
     .col-sm-6.col-lg-4
       h2.h4 Disabled
       p
         input#switch-disabled(type='checkbox', checked, disabled)
       p
-        button.btn.btn-default(type='button', data-toggle='disabled') Toggle
-        button.btn.btn-default(type='button', data-get='disabled') Get
+        button.btn.btn-default(type='button', data-switch-toggle='disabled') Toggle
+        button.btn.btn-default(type='button', data-switch-get='disabled') Get
 
     .col-sm-6.col-lg-4
       h2.h4 Readonly
       p
         input#switch-readonly(type='checkbox', checked, readonly)
       p
-        button.btn.btn-default(type='button', data-toggle='readonly') Toggle
-        button.btn.btn-default(type='button', data-get='readonly') Get
+        button.btn.btn-default(type='button', data-switch-toggle='readonly') Toggle
+        button.btn.btn-default(type='button', data-switch-get='readonly') Get
 
     .col-sm-6.col-lg-4
       h2.h4 Indeterminate
       p
         input#switch-indeterminate(type='checkbox', checked, data-indeterminate='true')
       p
-        button.btn.btn-default(type='button', data-toggle='indeterminate') Toggle
-        button.btn.btn-default(type='button', data-get='indeterminate') Get
+        button.btn.btn-default(type='button', data-switch-toggle='indeterminate') Toggle
+        button.btn.btn-default(type='button', data-switch-get='indeterminate') Get
 
     .col-sm-6.col-lg-4
       h2.h4 Inverse
       p
         input#switch-inverse(type='checkbox', checked, data-inverse='true')
       p
-        button.btn.btn-default(type='button', data-toggle='inverse') Toggle
-        button.btn.btn-default(type='button', data-get='inverse') Get
+        button.btn.btn-default(type='button', data-switch-toggle='inverse') Toggle
+        button.btn.btn-default(type='button', data-switch-get='inverse') Get
 
     .col-sm-6.col-lg-4
       h2.h4 On Color
@@ -75,12 +75,12 @@ block content
             | Set &nbsp;
             span.caret
           .dropdown-menu(role='menu')
-            li: a(data-set='onColor', data-value='primary') Primary
-            li: a(data-set='onColor', data-value='info') Info
-            li: a(data-set='onColor', data-value='success') Success
-            li: a(data-set='onColor', data-value='warning') Warning
-            li: a(data-set='onColor', data-value='default') Default
-        button.btn.btn-default(type='button', data-get='onColor') Get
+            li: a(data-switch-set='onColor', data-switch-value='primary') Primary
+            li: a(data-switch-set='onColor', data-switch-value='info') Info
+            li: a(data-switch-set='onColor', data-switch-value='success') Success
+            li: a(data-switch-set='onColor', data-switch-value='warning') Warning
+            li: a(data-switch-set='onColor', data-switch-value='default') Default
+        button.btn.btn-default(type='button', data-switch-get='onColor') Get
 
     .col-sm-6.col-lg-4
       h2.h4 Off Color
@@ -92,12 +92,12 @@ block content
             | Set &nbsp;
             span.caret
           .dropdown-menu(role='menu')
-            li: a(data-set='offColor', data-value='primary') Primary
-            li: a(data-set='offColor', data-value='info') Info
-            li: a(data-set='offColor', data-value='success') Success
-            li: a(data-set='offColor', data-value='warning') Warning
-            li: a(data-set='offColor', data-value='default') Default
-        button.btn.btn-default(type='button', data-get='offColor') Get
+            li: a(data-switch-set='offColor', data-switch-value='primary') Primary
+            li: a(data-switch-set='offColor', data-switch-value='info') Info
+            li: a(data-switch-set='offColor', data-switch-value='success') Success
+            li: a(data-switch-set='offColor', data-switch-value='warning') Warning
+            li: a(data-switch-set='offColor', data-switch-value='default') Default
+        button.btn.btn-default(type='button', data-switch-get='offColor') Get
 
     .col-sm-6.col-lg-4
       h2.h4 On Text
@@ -105,7 +105,7 @@ block content
         input#switch-onText(type='checkbox', checked, data-on-text='Yes')
       .row
         .col-sm-6
-          input.form-control(type='text', data-set-value='onText', value='Yes')
+          input.form-control(type='text', data-switch-set-value='onText', value='Yes')
 
     .col-sm-6.col-lg-4
       h2.h4 Off Text
@@ -113,7 +113,7 @@ block content
         input#switch-offText(type='checkbox', data-off-text='No')
       .row
         .col-sm-6
-          input.form-control(type='text', data-set-value='offText', value='No')
+          input.form-control(type='text', data-switch-set-value='offText', value='No')
 
     .col-sm-6.col-lg-4
       h2.h4 Label Text
@@ -121,7 +121,7 @@ block content
         input#switch-labelText(type='checkbox', data-label-text='Label')
       .row
         .col-sm-6
-          input.form-control(type='text', data-set-value='labelText')
+          input.form-control(type='text', data-switch-set-value='labelText')
 
     .col-sm-6.col-lg-4
       h2.h4 Handle Width
@@ -129,7 +129,7 @@ block content
         input#switch-handleWidth(type='checkbox', data-handle-width='100')
       .row
         .col-sm-6
-          input.form-control(type='number', data-set-value='handleWidth', value='100')
+          input.form-control(type='number', data-switch-set-value='handleWidth', value='100')
 
     .col-sm-6.col-lg-4
       h2.h4 Label Width
@@ -137,7 +137,15 @@ block content
         input#switch-labelWidth(type='checkbox', data-label-width='100')
       .row
         .col-sm-6
-          input.form-control(type='number', data-set-value='labelWidth', value='100')
+          input.form-control(type='number', data-switch-set-value='labelWidth', value='100')
+
+    .col-sm-6.col-lg-4
+      h2.h4 Create | Destroy
+      p
+        input#switch-create-destroy(type='checkbox', checked)
+      .row
+        .col-sm-6
+          button.btn.btn-default(type='button', data-switch-create-destroy, data-destroy-text="Destroy") Create
 
   br
   br
@@ -156,12 +164,12 @@ block content
         input.switch-radio2(type='radio', name='radio2', data-radio-all-off='true')
         input.switch-radio2(type='radio', name='radio2', data-radio-all-off='true')
 
-  //-
     br
     hr
 
-    h2.h4 Inside a Modal
-    button.btn.btn-default(data-toggle='modal', data-target='#modal-switch') Open the modal
+
+    h2.h4 Inside Modals
+    button.btn.btn-default(data-toggle='modal', data-target='#modal-switch') Open Modal
     .modal.fade#modal-switch(tabindex='-1', role='dialog', aria-labelledby='modal-switch-label')
       .modal-dialog
         .modal-content
@@ -169,7 +177,6 @@ block content
             button.close(type='button', data-dismiss='modal')
               span(aria-hidden='true') &times;
               span.sr-only Close
-            .modal-title#modal-switch-label Modal title
-            .modal-body
-              input#switch-modal(type='checkbox', checked)
-
+            .modal-title#modal-switch-label Title
+          .modal-body
+            input#switch-modal(type='checkbox', checked)

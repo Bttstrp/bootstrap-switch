@@ -65,7 +65,7 @@ do ($ = window.jQuery, window) ->
       @$element.prop "indeterminate", true  if @options.indeterminate
 
       # normalize handles width
-      @_width()
+      @_initWidth()
 
       # set container position
       @_containerPosition @options.state, =>
@@ -85,7 +85,7 @@ do ($ = window.jQuery, window) ->
     state: (value, skip) ->
       return @options.state  if typeof value is "undefined"
       return @$element  if @options.disabled or @options.readonly
-      return @$element  if @options.state and not @options.radioAllOff and @$element.is ':radio'
+      return @$element  if @options.state and not @options.radioAllOff and @$element.is ":radio"
 
       if @options.indeterminate
         @indeterminate false
@@ -118,10 +118,9 @@ do ($ = window.jQuery, window) ->
       return @options.animate  if typeof value is "undefined"
 
       value = not not value
-      @options.animate = value
+      return @$element  if value is @options.animate
 
-      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.baseClass}-animate")
-      @$element
+      @toggleAnimate()
 
     toggleAnimate: ->
       @options.animate = not @options.animate
@@ -133,11 +132,9 @@ do ($ = window.jQuery, window) ->
       return @options.disabled  if typeof value is "undefined"
 
       value = not not value
-      @options.disabled = value
+      return @$element  if value is @options.disabled
 
-      @$element.prop "disabled", value
-      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.baseClass}-disabled")
-      @$element
+      @toggleDisabled()
 
     toggleDisabled: ->
       @options.disabled = not @options.disabled
@@ -150,11 +147,9 @@ do ($ = window.jQuery, window) ->
       return @options.readonly  if typeof value is "undefined"
 
       value = not not value
-      @options.readonly = value
+      return @$element  if value is @options.readonly
 
-      @$element.prop "readonly", value
-      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.baseClass}-readonly")
-      @$element
+      @toggleReadonly()
 
     toggleReadonly: ->
       @options.readonly = not @options.readonly
@@ -167,17 +162,14 @@ do ($ = window.jQuery, window) ->
       return @options.indeterminate  if typeof value is "undefined"
 
       value = not not value
-      @options.indeterminate = value
+      return @$element  if value is @options.indeterminate
 
-      @$element.prop "indeterminate", value
-      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.baseClass}-indeterminate")
-      @_containerPosition()
-      @$element
+      @toggleIndeterminate()
 
     toggleIndeterminate: ->
       @options.indeterminate = not @options.indeterminate
 
-      @$element.prop "indeterminate", not @options.indeterminate
+      @$element.prop "indeterminate", @options.indeterminate
       @$wrapper.toggleClass "#{@options.baseClass}-indeterminate"
       @_containerPosition()
       @$element
@@ -186,16 +178,9 @@ do ($ = window.jQuery, window) ->
       return @options.inverse  if typeof value is "undefined"
 
       value = not not value
+      return @$element  if value is @options.inverse
 
-      @$wrapper[if value then "addClass" else "removeClass"]("#{@options.baseClass}-inverse")
-      $on = @$on.clone true
-      $off = @$off.clone true
-      @$on.replaceWith $off
-      @$off.replaceWith $on
-      @$on = $off
-      @$off = $on
-      @options.inverse = value
-      @$element
+      @toggleInverse()
 
     toggleInverse: ->
       @$wrapper.toggleClass "#{@options.baseClass}-inverse"
@@ -286,6 +271,9 @@ do ($ = window.jQuery, window) ->
     radioAllOff: (value) ->
       return @options.radioAllOff  if typeof value is "undefined"
 
+      value = not not value
+      return @$element  if value is @options.radioAllOff
+
       @options.radioAllOff = value
       @$element
 
@@ -341,6 +329,15 @@ do ($ = window.jQuery, window) ->
       @$container.width (@_handleWidth * 2) + @_labelWidth
       @$wrapper.width @_handleWidth + @_labelWidth
 
+    _initWidth: ->
+      return @_width()  if @$wrapper.is ":visible"
+
+      widthInterval = window.setInterval =>
+        if @$wrapper.is ":visible"
+          @_width()
+          window.clearInterval widthInterval
+      , 50
+
     _containerPosition: (state = @options.state, callback) ->
       @$container
       .css "margin-left", =>
@@ -357,7 +354,7 @@ do ($ = window.jQuery, window) ->
 
       if $.support.transition
         @$container
-        .one("bsTransitionEnd", callback)
+        .one "bsTransitionEnd", callback
         .emulateTransitionEnd 500
       else
         callback()

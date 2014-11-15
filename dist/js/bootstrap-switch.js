@@ -109,7 +109,7 @@
         if (this.options.indeterminate) {
           this.$element.prop("indeterminate", true);
         }
-        this._width();
+        this._initWidth();
         this._containerPosition(this.options.state, (function(_this) {
           return function() {
             if (_this.options.animate) {
@@ -134,7 +134,7 @@
         if (this.options.disabled || this.options.readonly) {
           return this.$element;
         }
-        if (this.options.state && !this.options.radioAllOff && this.$element.is(':radio')) {
+        if (this.options.state && !this.options.radioAllOff && this.$element.is(":radio")) {
           return this.$element;
         }
         if (this.options.indeterminate) {
@@ -179,9 +179,10 @@
           return this.options.animate;
         }
         value = !!value;
-        this.options.animate = value;
-        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.options.baseClass + "-animate");
-        return this.$element;
+        if (value === this.options.animate) {
+          return this.$element;
+        }
+        return this.toggleAnimate();
       };
 
       BootstrapSwitch.prototype.toggleAnimate = function() {
@@ -195,10 +196,10 @@
           return this.options.disabled;
         }
         value = !!value;
-        this.options.disabled = value;
-        this.$element.prop("disabled", value);
-        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.options.baseClass + "-disabled");
-        return this.$element;
+        if (value === this.options.disabled) {
+          return this.$element;
+        }
+        return this.toggleDisabled();
       };
 
       BootstrapSwitch.prototype.toggleDisabled = function() {
@@ -213,10 +214,10 @@
           return this.options.readonly;
         }
         value = !!value;
-        this.options.readonly = value;
-        this.$element.prop("readonly", value);
-        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.options.baseClass + "-readonly");
-        return this.$element;
+        if (value === this.options.readonly) {
+          return this.$element;
+        }
+        return this.toggleReadonly();
       };
 
       BootstrapSwitch.prototype.toggleReadonly = function() {
@@ -231,36 +232,29 @@
           return this.options.indeterminate;
         }
         value = !!value;
-        this.options.indeterminate = value;
-        this.$element.prop("indeterminate", value);
-        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.options.baseClass + "-indeterminate");
-        this._containerPosition();
-        return this.$element;
+        if (value === this.options.indeterminate) {
+          return this.$element;
+        }
+        return this.toggleIndeterminate();
       };
 
       BootstrapSwitch.prototype.toggleIndeterminate = function() {
         this.options.indeterminate = !this.options.indeterminate;
-        this.$element.prop("indeterminate", !this.options.indeterminate);
+        this.$element.prop("indeterminate", this.options.indeterminate);
         this.$wrapper.toggleClass("" + this.options.baseClass + "-indeterminate");
         this._containerPosition();
         return this.$element;
       };
 
       BootstrapSwitch.prototype.inverse = function(value) {
-        var $off, $on;
         if (typeof value === "undefined") {
           return this.options.inverse;
         }
         value = !!value;
-        this.$wrapper[value ? "addClass" : "removeClass"]("" + this.options.baseClass + "-inverse");
-        $on = this.$on.clone(true);
-        $off = this.$off.clone(true);
-        this.$on.replaceWith($off);
-        this.$off.replaceWith($on);
-        this.$on = $off;
-        this.$off = $on;
-        this.options.inverse = value;
-        return this.$element;
+        if (value === this.options.inverse) {
+          return this.$element;
+        }
+        return this.toggleInverse();
       };
 
       BootstrapSwitch.prototype.toggleInverse = function() {
@@ -377,6 +371,10 @@
         if (typeof value === "undefined") {
           return this.options.radioAllOff;
         }
+        value = !!value;
+        if (value === this.options.radioAllOff) {
+          return this.$element;
+        }
         this.options.radioAllOff = value;
         return this.$element;
       };
@@ -436,6 +434,21 @@
         this._labelWidth = this.$label.outerWidth();
         this.$container.width((this._handleWidth * 2) + this._labelWidth);
         return this.$wrapper.width(this._handleWidth + this._labelWidth);
+      };
+
+      BootstrapSwitch.prototype._initWidth = function() {
+        var widthInterval;
+        if (this.$wrapper.is(":visible")) {
+          return this._width();
+        }
+        return widthInterval = window.setInterval((function(_this) {
+          return function() {
+            if (_this.$wrapper.is(":visible")) {
+              _this._width();
+              return window.clearInterval(widthInterval);
+            }
+          };
+        })(this), 50);
       };
 
       BootstrapSwitch.prototype._containerPosition = function(state, callback) {
