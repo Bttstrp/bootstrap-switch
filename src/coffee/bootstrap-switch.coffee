@@ -352,12 +352,9 @@ do ($ = window.jQuery, window) ->
 
       return  unless callback
 
-      if $.support.transition
-        @$container
-        .one "bsTransitionEnd", callback
-        .emulateTransitionEnd 500
-      else
+      setTimeout ->
         callback()
+      , 50
 
     _elementHandlers: ->
       @$element.on

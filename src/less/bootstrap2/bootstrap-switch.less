@@ -2,6 +2,7 @@
 
 .@{bootstrap-switch-base} {
   display: inline-block;
+  direction: ltr;
   cursor: pointer;
   .border-radius(5px);
   border: 1px solid;
@@ -12,8 +13,90 @@
   line-height: 8px;
   .user-select(none);
   vertical-align: middle;
-  min-width: 100px;
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+
+  .@{bootstrap-switch-base}-container {
+    display: inline-block;
+    top: 0;
+    .border-radius(4px);
+    .translate3d(0, 0, 0);
+  }
+
+  .@{bootstrap-switch-base}-handle-on,
+  .@{bootstrap-switch-base}-handle-off,
+  .@{bootstrap-switch-base}-label {
+    .box-sizing(border-box);
+    cursor: pointer;
+    display: inline-block !important;
+    height: 100%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .@{bootstrap-switch-base}-handle-on,
+  .@{bootstrap-switch-base}-handle-off {
+    text-align: center;
+    z-index: 1;
+
+    &.@{bootstrap-switch-base}-primary {
+      .buttonBackground(@btnPrimaryBackgroundHighlight, @btnPrimaryBackground);
+    }
+
+    &.@{bootstrap-switch-base}-info {
+      .buttonBackground(@btnInfoBackgroundHighlight, @btnInfoBackground);
+    }
+
+    &.@{bootstrap-switch-base}-success {
+      .buttonBackground(@btnSuccessBackgroundHighlight, @btnSuccessBackground);
+    }
+
+    &.@{bootstrap-switch-base}-warning {
+      .buttonBackground(@btnWarningBackgroundHighlight, @btnWarningBackground);
+    }
+
+    &.@{bootstrap-switch-base}-danger {
+      .buttonBackground(@btnDangerBackgroundHighlight, @btnDangerBackground);
+    }
+
+    &.@{bootstrap-switch-base}-default {
+      .buttonBackground(@btnBackgroundHighlight, @btnBackground, @grayDark, 0 1px 1px rgba(255,255,255,.75));
+    }
+  }
+
+  .@{bootstrap-switch-base}-label {
+    text-align: center;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    z-index: 100;
+    border-left: 1px solid @btnBorder;
+    border-right: 1px solid @btnBorder;
+    .buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark);
+  }
+
+  .@{bootstrap-switch-base}-handle-on {
+    .border-left-radius(4px);
+  }
+
+  .@{bootstrap-switch-base}-handle-off {
+    .border-right-radius(4px);
+  }
+
+  input[type='radio'],
+  input[type='checkbox'] {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    .opacity(0);
+    z-index: -1;
+
+    &.form-control {
+      height: auto;
+    }
+  }
 
   &.@{bootstrap-switch-base}-mini {
     min-width: 71px;
@@ -21,8 +104,7 @@
     .@{bootstrap-switch-base}-handle-on,
     .@{bootstrap-switch-base}-handle-off,
     .@{bootstrap-switch-base}-label {
-      padding-bottom: 4px;
-      padding-top: 4px;
+      padding: 3px 6px;
       font-size: 10px;
       line-height: 9px;
     }
@@ -34,8 +116,7 @@
     .@{bootstrap-switch-base}-handle-on,
     .@{bootstrap-switch-base}-handle-off,
     .@{bootstrap-switch-base}-label {
-      padding-bottom: 3px;
-      padding-top: 3px;
+      padding: 3px 6px;
       font-size: 12px;
       line-height: 18px;
     }
@@ -47,8 +128,7 @@
     .@{bootstrap-switch-base}-handle-on,
     .@{bootstrap-switch-base}-handle-off,
     .@{bootstrap-switch-base}-label {
-      padding-bottom: 9px;
-      padding-top: 9px;
+      padding: 9px 12px;
       font-size: 16px;
       line-height: normal;
     }
@@ -57,12 +137,12 @@
   &.@{bootstrap-switch-base}-disabled,
   &.@{bootstrap-switch-base}-readonly,
   &.@{bootstrap-switch-base}-indeterminate {
-    .opacity(50);
     cursor: default !important;
 
     .@{bootstrap-switch-base}-handle-on,
     .@{bootstrap-switch-base}-handle-off,
     .@{bootstrap-switch-base}-label {
+      .opacity(50);
       cursor: default !important;
     }
   }
@@ -97,10 +177,6 @@
   &.@{bootstrap-switch-base}-on,
   &.@{bootstrap-switch-base}-inverse.@{bootstrap-switch-base}-off {
 
-    .@{bootstrap-switch-base}-container {
-      margin-left: 0%;
-    }
-
     .@{bootstrap-switch-base}-label {
       .border-right-radius(4px);
     }
@@ -109,103 +185,8 @@
   &.@{bootstrap-switch-base}-off,
   &.@{bootstrap-switch-base}-inverse.@{bootstrap-switch-base}-on {
 
-    .@{bootstrap-switch-base}-container {
-      margin-left: -50%;
-    }
-
     .@{bootstrap-switch-base}-label {
       .border-left-radius(4px);
-    }
-  }
-
-  &.@{bootstrap-switch-base}-indeterminate {
-
-    .@{bootstrap-switch-base}-container {
-      margin-left: -25%;
-    }
-  }
-
-  .@{bootstrap-switch-base}-container {
-    display: inline-block;
-    width: 150%;
-    top: 0;
-    .border-radius(4px);
-    .translate3d(0, 0, 0);
-  }
-
-  .@{bootstrap-switch-base}-handle-on,
-  .@{bootstrap-switch-base}-handle-off,
-  .@{bootstrap-switch-base}-label {
-    .box-sizing(border-box);
-    cursor: pointer;
-    display: inline-block !important;
-    height: 100%;
-    padding-bottom: 4px;
-    padding-top: 4px;
-    font-size: 14px;
-    line-height: 20px;
-  }
-
-  .@{bootstrap-switch-base}-handle-on,
-  .@{bootstrap-switch-base}-handle-off {
-    text-align: center;
-    z-index: 1;
-    width: 33.333333333%;
-
-    &.@{bootstrap-switch-base}-primary {
-      .buttonBackground(@btnPrimaryBackgroundHighlight, @btnPrimaryBackground);
-    }
-
-    &.@{bootstrap-switch-base}-info {
-      .buttonBackground(@btnInfoBackgroundHighlight, @btnInfoBackground);
-    }
-
-    &.@{bootstrap-switch-base}-success {
-      .buttonBackground(@btnSuccessBackgroundHighlight, @btnSuccessBackground);
-    }
-
-    &.@{bootstrap-switch-base}-warning {
-      .buttonBackground(@btnWarningBackgroundHighlight, @btnWarningBackground);
-    }
-
-    &.@{bootstrap-switch-base}-danger {
-      .buttonBackground(@btnDangerBackgroundHighlight, @btnDangerBackground);
-    }
-
-    &.@{bootstrap-switch-base}-default {
-      .buttonBackground(@btnBackgroundHighlight, @btnBackground, @grayDark, 0 1px 1px rgba(255,255,255,.75));
-    }
-  }
-
-  .@{bootstrap-switch-base}-label {
-    text-align: center;
-    margin-top: -1px;
-    margin-bottom: -1px;
-    z-index: 100;
-    width: 33.333333333%;
-    border-left: 1px solid @btnBorder;
-    border-right: 1px solid @btnBorder;
-    .buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark);
-  }
-
-  .@{bootstrap-switch-base}-handle-on {
-    .border-left-radius(4px);
-  }
-
-  .@{bootstrap-switch-base}-handle-off {
-    .border-right-radius(4px);
-  }
-
-  input[type='radio'],
-  input[type='checkbox'] {
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    .opacity(0);
-    z-index: -1;
-
-    &.form-control {
-      height: auto;
     }
   }
 }

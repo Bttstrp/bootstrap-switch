@@ -480,11 +480,9 @@
         if (!callback) {
           return;
         }
-        if ($.support.transition) {
-          return this.$container.one("bsTransitionEnd", callback).emulateTransitionEnd(500);
-        } else {
+        return setTimeout(function() {
           return callback();
-        }
+        }, 50);
       };
 
       BootstrapSwitch.prototype._elementHandlers = function() {
