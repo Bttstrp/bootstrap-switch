@@ -376,7 +376,7 @@ do ($ = window.jQuery, window) ->
               .not(@$element)
               .prop("checked", false)
               .trigger "change.bootstrapSwitch", true
-          
+
           @$element.trigger "switchChange.bootstrapSwitch", [state]
 
         "focus.bootstrapSwitch": (e) =>
@@ -417,6 +417,7 @@ do ($ = window.jQuery, window) ->
           return  if @_dragStart or @options.disabled or @options.readonly
 
           e.preventDefault()
+          e.stopPropagation()
 
           @_dragStart = (e.pageX or e.originalEvent.touches[0].pageX) - parseInt @$container.css("margin-left"), 10
           @$wrapper.removeClass "#{@options.baseClass}-animate"  if @options.animate
