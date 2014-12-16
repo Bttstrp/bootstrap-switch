@@ -503,8 +503,8 @@
                 if (_this.$element.is(":radio")) {
                   $("[name='" + (_this.$element.attr('name')) + "']").not(_this.$element).prop("checked", false).trigger("change.bootstrapSwitch", true);
                 }
-                return _this.$element.trigger("switchChange.bootstrapSwitch", [state]);
               }
+              return _this.$element.trigger("switchChange.bootstrapSwitch", [state]);
             };
           })(this),
           "focus.bootstrapSwitch": (function(_this) {
@@ -562,6 +562,7 @@
                 return;
               }
               e.preventDefault();
+              e.stopPropagation();
               _this._dragStart = (e.pageX || e.originalEvent.touches[0].pageX) - parseInt(_this.$container.css("margin-left"), 10);
               if (_this.options.animate) {
                 _this.$wrapper.removeClass("" + _this.options.baseClass + "-animate");
