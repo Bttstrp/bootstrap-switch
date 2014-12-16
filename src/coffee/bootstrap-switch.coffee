@@ -376,7 +376,8 @@ do ($ = window.jQuery, window) ->
               .not(@$element)
               .prop("checked", false)
               .trigger "change.bootstrapSwitch", true
-            @$element.trigger "switchChange.bootstrapSwitch", [state]
+          
+          @$element.trigger "switchChange.bootstrapSwitch", [state]
 
         "focus.bootstrapSwitch": (e) =>
           e.preventDefault()
