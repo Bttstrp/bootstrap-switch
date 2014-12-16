@@ -59,5 +59,14 @@
   "scripts": {
     "build": "gulp dist",
     "test": "gulp test"
-  }
+  },
+  "npmName": "bootstrap-switch",
+  "npmFileMap": [{
+    "basePath": "/dist/",
+    "files": [
+      "*.js"
+      "bootstrap3/*.css"
+      "bootstrap2/*.css"
+    ]
+  }]
 }
