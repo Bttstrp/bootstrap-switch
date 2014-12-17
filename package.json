@@ -64,8 +64,8 @@
   "npmFileMap": [{
     "basePath": "/dist/",
     "files": [
-      "*.js"
-      "bootstrap3/*.css"
+      "*.js",
+      "bootstrap3/*.css",
       "bootstrap2/*.css"
     ]
   }]

@@ -89,11 +89,9 @@ do ($ = window.jQuery, window) ->
       return @$element  if @options.disabled or @options.readonly
       return @$element  if @options.state and not @options.radioAllOff and @$element.is ":radio"
 
-      if @options.indeterminate
-        @indeterminate false
-        value = true
-      else
-        value = not not value
+      # remove indeterminate
+      @indeterminate false  if @options.indeterminate
+      value = not not value
 
       @$element.prop("checked", value).trigger "change.bootstrapSwitch", skip
       @$element
@@ -113,6 +111,7 @@ do ($ = window.jQuery, window) ->
       @$wrapper.removeClass "#{@options.baseClass}-#{@options.size}" if @options.size?
       @$wrapper.addClass "#{@options.baseClass}-#{value}" if value
       @_width()
+      @_containerPosition()
       @options.size = value
       @$element
 
@@ -396,11 +395,17 @@ do ($ = window.jQuery, window) ->
               @state true
 
     _handleHandlers: ->
-      @$on.on "click.bootstrapSwitch", (e) =>
+      @$on.on "click.bootstrapSwitch", (event) =>
+        event.preventDefault()
+        event.stopPropagation()
+
         @state false
         @$element.trigger "focus.bootstrapSwitch"
 
-      @$off.on "click.bootstrapSwitch", (e) =>
+      @$off.on "click.bootstrapSwitch", (event) =>
+        event.preventDefault()
+        event.stopPropagation()
+
         @state true
         @$element.trigger "focus.bootstrapSwitch"
 

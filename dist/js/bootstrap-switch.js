@@ -145,10 +145,8 @@
         }
         if (this.options.indeterminate) {
           this.indeterminate(false);
-          value = true;
-        } else {
-          value = !!value;
         }
+        value = !!value;
         this.$element.prop("checked", value).trigger("change.bootstrapSwitch", skip);
         return this.$element;
       };
@@ -176,6 +174,7 @@
           this.$wrapper.addClass("" + this.options.baseClass + "-" + value);
         }
         this._width();
+        this._containerPosition();
         this.options.size = value;
         return this.$element;
       };
@@ -532,13 +531,17 @@
 
       BootstrapSwitch.prototype._handleHandlers = function() {
         this.$on.on("click.bootstrapSwitch", (function(_this) {
-          return function(e) {
+          return function(event) {
+            event.preventDefault();
+            event.stopPropagation();
             _this.state(false);
             return _this.$element.trigger("focus.bootstrapSwitch");
           };
         })(this));
         return this.$off.on("click.bootstrapSwitch", (function(_this) {
-          return function(e) {
+          return function(event) {
+            event.preventDefault();
+            event.stopPropagation();
             _this.state(true);
             return _this.$element.trigger("focus.bootstrapSwitch");
           };
