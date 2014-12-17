@@ -17,11 +17,6 @@ body {
   text-align: center;
 }
 
-.old-version {
-  color: #ccc;
-  text-decoration: line-through;
-}
-
 #github {
   display: none;
   position: fixed;

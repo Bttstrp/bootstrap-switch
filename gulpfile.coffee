@@ -6,6 +6,9 @@ karmaConfig = require './karma.json'
 pkg = require './package.json'
 name = pkg.name
 
+cleanCss = require 'less-plugin-clean-css'
+cleanCss = new cleanCss advanced: true
+
 paths =
   src: 'src'
   dist: 'dist'
@@ -14,6 +17,7 @@ paths =
 server =
   host: 'localhost'
   port: 3000
+
 banner = """
   /* ========================================================================
    * <%= pkg.name %> - v<%= pkg.version %>
@@ -65,7 +69,7 @@ gulp.task 'less-bootstrap2', ->
   .pipe $.header banner, pkg: pkg
   .pipe $.rename basename: name
   .pipe gulp.dest "#{paths.dist}/css/bootstrap2"
-  .pipe $.less compress: true, cleancss: true
+  .pipe $.less plugins: [cleanCss]
   .pipe $.header banner, pkg: pkg
   .pipe $.rename suffix: '.min'
   .pipe gulp.dest "#{paths.dist}/css/bootstrap2"
@@ -121,6 +125,7 @@ gulp.task 'watch', ['connect'], ->
   gulp.watch "#{paths.src}/less/bootstrap2/*.less", ['less-bootstrap2']
   gulp.watch "#{paths.src}/less/bootstrap3/*.less", ['less-bootstrap3']
   gulp.watch "#{paths.src}/docs/*.jade", ['docs']
+  gulp.watch('package.json', ['dist']).on 'change', -> pkg = require './package.json'
   gulp.watch [
     "#{paths.dist}/js/**/*.js"
     "#{paths.dist}/css/**/*.css"

@@ -1,7 +1,7 @@
 {
   "name": "components/bootstrap-switch",
   "description": "Turn checkboxes and radio buttons in toggle switches.",
-  "version": "3.2.2",
+  "version": "3.3.0",
   "type": "component",
   "keywords": [
     "bootstrap",

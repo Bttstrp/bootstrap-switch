@@ -16,19 +16,10 @@ $(function() {
     }
   });
 
-  // download switch
-  $('input[name="download-version"]').on({
-    'init.bootstrapSwitch': function() {
-      $('#download-' + ($(this).is(':checked') ? '2' : '3')).hide();
-    },
-    'switchChange.bootstrapSwitch': function(event, state) {
-      $('#download-3')[state ? 'show' : 'hide']();
-      $('#download-2')[state ? 'hide' : 'show']();
-    }
-  });
-
   // initialize all the inputs
-  $('input[type="checkbox"], input[type="radio"]:not("#switch-create-destroy, #switch-modal")').bootstrapSwitch();
+  $('input[type="checkbox"], input[type="radio"]')
+  .not("[data-switch-no-init]")
+  .bootstrapSwitch();
 
   $('[data-switch-get]').on("click", function() {
     var type = $(this).data('switch-get');
@@ -66,6 +57,4 @@ $(function() {
     $createDestroy.bootstrapSwitch(isSwitch ? 'destroy' : null);
     $(this).button(isSwitch ? 'reset' : 'destroy');
   });
-
-  $('#modal-switch');
 });
