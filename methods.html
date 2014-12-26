@@ -51,6 +51,62 @@
       </div>
     </header>
     <main id="content" role="main">
+      <div id="content" class="bs-docs-header">
+        <div class="container">
+          <h1>Methods</h1>
+        </div>
+      </div>
+      <div class="container">
+        <p>In Bootstrap Switch, every option is also a method.</p>
+        <p>If the second parameter is omitted, the method return the current value.</p>
+        <p>You can invoke methods as follows:</p>
+        <pre><code>$('input[name="my-checkbox"]').bootstrapSwitch('state', true, true);</code></pre>
+        <h2>Additional Methods</h2>
+        <table class="table table-bordered table-striped table-responsive">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>toggleState</td>
+              <td>Toggle the switch state</td>
+            </tr>
+            <tr>
+              <td>toggleAnimate</td>
+              <td>Toggle the animate option</td>
+            </tr>
+            <tr>
+              <td>toggleDisabled</td>
+              <td>Toggle the disabled state</td>
+            </tr>
+            <tr>
+              <td>toggleReadonly</td>
+              <td>Toggle the readonly state</td>
+            </tr>
+            <tr>
+              <td>toggleIndeterminate</td>
+              <td>Toggle the indeterminate state</td>
+            </tr>
+            <tr>
+              <td>toggleInverse</td>
+              <td>Toggle the inverse option</td>
+            </tr>
+            <tr>
+              <td>destroy</td>
+              <td>Destroy the instance of Bootstrap Switch</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>Special Behaviours</h2>
+        <ul>
+          <li>The method <code>state</code> can receive an optional third parameter <code>skip</code>. if true, <code>switchChange</code> event is not executed. The default is false.</li>
+          <li>The method <code>toggleState</code> can receive an optional second parameter <code>skip</code>. if true, <code>switchChange</code> event is not executed. The default is false.</li>
+          <li>The method <code>wrapperClass</code> can accepts a falsy value as second parameter. If so, it resets the class to its default.</li>
+        </ul>
+      </div>
     </main>
     <footer class="bs-docs-footer">
       <div class="container">

@@ -16,9 +16,9 @@ Many thanks.
 ## Demo and Documentation
 
 - [Examples](http://www.bootstrap-switch.org/examples.html)
-- [Options](http://www.bootstrap-switch.org/options-3.html)
-- [Methods](http://www.bootstrap-switch.org/methods-3.html)
-- [Events](http://www.bootstrap-switch.org/events-3.html)
+- [Options](http://www.bootstrap-switch.org/options.html)
+- [Methods](http://www.bootstrap-switch.org/methods.html)
+- [Events](http://www.bootstrap-switch.org/events.html)
 
 ## Getting started
 
