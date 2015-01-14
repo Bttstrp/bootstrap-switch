@@ -59,6 +59,7 @@
   text-align: left;
   overflow: hidden;
   line-height: 8px;
+  z-index: 0;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
