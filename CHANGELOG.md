@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.3.2
+
+- Fix for Flicker on initialisation [#425](https://github.com/nostalgiaz/bootstrap-switch/issues/425), [#422](https://github.com/nostalgiaz/bootstrap-switch/issues/422)
+- Prevent horizontal misalignment inside modal in page with odd width [#414](https://github.com/nostalgiaz/bootstrap-switch/issues/414)
+
 ## 3.3.1
 
 - Revert of switchChange event triggered only on falsy skip [#411](https://github.com/nostalgiaz/bootstrap-switch/issues/411)
