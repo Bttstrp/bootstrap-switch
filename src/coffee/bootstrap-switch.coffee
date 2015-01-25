@@ -65,13 +65,7 @@ do ($ = window.jQuery, window) ->
       @$element.prop "indeterminate", true  if @options.indeterminate
 
       # normalize handles width and set container position
-      initInterval = window.setInterval =>
-        if @$wrapper.is ":visible"
-          @_width()
-          @_containerPosition null, =>
-            @$wrapper.addClass "#{@options.baseClass}-animate"  if @options.animate
-          window.clearInterval initInterval
-      , 50
+      @_init()
 
       # initialise handlers
       @_elementHandlers()
@@ -346,6 +340,20 @@ do ($ = window.jQuery, window) ->
 
       setTimeout ->
         callback()
+      , 50
+
+    _init: ->
+      init = =>
+        @_width()
+        @_containerPosition null, =>
+          @$wrapper.addClass "#{@options.baseClass}-animate"  if @options.animate
+
+      return init()  if @$wrapper.is ":visible"
+
+      initInterval = window.setInterval =>
+        if @$wrapper.is ":visible"
+          init()
+          window.clearInterval initInterval
       , 50
 
     _elementHandlers: ->

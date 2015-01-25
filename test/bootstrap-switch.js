@@ -27,7 +27,6 @@
     var BootstrapSwitch;
     BootstrapSwitch = (function() {
       function BootstrapSwitch(element, options) {
-        var initInterval;
         if (options == null) {
           options = {};
         }
@@ -110,19 +109,7 @@
         if (this.options.indeterminate) {
           this.$element.prop("indeterminate", true);
         }
-        initInterval = window.setInterval((function(_this) {
-          return function() {
-            if (_this.$wrapper.is(":visible")) {
-              _this._width();
-              _this._containerPosition(null, function() {
-                if (_this.options.animate) {
-                  return _this.$wrapper.addClass("" + _this.options.baseClass + "-animate");
-                }
-              });
-              return window.clearInterval(initInterval);
-            }
-          };
-        })(this), 50);
+        this._init();
         this._elementHandlers();
         this._handleHandlers();
         this._labelHandlers();
@@ -473,6 +460,31 @@
         return setTimeout(function() {
           return callback();
         }, 50);
+      };
+
+      BootstrapSwitch.prototype._init = function() {
+        var init, initInterval;
+        init = (function(_this) {
+          return function() {
+            _this._width();
+            return _this._containerPosition(null, function() {
+              if (_this.options.animate) {
+                return _this.$wrapper.addClass("" + _this.options.baseClass + "-animate");
+              }
+            });
+          };
+        })(this);
+        if (this.$wrapper.is(":visible")) {
+          return init();
+        }
+        return initInterval = window.setInterval((function(_this) {
+          return function() {
+            if (_this.$wrapper.is(":visible")) {
+              init();
+              return window.clearInterval(initInterval);
+            }
+          };
+        })(this), 50);
       };
 
       BootstrapSwitch.prototype._elementHandlers = function() {
