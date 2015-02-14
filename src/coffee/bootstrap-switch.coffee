@@ -87,7 +87,9 @@ do ($ = window.jQuery, window) ->
       @indeterminate false  if @options.indeterminate
       value = not not value
 
-      @$element.prop("checked", value).trigger "change.bootstrapSwitch", skip
+      @$element.prop("checked", value)
+      .trigger "change.bootstrapSwitch", skip
+      .trigger "change"
       @$element
 
     toggleState: (skip) ->
@@ -97,7 +99,9 @@ do ($ = window.jQuery, window) ->
         @indeterminate false
         @state true
       else
-        @$element.prop("checked", not @options.state).trigger "change.bootstrapSwitch", skip
+        @$element.prop("checked", not @options.state)
+        .trigger "change.bootstrapSwitch", skip
+        .trigger "change"
 
     size: (value) ->
       return @options.size  if typeof value is "undefined"
@@ -376,6 +380,7 @@ do ($ = window.jQuery, window) ->
               .not(@$element)
               .prop("checked", false)
               .trigger "change.bootstrapSwitch", true
+              .trigger "change"
 
             @$element.trigger "switchChange.bootstrapSwitch", [state]
 
