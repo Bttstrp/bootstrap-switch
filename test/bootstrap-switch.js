@@ -459,7 +459,7 @@
         }
         return setTimeout(function() {
           return callback();
-        }, 25);
+        }, 50);
       };
 
       BootstrapSwitch.prototype._init = function() {
@@ -484,7 +484,7 @@
               return window.clearInterval(initInterval);
             }
           };
-        })(this), 25);
+        })(this), 50);
       };
 
       BootstrapSwitch.prototype._elementHandlers = function() {

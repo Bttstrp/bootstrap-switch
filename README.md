@@ -5,14 +5,6 @@
 
 Turn checkboxes and radio buttons in toggle switches.
 
-## Contribute
-
-Hi, Emanuele here. I am currently the sole contributor of Bootstrap Switch and have been mantaining it for quite a considerable amount of time.
-The development pace is strongly affected by the personal lack of time and a missing core team behind the project.
-It would be nice to have someone available for clearing the list of open issues and occasionally implementing new functionalities.
-If interest, you can drop me a line or pick a bug, kill it and open a Pull Request against `develop` branch.
-Many thanks.
-
 ## Demo and Documentation
 
 - [Examples](http://www.bootstrap-switch.org/examples.html)
@@ -47,27 +39,33 @@ $("[name='my-checkbox']").bootstrapSwitch();
 
 Enjoy.
 
-## Less
+## LESS + SASS
 
-If you want to use your bootstrap variables, include `bootstrap-switch.less` in your compilation stack. You can even choose among Bootstrap versions 2.3.2 or 3.*.* compatible source.
+Import `src/less/bootstrap2/bootstrap-switch.less` for version <= 2.3.2 or `src/less/bootstrap3/bootstrap-switch.less` for version <= 3.3.4 in your compilation stack.
 
-## AngularJs
+## Integrations
+
+### AngularJs
 
 Two custom directives are available:
 - [angular-bootstrap-switch](https://github.com/frapontillo/angular-bootstrap-switch)
 - [angular-toggle-switch](https://github.com/JumpLink/angular-toggle-switch)
 
-## KnockoutJs
+### KnockoutJs
 
 A Knockout binding handler is available [here](https://github.com/pauloortins/knockout-bootstrap-switch)
 
-## NuGet
+### NuGet
 
 A NuGet package is available [here](https://github.com/blachniet/bootstrap-switch-nuget)
 
 ## Supported browsers
 
 IE9+ and all the other modern browsers.
+
+## Known issues
+
+- Make sure `.form-control` is not applied to the input. Bootstrap does not support that, refer to [Checkboxes and radios](http://getbootstrap.com/css/#checkboxes-and-radios)
 
 ## License
 
