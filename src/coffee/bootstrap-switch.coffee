@@ -74,7 +74,7 @@ do ($ = window.jQuery, window) ->
       @_formHandler()
       @_externalLabelHandler()
 
-      @$element.trigger "init.bootstrapSwitch"
+      @$element.trigger "init.bootstrapSwitch", @options.state
 
     _constructor: BootstrapSwitch
 

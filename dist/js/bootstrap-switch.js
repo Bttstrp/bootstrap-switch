@@ -115,7 +115,7 @@
         this._labelHandlers();
         this._formHandler();
         this._externalLabelHandler();
-        this.$element.trigger("init.bootstrapSwitch");
+        this.$element.trigger("init.bootstrapSwitch", this.options.state);
       }
 
       BootstrapSwitch.prototype._constructor = BootstrapSwitch;
