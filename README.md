@@ -3,7 +3,7 @@
 [![devDependency Status](https://david-dm.org/nostalgiaz/bootstrap-switch/dev-status.svg?style=flat)](https://david-dm.org/nostalgiaz/bootstrap-switch#info=devDependencies)
 [![NPM Version](http://img.shields.io/npm/v/bootstrap-switch.svg?style=flat)](https://www.npmjs.org/)
 
-Turn checkboxes and radio buttons in toggle switches.
+Turn checkboxes and radio buttons into toggle switches.
 
 ## Demo and Documentation
 
