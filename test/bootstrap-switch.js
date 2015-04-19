@@ -562,6 +562,9 @@
 
       BootstrapSwitch.prototype._labelHandlers = function() {
         return this.$label.on({
+          "click": function(e) {
+            return e.stopPropagation();
+          },
           "mousedown.bootstrapSwitch touchstart.bootstrapSwitch": (function(_this) {
             return function(e) {
               if (_this._dragStart || _this.options.disabled || _this.options.readonly) {

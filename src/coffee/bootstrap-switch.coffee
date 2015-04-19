@@ -419,6 +419,9 @@ do ($ = window.jQuery, window) ->
 
     _labelHandlers: ->
       @$label.on
+        "click": (e) ->
+          e.stopPropagation()
+
         "mousedown.bootstrapSwitch touchstart.bootstrapSwitch": (e) =>
           return  if @_dragStart or @options.disabled or @options.readonly
 
