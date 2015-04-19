@@ -1,5 +1,7 @@
 gulp = require 'gulp'
 $ = require('gulp-load-plugins') lazy: false
+server = require('browser-sync').create()
+reload = server.reload
 extend = require('util')._extend
 karma = require('karma').server
 karmaConfig = require './karma.json'
@@ -50,10 +52,6 @@ dest =
     stylesheets: "#{paths.docs}/css"
     fonts: "#{paths.docs}/fonts"
     markup: paths.base
-
-server =
-  host: 'localhost'
-  port: 3000
 
 banner = """
   /* ========================================================================
@@ -181,20 +179,11 @@ gulp.task 'test-go', ['test-coffee'], (done) ->
   karma.start extend(karmaConfig, singleRun: true), done
 
 # extra
-gulp.task 'connect', ['docs'], ->
-  $.connect.server
-    root: [__dirname]
-    host: server.host
-    port: server.port
-    livereload: true
+gulp.task 'serve', ['docs'], ->
+  server.init
+    server: true
+    port: 3000
 
-gulp.task 'open', ['connect'], ->
-  gulp
-  .src 'index.html'
-  .pipe $.open '', url: "http://#{server.host}:#{server.port}"
-
-# watch
-gulp.task 'watch', ['connect'], ->
   gulp.watch src.scripts, ['coffee']
   gulp.watch src.stylesheets.bootstrap2, ['less-bootstrap2']
   gulp.watch src.stylesheets.bootstrap3, ['less-bootstrap3']
@@ -212,13 +201,10 @@ gulp.task 'watch', ['connect'], ->
     "#{dest.stylesheets.bootstrap3}/*.css"
     "*.html"
   ]
-  .on 'change', (event) ->
-    gulp.src event.path
-    .pipe $.connect.reload()
+  .on 'change', reload
 
 gulp.task 'docs', ['docs-vendor-scripts', 'docs-vendor-stylesheets', 'docs-vendor-fonts', 'docs-coffee', 'docs-less', 'docs-jade']
 gulp.task 'less', ['less-bootstrap2', 'less-bootstrap3']
 gulp.task 'dist', ['coffee', 'less']
 gulp.task 'test', ['coffee', 'test-coffee', 'test-go']
-gulp.task 'server', ['connect', 'open', 'watch']
-gulp.task 'default', ['dist', 'docs', 'server']
+gulp.task 'default', ['dist', 'docs', 'serve']
