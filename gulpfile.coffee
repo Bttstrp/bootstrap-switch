@@ -83,6 +83,7 @@ banner = """
 gulp.task 'coffee', ->
   gulp
   .src src.scripts
+  .pipe $.plumber errorHandler: $.notify.onError "Error: <%= error.message %>"
   .pipe $.changed dest.scripts
   .pipe $.coffeelint 'coffeelint.json'
   .pipe $.coffeelint.reporter()
@@ -100,6 +101,7 @@ gulp.task 'coffee', ->
 gulp.task 'less-bootstrap2', ->
   gulp
   .src src.stylesheets.bootstrap2
+  .pipe $.plumber errorHandler: $.notify.onError "Error: <%= error.message %>"
   .pipe $.changed dest.stylesheets.bootstrap2
   .pipe $.less()
     .on 'error', $.util.log
@@ -114,12 +116,13 @@ gulp.task 'less-bootstrap2', ->
 gulp.task 'less-bootstrap3', ->
   gulp
   .src src.stylesheets.bootstrap3
+  .pipe $.plumber errorHandler: $.notify.onError "Error: <%= error.message %>"
   .pipe $.changed dest.stylesheets.bootstrap3
   .pipe $.less()
   .pipe $.header banner, pkg: pkg
   .pipe $.rename basename: name
   .pipe gulp.dest dest.stylesheets.bootstrap3
-  .pipe $.less compress: true, cleancss: true
+  .pipe $.less plugins: [cleanCss]
   .pipe $.header banner, pkg: pkg
   .pipe $.rename suffix: '.min'
   .pipe gulp.dest dest.stylesheets.bootstrap3
@@ -141,6 +144,7 @@ gulp.task 'docs-vendor-fonts', vendorTask 'fonts'
 gulp.task 'docs-coffee', ->
   gulp
   .src src.docs.scripts
+  .pipe $.plumber errorHandler: $.notify.onError "Error: <%= error.message %>"
   .pipe $.changed dest.docs.scripts
   .pipe $.coffeelint 'coffeelint.json'
   .pipe $.coffeelint.reporter()
@@ -152,6 +156,7 @@ gulp.task 'docs-coffee', ->
 gulp.task 'docs-less', ->
   gulp
   .src src.docs.stylesheets
+  .pipe $.plumber errorHandler: $.notify.onError "Error: <%= error.message %>"
   .pipe $.changed dest.docs.stylesheets
   .pipe $.less()
   .pipe gulp.dest dest.docs.stylesheets
@@ -159,6 +164,7 @@ gulp.task 'docs-less', ->
 gulp.task 'docs-jade', ->
   gulp
   .src src.docs.markup
+  .pipe $.plumber errorHandler: $.notify.onError "Error: <%= error.message %>"
   .pipe $.changed dest.docs.markup
   .pipe $.jade pretty: true
   .pipe gulp.dest dest.docs.markup
@@ -167,6 +173,7 @@ gulp.task 'docs-jade', ->
 gulp.task 'test-coffee', ['coffee'], ->
   gulp
   .src src.test
+  .pipe $.plumber errorHandler: $.notify.onError "Error: <%= error.message %>"
   .pipe $.changed dest.test
   .pipe $.coffeelint 'coffeelint.json'
   .pipe $.coffeelint.reporter()
