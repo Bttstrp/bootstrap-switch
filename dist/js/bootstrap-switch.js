@@ -66,6 +66,7 @@
                 classes.push("" + _this.options.baseClass + "-readonly");
               }
               if (_this.options.indeterminate) {
+                _this.options.state = void 0;
                 classes.push("" + _this.options.baseClass + "-indeterminate");
               }
               if (_this.options.inverse) {
