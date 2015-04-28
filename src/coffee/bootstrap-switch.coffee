@@ -165,6 +165,7 @@ do ($ = window.jQuery, window) ->
 
     toggleIndeterminate: ->
       @options.indeterminate = not @options.indeterminate
+      @options.state = if @options.indeterminate then undefined else @options.state
 
       @$element.prop "indeterminate", @options.indeterminate
       @$wrapper.toggleClass "#{@options.baseClass}-indeterminate"

@@ -233,6 +233,7 @@
 
       BootstrapSwitch.prototype.toggleIndeterminate = function() {
         this.options.indeterminate = !this.options.indeterminate;
+        this.options.state = this.options.indeterminate ? void 0 : this.options.state;
         this.$element.prop("indeterminate", this.options.indeterminate);
         this.$wrapper.toggleClass("" + this.options.baseClass + "-indeterminate");
         this._containerPosition();
