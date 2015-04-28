@@ -31,7 +31,9 @@ do ($ = window.jQuery, window) ->
           classes.push "#{@options.baseClass}-#{@options.size}" if @options.size?
           classes.push "#{@options.baseClass}-disabled" if @options.disabled
           classes.push "#{@options.baseClass}-readonly" if @options.readonly
-          classes.push "#{@options.baseClass}-indeterminate" if @options.indeterminate
+          if @options.indeterminate
+            @options.state = undefined
+            classes.push "#{@options.baseClass}-indeterminate"
           classes.push "#{@options.baseClass}-inverse" if @options.inverse
           classes.push "#{@options.baseClass}-id-#{@$element.attr("id")}" if @$element.attr "id"
           classes.join " "
