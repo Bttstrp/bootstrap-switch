@@ -410,14 +410,14 @@ do ($ = window.jQuery, window) ->
         event.preventDefault()
         event.stopPropagation()
 
-        @state false
+        @state @options.indeterminate
         @$element.trigger "focus.bootstrapSwitch"
 
       @$off.on "click.bootstrapSwitch", (event) =>
         event.preventDefault()
         event.stopPropagation()
 
-        @state true
+        @state !@options.indeterminate
         @$element.trigger "focus.bootstrapSwitch"
 
     _labelHandlers: ->

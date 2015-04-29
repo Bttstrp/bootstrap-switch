@@ -548,7 +548,7 @@
           return function(event) {
             event.preventDefault();
             event.stopPropagation();
-            _this.state(false);
+            _this.state(_this.options.indeterminate);
             return _this.$element.trigger("focus.bootstrapSwitch");
           };
         })(this));
@@ -556,7 +556,7 @@
           return function(event) {
             event.preventDefault();
             event.stopPropagation();
-            _this.state(true);
+            _this.state(!_this.options.indeterminate);
             return _this.$element.trigger("focus.bootstrapSwitch");
           };
         })(this));
