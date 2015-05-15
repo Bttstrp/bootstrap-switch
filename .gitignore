@@ -3,3 +3,4 @@ node_modules
 components
 test.html
 .DS_Store
+.idea
