@@ -32,6 +32,7 @@
         }
         this.$element = $(element);
         this.options = $.extend({}, $.fn.bootstrapSwitch.defaults, {
+          prevOption: {},
           state: this.$element.is(":checked"),
           size: this.$element.data("size"),
           animate: this.$element.data("animate"),
@@ -99,8 +100,14 @@
           };
         })(this));
         this.$element.on("switchChange.bootstrapSwitch", (function(_this) {
-          return function() {
-            return _this.options.onSwitchChange.apply(element, arguments);
+          return function(e) {
+            if (false === _this.options.onSwitchChange.apply(element, arguments)) {
+              if (_this.$element.is(":radio")) {
+                return $("[name='" + (_this.$element.attr('name')) + "']").trigger("previousState.bootstrapSwitch", true);
+              } else {
+                return _this.$element.trigger("previousState.bootstrapSwitch", true);
+              }
+            }
           };
         })(this));
         this.$container = this.$element.wrap(this.$container).parent();
@@ -120,6 +127,10 @@
 
       BootstrapSwitch.prototype._constructor = BootstrapSwitch;
 
+      BootstrapSwitch.prototype.setPrevOptions = function() {
+        return this.options.prevOption = $.extend(true, {}, this.options);
+      };
+
       BootstrapSwitch.prototype.state = function(value, skip) {
         if (typeof value === "undefined") {
           return this.options.state;
@@ -129,6 +140,11 @@
         }
         if (this.options.state && !this.options.radioAllOff && this.$element.is(":radio")) {
           return this.$element;
+        }
+        if (this.$element.is(":radio")) {
+          $("[name='" + (this.$element.attr('name')) + "']").trigger("setPreviousOptions.bootstrapSwitch");
+        } else {
+          this.$element.trigger("setPreviousOptions.bootstrapSwitch");
         }
         if (this.options.indeterminate) {
           this.indeterminate(false);
@@ -466,6 +482,7 @@
         var init, initInterval;
         init = (function(_this) {
           return function() {
+            _this.setPrevOptions();
             _this._width();
             return _this._containerPosition(null, function() {
               if (_this.options.animate) {
@@ -489,6 +506,20 @@
 
       BootstrapSwitch.prototype._elementHandlers = function() {
         return this.$element.on({
+          "setPreviousOptions.bootstrapSwitch": (function(_this) {
+            return function(e) {
+              return _this.setPrevOptions();
+            };
+          })(this),
+          "previousState.bootstrapSwitch": (function(_this) {
+            return function(e) {
+              _this.options = _this.options.prevOption;
+              if (_this.options.indeterminate) {
+                _this.$wrapper.addClass(_this.options.baseClass + "-indeterminate");
+              }
+              return _this.$element.prop("checked", _this.options.state).trigger("change.bootstrapSwitch", true);
+            };
+          })(this),
           "change.bootstrapSwitch": (function(_this) {
             return function(e, skip) {
               var state;
@@ -687,7 +718,8 @@
       return ret;
     };
     $.fn.bootstrapSwitch.Constructor = BootstrapSwitch;
-    return $.fn.bootstrapSwitch.defaults = {
+    $.fn.bootstrapSwitch.defaults = {
+      prevOption: {},
       state: true,
       size: null,
       animate: true,
@@ -708,6 +740,7 @@
       onInit: function() {},
       onSwitchChange: function() {}
     };
+    return $.fn.bootstrapSwitch.defaults.prevOption = $.extend(true, {}, $.fn.bootstrapSwitch.defaults);
   })(window.jQuery, window);
 
 }).call(this);

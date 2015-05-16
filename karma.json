@@ -1,8 +1,8 @@
 {
   "frameworks": ["jasmine"],
   "files": [
-    "bower_components/jquery/dist/jquery.js",
-    "bower_components/bootstrap/dist/js/bootstrap.js",
+    "components/jquery/dist/jquery.js",
+    "components/bootstrap/dist/js/bootstrap.js",
     "test/bootstrap-switch.js",
     "test/bootstrap-switch.tests.js"
   ],
