@@ -33,6 +33,21 @@ describe "Bootstrap Switch:", ->
     expect(getOptions($switch).state).toBe false
     expect(getOptions($switch2).state).toBe false
 
+  it "should something", ->
+    eventDoc = eventElement = 0
+    $switch = createCheckbox().bootstrapSwitch()
+
+    $(document).on "switchChange.bootstrapSwitch", ":checkbox", (event, state) ->
+      eventDoc++
+
+    $(":checkbox").on "switchChange.bootstrapSwitch", (event, state) ->
+      eventElement++
+
+    $switch.click()
+
+    expect(eventElement).toEqual eventDoc
+    expect(eventElement).toEqual 1
+
   describe "The Checkbox Bootstrap Switch", ->
     it "should conserve its state if onSwitchChange returns false", ->
       $switch = createCheckbox().bootstrapSwitch
@@ -88,8 +103,3 @@ describe "Bootstrap Switch:", ->
       expect($radio1.bootstrapSwitch('state')).toEqual false
       expect($radio2.bootstrapSwitch('state')).toEqual true
       expect($radio3.bootstrapSwitch('state')).toEqual false
-
-
-
-
-

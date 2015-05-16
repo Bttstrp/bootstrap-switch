@@ -38,6 +38,20 @@
       expect(getOptions($switch).state).toBe(false);
       return expect(getOptions($switch2).state).toBe(false);
     });
+    it("should something", function() {
+      var $switch, eventDoc, eventElement;
+      eventDoc = eventElement = 0;
+      $switch = createCheckbox().bootstrapSwitch();
+      $(document).on("switchChange.bootstrapSwitch", ":checkbox", function(event, state) {
+        return eventDoc++;
+      });
+      $(":checkbox").on("switchChange.bootstrapSwitch", function(event, state) {
+        return eventElement++;
+      });
+      $switch.click();
+      expect(eventElement).toEqual(eventDoc);
+      return expect(eventElement).toEqual(1);
+    });
     describe("The Checkbox Bootstrap Switch", function() {
       it("should conserve its state if onSwitchChange returns false", function() {
         var $indeterminateSwitch, $switch;
