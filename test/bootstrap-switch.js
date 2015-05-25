@@ -32,7 +32,6 @@
         }
         this.$element = $(element);
         this.options = $.extend({}, $.fn.bootstrapSwitch.defaults, {
-          prevOption: {},
           state: this.$element.is(":checked"),
           size: this.$element.data("size"),
           animate: this.$element.data("animate"),
@@ -51,6 +50,7 @@
           baseClass: this.$element.data("base-class"),
           wrapperClass: this.$element.data("wrapper-class")
         }, options);
+        this.prevOptions = {};
         this.$wrapper = $("<div>", {
           "class": (function(_this) {
             return function() {
@@ -128,7 +128,7 @@
       BootstrapSwitch.prototype._constructor = BootstrapSwitch;
 
       BootstrapSwitch.prototype.setPrevOptions = function() {
-        return this.options.prevOption = $.extend(true, {}, this.options);
+        return this.prevOptions = $.extend(true, {}, this.options);
       };
 
       BootstrapSwitch.prototype.state = function(value, skip) {
@@ -513,7 +513,7 @@
           })(this),
           "previousState.bootstrapSwitch": (function(_this) {
             return function(e) {
-              _this.options = _this.options.prevOption;
+              _this.options = _this.prevOptions;
               if (_this.options.indeterminate) {
                 _this.$wrapper.addClass(_this.options.baseClass + "-indeterminate");
               }
@@ -718,8 +718,7 @@
       return ret;
     };
     $.fn.bootstrapSwitch.Constructor = BootstrapSwitch;
-    $.fn.bootstrapSwitch.defaults = {
-      prevOption: {},
+    return $.fn.bootstrapSwitch.defaults = {
       state: true,
       size: null,
       animate: true,
@@ -740,7 +739,6 @@
       onInit: function() {},
       onSwitchChange: function() {}
     };
-    return $.fn.bootstrapSwitch.defaults.prevOption = $.extend(true, {}, $.fn.bootstrapSwitch.defaults);
   })(window.jQuery, window);
 
 }).call(this);

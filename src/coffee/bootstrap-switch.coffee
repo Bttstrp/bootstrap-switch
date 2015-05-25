@@ -5,7 +5,6 @@ do ($ = window.jQuery, window) ->
     constructor: (element, options = {}) ->
       @$element = $ element
       @options = $.extend {}, $.fn.bootstrapSwitch.defaults,
-        prevOption: {}
         state: @$element.is ":checked"
         size: @$element.data "size"
         animate: @$element.data "animate"
@@ -24,6 +23,7 @@ do ($ = window.jQuery, window) ->
         baseClass: @$element.data "base-class"
         wrapperClass: @$element.data "wrapper-class"
       , options
+      @prevOptions = {}
       @$wrapper = $ "<div>",
         class: do =>
           classes = ["#{@options.baseClass}"].concat @_getClasses @options.wrapperClass
@@ -86,7 +86,7 @@ do ($ = window.jQuery, window) ->
     _constructor: BootstrapSwitch
 
     setPrevOptions: ->
-      @options.prevOption = $.extend(true, {}, @options)
+      @prevOptions = $.extend(true, {}, @options)
 
     state: (value, skip) ->
       return @options.state  if typeof value is "undefined"
@@ -378,7 +378,7 @@ do ($ = window.jQuery, window) ->
           @setPrevOptions()
 
         "previousState.bootstrapSwitch": (e) =>
-          @options = @options.prevOption
+          @options = @prevOptions
 
           @$wrapper.addClass "#{@options.baseClass}-indeterminate"  if @options.indeterminate
           @$element.prop("checked", @options.state).trigger "change.bootstrapSwitch", true
@@ -532,7 +532,6 @@ do ($ = window.jQuery, window) ->
 
   $.fn.bootstrapSwitch.Constructor = BootstrapSwitch
   $.fn.bootstrapSwitch.defaults =
-    prevOption: {}
     state: true
     size: null
     animate: true
@@ -552,4 +551,3 @@ do ($ = window.jQuery, window) ->
     wrapperClass: "wrapper"
     onInit: ->
     onSwitchChange: ->
-  $.fn.bootstrapSwitch.defaults.prevOption = $.extend(true, {}, $.fn.bootstrapSwitch.defaults)
