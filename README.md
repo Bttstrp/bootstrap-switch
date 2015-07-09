@@ -93,8 +93,6 @@ A NuGet package is available [here](https://github.com/blachniet/bootstrap-switc
 
 ## License
 
-Licensed under the Apache License, Version 2.0
-http://www.apache.org/licenses/LICENSE-2.0
-
-We are in the process of changing from Apache to MIT. If you contributed before February 5th, 2015, please add your vote here to accept license change: 
+Licensed under the MIT License
 [https://github.com/nostalgiaz/bootstrap-switch/issues/347](https://github.com/nostalgiaz/bootstrap-switch/issues/347)
+
