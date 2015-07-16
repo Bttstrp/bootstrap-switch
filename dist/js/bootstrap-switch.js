@@ -90,7 +90,9 @@
           html: this.options.offText,
           "class": this.options.baseClass + "-handle-off " + this.options.baseClass + "-" + this.options.offColor
         });
-        this.$label = $("<span>", {
+        this.$label = $("<a>", {
+          href: "#toggle-switch",
+          title: (this.options.state) ? this.options.onText : this.options.offText,
           html: this.options.labelText,
           "class": this.options.baseClass + "-label"
         });
@@ -531,6 +533,7 @@
                 return;
               }
               _this.options.state = state;
+              _this.$label.attr({ 'title': (_this.options.state) ? _this.options.onText : _this.options.offText });
               _this.$wrapper.toggleClass(_this.options.baseClass + "-off").toggleClass(_this.options.baseClass + "-on");
               if (!skip) {
                 if (_this.$element.is(":radio")) {
