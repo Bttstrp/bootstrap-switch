@@ -270,6 +270,25 @@
               </div>
             </div>
           </div>
+          <hr>
+          <div class="text-center">
+            <h2 class="h4">Confirmation Modal to change switch</h2>
+            <input id="confirm-modal-checkbox" type="checkbox" data-switch-no-init>
+            <div id="confirm-modal" tabindex="-1" role="dialog" aria-labelledby="modal-switch-label" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header clearfix">
+                    <button type="button" data-dismiss="modal" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  </div>
+                  <div class="modal-body">
+                    <button type="button" data-dismiss="modal" class="btn btn-link">Cancel</button>
+                    <button type="button" data-dismiss="modal" data-switch-value="true" class="btn btn-primary btn-submit">Set ON</button>
+                    <button type="button" data-dismiss="modal" data-switch-value="false" class="btn btn-default btn-submit">Set OFF</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>

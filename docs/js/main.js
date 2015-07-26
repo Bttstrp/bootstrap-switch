@@ -1,5 +1,5 @@
 (function() {
-  var $confirm;
+  var $confirm, confirmModal;
 
   $confirm = null;
 
@@ -49,13 +49,31 @@
       $createDestroy.bootstrapSwitch((isSwitch ? "destroy" : null));
       return $(this).button((isSwitch ? "reset" : "destroy"));
     });
-    return $confirm = $("#confirm").bootstrapSwitch({
+    $confirm = $("#confirm").bootstrapSwitch({
       size: "large",
       onSwitchChange: function(event, state) {
         event.preventDefault();
         return console.log(state, event.isDefaultPrevented());
       }
     });
+    confirmModal();
   });
+
+  confirmModal = function() {
+    var checkboxId, confirmModalId;
+    confirmModalId = '#confirm-modal';
+    checkboxId = '#confirm-modal-checkbox';
+    $(checkboxId).bootstrapSwitch({
+      onSwitchChange: function(event, state) {
+        $(confirmModalId).modal();
+        return false;
+      }
+    });
+    $('.btn-submit', confirmModalId).on('click', function(e) {
+      var value;
+      value = $(this).data("switch-value");
+      return $(checkboxId).bootstrapSwitch('state', value, true);
+    });
+  };
 
 }).call(this);

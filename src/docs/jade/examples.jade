@@ -183,3 +183,20 @@ block content
               .modal-title#modal-switch-label Title
             .modal-body
               input#switch-modal(type='checkbox', checked)
+
+      hr
+
+      .text-center
+        h2.h4 Confirmation Modal to change switch
+        input#confirm-modal-checkbox(type='checkbox', data-switch-no-init)
+        #confirm-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modal-switch-label')
+          .modal-dialog
+            .modal-content
+              .modal-header.clearfix
+                button.close(type='button', data-dismiss='modal')
+                  span(aria-hidden='true') &times;
+                  span.sr-only Close
+              .modal-body
+                button.btn.btn-link(type='button', data-dismiss='modal') Cancel
+                button.btn.btn-primary.btn-submit(type='button', data-dismiss='modal', data-switch-value='true') Set ON
+                button.btn.btn-default.btn-submit(type='button', data-dismiss='modal', data-switch-value='false') Set OFF

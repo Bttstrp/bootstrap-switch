@@ -48,3 +48,27 @@ $ ->
     onSwitchChange: (event, state) ->
       event.preventDefault()
       console.log state, event.isDefaultPrevented()
+
+  confirmModal()
+
+  return
+
+
+# Confirmation Modal to change switch
+confirmModal = ->
+  confirmModalId = '#confirm-modal'
+  checkboxId = '#confirm-modal-checkbox'
+
+  $(checkboxId).bootstrapSwitch(
+    onSwitchChange: (event, state) ->
+      $(confirmModalId).modal()
+
+      false
+  )
+
+  $('.btn-submit', confirmModalId).on('click', (e)->
+    value = $(this).data("switch-value")
+    $(checkboxId).bootstrapSwitch('state', value, true)
+  )
+
+  return
