@@ -1,5 +1,5 @@
 /* ========================================================================
- * react-bootstrap-switch - v3.3.2
+ * react-bootstrap-switch - v3.3.3
  * https://github.com/Julusian/react-bootstrap-switch
  * ========================================================================
  * Copyright 2012-2015 Julian Waller
