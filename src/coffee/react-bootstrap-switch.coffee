@@ -183,7 +183,7 @@ module.exports = React.createClass
       @setState
         offset: if @_prop('inverse') then values[0] else values[1]
 
-    _elementHandlers: ->
+  _elementHandlers: ->
     $element = $ @refs.element.getDOMNode()
     $element.on
       "change.bootstrapSwitch": (e, skip) =>

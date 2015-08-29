@@ -9,7 +9,7 @@
     "javascript",
     "js"
   ],
-  "homepage": "http://www.bootstrap-switch.org",
+  "homepage": "https://github.com/Julusian/react-bootstrap-switch",
   "author": {
     "name": "Julian Waller",
     "email": "git@julusian.co.uk"
@@ -30,7 +30,7 @@
       "url": "http://www.bdmdesign.org"
     }
   ],
-  "main": "dist/js/bootstrap-switch.js",
+  "main": "dist/js/react-bootstrap-switch.js",
   "dependencies": {
     "jquery": ">=1.9.0"
   },

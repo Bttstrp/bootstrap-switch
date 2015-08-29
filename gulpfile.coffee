@@ -37,20 +37,9 @@ banner = """
    * <%= pkg.name %> - v<%= pkg.version %>
    * <%= pkg.homepage %>
    * ========================================================================
-   * Copyright 2012-2013 <%= pkg.author.name %>
+   * Copyright 2012-2015 <%= pkg.author.name %>
    *
-   * ========================================================================
-   * Licensed under the Apache License, Version 2.0 (the "License");
-   * you may not use this file except in compliance with the License.
-   * You may obtain a copy of the License at
-   *
-   *     http://www.apache.org/licenses/LICENSE-2.0
-   *
-   * Unless required by applicable law or agreed to in writing, software
-   * distributed under the License is distributed on an "AS IS" BASIS,
-   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   * See the License for the specific language governing permissions and
-   * limitations under the License.
+   * Released under the MIT license
    * ========================================================================
    */
 
@@ -123,11 +112,7 @@ gulp.task 'test-go', ['test-coffee'], (done) ->
   karma.start extend(karmaConfig, singleRun: true), done
 
 # extra
-gulp.task 'serve', [], ->
-  server.init
-    server: true
-    port: 3000
-
+gulp.task 'watch', [], ->
   gulp.watch src.scripts, ['coffee']
   gulp.watch src.stylesheets.bootstrap2, ['less-bootstrap2']
   gulp.watch src.stylesheets.bootstrap3, ['less-bootstrap3']
@@ -144,4 +129,4 @@ gulp.task 'serve', [], ->
 gulp.task 'less', ['less-bootstrap2', 'less-bootstrap3']
 gulp.task 'dist', ['coffee', 'less']
 gulp.task 'test', ['coffee', 'test-coffee', 'test-go']
-gulp.task 'default', ['dist', 'serve']
+gulp.task 'default', ['dist', 'watch']

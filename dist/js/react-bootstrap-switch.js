@@ -1,21 +1,10 @@
 /* ========================================================================
- * bootstrap-switch - v3.3.2
- * http://www.bootstrap-switch.org
+ * react-bootstrap-switch - v3.3.2
+ * https://github.com/Julusian/react-bootstrap-switch
  * ========================================================================
- * Copyright 2012-2013 Mattia Larentis
+ * Copyright 2012-2015 Julian Waller
  *
- * ========================================================================
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Released under the MIT license
  * ========================================================================
  */
 
@@ -43,9 +32,7 @@
       handleWidth: "auto",
       labelWidth: "auto",
       baseClass: "bootstrap-switch",
-      wrapperClass: "wrapper",
-      onInit: function() {},
-      onSwitchChange: function() {}
+      wrapperClass: "wrapper"
     },
     getInitialState: function() {
       return {
@@ -222,7 +209,7 @@
       }, callback);
     },
     _containerPosition: function(state) {
-      var $element, values;
+      var values;
       if (state == null) {
         state = this.state.state;
       }
@@ -232,17 +219,17 @@
           offset: "-" + (this.state.handleWidth / 2) + "px"
         });
       } else if (state) {
-        this.setState({
+        return this.setState({
           offset: this._prop('inverse') ? values[1] : values[0]
         });
       } else {
-        this.setState({
+        return this.setState({
           offset: this._prop('inverse') ? values[0] : values[1]
         });
       }
-      ({
-        _elementHandlers: function() {}
-      });
+    },
+    _elementHandlers: function() {
+      var $element;
       $element = $(this.refs.element.getDOMNode());
       return $element.on({
         "change.bootstrapSwitch": (function(_this) {
