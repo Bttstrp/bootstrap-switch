@@ -19,8 +19,6 @@ module.exports = React.createClass
     labelWidth: "auto"
     baseClass: "bootstrap-switch"
     wrapperClass: "wrapper"
-    onInit: ->
-    onSwitchChange: ->
 
   # treating this as a constructor..
   getInitialState: ->

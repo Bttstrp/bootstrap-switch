@@ -16,7 +16,6 @@ paths =
   src: 'src'
   dist: 'dist'
   test: 'test'
-  docs: "docs"
   components: "components"
 
 src =
@@ -25,21 +24,6 @@ src =
     bootstrap2: "#{paths.src}/less/bootstrap2/build.less"
     bootstrap3: "#{paths.src}/less/bootstrap3/build.less"
   test: "#{paths.src}/coffee/#{name}.tests.coffee"
-  docs:
-    vendor:
-      scripts: [
-        "#{paths.components}/jquery/dist/jquery.min.js"
-        "#{paths.components}/bootstrap/dist/js/bootstrap.min.js"
-        "#{paths.src}/docs/js/*.js"
-      ]
-      stylesheets: [
-        "#{paths.components}/bootstrap/dist/css/bootstrap.min.css"
-        "#{paths.src}/docs/css/*.css"
-      ]
-      fonts: "#{paths.components}/bootstrap/dist/fonts/*"
-    scripts: "#{paths.src}/docs/coffee/main.coffee"
-    stylesheets: "#{paths.src}/docs/less/main.less"
-    markup: "#{paths.src}/docs/jade/*.jade"
 
 dest =
   scripts: "#{paths.dist}/js"
@@ -47,11 +31,6 @@ dest =
     bootstrap2: "#{paths.dist}/css/bootstrap2"
     bootstrap3: "#{paths.dist}/css/bootstrap3"
   test: paths.test
-  docs:
-    scripts: "#{paths.docs}/js"
-    stylesheets: "#{paths.docs}/css"
-    fonts: "#{paths.docs}/fonts"
-    markup: paths.base
 
 banner = """
   /* ========================================================================
@@ -127,48 +106,6 @@ gulp.task 'less-bootstrap3', ->
   .pipe $.rename suffix: '.min'
   .pipe gulp.dest dest.stylesheets.bootstrap3
 
-# docs
-vendorTask = (name) ->
-  return ->
-    gulp
-    .src src.docs.vendor[name]
-    .pipe $.changed dest.docs[name]
-    .pipe gulp.dest dest.docs[name]
-
-gulp.task 'docs-vendor-scripts', vendorTask 'scripts'
-
-gulp.task 'docs-vendor-stylesheets', vendorTask 'stylesheets'
-
-gulp.task 'docs-vendor-fonts', vendorTask 'fonts'
-
-gulp.task 'docs-coffee', ->
-  gulp
-  .src src.docs.scripts
-  .pipe $.plumber errorHandler: $.notify.onError "Error: <%= error.message %>"
-  .pipe $.changed dest.docs.scripts
-  .pipe $.coffeelint 'coffeelint.json'
-  .pipe $.coffeelint.reporter()
-  .pipe $.coffeelint.reporter("fail")
-  .pipe $.coffee()
-    .on 'error', $.util.log
-  .pipe gulp.dest dest.docs.scripts
-
-gulp.task 'docs-less', ->
-  gulp
-  .src src.docs.stylesheets
-  .pipe $.plumber errorHandler: $.notify.onError "Error: <%= error.message %>"
-  .pipe $.changed dest.docs.stylesheets
-  .pipe $.less()
-  .pipe gulp.dest dest.docs.stylesheets
-
-gulp.task 'docs-jade', ->
-  gulp
-  .src src.docs.markup
-  .pipe $.plumber errorHandler: $.notify.onError "Error: <%= error.message %>"
-  .pipe $.changed dest.docs.markup
-  .pipe $.jade pretty: true
-  .pipe gulp.dest dest.docs.markup
-
 # test
 gulp.task 'test-coffee', ['coffee'], ->
   gulp
@@ -186,7 +123,7 @@ gulp.task 'test-go', ['test-coffee'], (done) ->
   karma.start extend(karmaConfig, singleRun: true), done
 
 # extra
-gulp.task 'serve', ['docs'], ->
+gulp.task 'serve', [], ->
   server.init
     server: true
     port: 3000
@@ -194,12 +131,6 @@ gulp.task 'serve', ['docs'], ->
   gulp.watch src.scripts, ['coffee']
   gulp.watch src.stylesheets.bootstrap2, ['less-bootstrap2']
   gulp.watch src.stylesheets.bootstrap3, ['less-bootstrap3']
-  gulp.watch src.docs.vendor.scripts, ['docs-vendor-scripts']
-  gulp.watch src.docs.vendor.stylesheets, ['docs-vendor-stylesheets']
-  gulp.watch src.docs.vendor.fonts, ['docs-vendor-fonts']
-  gulp.watch src.docs.scripts, ['docs-coffee']
-  gulp.watch src.docs.stylesheets, ['docs-less']
-  gulp.watch src.docs.markup, ['docs-jade']
 
   gulp.watch('package.json', ['dist']).on 'change', -> pkg = require './package.json'
   gulp.watch [
@@ -210,8 +141,7 @@ gulp.task 'serve', ['docs'], ->
   ]
   .on 'change', reload
 
-gulp.task 'docs', ['docs-vendor-scripts', 'docs-vendor-stylesheets', 'docs-vendor-fonts', 'docs-coffee', 'docs-less', 'docs-jade']
 gulp.task 'less', ['less-bootstrap2', 'less-bootstrap3']
 gulp.task 'dist', ['coffee', 'less']
 gulp.task 'test', ['coffee', 'test-coffee', 'test-go']
-gulp.task 'default', ['dist', 'docs', 'serve']
+gulp.task 'default', ['dist', 'serve']

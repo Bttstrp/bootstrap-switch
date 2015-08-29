@@ -1,8 +1,9 @@
 {
-  "name": "bootstrap-switch",
+  "name": "react-bootstrap-switch",
   "description": "Turn checkboxes and radio buttons into toggle switches.",
   "version": "3.3.2",
   "keywords": [
+    "react",
     "bootstrap",
     "switch",
     "javascript",
@@ -10,11 +11,15 @@
   ],
   "homepage": "http://www.bootstrap-switch.org",
   "author": {
-    "name": "Mattia Larentis",
-    "email": "mattia@larentis.eu",
-    "url": "http://larentis.eu"
+    "name": "Julian Waller",
+    "email": "git@julusian.co.uk"
   },
   "contributors": [
+    {
+      "name": "Mattia Larentis",
+      "email": "mattia@larentis.eu",
+      "url": "http://larentis.eu"
+    },
     {
       "name": "Emanuele Marchi",
       "email": "emanuele@lostcrew.it",
@@ -27,22 +32,22 @@
   ],
   "main": "dist/js/bootstrap-switch.js",
   "dependencies": {
-    "coffee-react-transform": "^3.2.0",
-    "gulp-cjsx": "^3.0.0",
     "jquery": ">=1.9.0"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/nostalgiaz/bootstrap-switch.git"
+    "url": "https://github.com/Julusian/react-bootstrap-switch.git"
   },
-  "bugs": "https://github.com/nostalgiaz/bootstrap-switch/issues",
-  "license": "Apache Version 2",
+  "bugs": "https://github.com/Julusian/react-bootstrap-switch/issues",
+  "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
     "browser-sync": "^2.6.4",
+    "coffee-react-transform": "^3.2.0",
     "coffee-script": "~1.9.2",
     "gulp": "^3.8.11",
     "gulp-changed": "^1.2.1",
+    "gulp-cjsx": "^3.0.0",
     "gulp-coffee": "~2.3.1",
     "gulp-coffeelint": "~0.4.0",
     "gulp-connect": "^2.2.0",
@@ -67,7 +72,7 @@
     "build": "gulp dist",
     "test": "gulp test"
   },
-  "npmName": "bootstrap-switch",
+  "npmName": "react-bootstrap-switch",
   "npmFileMap": [
     {
       "basePath": "/dist/",
