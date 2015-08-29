@@ -1,4 +1,7 @@
 {
+    "coffeelint": {
+        "transforms": [ "coffee-react-transform" ]
+    },
     "coffeescript_error": {
         "level": "error"
     },
@@ -19,7 +22,7 @@
     "max_line_length": {
         "name": "max_line_length",
         "value": 120,
-        "level": "error",
+        "level": "warn",
         "limitComments": true
     },
     "line_endings": {

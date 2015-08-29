@@ -88,7 +88,7 @@ gulp.task 'coffee', ->
   .pipe $.coffeelint 'coffeelint.json'
   .pipe $.coffeelint.reporter()
   .pipe $.coffeelint.reporter("fail")
-  .pipe $.coffee()
+  .pipe $.cjsx()
     .on 'error', $.util.log
   .pipe $.header banner, pkg: pkg
   .pipe gulp.dest dest.scripts
