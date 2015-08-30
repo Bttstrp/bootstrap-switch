@@ -54,11 +54,14 @@
         return this.props[key];
       }
     },
-    state: function(value) {
+    valueState: function(value) {
       if (typeof value === "undefined") {
         return this.state.state;
       }
       if (this.state.disabled || this.state.readonly) {
+        return this;
+      }
+      if (this.state.state === value) {
         return this;
       }
       this._changeState(!!value);

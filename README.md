@@ -52,7 +52,7 @@ These should be defined on the JSX node, many cannot be changed once they have b
 ### Methods
 | Name         | Parameters    | Description |
 | ------------ | ------- | ----------- |
-| **state** | boolean  | Get or set the switch state |
+| **valueState** | boolean  | Get or set the switch state |
 | **toggleState**   |  | Toggle the switch state |
 | **disabled** | boolean | Get or set the disabled state |
 | **toggleDisabled** |  | Toggle the disabled state |

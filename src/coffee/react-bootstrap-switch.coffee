@@ -38,9 +38,11 @@ module.exports = React.createClass
     else
       @props[key]
 
-  state: (value) ->
+  valueState: (value) ->
     return @state.state  if typeof value is "undefined"
     return @  if @state.disabled or @state.readonly
+
+    return @ if @state.state == value
 
     # remove indeterminate
     @_changeState not not value
