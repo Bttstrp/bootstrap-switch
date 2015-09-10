@@ -71,8 +71,8 @@
       "basePath": "/dist/",
       "files": [
         "*.js",
-        "bootstrap3/*.css",
-        "bootstrap2/*.css"
+        "css/bootstrap3/*.css",
+        "css/bootstrap2/*.css"
       ]
     }
   ]
