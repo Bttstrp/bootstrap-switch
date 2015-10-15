@@ -54,20 +54,26 @@
         return this.props[key];
       }
     },
-    valueState: function(value) {
-      if (typeof value === "undefined") {
+    value: function(val) {
+      if (typeof val === "undefined") {
         return this.state.state;
       }
       if (this.state.disabled || this.state.readonly) {
         return this;
       }
-      if (this.state.state === value) {
+      if (this.state.state === val) {
         return this;
       }
-      this._changeState(!!value);
+      this._changeState(!!val);
       return this;
     },
+    valueState: function(val) {
+      return this.value(val);
+    },
     toggleState: function() {
+      return this.toggleValue();
+    },
+    toggleValue: function() {
       if (this.state.disabled || this.state.readonly) {
         return this;
       }
@@ -88,8 +94,9 @@
       return this.toggleDisabled();
     },
     toggleDisabled: function() {
-      this.state.disabled = !this.state.disabled;
-      $(this.refs.element).prop("disabled", this.state.disabled);
+      this.setState({
+        disabled: !this.state.disabled
+      });
       return this;
     },
     readonly: function(value) {
@@ -103,26 +110,37 @@
       return this.toggleReadonly();
     },
     toggleReadonly: function() {
-      this.state.readonly = !this.state.readonly;
-      $(this.refs.element).prop("readonly", this.state.readonly);
+      this.setState({
+        readonly: !this.state.readonly
+      });
       return this;
     },
     handleWidth: function(value) {
       if (typeof value === "undefined") {
         return this.state.handleWidth;
       }
-      this.state.handleWidth = value;
-      this._width();
-      this._containerPosition();
+      this.setState({
+        handleWidth: value
+      }, (function(_this) {
+        return function() {
+          _this._width();
+          return _this._containerPosition();
+        };
+      })(this));
       return this;
     },
     labelWidth: function(value) {
       if (typeof value === "undefined") {
         return this.state.labelWidth;
       }
-      this.state.labelWidth = value;
-      this._width();
-      this._containerPosition();
+      this.setState({
+        labelWidth: value
+      }, (function(_this) {
+        return function() {
+          _this._width();
+          return _this._containerPosition();
+        };
+      })(this));
       return this;
     },
     _fireStateChange: function() {
@@ -155,6 +173,9 @@
         return function(event) {
           event.preventDefault();
           event.stopPropagation();
+          if (_this.state.disabled || _this.state.readonly) {
+            return;
+          }
           _this._changeState(false);
           return _this._elmTrigger("focus.bootstrapSwitch");
         };
@@ -163,6 +184,9 @@
         return function(event) {
           event.preventDefault();
           event.stopPropagation();
+          if (_this.state.disabled || _this.state.readonly) {
+            return;
+          }
           _this._changeState(true);
           return _this._elmTrigger("focus.bootstrapSwitch");
         };
@@ -413,6 +437,9 @@
         }
       }, (this._prop('inverse') ? offElm : onElm), React.createElement("span", {
         "className": (this._prop('baseClass')) + "-label",
+        "style": {
+          width: this.state.labelWidth
+        },
         "ref": "label"
       }, this._prop('labelText')), (this._prop('inverse') ? onElm : offElm), React.createElement("input", {
         "type": "checkbox",

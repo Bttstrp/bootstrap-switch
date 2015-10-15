@@ -38,17 +38,23 @@ module.exports = React.createClass
     else
       @props[key]
 
-  valueState: (value) ->
-    return @state.state  if typeof value is "undefined"
+  value: (val) ->
+    return @state.state  if typeof val is "undefined"
     return @  if @state.disabled or @state.readonly
 
-    return @ if @state.state == value
+    return @ if @state.state == val
 
     # remove indeterminate
-    @_changeState not not value
+    @_changeState not not val
     @
 
+  valueState: (val) ->
+    return @value(val)
+
   toggleState: ->
+    return @toggleValue()
+
+  toggleValue: ->
     return @  if @state.disabled or @state.readonly
 
     if @state.indeterminate
@@ -65,9 +71,8 @@ module.exports = React.createClass
     @toggleDisabled()
 
   toggleDisabled: ->
-    @state.disabled = not @state.disabled
-
-    $(@refs.element).prop "disabled", @state.disabled
+    @setState
+      disabled: not @state.disabled
     @
 
   readonly: (value) ->
@@ -79,25 +84,27 @@ module.exports = React.createClass
     @toggleReadonly()
 
   toggleReadonly: ->
-    @state.readonly = not @state.readonly
-
-    $(@refs.element).prop "readonly", @state.readonly
+    @setState
+      readonly: not @state.readonly
     @
 
   handleWidth: (value) ->
     return @state.handleWidth  if typeof value is "undefined"
 
-    @state.handleWidth = value
-    @_width()
-    @_containerPosition()
+    @setState
+      handleWidth: value, =>
+        @_width()
+        @_containerPosition()
     @
+
 
   labelWidth: (value) ->
     return @state.labelWidth  if typeof value is "undefined"
 
-    @state.labelWidth = value
-    @_width()
-    @_containerPosition()
+    @setState
+      labelWidth: value, =>
+        @_width()
+        @_containerPosition()
     @
 
   _fireStateChange: ->
@@ -121,12 +128,16 @@ module.exports = React.createClass
       event.preventDefault()
       event.stopPropagation()
 
+      return  if @state.disabled or @state.readonly
+
       @_changeState false
       @_elmTrigger "focus.bootstrapSwitch"
 
     $(@refs.off.getDOMNode()).on "click.bootstrapSwitch", (event) =>
       event.preventDefault()
       event.stopPropagation()
+
+      return  if @state.disabled or @state.readonly
 
       @_changeState true
       @_elmTrigger "focus.bootstrapSwitch"
@@ -304,7 +315,7 @@ module.exports = React.createClass
       <div className={ wrapperClass } ref="wrapper" style={{width:wrapperWidth}}>
         <div className={ "#{@_prop('baseClass')}-container" } ref="container" style={{width:containerWidth, marginLeft:@state.offset}}>
           {if @_prop('inverse') then offElm else onElm}
-          <span className={"#{@_prop('baseClass')}-label"} ref="label">{ @_prop('labelText') }</span>
+          <span className={"#{@_prop('baseClass')}-label"} style={{width:@state.labelWidth}} ref="label">{ @_prop('labelText') }</span>
           {if @_prop('inverse') then onElm else offElm}
           <input type="checkbox" ref="element" />
         </div>

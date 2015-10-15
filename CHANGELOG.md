@@ -4,6 +4,8 @@
 
 - Rename getState to valueState to fix collision with standard react method
 - Add this as a parameter to the onChange event [#1](https://github.com/Julusian/react-bootstrap-switch/issues/1)
+- Add value and toggleValue as alternate names for valueState and toggleState respectively
+- Fix issues with disabled, readonly, handleWidth and labelWidth
 
 ## 3.3.2
 
