@@ -126,9 +126,13 @@
       return this;
     },
     _fireStateChange: function() {
-      if (typeof this.props.onChange !== "undefined") {
-        return this.props.onChange(this.state.state);
+      if (typeof this.props.onChange === "undefined") {
+        return;
       }
+      if (this.props.onChange.length >= 2) {
+        return this.props.onChange(this, this.state.state);
+      }
+      return this.props.onChange(this.state.state);
     },
     _changeState: function(state) {
       return this.setState({

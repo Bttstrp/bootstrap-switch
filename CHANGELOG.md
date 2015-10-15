@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.3.4
+
+- Rename getState to valueState to fix collision with standard react method
+- Add this as a parameter to the onChange event [#1](https://github.com/Julusian/react-bootstrap-switch/issues/1)
+
 ## 3.3.2
 
 - Fix for Flicker on initialisation [#425](https://github.com/nostalgiaz/bootstrap-switch/issues/425), [#422](https://github.com/nostalgiaz/bootstrap-switch/issues/422)

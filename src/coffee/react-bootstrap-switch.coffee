@@ -101,7 +101,9 @@ module.exports = React.createClass
     @
 
   _fireStateChange: ->
-    @props.onChange(@state.state) if typeof @props.onChange != "undefined"
+    return if typeof @props.onChange == "undefined"
+    return @props.onChange(this, @state.state) if(@props.onChange.length >= 2)
+    @props.onChange(@state.state)
 
   _changeState: (state) ->
     @setState

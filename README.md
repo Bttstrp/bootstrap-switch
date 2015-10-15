@@ -47,7 +47,7 @@ These should be defined on the JSX node, many cannot be changed once they have b
 | **labelWidth**    | string or number | 'auto' | 'auto' or Number |  Width of the center handle in pixels |
 | **baseClass**     | string  | 'bootstrap-switch' | | Global class prefix  |
 | **wrapperClass**  | string  | 'wrapper' | | Container element class(es) |
-| **onChange**      | function | undefined| | function(state){} |
+| **onChange**      | function | undefined| | function(elm, state){} or function(state){} |
 
 ### Methods
 | Name         | Parameters    | Description |
