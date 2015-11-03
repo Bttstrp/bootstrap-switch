@@ -1,5 +1,5 @@
 /* ========================================================================
- * react-bootstrap-switch - v3.3.3
+ * react-bootstrap-switch - v3.3.4
  * https://github.com/Julusian/react-bootstrap-switch
  * ========================================================================
  * Copyright 2012-2015 Julian Waller
@@ -165,11 +165,11 @@
     },
     _elmTrigger: function(e) {
       var elm;
-      elm = $(this.refs.element.getDOMNode());
+      elm = $(this.refs.element);
       return elm.trigger(e);
     },
     _handleHandlers: function() {
-      $(this.refs.on.getDOMNode()).on("click.bootstrapSwitch", (function(_this) {
+      $(this.refs.on).on("click.bootstrapSwitch", (function(_this) {
         return function(event) {
           event.preventDefault();
           event.stopPropagation();
@@ -180,7 +180,7 @@
           return _this._elmTrigger("focus.bootstrapSwitch");
         };
       })(this));
-      return $(this.refs.off.getDOMNode()).on("click.bootstrapSwitch", (function(_this) {
+      return $(this.refs.off).on("click.bootstrapSwitch", (function(_this) {
         return function(event) {
           event.preventDefault();
           event.stopPropagation();
@@ -201,12 +201,12 @@
           });
         };
       })(this);
-      if ($(this.refs.wrapper.getDOMNode()).is(":visible")) {
+      if ($(this.refs.wrapper).is(":visible")) {
         init();
       } else {
         initInterval = window.setInterval((function(_this) {
           return function() {
-            if ($(_this.refs.wrapper.getDOMNode()).is(":visible")) {
+            if ($(_this.refs.wrapper).is(":visible")) {
               init();
               return window.clearInterval(initInterval);
             }
@@ -219,9 +219,9 @@
     },
     _width: function(callback) {
       var $handles, $label, $off, $on, handleWidth;
-      $on = $(this.refs.on.getDOMNode());
-      $off = $(this.refs.off.getDOMNode());
-      $label = $(this.refs.label.getDOMNode());
+      $on = $(this.refs.on);
+      $off = $(this.refs.off);
+      $label = $(this.refs.label);
       $handles = $on.add($off);
       $handles.add($label).css("width", "");
       handleWidth = this.state.handleWidth === "auto" ? Math.max($on.width(), $off.width()) : this.state.handleWidth;
@@ -261,7 +261,7 @@
     },
     _elementHandlers: function() {
       var $element;
-      $element = $(this.refs.element.getDOMNode());
+      $element = $(this.refs.element);
       return $element.on({
         "change.bootstrapSwitch": (function(_this) {
           return function(e, skip) {
@@ -307,7 +307,7 @@
     },
     _labelHandlers: function() {
       var $label;
-      $label = $(this.refs.label.getDOMNode());
+      $label = $(this.refs.label);
       return $label.on({
         "click": function(e) {
           return e.stopPropagation();
