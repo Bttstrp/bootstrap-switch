@@ -120,11 +120,11 @@ module.exports = React.createClass
         @_fireStateChange()
 
   _elmTrigger: (e) ->
-    elm = $ @refs.element.getDOMNode()
+    elm = $ @refs.element
     elm.trigger e
 
   _handleHandlers: ->
-    $(@refs.on.getDOMNode()).on "click.bootstrapSwitch", (event) =>
+    $(@refs.on).on "click.bootstrapSwitch", (event) =>
       event.preventDefault()
       event.stopPropagation()
 
@@ -133,7 +133,7 @@ module.exports = React.createClass
       @_changeState false
       @_elmTrigger "focus.bootstrapSwitch"
 
-    $(@refs.off.getDOMNode()).on "click.bootstrapSwitch", (event) =>
+    $(@refs.off).on "click.bootstrapSwitch", (event) =>
       event.preventDefault()
       event.stopPropagation()
 
@@ -146,11 +146,11 @@ module.exports = React.createClass
     init = =>
       @_width => @_containerPosition null
 
-    if $(@refs.wrapper.getDOMNode()).is ":visible"
+    if $(@refs.wrapper).is ":visible"
       init()
     else
       initInterval = window.setInterval =>
-        if $(@refs.wrapper.getDOMNode()).is ":visible"
+        if $(@refs.wrapper).is ":visible"
           init()
           window.clearInterval initInterval
       , 50
@@ -160,9 +160,9 @@ module.exports = React.createClass
     @_elementHandlers()
 
   _width: (callback) ->
-    $on = $(@refs.on.getDOMNode())
-    $off = $(@refs.off.getDOMNode())
-    $label = $(@refs.label.getDOMNode())
+    $on = $(@refs.on)
+    $off = $(@refs.off)
+    $label = $(@refs.label)
     $handles = $on.add($off)
 
     # remove width from inline style
@@ -199,7 +199,7 @@ module.exports = React.createClass
         offset: if @_prop('inverse') then values[0] else values[1]
 
   _elementHandlers: ->
-    $element = $ @refs.element.getDOMNode()
+    $element = $ @refs.element
     $element.on
       "change.bootstrapSwitch": (e, skip) =>
         e.preventDefault()
@@ -234,7 +234,7 @@ module.exports = React.createClass
 
 
   _labelHandlers: ->
-    $label = $(@refs.label.getDOMNode())
+    $label = $(@refs.label)
     $label.on
       "click": (e) ->
         e.stopPropagation()
