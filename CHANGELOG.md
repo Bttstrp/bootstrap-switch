@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.4.0
+
+- Remove calls to .getDOMNode() [#3](https://github.com/Julusian/react-bootstrap-switch/pull/3) Thanks to jking90 
+
 ## 3.3.4
 
 - Rename getState to valueState to fix collision with standard react method

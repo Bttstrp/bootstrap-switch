@@ -5,7 +5,7 @@
 
 This project is a port of [bootstrap-switch](https://github.com/nostalgiaz/bootstrap-switch) for use in React.js
 
-Currently it does not support radio buttons.
+Verion 3.4.x is built for React.js 0.14. It will not work with earlier versions of React.js.
 
 ## Usage
 
