@@ -6,7 +6,7 @@
 Turn checkboxes and radio buttons into toggle switches.
 This library is created by [Mattia Larentis](http://github.com/nostalgiaz) and maintained by the core team, with the help of the community.
 
-To get started, check out [http://bootstrap-switch.org](http://bootstrap-switch.org)!
+To get started, check out [http://www.bootstrap-switch.org](http://www.bootstrap-switch.org)!
 
 #### Core team
 - [Mattia Larentis](http://github.com/nostalgiaz)
