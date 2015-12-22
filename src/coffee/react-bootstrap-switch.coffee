@@ -260,6 +260,7 @@ module.exports = React.createClass
 
         @setState
           offset: "#{difference}px"
+          dragged: true
 
       "mouseup.bootstrapSwitch touchend.bootstrapSwitch": (e) =>
         return  unless @state.dragStart
@@ -267,14 +268,15 @@ module.exports = React.createClass
         e.preventDefault()
 
         state = not @state.state
-        difference = parseInt @state.offset
 
-        if difference
+        if @state.dragged
+          difference = parseInt @state.offset
           state = difference > -(@state.handleWidth / 2)
           state = if @_prop('inverse') then not state else state
 
         @setState
           dragStart: false
+          dragged: false
           state: state, =>
             @_containerPosition()
             @_fireStateChange()
