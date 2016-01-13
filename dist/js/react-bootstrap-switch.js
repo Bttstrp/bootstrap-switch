@@ -1,5 +1,5 @@
 /* ========================================================================
- * react-bootstrap-switch - v3.3.4
+ * react-bootstrap-switch - v3.4.1
  * https://github.com/Julusian/react-bootstrap-switch
  * ========================================================================
  * Copyright 2012-2015 Julian Waller
@@ -338,7 +338,8 @@
               return;
             }
             return _this.setState({
-              offset: difference + "px"
+              offset: difference + "px",
+              dragged: true
             });
           };
         })(this),
@@ -350,13 +351,14 @@
             }
             e.preventDefault();
             state = !_this.state.state;
-            difference = parseInt(_this.state.offset);
-            if (difference) {
+            if (_this.state.dragged) {
+              difference = parseInt(_this.state.offset);
               state = difference > -(_this.state.handleWidth / 2);
               state = _this._prop('inverse') ? !state : state;
             }
             return _this.setState({
               dragStart: false,
+              dragged: false,
               state: state
             }, function() {
               _this._containerPosition();

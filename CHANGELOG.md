@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.4.1
+
+- Don't fill switch to 100% of parent height [#5](https://github.com/Julusian/react-bootstrap-switch/pull/5) Thanks to timchang
+- Switch should toggle when label is clicked [#5](https://github.com/Julusian/react-bootstrap-switch/pull/5) Thanks to timchang
+
 ## 3.4.0
 
 - Remove calls to .getDOMNode() [#3](https://github.com/Julusian/react-bootstrap-switch/pull/3) Thanks to jking90 
