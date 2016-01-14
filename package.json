@@ -26,6 +26,7 @@
     }
   ],
   "main": "dist/js/bootstrap-switch.js",
+  "style": "dist/css/bootstrap3/bootstrap-switch.css",
   "dependencies": {
     "jquery": ">=1.9.0"
   },
