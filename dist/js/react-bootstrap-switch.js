@@ -47,6 +47,9 @@
         indeterminate: this._prop('indeterminate')
       };
     },
+    componentWillReceiveProps: function(nextProps) {
+      return this.value(nextProps.state);
+    },
     _prop: function(key) {
       if (typeof this.props[key] === 'undefined') {
         return this.defaults[key];
