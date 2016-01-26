@@ -368,6 +368,9 @@
 .bootstrap-switch .bootstrap-switch-label.active {
   background-color: #cccccc \9;
 }
+.bootstrap-switch .bootstrap-switch-label::before {
+  content: "\200b";
+}
 .bootstrap-switch .bootstrap-switch-handle-on {
   -webkit-border-top-left-radius: 4px;
   -moz-border-radius-topleft: 4px;

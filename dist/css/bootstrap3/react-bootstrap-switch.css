@@ -91,6 +91,9 @@
   color: #333;
   background: #fff;
 }
+.bootstrap-switch .bootstrap-switch-label::before {
+  content: "\200b";
+}
 .bootstrap-switch .bootstrap-switch-handle-on {
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
