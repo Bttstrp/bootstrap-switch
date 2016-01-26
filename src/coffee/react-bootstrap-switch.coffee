@@ -32,6 +32,9 @@ module.exports = React.createClass
     readonly: @_prop('readonly')
     indeterminate: @_prop('indeterminate')
 
+  componentWillReceiveProps: (nextProps) ->
+    this.value(nextProps.state)
+
   _prop: (key) ->
     if typeof @props[key] == 'undefined'
       @defaults[key]
