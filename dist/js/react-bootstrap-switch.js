@@ -40,6 +40,7 @@
         handleWidth: this._prop('handleWidth'),
         labelWidth: this._prop('labelWidth'),
         offset: null,
+        skipAnimation: true,
         dragStart: false,
         focus: false,
         disabled: this._prop('disabled'),
@@ -243,21 +244,25 @@
       }, callback);
     },
     _containerPosition: function(state) {
-      var values;
+      var skipAnimation, values;
       if (state == null) {
         state = this.state.state;
       }
       values = [0, "-" + this.state.handleWidth + "px"];
+      skipAnimation = this.state.offset === null;
       if (this.state.indeterminate) {
         return this.setState({
+          skipAnimation: skipAnimation,
           offset: "-" + (this.state.handleWidth / 2) + "px"
         });
       } else if (state) {
         return this.setState({
+          skipAnimation: skipAnimation,
           offset: this._prop('inverse') ? values[1] : values[0]
         });
       } else {
         return this.setState({
+          skipAnimation: skipAnimation,
           offset: this._prop('inverse') ? values[0] : values[1]
         });
       }
@@ -341,6 +346,7 @@
               return;
             }
             return _this.setState({
+              skipAnimation: false,
               offset: difference + "px",
               dragged: true
             });
@@ -399,7 +405,7 @@
           if (_this._prop('id')) {
             classes.push((_this._prop('baseClass')) + "-id-" + (_this._prop('id')));
           }
-          if (_this._prop('animate') && !_this.state.dragStart) {
+          if (_this._prop('animate') && !_this.state.dragStart && !_this.state.skipAnimation) {
             classes.push((_this._prop('baseClass')) + "-animate");
           }
           if (_this.state.focus) {

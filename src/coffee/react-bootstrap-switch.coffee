@@ -26,6 +26,7 @@ module.exports = React.createClass
     handleWidth: @_prop('handleWidth')
     labelWidth: @_prop('labelWidth')
     offset: null
+    skipAnimation: true
     dragStart: false
     focus: false
     disabled: @_prop('disabled')
@@ -191,14 +192,20 @@ module.exports = React.createClass
   _containerPosition: (state = @state.state) ->
     values = [0, "-#{@state.handleWidth}px"]
 
+    # skip animating if no offset yet
+    skipAnimation = @state.offset == null
+
     if @state.indeterminate
       return @setState
+        skipAnimation: skipAnimation
         offset: "-#{@state.handleWidth / 2}px"
     else if state
       @setState
+        skipAnimation: skipAnimation
         offset: if @_prop('inverse') then values[1] else values[0]
     else
       @setState
+        skipAnimation: skipAnimation
         offset: if @_prop('inverse') then values[0] else values[1]
 
   _elementHandlers: ->
@@ -262,6 +269,7 @@ module.exports = React.createClass
         return  if difference < -@state.handleWidth or difference > 0
 
         @setState
+          skipAnimation: false
           offset: "#{difference}px"
           dragged: true
 
@@ -298,7 +306,7 @@ module.exports = React.createClass
       classes.push "#{@_prop('baseClass')}-indeterminate" if @state.indeterminate
       classes.push "#{@_prop('baseClass')}-inverse" if @_prop('inverse')
       classes.push "#{@_prop('baseClass')}-id-#{@_prop('id')}" if @_prop('id')
-      classes.push "#{@_prop('baseClass')}-animate" if @_prop('animate') and !@state.dragStart
+      classes.push "#{@_prop('baseClass')}-animate" if @_prop('animate') and !@state.dragStart and !@state.skipAnimation
       classes.push "#{@_prop('baseClass')}-focused" if @state.focus
       classes.join " "
 

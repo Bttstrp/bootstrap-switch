@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.4.2
+- Fix switch not toggling on props update [#8](https://github.com/Julusian/react-bootstrap-switch/pull/8) Thanks to penguinpowernz
+- Fix handle click region not always being full height of area
+- Fix animation on first render if initial state is false
+
 ## 3.4.1
 
 - Don't fill switch to 100% of parent height [#5](https://github.com/Julusian/react-bootstrap-switch/pull/5) Thanks to timchang
