@@ -505,7 +505,7 @@
       };
 
       BootstrapSwitch.prototype._elementHandlers = function() {
-        return this.$element.on({
+        return this.$container.on({
           "setPreviousOptions.bootstrapSwitch": (function(_this) {
             return function(e) {
               return _this.setPrevOptions();
