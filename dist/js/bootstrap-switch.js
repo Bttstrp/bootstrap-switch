@@ -592,7 +592,7 @@
       };
 
       BootstrapSwitch.prototype._labelHandlers = function() {
-        return this.$label.on({
+        return this.$container.on({
           "click": function(e) {
             return e.stopPropagation();
           },
