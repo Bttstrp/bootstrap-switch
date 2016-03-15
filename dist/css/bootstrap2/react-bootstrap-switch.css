@@ -1,5 +1,5 @@
 /* ========================================================================
- * react-bootstrap-switch - v3.4.1
+ * react-bootstrap-switch - v3.4.3
  * https://github.com/Julusian/react-bootstrap-switch
  * ========================================================================
  * Copyright 2012-2015 Julian Waller
@@ -395,6 +395,7 @@
   opacity: 0;
   filter: alpha(opacity=0);
   z-index: -1;
+  visibility: hidden;
 }
 .bootstrap-switch input[type='radio'].form-control,
 .bootstrap-switch input[type='checkbox'].form-control {
