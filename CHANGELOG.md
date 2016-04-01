@@ -2,6 +2,7 @@
 
 ## 3.4.4
 - Made it so that changes to disabled prop are rendered [#11](https://github.com/Julusian/react-bootstrap-switch/pull/11) Thanks to penguinpowernz
+- Fix on/off label sections being wrong height when rendering with no label
 
 ## 3.4.3
 - Fix issue with onColor when not focused [#9](https://github.com/Julusian/react-bootstrap-switch/pull/9) Thanks to bshamblen

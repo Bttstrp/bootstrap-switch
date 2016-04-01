@@ -75,10 +75,10 @@
     border-left: 1px solid @btnBorder;
     border-right: 1px solid @btnBorder;
     .buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark);
-    
-    &::before {
-      content: "\200b";
-    }
+  }
+
+  span::before {
+    content: "\200b";
   }
 
   .@{bootstrap-switch-base}-handle-on {

@@ -1,5 +1,5 @@
 /* ========================================================================
- * react-bootstrap-switch - v3.4.3
+ * react-bootstrap-switch - v3.4.4
  * https://github.com/Julusian/react-bootstrap-switch
  * ========================================================================
  * Copyright 2012-2015 Julian Waller
@@ -368,7 +368,7 @@
 .bootstrap-switch .bootstrap-switch-label.active {
   background-color: #cccccc \9;
 }
-.bootstrap-switch .bootstrap-switch-label::before {
+.bootstrap-switch span::before {
   content: "\200b";
 }
 .bootstrap-switch .bootstrap-switch-handle-on {
