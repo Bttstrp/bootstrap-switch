@@ -1,5 +1,5 @@
 /* ========================================================================
- * react-bootstrap-switch - v3.4.1
+ * react-bootstrap-switch - v3.4.4
  * https://github.com/Julusian/react-bootstrap-switch
  * ========================================================================
  * Copyright 2012-2015 Julian Waller
@@ -49,6 +49,7 @@
       };
     },
     componentWillReceiveProps: function(nextProps) {
+      this.disabled(!!nextProps.disabled);
       return this.value(nextProps.state);
     },
     _prop: function(key) {

@@ -34,6 +34,7 @@ module.exports = React.createClass
     indeterminate: @_prop('indeterminate')
 
   componentWillReceiveProps: (nextProps) ->
+    this.disabled(!!nextProps.disabled)
     this.value(nextProps.state)
 
   _prop: (key) ->
