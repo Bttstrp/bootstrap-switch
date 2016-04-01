@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.4.4
+- Made it so that changes to disabled prop are rendered [#11](https://github.com/Julusian/react-bootstrap-switch/pull/11) Thanks to penguinpowernz
+
+## 3.4.3
+- Fix issue with onColor when not focused [#9](https://github.com/Julusian/react-bootstrap-switch/pull/9) Thanks to bshamblen
+
 ## 3.4.2
 - Fix switch not toggling on props update [#8](https://github.com/Julusian/react-bootstrap-switch/pull/8) Thanks to penguinpowernz
 - Fix handle click region not always being full height of area
