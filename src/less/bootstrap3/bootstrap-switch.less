@@ -29,7 +29,6 @@
     .box-sizing(border-box);
     cursor: pointer;
     display: inline-block !important;
-    height: 100%;
     padding: @padding-base-vertical @padding-base-horizontal;
     font-size: @font-size-base;
     line-height: @line-height-computed;
@@ -80,6 +79,10 @@
     background: @btn-default-bg;
   }
 
+  span::before {
+    content: "\200b";
+  }
+
   .@{bootstrap-switch-base}-handle-on {
     .border-left-radius(@border-radius-base - 1);
   }
@@ -96,6 +99,7 @@
     margin: 0;
     z-index: -1;
     .opacity(0);
+    visibility: hidden;
   }
 
   &.@{bootstrap-switch-base}-mini {
