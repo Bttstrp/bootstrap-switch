@@ -5,10 +5,10 @@ Prerequisites:
 
 Flow:
 
-- Checkout `develop` branch
+- Checkout `master` branch
 - Run `npm install` to get or update the dependencies
 - Run `gulp`. Gulp will run the default task and listen for further files changes
 - Work on the Coffeescript or LESS sources. Gulp will automatically build for you
-- Once completed, submit a Pull Requests. Be sure to target `develop` as destination branch
+- Once completed, submit a Pull Requests. Be sure to target `master` as destination branch
 
 Thank you.

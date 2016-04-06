@@ -5,7 +5,11 @@
 
 This project is a port of [bootstrap-switch](https://github.com/nostalgiaz/bootstrap-switch) for use in React.js
 
+## Compatability
 Verion 3.4.x is built for React.js 0.14. It will not work with earlier versions of React.js.
+
+NOTE: The CSS from the original version is not fully compatible. There is CSS and LESS included in this repo, or any 3rd party themes can likely be made compatible with the changes shown [in this commit](https://github.com/Julusian/react-bootstrap-switch/commit/bbd9754b0cebb82aeb1724ca86c79529e4a7b9df).
+
 
 ## Usage
 
@@ -72,6 +76,8 @@ IE9+ and all the other modern browsers.
 ## LESS 
 
 Import `src/less/bootstrap2/bootstrap-switch.less` for bootstrap 2 or `src/less/bootstrap3/bootstrap-switch.less` for bootstrap 3 in your compilation stack.
+
+NOTE: The LESS files from the original switch are not fully compatible, updated versions are included in this repo.
 
 
 ## License
