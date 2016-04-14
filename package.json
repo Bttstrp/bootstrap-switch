@@ -31,9 +31,11 @@
     }
   ],
   "main": "dist/js/react-bootstrap-switch.js",
+  "peerDependencies": {
+    "react": "^0.14 || ^15.0.0"
+  },
   "dependencies": {
-    "jquery": ">=1.9.0",
-    "react": "^0.14.0"
+    "jquery": ">=1.9.0"
   },
   "repository": {
     "type": "git",
