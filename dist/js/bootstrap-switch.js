@@ -135,9 +135,6 @@
         if (typeof value === "undefined") {
           return this.options.state;
         }
-        if (this.options.disabled || this.options.readonly) {
-          return this.$element;
-        }
         if (this.options.state && !this.options.radioAllOff && this.$element.is(":radio")) {
           return this.$element;
         }
@@ -577,7 +574,9 @@
           return function(event) {
             event.preventDefault();
             event.stopPropagation();
-            _this.state(false);
+            if (!_this.options.disabled && !_this.options.readonly) {
+                _this.state(false);
+            }
             return _this.$element.trigger("focus.bootstrapSwitch");
           };
         })(this));
@@ -585,7 +584,9 @@
           return function(event) {
             event.preventDefault();
             event.stopPropagation();
-            _this.state(true);
+            if (!_this.options.disabled && !_this.options.readonly) {
+                _this.state(true);
+            }
             return _this.$element.trigger("focus.bootstrapSwitch");
           };
         })(this));
