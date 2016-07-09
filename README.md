@@ -39,8 +39,9 @@ These should be defined on the JSX node, many cannot be changed once they have b
 
 | Name              | Type    | Default   | Values | Description |
 | ----------------- | ------- | --------- | ------ | ----------- |
-| **value**         | boolean | true      | true, false, null | Initial starting state of the switch. Null indidcates indeterminate |
-| **size**          | string  | null      | null, 'mini', 'small', 'normal', 'large' | The checkbox size |
+| **value**         | boolean | true      | true, false, null | State of the switch. Null indidcates indeterminate. Use to store state external to the switch |
+| **defaultValue**  | boolean | true      | true, false, null | Initial starting state of the switch. Null indidcates indeterminate. Use to make the switch remember and handle state itself |
+| **bsSize**        | string  | null      | null, 'mini', 'small', 'normal', 'large' | The checkbox size |
 | **animate**       | boolean | true      | true, false | Enable or disable animation for the switch |
 | **disabled**      | boolean | false     | true, false | Disable state |
 | **readonly**      | boolean | false     | true, false | Readonly state |
