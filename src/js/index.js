@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export class Switch extends React.Component {
+export default class Switch extends React.Component {
 
   constructor(props) {
     super(props);

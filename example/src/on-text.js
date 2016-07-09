@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, FormGroup, FormControl } from 'react-bootstrap';
 
-import { Switch } from '../../src/js/index';
+import Switch from '../../src/js/index';
 
 export class OnText extends React.Component {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Button, ButtonGroup, FormGroup } from 'react-bootstrap';
 
-import { Switch } from '../../src/js/index';
+import Switch from '../../src/js/index';
 
 export class Inverse extends React.Component {
 

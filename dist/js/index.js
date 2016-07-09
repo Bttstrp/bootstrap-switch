@@ -3,7 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Switch = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -23,7 +22,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Switch = exports.Switch = function (_React$Component) {
+var Switch = function (_React$Component) {
   _inherits(Switch, _React$Component);
 
   function Switch(props) {
@@ -126,6 +125,7 @@ var Switch = exports.Switch = function (_React$Component) {
 
       var onHandle = _reactDom2.default.findDOMNode(this.elmOnHandle);
       var offHandle = _reactDom2.default.findDOMNode(this.elmOffHandle);
+      var label = _reactDom2.default.findDOMNode(this.elmLabel);
 
       // assuming that if the elms need to be resized, the size will be cleared elsewhere first
       var _props2 = this.props;
@@ -134,7 +134,7 @@ var Switch = exports.Switch = function (_React$Component) {
 
       var newHandleWidth = handleWidth == "auto" ? Math.max(onHandle.offsetWidth, offHandle.offsetWidth) : handleWidth;
 
-      var newLabelWidth = labelWidth == "auto" ? newHandleWidth : labelWidth;
+      var newLabelWidth = labelWidth == "auto" ? Math.max(newHandleWidth, label.offsetWidth) : labelWidth;
 
       return this.setState({
         handleWidth: newHandleWidth,
@@ -422,6 +422,8 @@ var Switch = exports.Switch = function (_React$Component) {
   }, {
     key: '_renderLabel',
     value: function _renderLabel() {
+      var _this9 = this;
+
       var _props7 = this.props;
       var baseClass = _props7.baseClass;
       var labelText = _props7.labelText;
@@ -429,6 +431,9 @@ var Switch = exports.Switch = function (_React$Component) {
 
 
       var params = {
+        ref: function ref(e) {
+          return _this9.elmLabel = e;
+        },
         style: { width: labelWidth },
         className: baseClass + '-label',
 
@@ -452,6 +457,9 @@ var Switch = exports.Switch = function (_React$Component) {
 
   return Switch;
 }(_react2.default.Component);
+
+exports.default = Switch;
+
 
 Switch.defaultProps = {
   baseClass: 'bootstrap-switch',
