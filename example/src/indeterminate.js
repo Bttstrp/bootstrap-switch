@@ -7,7 +7,7 @@ export class Indeterminate extends React.Component {
 
   _clickToggle(){
     const val = this.switch.value();
-    this.switch.value(val === null);
+    this.switch.value(val === null ? true : null);
   }
 
   render(){
@@ -17,7 +17,7 @@ export class Indeterminate extends React.Component {
         
         <form>
           <FormGroup>
-            <Switch ref={e => this.switch = e} />
+            <Switch ref={e => this.switch = e} value={null}  />
           </FormGroup>
 
           <FormGroup>

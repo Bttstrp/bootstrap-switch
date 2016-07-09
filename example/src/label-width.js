@@ -16,6 +16,9 @@ export class LabelWidth extends React.Component {
   _onChange(e){
     const width = parseInt(e.target.value, 10);
 
+    if(isNaN(width))
+      return;
+
     this.setState({
       width
     });

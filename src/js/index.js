@@ -11,7 +11,6 @@ export class Switch extends React.Component{
       skipAnimation: true,
       dragStart: false,
       focus: false,
-      indeterminate: props.indeterminate,
       value: props.value,
       labelWidth: props.labelWidth,
       handleWidth: props.handleWidth
@@ -36,7 +35,7 @@ export class Switch extends React.Component{
     if(val === undefined)
       return this.state.value;
 
-    this._setValue(!!val);
+    this._setValue(val === null ? null : !!val);
   }
 
   _wrapperClasses(){
@@ -50,11 +49,10 @@ export class Switch extends React.Component{
     } = this.props;
 
     const {
-      value, // Should this be a prop too?
+      value,
       skipAnimation,
       focus,
       dragStart,
-      indeterminate,
     } = this.state;
 
     const classes = [ baseClass ];
@@ -70,7 +68,7 @@ export class Switch extends React.Component{
     if (readonly)
       classes.push(baseClass + "-readonly");
 
-    if (indeterminate)
+    if (value === null)
       classes.push(baseClass + "-indeterminate");
 
     if (inverse)
@@ -94,30 +92,35 @@ export class Switch extends React.Component{
     const offHandle = ReactDOM.findDOMNode(this.elmOffHandle);
     const label = ReactDOM.findDOMNode(this.elmLabel);
 
-    // TODO - check this
     // assuming that if the elms need to be resized, the size will be cleared elsewhere first
-    const { handleWidth } = this.props;
+    const { handleWidth, labelWidth } = this.props;
     const newHandleWidth = handleWidth == "auto"
       ? Math.max(onHandle.offsetWidth, offHandle.offsetWidth)
       : handleWidth;
 
+    const newLabelWidth = labelWidth == "auto"
+      ? newHandleWidth
+      : labelWidth;
+
     return this.setState({
       handleWidth: newHandleWidth,
-      labelWidth: label.offsetWidth
+      labelWidth: newLabelWidth
+    }, () => {
+      this._updateContainerPosition(null, true);
     });
   }
 
-  _updateContainerPosition(state){
-    const { handleWidth, offset, value, indeterminate } = (state ? state : this.state);
+  _updateContainerPosition(state, noAnimate){
+    const { handleWidth, offset, value } = (state ? state : this.state);
     const { inverse } = this.props;
 
     // skip animating if no offset yet
-    const skipAnimation = (offset == null)
+    const skipAnimation = noAnimate || (offset == null)
 
     let newOffset = offset;
 
-    if (indeterminate) {
-      newOffset = -handleWidth;
+    if (value === null) {
+      newOffset = -(handleWidth / 2);
     } else if (value) {
       newOffset = inverse ? -handleWidth : 0;
     } else { 
@@ -153,7 +156,7 @@ export class Switch extends React.Component{
   }
 
   _handleKeyPress(e){
-    console.log(e); // TODO - not working...
+    console.log(e, "TRU"); // TODO - not working...
     if(!e.which || this._disableUserInput())
       return;
 
@@ -170,11 +173,8 @@ export class Switch extends React.Component{
     if(this.state.dragStart || this._disableUserInput())
       return;
 
-    console.log("START")
-
     this.setState({
-      indeterminate: false,
-      dragStart: (e.pageX || e.originalEvent.touches[0].pageX) - this.state.offset
+      dragStart: (e.pageX || e.touches[0].pageX) - this.state.offset
     });
     this._setFocus();
   }
@@ -185,8 +185,7 @@ export class Switch extends React.Component{
     if(dragStart === undefined || dragStart === null || dragStart === false)
       return;
 
-    const difference = (e.pageX || e.originalEvent.touches[0].pageX) - dragStart;
-    console.log("DIFF", difference);
+    const difference = (e.pageX || e.touches[0].pageX) - dragStart;
     if(difference < -handleWidth || difference > 0)
       return;
 
@@ -239,7 +238,6 @@ export class Switch extends React.Component{
       return;
 
     this.setState({
-      indeterminate: false, // TODO - not used
       value: (val === undefined ? !this.state.value : val)
     }, () => {
       this._updateContainerPosition();
@@ -255,7 +253,6 @@ export class Switch extends React.Component{
     setTimeout(() => onChange(this, this.state.value), 0);
   }
 
- // TODO remove text refs?
   render() {
     const {
       baseClass,
@@ -272,7 +269,7 @@ export class Switch extends React.Component{
     } = this.state;
   
     const onHandle = <span ref={(e) => this.elmOnHandle = e} style={{ width: handleWidth }}
-      className={`${baseClass}-handle-on ${baseClass}-${onColor}`}
+      className={`${baseClass}-handle-on ${baseClass}-${onColor}`} 
       onClick={this._handleOnClick.bind(this)} >
         { onText }
       </span>;
@@ -283,7 +280,8 @@ export class Switch extends React.Component{
       </span>;
 
     const label = <span className={`${baseClass}-label`} style={{width:labelWidth}} ref={(e) => this.elmLabel = e} 
-      onMouseDown={this._handleLabelMouseDown.bind(this)} onMouseMove={this._handleLabelMouseMove.bind(this)} 
+      onTouchStart={this._handleLabelMouseDown.bind(this)} onTouchMove={this._handleLabelMouseMove.bind(this)} onTouchEnd={this._handleLabelMouseUp.bind(this)}
+      onMouseDown={this._handleLabelMouseDown.bind(this)} onMouseMove={this._handleLabelMouseMove.bind(this)}
       onMouseUp={this._handleLabelMouseUp.bind(this)} onMouseLeave={this._handleLabelMouseUp.bind(this)}>
         { labelText }
       </span>
@@ -296,12 +294,12 @@ export class Switch extends React.Component{
     const wrapperClass = this._wrapperClasses();
 
     return (
-      <div className={ wrapperClass } ref="wrapper" style={{width:wrapperWidth}} onBlur={this._setBlur.bind(this)} onFocus={this._setFocus.bind(this)}>
+      <div className={ wrapperClass } style={{width:wrapperWidth}} >
         <div className={`${baseClass}-container`} ref="container" style={{width:containerWidth, marginLeft:offset}}>
           { inverse ? offHandle : onHandle}
           { label }
           { inverse ? onHandle : offHandle}
-          <input type="checkbox" ref="element" onKeyDown={this._handleKeyPress.bind(this)} />
+          <input type="checkbox" ref={e => this.element = e} />
         </div>
       </div>
     );
@@ -326,7 +324,6 @@ Switch.defaultProps = {
   bsSize: null,
   disabled: false,
   readonly: false,
-  indeterminate: false,
   animate: true,
 };
 
@@ -351,7 +348,6 @@ Switch.propTypes = {
   bsSize: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   readonly: React.PropTypes.bool,
-  indeterminate: React.PropTypes.bool,
   animate: React.PropTypes.bool,
   onChange: React.PropTypes.func,
 };
