@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col, Button, ButtonGroup, FormGroup } from 'react-bootstrap';
 
 import { Switch } from '../../src/js/index';
 
@@ -17,21 +18,22 @@ export class Inverse extends React.Component {
       inverse: !this.state.inverse
     });
   }
-  _clickGet(){
-    alert(this.state.inverse);
-  }
 
   render(){
     return (
-      <div>
+      <Col xs={6} md={4}>
         <h3>Inverse</h3>
-        <Switch inverse={this.state.inverse} />
+        
+        <form>
+          <FormGroup>
+            <Switch inverse={this.state.inverse} />
+          </FormGroup>
 
-        <p>
-          <button onClick={this._clickToggle.bind(this)} >Toggle</button>
-          <button onClick={this._clickGet.bind(this)} >Get</button>
-        </p>
-      </div>
+          <FormGroup>
+            <Button onClick={this._clickToggle.bind(this)} >Toggle</Button>
+          </FormGroup>
+        </form>
+      </Col>
     );
   }
 }

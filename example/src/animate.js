@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col, Button, FormGroup } from 'react-bootstrap';
 
 import { Switch } from '../../src/js/index';
 
@@ -20,14 +21,18 @@ export class Animate extends React.Component {
 
   render(){
     return (
-      <div>
+      <Col xs={6} md={4}>
         <h3>Animate</h3>
-        <Switch animate={this.state.animate} />
-
-        <p>
-          <button onClick={this._clickToggle.bind(this)} >Toggle</button>
-        </p>
-      </div>
+        
+        <form>
+          <FormGroup>
+            <Switch animate={this.state.animate} />
+          </FormGroup>
+          <FormGroup>
+            <Button onClick={this._clickToggle.bind(this)} >Toggle</Button>
+          </FormGroup>
+        </form>
+      </Col>
     );
   }
 }

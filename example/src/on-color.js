@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col, Button, ButtonGroup, FormGroup } from 'react-bootstrap';
 
 import { Switch } from '../../src/js/index';
 
@@ -44,18 +45,25 @@ export class OnColor extends React.Component {
 
   render(){
     return (
-      <div>
+      <Col xs={6} md={4}>
         <h3>On Color</h3>
-        <Switch onColor={this.state.color} />
 
-        <p>
-          <button onClick={this._clickPrimary.bind(this)} >Primary</button>
-          <button onClick={this._clickInfo.bind(this)} >Info</button>
-          <button onClick={this._clickSuccess.bind(this)} >Success</button>
-          <button onClick={this._clickWarning.bind(this)} >Warning</button>
-          <button onClick={this._clickDefault.bind(this)} >Default</button>
-        </p>
-      </div>
+        <form>
+          <FormGroup>
+            <Switch onColor={this.state.color} />
+          </FormGroup>
+
+          <FormGroup>
+            <ButtonGroup>
+              <Button onClick={this._clickPrimary.bind(this)} >Primary</Button>
+              <Button onClick={this._clickInfo.bind(this)} >Info</Button>
+              <Button onClick={this._clickSuccess.bind(this)} >Success</Button>
+              <Button onClick={this._clickWarning.bind(this)} >Warning</Button>
+              <Button onClick={this._clickDefault.bind(this)} >Default</Button>
+            </ButtonGroup>
+          </FormGroup>
+        </form>
+      </Col>
     );
   }
 }

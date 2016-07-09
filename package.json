@@ -46,6 +46,7 @@
     "gulp-util": "^3.0.3",
     "output-file-sync": "^1.1.2",
     "react": "^15.0.0",
+    "react-bootstrap": "^0.29.5",
     "react-dom": "^15.0.0",
     "reactify": "^1.1.1",
     "vinyl-source-stream": "^1.0.0",

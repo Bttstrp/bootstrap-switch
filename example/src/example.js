@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Grid, Row } from 'react-bootstrap';
 
 import { State } from './state';
 import { Disabled } from './disabled';
@@ -16,31 +17,37 @@ import { Indeterminate } from './indeterminate';
 import { OffColor } from './off-color';
 import { LabelText } from './label-text';
 
-function tetsChange(elm ,v){
-  console.log("CHANGE", elm, v);
-}
 
 class Examples extends React.Component {
   render(){
     return (
-      <div>
-        <State />
-        <Disabled />
-        <Inverse />
-        <OnText />
-        <HandleWidth />
-        <Size />
-        <Readonly />
-        <OnColor />
-        <OffText />
-        <LabelWidth />
-        <Animate />
-        <Indeterminate />
-        <OffColor />
-        <LabelText />
-      </div>
+      <Grid>
+        <Row>
+          <h1>Examples</h1>
+        </Row>
+        <Row>
+          <State />
+          <Size />
+          <Animate />
+
+          <Disabled />
+          <Readonly />
+          <Indeterminate />
+
+          <Inverse />
+          <OnColor />
+          <OffColor />
+
+          <OnText />
+          <OffText />
+          <LabelText />
+
+          <HandleWidth />
+          <LabelWidth />
+        </Row>
+      </Grid>
     );
   }
 }
 
-ReactDOM.render(<Examples onChange={tetsChange} />, document.getElementById('container'));
+ReactDOM.render(<Examples />, document.getElementById('container'));

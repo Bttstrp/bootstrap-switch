@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col, Button, FormGroup } from 'react-bootstrap';
 
 import { Switch } from '../../src/js/index';
 
@@ -11,14 +12,19 @@ export class Indeterminate extends React.Component {
 
   render(){
     return (
-      <div>
+      <Col xs={6} md={4}>
         <h3>Indeterminate</h3>
-        <Switch ref={e => this.switch = e} />
+        
+        <form>
+          <FormGroup>
+            <Switch ref={e => this.switch = e} />
+          </FormGroup>
 
-        <p>
-          <button onClick={this._clickToggle.bind(this)} >Toggle</button>
-        </p>
-      </div>
+          <FormGroup>
+            <Button onClick={this._clickToggle.bind(this)} >Toggle</Button>
+          </FormGroup>
+        </form>
+      </Col>
     );
   }
 }
