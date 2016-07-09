@@ -22,7 +22,7 @@ gulp.task('dev-bundle', function(){
     watchify.args.debug = true;
 
     // var bundler = watchify(browserify('./src/js/switch.js', watchify.args));
-    var bundler = watchify(browserify('./example/src.js', watchify.args));
+    var bundler = watchify(browserify('./example/src/example.js', watchify.args));
 
     // Babel transform
     bundler.transform(babelify.configure({
