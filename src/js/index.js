@@ -101,6 +101,7 @@ export class Switch extends React.Component {
   _recalculateWidth(animate){
     const onHandle = ReactDOM.findDOMNode(this.elmOnHandle);
     const offHandle = ReactDOM.findDOMNode(this.elmOffHandle);
+    const label = ReactDOM.findDOMNode(this.elmLabel);
 
     // assuming that if the elms need to be resized, the size will be cleared elsewhere first
     const { handleWidth, labelWidth } = this.props;
@@ -109,7 +110,7 @@ export class Switch extends React.Component {
       : handleWidth;
 
     const newLabelWidth = labelWidth == "auto"
-      ? newHandleWidth
+      ? Math.max(newHandleWidth, label.offsetWidth)
       : labelWidth;
 
     return this.setState({
@@ -339,6 +340,7 @@ export class Switch extends React.Component {
     const { labelWidth } = this.state;
 
     const params = {
+      ref:          e => this.elmLabel = e,
       style:        { width: labelWidth },
       className:    `${baseClass}-label`,
 
