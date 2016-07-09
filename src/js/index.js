@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export class Switch extends React.Component{
+export class Switch extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -17,7 +17,7 @@ export class Switch extends React.Component{
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this._recalculateWidth();
   }
 
@@ -41,11 +41,13 @@ export class Switch extends React.Component{
   _wrapperClasses(){
     const {
       baseClass,
+      wrapperClass,
       bsSize,
       disabled,
       readonly,
       inverse,
       animate,
+      id
     } = this.props;
 
     const {
@@ -55,8 +57,7 @@ export class Switch extends React.Component{
       dragStart,
     } = this.state;
 
-    const classes = [ baseClass ];
-    // classes = ["#{@_prop('baseClass')}"].concat @_prop('wrapperClass')
+    const classes = [ baseClass, wrapperClass ];
     classes.push(baseClass + (value ? "-on" : "-off"));
 
     if (bsSize)
@@ -74,7 +75,8 @@ export class Switch extends React.Component{
     if (inverse)
       classes.push(baseClass + "-inverse");
 
-    // classes.push "#{@_prop('baseClass')}-id-#{@_prop('id')}" if @_prop('id')
+    if (id)
+      classes.push(baseClass + "-" + id);
 
     if (animate && !dragStart & !skipAnimation)
       classes.push(baseClass + "-animate");
@@ -82,15 +84,12 @@ export class Switch extends React.Component{
     if (focus)
       classes.push(baseClass + "-focused");
 
-    // console.log(classes);
-
     return classes.join(" ");
   }
 
   _recalculateWidth(){
     const onHandle = ReactDOM.findDOMNode(this.elmOnHandle);
     const offHandle = ReactDOM.findDOMNode(this.elmOffHandle);
-    const label = ReactDOM.findDOMNode(this.elmLabel);
 
     // assuming that if the elms need to be resized, the size will be cleared elsewhere first
     const { handleWidth, labelWidth } = this.props;
@@ -139,7 +138,7 @@ export class Switch extends React.Component{
     return disabled || readonly;
   }
 
-  _handleOnClick(e){
+  _handleOnClick(){
     if(this._disableUserInput())
       return;
 
@@ -197,7 +196,7 @@ export class Switch extends React.Component{
     }); 
   }
 
-  _handleLabelMouseUp(e){
+  _handleLabelMouseUp(){
     const { dragStart, value, dragged, offset, handleWidth } = this.state;
     
     if(dragStart === undefined || dragStart === null || dragStart === false)
@@ -324,10 +323,9 @@ export class Switch extends React.Component{
     const { labelWidth } = this.state;
 
     const params = {
-      ref: e => this.elmLabel = e,
       style: { width: labelWidth },
       className: `${baseClass}-label`,
-      
+
       onTouchStart: this._handleLabelMouseDown.bind(this),
       onTouchMove: this._handleLabelMouseMove.bind(this),
       onTouchEnd: this._handleLabelMouseUp.bind(this),
@@ -338,7 +336,7 @@ export class Switch extends React.Component{
       onMouseLeave: this._handleLabelMouseUp.bind(this)
     };
 
-    return <span {...params}>{ labelText }</span>;
+    return <span {...params}>{labelText}</span>;
   }
 }
 
@@ -346,27 +344,34 @@ export class Switch extends React.Component{
 // then if the value prop is defined, always render to that regardless of other state changes?
 
 Switch.defaultProps = {
-  value: true,
-  wrapperClass: "wrapper",
-  handleWidth: "auto",
-  labelWidth: "auto",
-  onColor: "primary",
-  offColor: "default",
-  baseClass: "bootstrap-switch",
-  onText: "ON",
-  offText: "OFF",
-  labelText: " ",
-  inverse: false,
+  baseClass: 'bootstrap-switch',
+  wrapperClass: 'wrapper',
   bsSize: null,
+
+  handleWidth: 'auto',
+  labelWidth: 'auto',
+
+  onColor: 'primary',
+  offColor: 'default',
+
+  onText: 'ON',
+  offText: 'OFF',
+  labelText: ' ',
+
+  inverse: false,
+  animate: true,
+
   disabled: false,
   readonly: false,
-  animate: true,
+
+  value: true
 };
 
 Switch.propTypes = {
-  value: React.PropTypes.bool,
-  inverse: React.PropTypes.bool,
+  baseClass: React.PropTypes.string,
   wrapperClass: React.PropTypes.string,
+  bsSize: React.PropTypes.string,
+
   handleWidth: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.number
@@ -375,15 +380,20 @@ Switch.propTypes = {
     React.PropTypes.string,
     React.PropTypes.number
   ]),
+
   onColor: React.PropTypes.string,
   offColor: React.PropTypes.string,
-  baseClass: React.PropTypes.string,
+
   onText: React.PropTypes.string,
   offText: React.PropTypes.string,
   labelText: React.PropTypes.string,
-  bsSize: React.PropTypes.string,
+
+  inverse: React.PropTypes.bool,
+  animate: React.PropTypes.bool,
+
   disabled: React.PropTypes.bool,
   readonly: React.PropTypes.bool,
-  animate: React.PropTypes.bool,
+
+  value: React.PropTypes.bool,
   onChange: React.PropTypes.func,
 };

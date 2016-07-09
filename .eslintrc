@@ -1,6 +1,22 @@
 {
-  "extends": "airbnb",
   "rules": {
-    "comma-dangle": 0
-  }
+    "comma-dangle": 0,
+    "no-underscore-dangle": 0
+  },
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true,
+      "modules": true
+    }
+  },
+  "plugins": [
+    "react"
+  ]
 }
