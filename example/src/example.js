@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Grid, Row } from 'react-bootstrap';
 
-import { State } from './state';
+import { InternalState } from './internal-state';
+import { ExternalState } from './external-state';
 import { Disabled } from './disabled';
 import { Inverse } from './inverse';
 import { OnText } from './on-text';
@@ -26,22 +27,23 @@ class Examples extends React.Component {
           <h1>Examples</h1>
         </Row>
         <Row>
-          <State />
+          <InternalState />
           <Size />
           <Animate />
 
+          <ExternalState />
           <Disabled />
           <Readonly />
-          <Indeterminate />
 
           <Inverse />
           <OnColor />
           <OffColor />
 
+          <LabelText />
           <OnText />
           <OffText />
-          <LabelText />
 
+          <Indeterminate />
           <HandleWidth />
           <LabelWidth />
         </Row>

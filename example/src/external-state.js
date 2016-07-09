@@ -3,30 +3,46 @@ import { Col, Button, ButtonGroup, FormGroup } from 'react-bootstrap';
 
 import { Switch } from '../../src/js/index';
 
-export class State extends React.Component {
+export class ExternalState extends React.Component {
+
+  constructor(props){
+    super(props);
+
+    this.state = {
+      value: true
+    };
+  }
 
   _clickToggle(){
-    const val = this.switch.value();
-    this.switch.value(!val);
+    this.setState({
+      value: !this.state.value
+    });
   }
   _clickOn(){ 
-    this.switch.value(true);
+    this.setState({
+      value: true
+    });
   }
   _clickOff(){
-    this.switch.value(false);
+    this.setState({
+      value: false
+    });
   }
-  _clickGet(){
-    alert(this.switch.value());
+
+  _onChange(elm, v){
+    this.setState({
+      value: v
+    });
   }
 
   render(){
     return (
       <Col xs={6} md={4}>
-        <h3>State</h3>
+        <h3>External State</h3>
 
         <form>
           <FormGroup>
-            <Switch ref={e => this.switch = e} />
+            <Switch ref={e => this.switch = e} value={this.state.value} onChange={this._onChange.bind(this)} />
           </FormGroup>
 
           <FormGroup>
@@ -34,7 +50,6 @@ export class State extends React.Component {
               <Button onClick={this._clickToggle.bind(this)} >Toggle</Button>
               <Button onClick={this._clickOn.bind(this)} >On</Button>
               <Button onClick={this._clickOff.bind(this)} >Off</Button>
-              <Button onClick={this._clickGet.bind(this)} >Get</Button>
             </ButtonGroup>
           </FormGroup>
         </form>

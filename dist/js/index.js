@@ -36,8 +36,7 @@ var Switch = exports.Switch = function (_React$Component) {
       skipAnimation: true,
       dragStart: false,
       focus: false,
-      indeterminate: props.indeterminate,
-      value: props.value,
+      value: props.value != undefined ? props.value : props.defaultValue,
       labelWidth: props.labelWidth,
       handleWidth: props.handleWidth
     };
@@ -54,41 +53,52 @@ var Switch = exports.Switch = function (_React$Component) {
     value: function componentWillReceiveProps(nextProps) {
       var _this2 = this;
 
+      var newValue = nextProps.value !== undefined ? nextProps.value : this.state.value;
+
       // ensure width is updated
       this.setState({
         labelWidth: nextProps.labelWidth,
-        handleWidth: nextProps.handleWidth
+        handleWidth: nextProps.handleWidth,
+        value: newValue
       }, function () {
-        _this2._recalculateWidth();
+        _this2._recalculateWidth(nextProps.value !== undefined);
       });
+    }
+  }, {
+    key: '_getValue',
+    value: function _getValue() {
+      if (this.props.value !== undefined) return this.props.value;
+
+      return this.state.value;
     }
   }, {
     key: 'value',
     value: function value(val) {
       if (val === undefined) return this.state.value;
 
-      this._setValue(!!val);
+      this._setValue(val === null ? null : !!val);
     }
   }, {
     key: '_wrapperClasses',
     value: function _wrapperClasses() {
       var _props = this.props;
       var baseClass = _props.baseClass;
+      var wrapperClass = _props.wrapperClass;
       var bsSize = _props.bsSize;
       var disabled = _props.disabled;
       var readonly = _props.readonly;
       var inverse = _props.inverse;
       var animate = _props.animate;
+      var id = _props.id;
       var _state = this.state;
-      var value = _state.value;
       var skipAnimation = _state.skipAnimation;
       var focus = _state.focus;
       var dragStart = _state.dragStart;
-      var indeterminate = _state.indeterminate;
 
 
-      var classes = [baseClass];
-      // classes = ["#{@_prop('baseClass')}"].concat @_prop('wrapperClass')
+      var value = this._getValue();
+
+      var classes = [baseClass, wrapperClass];
       classes.push(baseClass + (value ? "-on" : "-off"));
 
       if (bsSize) classes.push(baseClass + "-" + bsSize);
@@ -97,57 +107,59 @@ var Switch = exports.Switch = function (_React$Component) {
 
       if (readonly) classes.push(baseClass + "-readonly");
 
-      if (indeterminate) classes.push(baseClass + "-indeterminate");
+      if (value === null) classes.push(baseClass + "-indeterminate");
 
       if (inverse) classes.push(baseClass + "-inverse");
 
-      // classes.push "#{@_prop('baseClass')}-id-#{@_prop('id')}" if @_prop('id')
+      if (id) classes.push(baseClass + "-" + id);
 
       if (animate && !dragStart & !skipAnimation) classes.push(baseClass + "-animate");
 
       if (focus) classes.push(baseClass + "-focused");
 
-      // console.log(classes);
-
       return classes.join(" ");
     }
   }, {
     key: '_recalculateWidth',
-    value: function _recalculateWidth() {
+    value: function _recalculateWidth(animate) {
+      var _this3 = this;
+
       var onHandle = _reactDom2.default.findDOMNode(this.elmOnHandle);
       var offHandle = _reactDom2.default.findDOMNode(this.elmOffHandle);
-      var label = _reactDom2.default.findDOMNode(this.elmLabel);
 
-      // TODO - check this
       // assuming that if the elms need to be resized, the size will be cleared elsewhere first
-      var handleWidth = this.props.handleWidth;
+      var _props2 = this.props;
+      var handleWidth = _props2.handleWidth;
+      var labelWidth = _props2.labelWidth;
 
       var newHandleWidth = handleWidth == "auto" ? Math.max(onHandle.offsetWidth, offHandle.offsetWidth) : handleWidth;
 
+      var newLabelWidth = labelWidth == "auto" ? newHandleWidth : labelWidth;
+
       return this.setState({
         handleWidth: newHandleWidth,
-        labelWidth: label.offsetWidth
+        labelWidth: newLabelWidth
+      }, function () {
+        _this3._updateContainerPosition(!animate);
       });
     }
   }, {
     key: '_updateContainerPosition',
-    value: function _updateContainerPosition(state) {
-      var _ref = state ? state : this.state;
-
-      var handleWidth = _ref.handleWidth;
-      var offset = _ref.offset;
-      var value = _ref.value;
-      var indeterminate = _ref.indeterminate;
+    value: function _updateContainerPosition(noAnimate) {
+      var _state2 = this.state;
+      var handleWidth = _state2.handleWidth;
+      var offset = _state2.offset;
       var inverse = this.props.inverse;
 
-      // skip animating if no offset yet
+      var value = this._getValue();
 
-      var skipAnimation = offset == null;
+      // skip animating if no offset yet
+      var skipAnimation = noAnimate || offset == null;
 
       var newOffset = offset;
 
-      if (indeterminate) {
-        newOffset = -handleWidth;
+      if (value === null) {
+        newOffset = -(handleWidth / 2);
       } else if (value) {
         newOffset = inverse ? -handleWidth : 0;
       } else {
@@ -162,16 +174,16 @@ var Switch = exports.Switch = function (_React$Component) {
   }, {
     key: '_disableUserInput',
     value: function _disableUserInput() {
-      var _props2 = this.props;
-      var disabled = _props2.disabled;
-      var readonly = _props2.readonly;
+      var _props3 = this.props;
+      var disabled = _props3.disabled;
+      var readonly = _props3.readonly;
 
 
       return disabled || readonly;
     }
   }, {
     key: '_handleOnClick',
-    value: function _handleOnClick(e) {
+    value: function _handleOnClick() {
       if (this._disableUserInput()) return;
 
       this._setValue(false);
@@ -188,15 +200,17 @@ var Switch = exports.Switch = function (_React$Component) {
   }, {
     key: '_handleKeyPress',
     value: function _handleKeyPress(e) {
-      console.log(e); // TODO - not working...
       if (!e.which || this._disableUserInput()) return;
+
+      var inverse = this.props.inverse;
+
 
       switch (e.which) {
         case 37:
-          return this._setValue(false);
+          return this._setValue(inverse);
 
         case 39:
-          return this._setValue(true);
+          return this._setValue(!inverse);
       }
     }
   }, {
@@ -204,26 +218,22 @@ var Switch = exports.Switch = function (_React$Component) {
     value: function _handleLabelMouseDown(e) {
       if (this.state.dragStart || this._disableUserInput()) return;
 
-      console.log("START");
-
       this.setState({
-        indeterminate: false,
-        dragStart: (e.pageX || e.originalEvent.touches[0].pageX) - this.state.offset
+        dragStart: (e.pageX || e.touches[0].pageX) - this.state.offset
       });
       this._setFocus();
     }
   }, {
     key: '_handleLabelMouseMove',
     value: function _handleLabelMouseMove(e) {
-      var _state2 = this.state;
-      var dragStart = _state2.dragStart;
-      var handleWidth = _state2.handleWidth;
+      var _state3 = this.state;
+      var dragStart = _state3.dragStart;
+      var handleWidth = _state3.handleWidth;
 
 
       if (dragStart === undefined || dragStart === null || dragStart === false) return;
 
-      var difference = (e.pageX || e.originalEvent.touches[0].pageX) - dragStart;
-      console.log("DIFF", difference);
+      var difference = (e.pageX || e.touches[0].pageX) - dragStart;
       if (difference < -handleWidth || difference > 0) return;
 
       this.setState({
@@ -234,16 +244,16 @@ var Switch = exports.Switch = function (_React$Component) {
     }
   }, {
     key: '_handleLabelMouseUp',
-    value: function _handleLabelMouseUp(e) {
-      var _this3 = this;
+    value: function _handleLabelMouseUp() {
+      var _this4 = this;
 
-      var _state3 = this.state;
-      var dragStart = _state3.dragStart;
-      var value = _state3.value;
-      var dragged = _state3.dragged;
-      var offset = _state3.offset;
-      var handleWidth = _state3.handleWidth;
+      var _state4 = this.state;
+      var dragStart = _state4.dragStart;
+      var dragged = _state4.dragged;
+      var offset = _state4.offset;
+      var handleWidth = _state4.handleWidth;
 
+      var value = this._getValue();
 
       if (dragStart === undefined || dragStart === null || dragStart === false) return;
 
@@ -262,8 +272,8 @@ var Switch = exports.Switch = function (_React$Component) {
         dragged: false,
         value: val
       }, function () {
-        _this3._updateContainerPosition();
-        _this3._fireStateChange();
+        _this4._updateContainerPosition();
+        _this4._fireStateChange(val);
       });
     }
   }, {
@@ -283,101 +293,159 @@ var Switch = exports.Switch = function (_React$Component) {
   }, {
     key: '_setValue',
     value: function _setValue(val) {
-      var _this4 = this;
+      var _this5 = this;
 
-      if (val === this.state.value) return;
+      var value = this._getValue();
+      if (val === value) return;
+
+      var newValue = val === undefined ? !value : val;
 
       this.setState({
-        indeterminate: false, // TODO - not used
-        value: val === undefined ? !this.state.value : val
+        value: newValue
       }, function () {
-        _this4._updateContainerPosition();
-        _this4._fireStateChange();
+        _this5._updateContainerPosition();
+        _this5._fireStateChange(newValue);
       });
     }
   }, {
     key: '_fireStateChange',
-    value: function _fireStateChange() {
-      var _this5 = this;
+    value: function _fireStateChange(newValue) {
+      var _this6 = this;
 
       var onChange = this.props.onChange;
 
       if (typeof onChange != "function") return;
 
       setTimeout(function () {
-        return onChange(_this5, _this5.state.value);
+        return onChange(_this6, newValue);
       }, 0);
     }
-
-    // TODO remove text refs?
-
   }, {
     key: 'render',
     value: function render() {
-      var _this6 = this;
-
-      var _props3 = this.props;
-      var baseClass = _props3.baseClass;
-      var labelText = _props3.labelText;
-      var onColor = _props3.onColor;
-      var onText = _props3.onText;
-      var offColor = _props3.offColor;
-      var offText = _props3.offText;
-      var inverse = _props3.inverse;
-      var bsSize = _props3.bsSize;
-      var _state4 = this.state;
-      var handleWidth = _state4.handleWidth;
-      var labelWidth = _state4.labelWidth;
-      var offset = _state4.offset;
-      var value = _state4.value;
+      var _props4 = this.props;
+      var baseClass = _props4.baseClass;
+      var inverse = _props4.inverse;
+      var _state5 = this.state;
+      var handleWidth = _state5.handleWidth;
+      var labelWidth = _state5.labelWidth;
+      var offset = _state5.offset;
 
 
-      var onHandle = _react2.default.createElement(
-        'span',
-        { ref: function ref(e) {
-            return _this6.elmOnHandle = e;
-          }, style: { width: handleWidth },
-          className: baseClass + '-handle-on ' + baseClass + '-' + onColor,
-          onClick: this._handleOnClick.bind(this) },
-        onText
-      );
-      var offHandle = _react2.default.createElement(
-        'span',
-        { ref: function ref(e) {
-            return _this6.elmOffHandle = e;
-          }, style: { width: handleWidth },
-          className: baseClass + '-handle-off ' + baseClass + '-' + offColor,
-          onClick: this._handleOffClick.bind(this) },
-        offText
-      );
-
-      var label = _react2.default.createElement(
-        'span',
-        { className: baseClass + '-label', style: { width: labelWidth }, ref: function ref(e) {
-            return _this6.elmLabel = e;
-          },
-          onMouseDown: this._handleLabelMouseDown.bind(this), onMouseMove: this._handleLabelMouseMove.bind(this),
-          onMouseUp: this._handleLabelMouseUp.bind(this), onMouseLeave: this._handleLabelMouseUp.bind(this) },
-        labelText
-      );
+      var onHandle = this._renderOnHandle();
+      var offHandle = this._renderOffHandle();
 
       var containerWidth = labelWidth + handleWidth * 2;
       var wrapperWidth = labelWidth + handleWidth;
       if (containerWidth == wrapperWidth) containerWidth = wrapperWidth = "auto";
 
-      var wrapperClass = this._wrapperClasses();
+      var wrapperParams = {
+        className: this._wrapperClasses(),
+        style: { width: wrapperWidth },
+        tabIndex: "0",
+        onKeyDown: this._handleKeyPress.bind(this),
+        onFocus: this._setFocus.bind(this),
+        onBlur: this._setBlur.bind(this)
+      };
+
+      var containerParams = {
+        className: baseClass + '-container',
+        style: { width: containerWidth, marginLeft: offset }
+      };
 
       return _react2.default.createElement(
         'div',
-        { className: wrapperClass, ref: 'wrapper', style: { width: wrapperWidth }, onBlur: this._setBlur.bind(this), onFocus: this._setFocus.bind(this) },
+        wrapperParams,
         _react2.default.createElement(
           'div',
-          { className: baseClass + '-container', ref: 'container', style: { width: containerWidth, marginLeft: offset } },
+          containerParams,
           inverse ? offHandle : onHandle,
-          label,
-          inverse ? onHandle : offHandle,
-          _react2.default.createElement('input', { type: 'checkbox', ref: 'element', onKeyDown: this._handleKeyPress.bind(this) })
+          this._renderLabel(),
+          inverse ? onHandle : offHandle
         )
+      );
+    }
+  }, {
+    key: '_renderOnHandle',
+    value: function _renderOnHandle() {
+      var _this7 = this;
+
+      var _props5 = this.props;
+      var baseClass = _props5.baseClass;
+      var onColor = _props5.onColor;
+      var onText = _props5.onText;
+      var handleWidth = this.state.handleWidth;
+
+
+      var params = {
+        ref: function ref(e) {
+          return _this7.elmOnHandle = e;
+        },
+        style: { width: handleWidth },
+        className: baseClass + '-handle-on ' + baseClass + '-' + onColor,
+        onClick: this._handleOnClick.bind(this)
+      };
+
+      return _react2.default.createElement(
+        'span',
+        params,
+        onText
+      );
+    }
+  }, {
+    key: '_renderOffHandle',
+    value: function _renderOffHandle() {
+      var _this8 = this;
+
+      var _props6 = this.props;
+      var baseClass = _props6.baseClass;
+      var offColor = _props6.offColor;
+      var offText = _props6.offText;
+      var handleWidth = this.state.handleWidth;
+
+
+      var params = {
+        ref: function ref(e) {
+          return _this8.elmOffHandle = e;
+        },
+        style: { width: handleWidth },
+        className: baseClass + '-handle-on ' + baseClass + '-' + offColor,
+        onClick: this._handleOffClick.bind(this)
+      };
+
+      return _react2.default.createElement(
+        'span',
+        params,
+        offText
+      );
+    }
+  }, {
+    key: '_renderLabel',
+    value: function _renderLabel() {
+      var _props7 = this.props;
+      var baseClass = _props7.baseClass;
+      var labelText = _props7.labelText;
+      var labelWidth = this.state.labelWidth;
+
+
+      var params = {
+        style: { width: labelWidth },
+        className: baseClass + '-label',
+
+        onTouchStart: this._handleLabelMouseDown.bind(this),
+        onTouchMove: this._handleLabelMouseMove.bind(this),
+        onTouchEnd: this._handleLabelMouseUp.bind(this),
+
+        onMouseDown: this._handleLabelMouseDown.bind(this),
+        onMouseMove: this._handleLabelMouseMove.bind(this),
+        onMouseUp: this._handleLabelMouseUp.bind(this),
+        onMouseLeave: this._handleLabelMouseUp.bind(this)
+      };
+
+      return _react2.default.createElement(
+        'span',
+        params,
+        labelText
       );
     }
   }]);
@@ -385,44 +453,53 @@ var Switch = exports.Switch = function (_React$Component) {
   return Switch;
 }(_react2.default.Component);
 
-// TODO - add defaultValue prop.
-// then if the value prop is defined, always render to that regardless of other state changes?
-
 Switch.defaultProps = {
-  value: true,
-  wrapperClass: "wrapper",
-  handleWidth: "auto",
-  labelWidth: "auto",
-  onColor: "primary",
-  offColor: "default",
-  baseClass: "bootstrap-switch",
-  onText: "ON",
-  offText: "OFF",
-  labelText: " ",
-  inverse: false,
+  baseClass: 'bootstrap-switch',
+  wrapperClass: 'wrapper',
   bsSize: null,
+
+  handleWidth: 'auto',
+  labelWidth: 'auto',
+
+  onColor: 'primary',
+  offColor: 'default',
+
+  onText: 'ON',
+  offText: 'OFF',
+  labelText: ' ',
+
+  inverse: false,
+  animate: true,
+
   disabled: false,
   readonly: false,
-  indeterminate: false,
-  animate: true
+
+  defaultValue: true,
+  value: undefined
 };
 
 Switch.propTypes = {
-  value: _react2.default.PropTypes.bool,
-  inverse: _react2.default.PropTypes.bool,
+  baseClass: _react2.default.PropTypes.string,
   wrapperClass: _react2.default.PropTypes.string,
+  bsSize: _react2.default.PropTypes.string,
+
   handleWidth: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),
   labelWidth: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),
+
   onColor: _react2.default.PropTypes.string,
   offColor: _react2.default.PropTypes.string,
-  baseClass: _react2.default.PropTypes.string,
+
   onText: _react2.default.PropTypes.string,
   offText: _react2.default.PropTypes.string,
   labelText: _react2.default.PropTypes.string,
-  bsSize: _react2.default.PropTypes.string,
+
+  inverse: _react2.default.PropTypes.bool,
+  animate: _react2.default.PropTypes.bool,
+
   disabled: _react2.default.PropTypes.bool,
   readonly: _react2.default.PropTypes.bool,
-  indeterminate: _react2.default.PropTypes.bool,
-  animate: _react2.default.PropTypes.bool,
+
+  defaultValue: _react2.default.PropTypes.bool,
+  value: _react2.default.PropTypes.bool,
   onChange: _react2.default.PropTypes.func
 };

@@ -17,7 +17,7 @@ export class Indeterminate extends React.Component {
         
         <form>
           <FormGroup>
-            <Switch ref={e => this.switch = e} value={null}  />
+            <Switch ref={e => this.switch = e} defaultValue={null}  />
           </FormGroup>
 
           <FormGroup>

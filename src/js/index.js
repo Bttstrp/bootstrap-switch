@@ -11,7 +11,7 @@ export class Switch extends React.Component {
       skipAnimation: true,
       dragStart: false,
       focus: false,
-      value: props.value,
+      value: props.value != undefined ? props.value : props.defaultValue,
       labelWidth: props.labelWidth,
       handleWidth: props.handleWidth
     };
@@ -22,13 +22,23 @@ export class Switch extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
+    const newValue = nextProps.value !== undefined ? nextProps.value : this.state.value;
+
     // ensure width is updated
     this.setState({
       labelWidth: nextProps.labelWidth,
-      handleWidth: nextProps.handleWidth
+      handleWidth: nextProps.handleWidth,
+      value: newValue
     }, () => {
-      this._recalculateWidth();
+      this._recalculateWidth(nextProps.value !== undefined);
     });
+  }
+
+  _getValue(){
+    if(this.props.value !== undefined)
+      return this.props.value;
+
+    return this.state.value;
   }
 
   value(val){
@@ -51,11 +61,12 @@ export class Switch extends React.Component {
     } = this.props;
 
     const {
-      value,
       skipAnimation,
       focus,
       dragStart,
     } = this.state;
+
+    const value = this._getValue();
 
     const classes = [ baseClass, wrapperClass ];
     classes.push(baseClass + (value ? "-on" : "-off"));
@@ -87,7 +98,7 @@ export class Switch extends React.Component {
     return classes.join(" ");
   }
 
-  _recalculateWidth(){
+  _recalculateWidth(animate){
     const onHandle = ReactDOM.findDOMNode(this.elmOnHandle);
     const offHandle = ReactDOM.findDOMNode(this.elmOffHandle);
 
@@ -105,13 +116,14 @@ export class Switch extends React.Component {
       handleWidth: newHandleWidth,
       labelWidth: newLabelWidth
     }, () => {
-      this._updateContainerPosition(null, true);
+      this._updateContainerPosition(!animate);
     });
   }
 
-  _updateContainerPosition(state, noAnimate){
-    const { handleWidth, offset, value } = (state ? state : this.state);
+  _updateContainerPosition(noAnimate){
+    const { handleWidth, offset } = this.state;
     const { inverse } = this.props;
+    const value = this._getValue();
 
     // skip animating if no offset yet
     const skipAnimation = noAnimate || (offset == null)
@@ -197,7 +209,8 @@ export class Switch extends React.Component {
   }
 
   _handleLabelMouseUp(){
-    const { dragStart, value, dragged, offset, handleWidth } = this.state;
+    const { dragStart, dragged, offset, handleWidth } = this.state;
+    const value = this._getValue();
     
     if(dragStart === undefined || dragStart === null || dragStart === false)
       return;
@@ -217,7 +230,7 @@ export class Switch extends React.Component {
       value: val
     }, () => {
       this._updateContainerPosition();
-      this._fireStateChange();
+      this._fireStateChange(val);
     });
   }
 
@@ -234,23 +247,26 @@ export class Switch extends React.Component {
   }
 
   _setValue(val){
-    if(val === this.state.value)
+    const value = this._getValue();
+    if(val === value)
       return;
 
+    const newValue = (val === undefined ? !value : val);
+
     this.setState({
-      value: (val === undefined ? !this.state.value : val)
+      value: newValue
     }, () => {
       this._updateContainerPosition();
-      this._fireStateChange();
+      this._fireStateChange(newValue);
     });
   }
 
-  _fireStateChange(){
+  _fireStateChange(newValue){
     const { onChange } = this.props;
     if (typeof onChange != "function")
       return;
 
-    setTimeout(() => onChange(this, this.state.value), 0);
+    setTimeout(() => onChange(this, newValue), 0);
   }
 
   render() {
@@ -266,17 +282,17 @@ export class Switch extends React.Component {
       containerWidth = wrapperWidth = "auto";
 
     const wrapperParams = {
-      className: this._wrapperClasses(),
-      style: { width: wrapperWidth },
-      tabIndex: "0",
-      onKeyDown: this._handleKeyPress.bind(this),
-      onFocus: this._setFocus.bind(this),
-      onBlur: this._setBlur.bind(this)
+      className:  this._wrapperClasses(),
+      style:      { width: wrapperWidth },
+      tabIndex:   "0",
+      onKeyDown:  this._handleKeyPress.bind(this),
+      onFocus:    this._setFocus.bind(this),
+      onBlur:     this._setBlur.bind(this)
     };
 
     const containerParams = {
-      className: `${baseClass}-container`,
-      style: { width: containerWidth, marginLeft: offset }
+      className:  `${baseClass}-container`,
+      style:      { width: containerWidth, marginLeft: offset }
     };
 
     return (
@@ -295,10 +311,10 @@ export class Switch extends React.Component {
     const { handleWidth } = this.state;
 
     const params = {
-      ref: e => this.elmOnHandle = e,
-      style: { width: handleWidth },
-      className: `${baseClass}-handle-on ${baseClass}-${onColor}`,
-      onClick: this._handleOnClick.bind(this)
+      ref:        e => this.elmOnHandle = e,
+      style:      { width: handleWidth },
+      className:  `${baseClass}-handle-on ${baseClass}-${onColor}`,
+      onClick:    this._handleOnClick.bind(this)
     };
 
     return <span {...params}>{ onText }</span>;
@@ -309,10 +325,10 @@ export class Switch extends React.Component {
     const { handleWidth } = this.state;
 
     const params = {
-      ref: e => this.elmOffHandle = e,
-      style: { width: handleWidth },
-      className: `${baseClass}-handle-on ${baseClass}-${offColor}`,
-      onClick: this._handleOffClick.bind(this)
+      ref:        e => this.elmOffHandle = e,
+      style:      { width: handleWidth },
+      className:  `${baseClass}-handle-on ${baseClass}-${offColor}`,
+      onClick:    this._handleOffClick.bind(this)
     };
 
     return <span {...params}>{ offText }</span>;
@@ -323,16 +339,16 @@ export class Switch extends React.Component {
     const { labelWidth } = this.state;
 
     const params = {
-      style: { width: labelWidth },
-      className: `${baseClass}-label`,
+      style:        { width: labelWidth },
+      className:    `${baseClass}-label`,
 
       onTouchStart: this._handleLabelMouseDown.bind(this),
-      onTouchMove: this._handleLabelMouseMove.bind(this),
-      onTouchEnd: this._handleLabelMouseUp.bind(this),
+      onTouchMove:  this._handleLabelMouseMove.bind(this),
+      onTouchEnd:   this._handleLabelMouseUp.bind(this),
 
-      onMouseDown: this._handleLabelMouseDown.bind(this),
-      onMouseMove: this._handleLabelMouseMove.bind(this),
-      onMouseUp: this._handleLabelMouseUp.bind(this),
+      onMouseDown:  this._handleLabelMouseDown.bind(this),
+      onMouseMove:  this._handleLabelMouseMove.bind(this),
+      onMouseUp:    this._handleLabelMouseUp.bind(this),
       onMouseLeave: this._handleLabelMouseUp.bind(this)
     };
 
@@ -340,60 +356,59 @@ export class Switch extends React.Component {
   }
 }
 
-// TODO - add defaultValue prop.
-// then if the value prop is defined, always render to that regardless of other state changes?
-
 Switch.defaultProps = {
-  baseClass: 'bootstrap-switch',
-  wrapperClass: 'wrapper',
-  bsSize: null,
+  baseClass:      'bootstrap-switch',
+  wrapperClass:   'wrapper',
+  bsSize:         null,
 
-  handleWidth: 'auto',
-  labelWidth: 'auto',
+  handleWidth:    'auto',
+  labelWidth:     'auto',
 
-  onColor: 'primary',
-  offColor: 'default',
+  onColor:        'primary',
+  offColor:       'default',
 
-  onText: 'ON',
-  offText: 'OFF',
-  labelText: ' ',
+  onText:         'ON',
+  offText:        'OFF',
+  labelText:      ' ',
 
-  inverse: false,
-  animate: true,
+  inverse:        false,
+  animate:        true,
 
-  disabled: false,
-  readonly: false,
+  disabled:       false,
+  readonly:       false,
 
-  value: true
+  defaultValue:   true,
+  value:          undefined
 };
 
 Switch.propTypes = {
-  baseClass: React.PropTypes.string,
-  wrapperClass: React.PropTypes.string,
-  bsSize: React.PropTypes.string,
+  baseClass:      React.PropTypes.string,
+  wrapperClass:   React.PropTypes.string,
+  bsSize:         React.PropTypes.string,
 
-  handleWidth: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number
-  ]),
-  labelWidth: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number
-  ]),
+  handleWidth:    React.PropTypes.oneOfType([
+                    React.PropTypes.string,
+                    React.PropTypes.number
+                  ]),
+  labelWidth:     React.PropTypes.oneOfType([
+                    React.PropTypes.string,
+                    React.PropTypes.number
+                  ]),
 
-  onColor: React.PropTypes.string,
-  offColor: React.PropTypes.string,
+  onColor:        React.PropTypes.string,
+  offColor:       React.PropTypes.string,
 
-  onText: React.PropTypes.string,
-  offText: React.PropTypes.string,
-  labelText: React.PropTypes.string,
+  onText:         React.PropTypes.string,
+  offText:        React.PropTypes.string,
+  labelText:      React.PropTypes.string,
 
-  inverse: React.PropTypes.bool,
-  animate: React.PropTypes.bool,
+  inverse:        React.PropTypes.bool,
+  animate:        React.PropTypes.bool,
 
-  disabled: React.PropTypes.bool,
-  readonly: React.PropTypes.bool,
+  disabled:       React.PropTypes.bool,
+  readonly:       React.PropTypes.bool,
 
-  value: React.PropTypes.bool,
-  onChange: React.PropTypes.func,
+  defaultValue:   React.PropTypes.bool,
+  value:          React.PropTypes.bool,
+  onChange:       React.PropTypes.func,
 };

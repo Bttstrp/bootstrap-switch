@@ -28,7 +28,7 @@ export class OffText extends React.Component {
 
         <form>
           <FormGroup>
-            <Switch offText={this.state.text} value={false}  />
+            <Switch offText={this.state.text} defaultValue={false}  />
           </FormGroup>
 
           <FormGroup>

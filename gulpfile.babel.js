@@ -6,17 +6,28 @@ var watchify    = require('watchify');
 var reactify    = require('reactify');
 var browserify  = require('browserify');
 var browserSync = require('browser-sync').create();
-var less = require('gulp-less');
-var rename = require('gulp-rename');
-var cleanCss = require('gulp-clean-css');
-
-
+var less        = require('gulp-less');
+var rename      = require('gulp-rename');
+var cleanCss    = require('gulp-clean-css');
+var header      = require('gulp-header');
+var pkg         = require('./package.json');
 
 import { buildFolder } from './tools/build';
 
-/**
- * Gulp task alias
+
+const banner = `
+/* ========================================================================
+ * ${pkg.name} - v${pkg.version}
+ * ${pkg.homepage}
+ * ========================================================================
+ * Copyright 2012-2016 ${pkg.author.name}
+ *
+ * Released under the MIT license
+ * ========================================================================
  */
+
+`
+
 gulp.task('dev-bundle', function(){
     // Input file.
     watchify.args.debug = true;
@@ -53,12 +64,22 @@ gulp.task('dev-bundle', function(){
     return bundle();
 });
 
-gulp.task('less-bs3', function() {
+gulp.task('dev-less', function() {
     return gulp.src('src/less/bootstrap3/build.less')
     .pipe(less())
     .pipe(rename('react-bootstrap-switch.css'))
+    .pipe(gulp.dest('example/css'))
+    .on('error', gutil.log);
+});
+
+gulp.task('less-bs3', function() {
+    return gulp.src('src/less/bootstrap3/build.less')
+    .pipe(less())
+    .pipe(header(banner, {pkg: pkg}))
+    .pipe(rename('react-bootstrap-switch.css'))
     .pipe(gulp.dest('dist/css/bootstrap3'))
     .pipe(cleanCss())
+    .pipe(header(banner, {pkg: pkg}))
     .pipe(rename({suffix: ".min"}))
     .pipe(gulp.dest('dist/css/bootstrap3'))
     .on('error', gutil.log);
@@ -67,22 +88,17 @@ gulp.task('less-bs3', function() {
 gulp.task('less-bs2', function() {
     return gulp.src('src/less/bootstrap2/build.less')
     .pipe(less())
+    .pipe(header(banner, {pkg: pkg}))
     .pipe(rename('react-bootstrap-switch.css'))
     .pipe(gulp.dest('dist/css/bootstrap2'))
     .pipe(cleanCss())
+    .pipe(header(banner, {pkg: pkg}))
     .pipe(rename({suffix: ".min"}))
     .pipe(gulp.dest('dist/css/bootstrap2'))
     .on('error', gutil.log);
 });
 
 gulp.task('less', ['less-bs2', 'less-bs3'], ()=>{});
-
-gulp.task('dev', ['dev-bundle'], function(){
-    browserSync.init({
-        server: "./example"
-    });
-
-});
 
 gulp.task('dist', function(){
     buildFolder("src/js", "dist/js");
@@ -91,6 +107,11 @@ gulp.task('dist', function(){
 /**
  * First bundle, then serve from the ./app directory
  */
-gulp.task('default', function(){
+gulp.task('default', ['dev-bundle', 'dev-less'], function(){
+    // Watch .less files
+    gulp.watch('src/less/bootstrap3/**/*.less', ['dev-less']);
 
+    browserSync.init({
+        server: "./example"
+    });
 });

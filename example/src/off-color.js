@@ -50,7 +50,7 @@ export class OffColor extends React.Component {
 
         <form>
           <FormGroup>
-            <Switch offColor={this.state.color} value={false} />
+            <Switch offColor={this.state.color} defaultValue={false} />
           </FormGroup>
 
           <FormGroup>
