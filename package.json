@@ -56,16 +56,5 @@
     "dev": "NODE_ENV=development gulp",
     "build": "gulp dist",
     "lint": "eslint ."
-  },
-  "npmName": "react-bootstrap-switch",
-  "npmFileMap": [
-    {
-      "basePath": "/dist/",
-      "files": [
-        "*.js",
-        "bootstrap3/*.css",
-        "bootstrap2/*.css"
-      ]
-    }
-  ]
+  }
 }
