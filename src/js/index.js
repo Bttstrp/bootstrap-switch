@@ -156,16 +156,17 @@ export class Switch extends React.Component{
   }
 
   _handleKeyPress(e){
-    console.log(e, "TRU"); // TODO - not working...
     if(!e.which || this._disableUserInput())
       return;
 
+    const { inverse } = this.props;
+
     switch(e.which){
       case 37:
-        return this._setValue(false);
+        return this._setValue(inverse);
 
       case 39:
-        return this._setValue(true);
+        return this._setValue(!inverse);
     }
   }
 
@@ -254,55 +255,90 @@ export class Switch extends React.Component{
   }
 
   render() {
-    const {
-      baseClass,
-      labelText,
-      onColor, onText,
-      offColor, offText,
-      inverse, bsSize
-    } = this.props;
-
-    const {
-      handleWidth, labelWidth, 
-      offset,
-      value
-    } = this.state;
+    const { baseClass, inverse } = this.props;
+    const { handleWidth, labelWidth, offset } = this.state;
   
-    const onHandle = <span ref={(e) => this.elmOnHandle = e} style={{ width: handleWidth }}
-      className={`${baseClass}-handle-on ${baseClass}-${onColor}`} 
-      onClick={this._handleOnClick.bind(this)} >
-        { onText }
-      </span>;
-    const offHandle = <span ref={(e) => this.elmOffHandle = e} style={{ width: handleWidth }}
-      className={`${baseClass}-handle-off ${baseClass}-${offColor}`}
-      onClick={this._handleOffClick.bind(this)}>
-        { offText }
-      </span>;
-
-    const label = <span className={`${baseClass}-label`} style={{width:labelWidth}} ref={(e) => this.elmLabel = e} 
-      onTouchStart={this._handleLabelMouseDown.bind(this)} onTouchMove={this._handleLabelMouseMove.bind(this)} onTouchEnd={this._handleLabelMouseUp.bind(this)}
-      onMouseDown={this._handleLabelMouseDown.bind(this)} onMouseMove={this._handleLabelMouseMove.bind(this)}
-      onMouseUp={this._handleLabelMouseUp.bind(this)} onMouseLeave={this._handleLabelMouseUp.bind(this)}>
-        { labelText }
-      </span>
+    const onHandle = this._renderOnHandle();
+    const offHandle = this._renderOffHandle();
 
     let containerWidth = labelWidth + (handleWidth * 2);
     let wrapperWidth = labelWidth + handleWidth;
     if(containerWidth == wrapperWidth)
       containerWidth = wrapperWidth = "auto";
 
-    const wrapperClass = this._wrapperClasses();
+    const wrapperParams = {
+      className: this._wrapperClasses(),
+      style: { width: wrapperWidth },
+      tabIndex: "0",
+      onKeyDown: this._handleKeyPress.bind(this),
+      onFocus: this._setFocus.bind(this),
+      onBlur: this._setBlur.bind(this)
+    };
+
+    const containerParams = {
+      className: `${baseClass}-container`,
+      style: { width: containerWidth, marginLeft: offset }
+    };
 
     return (
-      <div className={ wrapperClass } style={{width:wrapperWidth}} >
-        <div className={`${baseClass}-container`} ref="container" style={{width:containerWidth, marginLeft:offset}}>
+      <div {...wrapperParams}>
+        <div {...containerParams}>
           { inverse ? offHandle : onHandle}
-          { label }
+          { this._renderLabel() }
           { inverse ? onHandle : offHandle}
-          <input type="checkbox" ref={e => this.element = e} />
         </div>
       </div>
     );
+  }
+
+  _renderOnHandle(){
+    const { baseClass, onColor, onText } = this.props;
+    const { handleWidth } = this.state;
+
+    const params = {
+      ref: e => this.elmOnHandle = e,
+      style: { width: handleWidth },
+      className: `${baseClass}-handle-on ${baseClass}-${onColor}`,
+      onClick: this._handleOnClick.bind(this)
+    };
+
+    return <span {...params}>{ onText }</span>;
+  }
+
+  _renderOffHandle(){
+    const { baseClass, offColor, offText } = this.props;
+    const { handleWidth } = this.state;
+
+    const params = {
+      ref: e => this.elmOffHandle = e,
+      style: { width: handleWidth },
+      className: `${baseClass}-handle-on ${baseClass}-${offColor}`,
+      onClick: this._handleOffClick.bind(this)
+    };
+
+    return <span {...params}>{ offText }</span>;
+  }
+
+  _renderLabel(){
+    const { baseClass, labelText } = this.props;
+    const { labelWidth } = this.state;
+
+    const params = {
+      ref: e => this.elmLabel = e,
+      style: { width: labelWidth },
+      className: `${baseClass}-label`,
+      
+      onTouchStart: this._handleLabelMouseDown.bind(this),
+      onTouchMove: this._handleLabelMouseMove.bind(this),
+      onTouchEnd: this._handleLabelMouseUp.bind(this),
+
+      onMouseDown: this._handleLabelMouseDown.bind(this),
+      onMouseMove: this._handleLabelMouseMove.bind(this),
+      onMouseUp: this._handleLabelMouseUp.bind(this),
+      onMouseLeave: this._handleLabelMouseUp.bind(this)
+    };
+
+    return <span {...params}>{ labelText }</span>;
   }
 }
 
