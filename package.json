@@ -1,7 +1,7 @@
 {
-  "name": "bootstrap-switch",
+  "name": "jquery3-bootstrap-switch",
   "description": "Turn checkboxes and radio buttons into toggle switches.",
-  "version": "3.3.2",
+  "version": "3.3.3",
   "keywords": [
     "bootstrap",
     "switch",
@@ -23,6 +23,9 @@
     {
       "name": "Peter Stein",
       "url": "http://www.bdmdesign.org"
+    },
+    {
+      "name": "Mitrani Matthieu"
     }
   ],
   "main": "dist/js/bootstrap-switch.js",
