@@ -67,6 +67,7 @@
                 classes.push(_this.options.baseClass + "-readonly");
               }
               if (_this.options.indeterminate) {
+                _this.options.state = void 0;
                 classes.push(_this.options.baseClass + "-indeterminate");
               }
               if (_this.options.inverse) {
@@ -248,6 +249,7 @@
 
       BootstrapSwitch.prototype.toggleIndeterminate = function() {
         this.options.indeterminate = !this.options.indeterminate;
+        this.options.state = this.options.indeterminate ? void 0 : this.options.state;
         this.$element.prop("indeterminate", this.options.indeterminate);
         this.$wrapper.toggleClass(this.options.baseClass + "-indeterminate");
         this._containerPosition();
@@ -577,7 +579,7 @@
           return function(event) {
             event.preventDefault();
             event.stopPropagation();
-            _this.state(false);
+            _this.state(_this.options.indeterminate);
             return _this.$element.trigger("focus.bootstrapSwitch");
           };
         })(this));
@@ -585,7 +587,7 @@
           return function(event) {
             event.preventDefault();
             event.stopPropagation();
-            _this.state(true);
+            _this.state(!_this.options.indeterminate);
             return _this.$element.trigger("focus.bootstrapSwitch");
           };
         })(this));
