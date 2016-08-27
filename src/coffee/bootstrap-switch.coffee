@@ -32,7 +32,9 @@ do ($ = window.jQuery, window) ->
           classes.push "#{@options.baseClass}-#{@options.size}" if @options.size?
           classes.push "#{@options.baseClass}-disabled" if @options.disabled
           classes.push "#{@options.baseClass}-readonly" if @options.readonly
-          classes.push "#{@options.baseClass}-indeterminate" if @options.indeterminate
+          if @options.indeterminate
+            @options.state = undefined
+            classes.push "#{@options.baseClass}-indeterminate"
           classes.push "#{@options.baseClass}-inverse" if @options.inverse
           classes.push "#{@options.baseClass}-id-#{@$element.attr("id")}" if @$element.attr "id"
           classes.join " "
@@ -178,6 +180,7 @@ do ($ = window.jQuery, window) ->
 
     toggleIndeterminate: ->
       @options.indeterminate = not @options.indeterminate
+      @options.state = if @options.indeterminate then undefined else @options.state
 
       @$element.prop "indeterminate", @options.indeterminate
       @$wrapper.toggleClass "#{@options.baseClass}-indeterminate"
@@ -432,14 +435,14 @@ do ($ = window.jQuery, window) ->
         event.preventDefault()
         event.stopPropagation()
 
-        @state false
+        @state @options.indeterminate
         @$element.trigger "focus.bootstrapSwitch"
 
       @$off.on "click.bootstrapSwitch", (event) =>
         event.preventDefault()
         event.stopPropagation()
 
-        @state true
+        @state !@options.indeterminate
         @$element.trigger "focus.bootstrapSwitch"
 
     _labelHandlers: ->
