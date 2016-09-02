@@ -5,8 +5,12 @@
 
 This project is a port of [bootstrap-switch](https://github.com/nostalgiaz/bootstrap-switch) for use in React.js
 
-## Compatability
-Verion 3.4.x is built for React.js 0.14. It will not work with earlier versions of React.js.
+## Version Compatability
+| React Version | Switch Version |
+| ------------- | -------------- |
+| v15.x         | v15.x          |
+| v14.x         | v3.4.x         |
+| v13.x         | v3.3.x         |
 
 NOTE: The CSS from the original version is not fully compatible. There is CSS and LESS included in this repo, or any 3rd party themes can likely be made compatible with the changes shown [in this commit](https://github.com/Julusian/react-bootstrap-switch/commit/bbd9754b0cebb82aeb1724ca86c79529e4a7b9df).
 
@@ -35,37 +39,28 @@ These should be defined on the JSX node, many cannot be changed once they have b
 
 | Name              | Type    | Default   | Values | Description |
 | ----------------- | ------- | --------- | ------ | ----------- |
-| **state**         | boolean | true      | true, false | Initial starting state of the switch |
-| **size**          | string  | null      | null, 'mini', 'small', 'normal', 'large' | The checkbox size |
-| **animate**       | boolean | true      | true, false | Animate the switch |
+| **value**         | boolean | true      | true, false, null | State of the switch. Null indidcates indeterminate. Use to store state external to the switch |
+| **defaultValue**  | boolean | true      | true, false, null | Initial starting state of the switch. Null indidcates indeterminate. Use to make the switch remember and handle state itself |
+| **bsSize**        | string  | null      | null, 'mini', 'small', 'normal', 'large' | The checkbox size |
+| **animate**       | boolean | true      | true, false | Enable or disable animation for the switch |
 | **disabled**      | boolean | false     | true, false | Disable state |
 | **readonly**      | boolean | false     | true, false | Readonly state |
-| **indeterminate** | boolean | false     | true, false | Indeterminate state |
 | **inverse**       | boolean | false     | true, false | Inverse switch direction|
-| **onColor**       | string  | 'primary' | 'primary', 'info', 'success', 'warning', 'danger', 'default' | Color of the on state of the switch |
-| **offColor**      | string  | 'default' | 'primary', 'info', 'success', 'warning', 'danger', 'default' | Color of the off state of the switch |
-| **onText**        | string  | 'ON'      | | Text of the on state of the switch |
-| **offText**       | string  | 'OFF'     | | Text of the off state of the switch |
+| **onColor**       | string  | 'primary' | 'primary', 'info', 'success', 'warning', 'danger', 'default' | Color of the on side of the switch |
+| **offColor**      | string  | 'default' | 'primary', 'info', 'success', 'warning', 'danger', 'default' | Color of the off side of the switch |
+| **onText**        | string  | 'ON'      | | Text of the on side of the switch |
+| **offText**       | string  | 'OFF'     | | Text of the off side of the switch |
 | **labelText**     | string  | ''        | | Text of the center handle of the switch |
 | **handleWidth**   | string or number | 'auto' | 'auto' or Number | Width of the left and right sides in pixels |
 | **labelWidth**    | string or number | 'auto' | 'auto' or Number |  Width of the center handle in pixels |
 | **baseClass**     | string  | 'bootstrap-switch' | | Global class prefix  |
 | **wrapperClass**  | string  | 'wrapper' | | Container element class(es) |
-| **onChange**      | function | undefined| | function(elm, state){} or function(state){} |
+| **onChange**      | function | undefined| | function(elm, state){} |
 
 ### Methods
 | Name         | Parameters    | Description |
 | ------------ | ------- | ----------- |
-| **value** | boolean  | Get or set the switch state |
-| **valueState** | boolean  | Get or set the switch state |
-| **toggleValue**   |  | Toggle the switch state |
-| **toggleState**   |  | Toggle the switch state |
-| **disabled** | boolean | Get or set the disabled state |
-| **toggleDisabled** |  | Toggle the disabled state |
-| **readonly** | boolean | Get or set the readonly state |
-| **toggleReadonly** |  | Toggle the readonly state |
-| **handleWidth** | string or number | Set the width of the left and right sides in pixels |
-| **labelWidth** | string or number | Set the width of the center handle in pixels |
+| **value** | boolean or null | Get or set the switch state |
 
 
 ## Supported browsers
@@ -73,12 +68,25 @@ These should be defined on the JSX node, many cannot be changed once they have b
 IE9+ and all the other modern browsers.
 
 
-## LESS 
+## Examples and Contributing
+The following will get a local copy of the code and launch the example page. 
+
+Any changes to the source files will be automatically loaded into your browser upon saving the files.
+
+```
+git clone https://github.com/Julusian/react-bootstrap-switch.git
+cd react-bootstrap-switch
+npm install
+npm run dev
+```
+
+
+
+## LESS / CSS
 
 Import `src/less/bootstrap2/bootstrap-switch.less` for bootstrap 2 or `src/less/bootstrap3/bootstrap-switch.less` for bootstrap 3 in your compilation stack.
 
-NOTE: The LESS files from the original switch are not fully compatible, updated versions are included in this repo.
-
+NOTE: The LESS and CSS files from the original switch are not fully compatible, updated versions are included in this repo.
 
 ## License
 

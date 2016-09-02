@@ -1,0 +1,8 @@
+tools
+example
+.babelrc
+.eslint*
+.git*
+.npmignore
+src/js
+gulpfile.babel.js
