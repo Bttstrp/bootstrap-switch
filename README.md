@@ -46,6 +46,7 @@ These should be defined on the JSX node, many cannot be changed once they have b
 | **disabled**      | boolean | false     | true, false | Disable state |
 | **readonly**      | boolean | false     | true, false | Readonly state |
 | **inverse**       | boolean | false     | true, false | Inverse switch direction|
+| **tristate**      | boolean | false     | true, false | Allows user to cycle values through true, false and null |
 | **onColor**       | string  | 'primary' | 'primary', 'info', 'success', 'warning', 'danger', 'default' | Color of the on side of the switch |
 | **offColor**      | string  | 'default' | 'primary', 'info', 'success', 'warning', 'danger', 'default' | Color of the off side of the switch |
 | **onText**        | string  | 'ON'      | | Text of the on side of the switch |
