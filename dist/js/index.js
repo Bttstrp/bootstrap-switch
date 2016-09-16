@@ -28,7 +28,7 @@ var Switch = function (_React$Component) {
   function Switch(props) {
     _classCallCheck(this, Switch);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Switch).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Switch.__proto__ || Object.getPrototypeOf(Switch)).call(this, props));
 
     _this.state = {
       offset: null,
@@ -87,6 +87,7 @@ var Switch = function (_React$Component) {
       var disabled = _props.disabled;
       var readonly = _props.readonly;
       var inverse = _props.inverse;
+      var tristate = _props.tristate;
       var animate = _props.animate;
       var id = _props.id;
       var _state = this.state;
@@ -109,6 +110,8 @@ var Switch = function (_React$Component) {
       if (value === null) classes.push(baseClass + "-indeterminate");
 
       if (inverse) classes.push(baseClass + "-inverse");
+
+      if (tristate) classes.push(baseClass + "-tristate");
 
       if (id) classes.push(baseClass + "-" + id);
 
@@ -186,7 +189,7 @@ var Switch = function (_React$Component) {
     value: function _handleOnClick() {
       if (this._disableUserInput()) return;
 
-      this._setValue(false);
+      this._setValue(this.props.tristate ? this._getValue() == null : false);
       this._setFocus();
     }
   }, {
@@ -194,7 +197,7 @@ var Switch = function (_React$Component) {
     value: function _handleOffClick() {
       if (this._disableUserInput()) return;
 
-      this._setValue(true);
+      this._setValue(this.props.tristate ? this._getValue() != null : true);
       this._setFocus();
     }
   }, {
@@ -257,14 +260,20 @@ var Switch = function (_React$Component) {
 
       if (dragStart === undefined || dragStart === null || dragStart === false) return;
 
-      var inverse = this.props.inverse;
+      var _props4 = this.props;
+      var inverse = _props4.inverse;
+      var tristate = _props4.tristate;
 
 
-      var val = !value;
+      var val = void 0;
 
       if (dragged) {
         val = offset > -(handleWidth / 2);
         val = inverse ? !val : val;
+      } else if (tristate) {
+        val = value === null ? true : value ? false : null;
+      } else {
+        val = !value;
       }
 
       this.setState({
@@ -323,9 +332,9 @@ var Switch = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _props4 = this.props;
-      var baseClass = _props4.baseClass;
-      var inverse = _props4.inverse;
+      var _props5 = this.props;
+      var baseClass = _props5.baseClass;
+      var inverse = _props5.inverse;
       var _state5 = this.state;
       var handleWidth = _state5.handleWidth;
       var labelWidth = _state5.labelWidth;
@@ -370,10 +379,10 @@ var Switch = function (_React$Component) {
     value: function _renderOnHandle() {
       var _this7 = this;
 
-      var _props5 = this.props;
-      var baseClass = _props5.baseClass;
-      var onColor = _props5.onColor;
-      var onText = _props5.onText;
+      var _props6 = this.props;
+      var baseClass = _props6.baseClass;
+      var onColor = _props6.onColor;
+      var onText = _props6.onText;
       var handleWidth = this.state.handleWidth;
 
 
@@ -397,10 +406,10 @@ var Switch = function (_React$Component) {
     value: function _renderOffHandle() {
       var _this8 = this;
 
-      var _props6 = this.props;
-      var baseClass = _props6.baseClass;
-      var offColor = _props6.offColor;
-      var offText = _props6.offText;
+      var _props7 = this.props;
+      var baseClass = _props7.baseClass;
+      var offColor = _props7.offColor;
+      var offText = _props7.offText;
       var handleWidth = this.state.handleWidth;
 
 
@@ -424,9 +433,9 @@ var Switch = function (_React$Component) {
     value: function _renderLabel() {
       var _this9 = this;
 
-      var _props7 = this.props;
-      var baseClass = _props7.baseClass;
-      var labelText = _props7.labelText;
+      var _props8 = this.props;
+      var baseClass = _props8.baseClass;
+      var labelText = _props8.labelText;
       var labelWidth = this.state.labelWidth;
 
 
@@ -482,6 +491,7 @@ Switch.defaultProps = {
   disabled: false,
   readonly: false,
 
+  tristate: false,
   defaultValue: true,
   value: undefined
 };
@@ -507,6 +517,7 @@ Switch.propTypes = {
   disabled: _react2.default.PropTypes.bool,
   readonly: _react2.default.PropTypes.bool,
 
+  tristate: _react2.default.PropTypes.bool,
   defaultValue: _react2.default.PropTypes.bool,
   value: _react2.default.PropTypes.bool,
   onChange: _react2.default.PropTypes.func
