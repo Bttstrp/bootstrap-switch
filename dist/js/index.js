@@ -271,7 +271,7 @@ var Switch = function (_React$Component) {
         val = offset > -(handleWidth / 2);
         val = inverse ? !val : val;
       } else if (tristate) {
-        val = value === null ? true : value ? false : null;
+        val = value === null ? true : null;
       } else {
         val = !value;
       }
