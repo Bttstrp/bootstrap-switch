@@ -7,7 +7,7 @@ export default class Switch extends React.Component {
     super(props);
 
     this.state = {
-      offset: null,
+      offset: 0,
       skipAnimation: true,
       dragStart: false,
       focus: false,
