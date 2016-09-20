@@ -7,7 +7,7 @@ export default class Switch extends React.Component {
     super(props);
 
     this.state = {
-      offset: null,
+      offset: 0,
       skipAnimation: true,
       dragStart: false,
       focus: false,
@@ -279,7 +279,7 @@ export default class Switch extends React.Component {
 
     let containerWidth = labelWidth + (handleWidth * 2);
     let wrapperWidth = labelWidth + handleWidth;
-    if(containerWidth == wrapperWidth)
+    if(containerWidth == wrapperWidth || handleWidth == "auto" || labelWidth == "auto")
       containerWidth = wrapperWidth = "auto";
 
     const wrapperParams = {

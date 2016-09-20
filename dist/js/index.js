@@ -28,10 +28,10 @@ var Switch = function (_React$Component) {
   function Switch(props) {
     _classCallCheck(this, Switch);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Switch).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Switch.__proto__ || Object.getPrototypeOf(Switch)).call(this, props));
 
     _this.state = {
-      offset: null,
+      offset: 0,
       skipAnimation: true,
       dragStart: false,
       focus: false,
