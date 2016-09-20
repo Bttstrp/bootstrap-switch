@@ -337,7 +337,7 @@ var Switch = function (_React$Component) {
 
       var containerWidth = labelWidth + handleWidth * 2;
       var wrapperWidth = labelWidth + handleWidth;
-      if (containerWidth == wrapperWidth) containerWidth = wrapperWidth = "auto";
+      if (containerWidth == wrapperWidth || handleWidth == "auto" || labelWidth == "auto") containerWidth = wrapperWidth = "auto";
 
       var wrapperParams = {
         className: this._wrapperClasses(),
