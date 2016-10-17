@@ -319,7 +319,7 @@ do ($ = window.jQuery, window) ->
 
       # save handleWidth for further label width calculation check
       handleWidth = if @options.handleWidth is "auto"
-      then Math.max @$on.width(), @$off.width()
+      then Math.round Math.max(@$on.width(), @$off.width())
       else @options.handleWidth
 
       # set handles width
@@ -332,8 +332,8 @@ do ($ = window.jQuery, window) ->
         if width < handleWidth then handleWidth else width
 
       # get handle and label widths
-      @_handleWidth = @$on.outerWidth()
-      @_labelWidth = @$label.outerWidth()
+      @_handleWidth = Math.round @$on.outerWidth()
+      @_labelWidth = Math.round @$label.outerWidth()
 
       # set container and wrapper widths
       @$container.width (@_handleWidth * 2) + @_labelWidth
