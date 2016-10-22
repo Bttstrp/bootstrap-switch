@@ -6,6 +6,7 @@ import { InternalState } from './internal-state';
 import { ExternalState } from './external-state';
 import { Disabled } from './disabled';
 import { Inverse } from './inverse';
+import { Tristate } from './tristate';
 import { OnText } from './on-text';
 import { OffText } from './off-text';
 import { HandleWidth } from './handle-width';
@@ -46,6 +47,8 @@ class Examples extends React.Component {
           <Indeterminate />
           <HandleWidth />
           <LabelWidth />
+          
+          <Tristate />
         </Row>
       </Grid>
     );

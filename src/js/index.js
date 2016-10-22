@@ -56,6 +56,7 @@ export default class Switch extends React.Component {
       disabled,
       readonly,
       inverse,
+      tristate,
       animate,
       id
     } = this.props;
@@ -84,7 +85,10 @@ export default class Switch extends React.Component {
       classes.push(baseClass + "-indeterminate");
 
     if (inverse)
-      classes.push(baseClass + "-inverse");
+        classes.push(baseClass + "-inverse");
+
+    if (tristate)
+        classes.push(baseClass + "-tristate");
 
     if (id)
       classes.push(baseClass + "-" + id);
@@ -155,7 +159,7 @@ export default class Switch extends React.Component {
     if(this._disableUserInput())
       return;
 
-    this._setValue(false)
+    this._setValue(this.props.tristate?(this._getValue()==null):false);
     this._setFocus();
   }
 
@@ -163,7 +167,7 @@ export default class Switch extends React.Component {
     if(this._disableUserInput())
       return;
 
-    this._setValue(true)
+    this._setValue(this.props.tristate?(this._getValue()!=null):true);
     this._setFocus();
   }
 
@@ -216,13 +220,17 @@ export default class Switch extends React.Component {
     if(dragStart === undefined || dragStart === null || dragStart === false)
       return;
 
-    const { inverse } = this.props;
+    const { inverse, tristate } = this.props;
 
-    let val = !value;
-
+    let val;
+    
     if(dragged){
       val = offset > -(handleWidth / 2);
       val = inverse ? !val : val;
+    } else if (tristate) {
+      val = value===null?true:null;
+    } else {
+      val = !value;
     }
 
     this.setState({
@@ -379,6 +387,7 @@ Switch.defaultProps = {
   disabled:       false,
   readonly:       false,
 
+  tristate:       false,
   defaultValue:   true,
   value:          undefined
 };
@@ -410,6 +419,7 @@ Switch.propTypes = {
   disabled:       React.PropTypes.bool,
   readonly:       React.PropTypes.bool,
 
+  tristate:       React.PropTypes.bool,
   defaultValue:   React.PropTypes.bool,
   value:          React.PropTypes.bool,
   onChange:       React.PropTypes.func,
