@@ -167,7 +167,7 @@ export default class Switch extends React.Component {
     if(this._disableUserInput())
       return;
 
-   	this._setValue(this.props.tristate?(this._getValue()!=null):true);
+    this._setValue(this.props.tristate?(this._getValue()!=null):true);
     this._setFocus();
   }
 
@@ -225,12 +225,12 @@ export default class Switch extends React.Component {
     let val;
     
     if(dragged){
-    	val = offset > -(handleWidth / 2);
-    	val = inverse ? !val : val;
+      val = offset > -(handleWidth / 2);
+      val = inverse ? !val : val;
     } else if (tristate) {
-    	val = value===null?true:null;
+      val = value===null?true:null;
     } else {
-    	val = !value;
+      val = !value;
     }
 
     this.setState({
@@ -387,7 +387,7 @@ Switch.defaultProps = {
   disabled:       false,
   readonly:       false,
 
-  tristate:		  false,
+  tristate:       false,
   defaultValue:   true,
   value:          undefined
 };

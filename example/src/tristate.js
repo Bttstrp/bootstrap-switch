@@ -5,15 +5,23 @@ import Switch from '../../src/js/index';
 
 export class Tristate extends React.Component {
 
-  _clickToggle(){
+  _clickCycle(){
     const val = this.switch.value();
-    this.switch.value(!val);
+    if (val === false)
+      this.switch.value(null);
+    else if (val === true)
+      this.switch.value(false);
+    else
+      this.switch.value(true);
   }
   _clickOn(){ 
     this.switch.value(true);
   }
   _clickOff(){
     this.switch.value(false);
+  }
+  _clickIntdeterminate(){
+    this.switch.value(null);
   }
   _clickGet(){
     alert(this.switch.value());
@@ -31,9 +39,10 @@ export class Tristate extends React.Component {
 
           <FormGroup>
             <ButtonGroup>
-              <Button onClick={this._clickToggle.bind(this)} >Toggle</Button>
+              <Button onClick={this._clickCycle.bind(this)} >Cycle</Button>
               <Button onClick={this._clickOn.bind(this)} >On</Button>
               <Button onClick={this._clickOff.bind(this)} >Off</Button>
+              <Button onClick={this._clickIntdeterminate.bind(this)} >Indeterminate</Button>
               <Button onClick={this._clickGet.bind(this)} >Get</Button>
             </ButtonGroup>
           </FormGroup>
