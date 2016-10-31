@@ -135,7 +135,9 @@ export default class Switch extends React.Component {
 
     let newOffset = offset;
 
-    if (value === null) {
+    if(handleWidth === 'auto') {
+      newOffset = 0;
+    } else if (value === null) {
       newOffset = -(handleWidth / 2);
     } else if (value) {
       newOffset = inverse ? -handleWidth : 0;
