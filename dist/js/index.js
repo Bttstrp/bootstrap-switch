@@ -161,7 +161,9 @@ var Switch = function (_React$Component) {
 
       var newOffset = offset;
 
-      if (value === null) {
+      if (handleWidth === 'auto') {
+        newOffset = 0;
+      } else if (value === null) {
         newOffset = -(handleWidth / 2);
       } else if (value) {
         newOffset = inverse ? -handleWidth : 0;

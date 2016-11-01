@@ -1,6 +1,6 @@
 
 /* ========================================================================
- * react-bootstrap-switch - v15.0.0
+ * react-bootstrap-switch - v15.0.3
  * https://github.com/Julusian/react-bootstrap-switch
  * ========================================================================
  * Copyright 2012-2016 Julian Waller
@@ -44,7 +44,8 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   cursor: pointer;
-  display: inline-block !important;
+  display: table-cell;
+  vertical-align: middle;
   padding: 6px 12px;
   font-size: 14px;
   line-height: 20px;
