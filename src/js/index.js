@@ -411,8 +411,8 @@ Switch.propTypes = {
   onColor:        React.PropTypes.string,
   offColor:       React.PropTypes.string,
 
-  onText:         React.PropTypes.string,
-  offText:        React.PropTypes.string,
+  onText:         React.PropTypes.node,
+  offText:        React.PropTypes.node,
   labelText:      React.PropTypes.string,
 
   inverse:        React.PropTypes.bool,
