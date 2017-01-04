@@ -49,8 +49,8 @@ These should be defined on the JSX node, many cannot be changed once they have b
 | **tristate**      | boolean | false     | true, false | Allows user to cycle values through true, false and null |
 | **onColor**       | string  | 'primary' | 'primary', 'info', 'success', 'warning', 'danger', 'default' | Color of the on side of the switch |
 | **offColor**      | string  | 'default' | 'primary', 'info', 'success', 'warning', 'danger', 'default' | Color of the off side of the switch |
-| **onText**        | string  | 'ON'      | | Text of the on side of the switch |
-| **offText**       | string  | 'OFF'     | | Text of the off side of the switch |
+| **onText**        | string or node | 'ON'      | | Text of the on side of the switch |
+| **offText**       | string or node | 'OFF'     | | Text of the off side of the switch |
 | **labelText**     | string  | ''        | | Text of the center handle of the switch |
 | **handleWidth**   | string or number | 'auto' | 'auto' or Number | Width of the left and right sides in pixels |
 | **labelWidth**    | string or number | 'auto' | 'auto' or Number |  Width of the center handle in pixels |
