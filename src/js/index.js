@@ -338,7 +338,7 @@ export default class Switch extends React.Component {
     const params = {
       ref:        e => this.elmOffHandle = e,
       style:      { width: handleWidth },
-      className:  `${baseClass}-handle-on ${baseClass}-${offColor}`,
+      className:  `${baseClass}-handle-off ${baseClass}-${offColor}`,
       onClick:    this._handleOffClick.bind(this)
     };
 
