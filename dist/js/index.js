@@ -80,20 +80,20 @@ var Switch = function (_React$Component) {
   }, {
     key: '_wrapperClasses',
     value: function _wrapperClasses() {
-      var _props = this.props;
-      var baseClass = _props.baseClass;
-      var wrapperClass = _props.wrapperClass;
-      var bsSize = _props.bsSize;
-      var disabled = _props.disabled;
-      var readonly = _props.readonly;
-      var inverse = _props.inverse;
-      var tristate = _props.tristate;
-      var animate = _props.animate;
-      var id = _props.id;
-      var _state = this.state;
-      var skipAnimation = _state.skipAnimation;
-      var focus = _state.focus;
-      var dragStart = _state.dragStart;
+      var _props = this.props,
+          baseClass = _props.baseClass,
+          wrapperClass = _props.wrapperClass,
+          bsSize = _props.bsSize,
+          disabled = _props.disabled,
+          readonly = _props.readonly,
+          inverse = _props.inverse,
+          tristate = _props.tristate,
+          animate = _props.animate,
+          id = _props.id;
+      var _state = this.state,
+          skipAnimation = _state.skipAnimation,
+          focus = _state.focus,
+          dragStart = _state.dragStart;
 
 
       var value = this._getValue();
@@ -131,9 +131,9 @@ var Switch = function (_React$Component) {
       var label = _reactDom2.default.findDOMNode(this.elmLabel);
 
       // assuming that if the elms need to be resized, the size will be cleared elsewhere first
-      var _props2 = this.props;
-      var handleWidth = _props2.handleWidth;
-      var labelWidth = _props2.labelWidth;
+      var _props2 = this.props,
+          handleWidth = _props2.handleWidth,
+          labelWidth = _props2.labelWidth;
 
       var newHandleWidth = handleWidth == "auto" ? Math.max(onHandle.offsetWidth, offHandle.offsetWidth) : handleWidth;
 
@@ -149,9 +149,9 @@ var Switch = function (_React$Component) {
   }, {
     key: '_updateContainerPosition',
     value: function _updateContainerPosition(noAnimate) {
-      var _state2 = this.state;
-      var handleWidth = _state2.handleWidth;
-      var offset = _state2.offset;
+      var _state2 = this.state,
+          handleWidth = _state2.handleWidth,
+          offset = _state2.offset;
       var inverse = this.props.inverse;
 
       var value = this._getValue();
@@ -179,9 +179,9 @@ var Switch = function (_React$Component) {
   }, {
     key: '_disableUserInput',
     value: function _disableUserInput() {
-      var _props3 = this.props;
-      var disabled = _props3.disabled;
-      var readonly = _props3.readonly;
+      var _props3 = this.props,
+          disabled = _props3.disabled,
+          readonly = _props3.readonly;
 
 
       return disabled || readonly;
@@ -231,9 +231,9 @@ var Switch = function (_React$Component) {
   }, {
     key: '_handleLabelMouseMove',
     value: function _handleLabelMouseMove(e) {
-      var _state3 = this.state;
-      var dragStart = _state3.dragStart;
-      var handleWidth = _state3.handleWidth;
+      var _state3 = this.state,
+          dragStart = _state3.dragStart,
+          handleWidth = _state3.handleWidth;
 
 
       if (dragStart === undefined || dragStart === null || dragStart === false) return;
@@ -252,19 +252,19 @@ var Switch = function (_React$Component) {
     value: function _handleLabelMouseUp() {
       var _this4 = this;
 
-      var _state4 = this.state;
-      var dragStart = _state4.dragStart;
-      var dragged = _state4.dragged;
-      var offset = _state4.offset;
-      var handleWidth = _state4.handleWidth;
+      var _state4 = this.state,
+          dragStart = _state4.dragStart,
+          dragged = _state4.dragged,
+          offset = _state4.offset,
+          handleWidth = _state4.handleWidth;
 
       var value = this._getValue();
 
       if (dragStart === undefined || dragStart === null || dragStart === false) return;
 
-      var _props4 = this.props;
-      var inverse = _props4.inverse;
-      var tristate = _props4.tristate;
+      var _props4 = this.props,
+          inverse = _props4.inverse,
+          tristate = _props4.tristate;
 
 
       var val = void 0;
@@ -334,13 +334,13 @@ var Switch = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _props5 = this.props;
-      var baseClass = _props5.baseClass;
-      var inverse = _props5.inverse;
-      var _state5 = this.state;
-      var handleWidth = _state5.handleWidth;
-      var labelWidth = _state5.labelWidth;
-      var offset = _state5.offset;
+      var _props5 = this.props,
+          baseClass = _props5.baseClass,
+          inverse = _props5.inverse;
+      var _state5 = this.state,
+          handleWidth = _state5.handleWidth,
+          labelWidth = _state5.labelWidth,
+          offset = _state5.offset;
 
 
       var onHandle = this._renderOnHandle();
@@ -381,10 +381,10 @@ var Switch = function (_React$Component) {
     value: function _renderOnHandle() {
       var _this7 = this;
 
-      var _props6 = this.props;
-      var baseClass = _props6.baseClass;
-      var onColor = _props6.onColor;
-      var onText = _props6.onText;
+      var _props6 = this.props,
+          baseClass = _props6.baseClass,
+          onColor = _props6.onColor,
+          onText = _props6.onText;
       var handleWidth = this.state.handleWidth;
 
 
@@ -408,10 +408,10 @@ var Switch = function (_React$Component) {
     value: function _renderOffHandle() {
       var _this8 = this;
 
-      var _props7 = this.props;
-      var baseClass = _props7.baseClass;
-      var offColor = _props7.offColor;
-      var offText = _props7.offText;
+      var _props7 = this.props,
+          baseClass = _props7.baseClass,
+          offColor = _props7.offColor,
+          offText = _props7.offText;
       var handleWidth = this.state.handleWidth;
 
 
@@ -420,7 +420,7 @@ var Switch = function (_React$Component) {
           return _this8.elmOffHandle = e;
         },
         style: { width: handleWidth },
-        className: baseClass + '-handle-on ' + baseClass + '-' + offColor,
+        className: baseClass + '-handle-off ' + baseClass + '-' + offColor,
         onClick: this._handleOffClick.bind(this)
       };
 
@@ -435,9 +435,9 @@ var Switch = function (_React$Component) {
     value: function _renderLabel() {
       var _this9 = this;
 
-      var _props8 = this.props;
-      var baseClass = _props8.baseClass;
-      var labelText = _props8.labelText;
+      var _props8 = this.props,
+          baseClass = _props8.baseClass,
+          labelText = _props8.labelText;
       var labelWidth = this.state.labelWidth;
 
 
@@ -509,8 +509,8 @@ Switch.propTypes = {
   onColor: _react2.default.PropTypes.string,
   offColor: _react2.default.PropTypes.string,
 
-  onText: _react2.default.PropTypes.string,
-  offText: _react2.default.PropTypes.string,
+  onText: _react2.default.PropTypes.node,
+  offText: _react2.default.PropTypes.node,
   labelText: _react2.default.PropTypes.string,
 
   inverse: _react2.default.PropTypes.bool,
