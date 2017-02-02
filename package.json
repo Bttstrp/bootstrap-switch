@@ -34,7 +34,7 @@
     "url": "git://github.com/nostalgiaz/bootstrap-switch.git"
   },
   "bugs": "https://github.com/nostalgiaz/bootstrap-switch/issues",
-  "license": "Apache Version 2",
+  "license": "Apache-2.0",
   "readmeFilename": "README.md",
   "devDependencies": {
     "browser-sync": "^2.6.4",
@@ -71,8 +71,8 @@
       "basePath": "/dist/",
       "files": [
         "*.js",
-        "bootstrap3/*.css",
-        "bootstrap2/*.css"
+        "css/bootstrap3/*.css",
+        "css/bootstrap2/*.css"
       ]
     }
   ]

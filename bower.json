@@ -2,6 +2,7 @@
   "name": "bootstrap-switch",
   "description": "Turn checkboxes and radio buttons into toggle switches.",
   "version": "3.3.2",
+  "license": "Apache-2.0",
   "main": [
     "./dist/js/bootstrap-switch.js",
     "./dist/css/bootstrap3/bootstrap-switch.css"
