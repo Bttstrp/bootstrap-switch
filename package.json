@@ -34,7 +34,7 @@
     "url": "git://github.com/nostalgiaz/bootstrap-switch.git"
   },
   "bugs": "https://github.com/nostalgiaz/bootstrap-switch/issues",
-  "license": "Apache Version 2",
+  "license": "Apache-2.0",
   "readmeFilename": "README.md",
   "devDependencies": {
     "browser-sync": "^2.6.4",
