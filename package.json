@@ -75,5 +75,12 @@
         "bootstrap2/*.css"
       ]
     }
-  ]
+  ],
+  "jspm": {
+    "main": "dist/js/bootstrap-switch",
+    "files": [
+        "dist/**/*",
+        "package.json"
+    ]      
+  }
 }
