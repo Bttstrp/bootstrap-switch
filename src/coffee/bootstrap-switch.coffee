@@ -497,6 +497,10 @@ do ($ = window.jQuery, window) ->
         # reimplement toggle state on external label only if it is not the target
         @toggleState()  if event.target is $externalLabel[0]
 
+        'click.bootstrapSwitch': (e) =>
+          toggleState()
+          @$element.trigger 'focus.bootstrapSwitch'
+
     _formHandler: ->
       $form = @$element.closest "form"
 
