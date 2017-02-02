@@ -424,7 +424,7 @@
         var $handles, handleWidth;
         $handles = this.$on.add(this.$off);
         $handles.add(this.$label).css("width", "");
-        handleWidth = this.options.handleWidth === "auto" ? Math.max(this.$on.width(), this.$off.width()) : this.options.handleWidth;
+        handleWidth = this.options.handleWidth === "auto" ? Math.round(Math.max(this.$on.width(), this.$off.width())) : this.options.handleWidth;
         $handles.width(handleWidth);
         this.$label.width((function(_this) {
           return function(index, width) {
