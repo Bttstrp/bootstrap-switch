@@ -319,7 +319,7 @@ do ($ = window.jQuery, window) ->
 
       # save handleWidth for further label width calculation check
       handleWidth = if @options.handleWidth is "auto"
-      then Math.max @$on.width(), @$off.width()
+      then Math.round Math.max @$on.width(), @$off.width()
       else @options.handleWidth
 
       # set handles width
