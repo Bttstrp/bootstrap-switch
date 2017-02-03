@@ -14,20 +14,18 @@
     "email": "mattia@larentis.eu",
     "url": "http://larentis.eu"
   },
-  "contributors": [
-    {
-      "name": "Emanuele Marchi",
-      "email": "emanuele@lostcrew.it",
-      "url": "http://lostcrew.it"
-    },
-    {
-      "name": "Peter Stein",
-      "url": "http://www.bdmdesign.org"
-    }
-  ],
+  "contributors": [{
+    "name": "Emanuele Marchi",
+    "email": "emanuele@lostcrew.it",
+    "url": "http://lostcrew.it"
+  }, {
+    "name": "Peter Stein",
+    "url": "http://www.bdmdesign.org"
+  }],
   "main": "dist/js/bootstrap-switch.js",
   "peerDependencies": {
-    "jquery": ">=1.9.0"
+    "bootstrap": "^3.1.1",
+    "jquery": "^1.9.0"
   },
   "repository": {
     "type": "git",
@@ -37,43 +35,47 @@
   "license": "Apache Version 2",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "browser-sync": "^2.6.4",
-    "coffee-script": "~1.9.2",
-    "gulp": "^3.8.11",
-    "gulp-changed": "^1.2.1",
-    "gulp-coffee": "~2.3.1",
-    "gulp-coffeelint": "~0.4.0",
-    "gulp-connect": "^2.2.0",
-    "gulp-header": "~1.2.2",
-    "gulp-jade": "^1.0.0",
-    "gulp-less": "^3.0.2",
-    "gulp-load-plugins": "^0.10.0",
-    "gulp-notify": "^2.2.0",
-    "gulp-open": "~0.3.2",
-    "gulp-plumber": "^1.0.0",
-    "gulp-rename": "~1.2.2",
-    "gulp-uglify": "~1.2.0",
-    "gulp-util": "~3.0.4",
-    "jasmine-core": "^2.2.0",
-    "karma": "~0.12.31",
-    "karma-firefox-launcher": "~0.1.4",
-    "karma-jasmine": "^0.3.5",
+    "babel-cli": "^6.22.2",
+    "babel-preset-babili": "^0.0.10",
+    "babel-preset-env": "^1.1.8",
+    "jasmine": "^2.5.3",
+    "jasmine-core": "^2.5.2",
+    "jquery": "^3.1.1",
+    "karma": "^1.4.1",
+    "karma-cli": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "less": "^2.7.2",
     "less-plugin-clean-css": "^1.5.0",
-    "run-sequence": "~1.0.2"
+    "npm-run-all": "^4.0.1",
+    "standard": "^8.6.0"
   },
   "scripts": {
-    "build": "gulp dist",
-    "test": "gulp test"
+    "js:dir": "mkdir -p dist/js",
+    "js:lint": "standard src/js/**/*.js",
+    "js:test": "mkdir -p test && babel --out-file test/bootstrap-switch.test.js src/js/bootstrap-switch.test.js && karma start karma.js",
+    "js:base": "babel --out-file dist/js/bootstrap-switch.js src/js/bootstrap-switch.js",
+    "js:min": "NODE_ENV=production babel --out-file dist/js/bootstrap-switch.min.js src/js/bootstrap-switch.js",
+    "js": "npm-run-all js:dir js:lint -p js:base js:min -s js:test",
+    "css:dir": "mkdir -p dist/css",
+    "css:bs2:base": "lessc src/less/bootstrap2/build.less dist/css/bootstrap2/bootstrap-switch.css",
+    "css:bs2:min": "lessc --clean-css='--advanced' src/less/bootstrap2/build.less dist/css/bootstrap2/bootstrap-switch.min.css",
+    "css:bs3:base": "lessc src/less/bootstrap3/build.less dist/css/bootstrap3/bootstrap-switch.css",
+    "css:bs3:min": "lessc --clean-css='--advanced' src/less/bootstrap3/build.less dist/css/bootstrap3/bootstrap-switch.min.css",
+    "css": "run-p css:bs2:* css:bs3:*",
+    "clean": "rm -rf dist",
+    "build": "run-p js css",
+    "docs": "",
+    "start": "run-s clean build docs"
   },
   "npmName": "bootstrap-switch",
-  "npmFileMap": [
-    {
-      "basePath": "/dist/",
-      "files": [
-        "*.js",
-        "css/bootstrap3/*.css",
-        "css/bootstrap2/*.css"
-      ]
-    }
-  ]
+  "npmFileMap": [{
+    "basePath": "/dist/",
+    "files": [
+      "*.js",
+      "css/bootstrap3/*.css",
+      "css/bootstrap2/*.css"
+    ]
+  }],
+  "dependencies": {}
 }

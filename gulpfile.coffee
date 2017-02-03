@@ -80,54 +80,38 @@ banner = """
 
 
 # build
-gulp.task 'coffee', ->
+gulp.task 'js', ->
   gulp
-  .src src.scripts
-  .pipe $.plumber errorHandler: $.notify.onError "Error: <%= error.message %>"
-  .pipe $.changed dest.scripts
-  .pipe $.coffeelint 'coffeelint.json'
-  .pipe $.coffeelint.reporter()
-  .pipe $.coffeelint.reporter("fail")
-  .pipe $.coffee()
-    .on 'error', $.util.log
+  # .src src.scripts
+  # .pipe $.plumber errorHandler: $.notify.onError "Error: <%= error.message %>"
+  # .pipe $.changed dest.scripts
+  # .pipe $.coffeelint 'coffeelint.json'
+  # .pipe $.coffeelint.reporter()
+  # .pipe $.coffeelint.reporter("fail")
+  # .pipe $.coffee().on 'error', $.util.log
   .pipe $.header banner, pkg: pkg
-  .pipe gulp.dest dest.scripts
-  .pipe gulp.dest dest.test
-  .pipe $.uglify()
+  # .pipe gulp.dest dest.scripts
+  # .pipe gulp.dest dest.test
+  # .pipe $.uglify()
   .pipe $.header banner, pkg: pkg
-  .pipe $.rename suffix: '.min'
-  .pipe gulp.dest dest.scripts
+  # .pipe $.rename suffix: '.min'
+  # .pipe gulp.dest dest.scripts
 
 gulp.task 'less-bootstrap2', ->
   gulp
-  .src src.stylesheets.bootstrap2
-  .pipe $.plumber errorHandler: $.notify.onError "Error: <%= error.message %>"
-  .pipe $.changed dest.stylesheets.bootstrap2
-  .pipe $.less()
-    .on 'error', $.util.log
+  # .src src.stylesheets.bootstrap2
+  # .pipe $.plumber errorHandler: $.notify.onError "Error: <%= error.message %>"
+  # .pipe $.changed dest.stylesheets.bootstrap2
+  # .pipe $.less()
+    # .on 'error', $.util.log
   .pipe $.header banner, pkg: pkg
-  .pipe $.rename basename: name
-  .pipe gulp.dest dest.stylesheets.bootstrap2
-  .pipe $.less plugins: [cleanCss]
+  # .pipe $.rename basename: name
+  # .pipe gulp.dest dest.stylesheets.bootstrap2
+  # .pipe $.less plugins: [cleanCss]
   .pipe $.header banner, pkg: pkg
-  .pipe $.rename suffix: '.min'
-  .pipe gulp.dest dest.stylesheets.bootstrap2
+  # .pipe $.rename suffix: '.min'
+  # .pipe gulp.dest dest.stylesheets.bootstrap2
 
-gulp.task 'less-bootstrap3', ->
-  gulp
-  .src src.stylesheets.bootstrap3
-  .pipe $.plumber errorHandler: $.notify.onError "Error: <%= error.message %>"
-  .pipe $.changed dest.stylesheets.bootstrap3
-  .pipe $.less()
-  .pipe $.header banner, pkg: pkg
-  .pipe $.rename basename: name
-  .pipe gulp.dest dest.stylesheets.bootstrap3
-  .pipe $.less plugins: [cleanCss]
-  .pipe $.header banner, pkg: pkg
-  .pipe $.rename suffix: '.min'
-  .pipe gulp.dest dest.stylesheets.bootstrap3
-
-# docs
 vendorTask = (name) ->
   return ->
     gulp

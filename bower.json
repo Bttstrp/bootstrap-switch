@@ -23,7 +23,6 @@
     "jquery": ">=1.9.0"
   },
   "devDependencies": {
-    "jquery": "~2.1",
-    "bootstrap": "~3.3"
+    "jquery": "~2.1"
   }
 }

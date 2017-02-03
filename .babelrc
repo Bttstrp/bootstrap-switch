@@ -1,0 +1,8 @@
+{
+  "presets": ["env"],
+  "env": {
+    "production": {
+      "presets": ["babili"]
+    }
+  }
+}
