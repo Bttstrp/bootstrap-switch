@@ -2,7 +2,7 @@
   class BootstrapSwitch {
     constructor (element, options = {}) {
       this.$element = $(element)
-      this.options = Object.asign(
+      this.options = Object.assign(
         {},
         $.fn.bootstrapSwitch.defaults,
         this._getElementOptions(),
@@ -11,7 +11,7 @@
       this.prevOptions = {}
 
       this.$wrapper = $('<div>', {
-        class () {
+        class: () => {
           const classes = []
           classes.push(this.options.state ? 'on' : 'off')
           if (this.options.size) {

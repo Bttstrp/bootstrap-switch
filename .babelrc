@@ -1,5 +1,11 @@
 {
-  "presets": ["env"],
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions"]
+      }
+    }]
+  ],
   "env": {
     "production": {
       "presets": ["babili"]

@@ -14,14 +14,17 @@
     "email": "mattia@larentis.eu",
     "url": "http://larentis.eu"
   },
-  "contributors": [{
-    "name": "Emanuele Marchi",
-    "email": "emanuele@lostcrew.it",
-    "url": "http://lostcrew.it"
-  }, {
-    "name": "Peter Stein",
-    "url": "http://www.bdmdesign.org"
-  }],
+  "contributors": [
+    {
+      "name": "Emanuele Marchi",
+      "email": "emanuele@lostcrew.it",
+      "url": "http://lostcrew.it"
+    },
+    {
+      "name": "Peter Stein",
+      "url": "http://www.bdmdesign.org"
+    }
+  ],
   "main": "dist/js/bootstrap-switch.js",
   "peerDependencies": {
     "bootstrap": "^3.1.1",
@@ -36,13 +39,17 @@
   "readmeFilename": "README.md",
   "devDependencies": {
     "babel-cli": "^6.22.2",
+    "babel-polyfill": "^6.22.0",
     "babel-preset-babili": "^0.0.10",
     "babel-preset-env": "^1.1.8",
+    "bootstrap": "^3.3.7",
     "jasmine": "^2.5.3",
     "jasmine-core": "^2.5.2",
-    "jquery": "^3.1.1",
+    "jquery": "^1.12.4",
     "karma": "^1.4.1",
+    "karma-babel-preprocessor": "^6.0.1",
     "karma-cli": "^1.0.1",
+    "karma-firefox-launcher": "^1.0.0",
     "karma-jasmine": "^1.1.0",
     "karma-phantomjs-launcher": "^1.0.2",
     "less": "^2.7.2",
@@ -53,9 +60,9 @@
   "scripts": {
     "js:dir": "mkdir -p dist/js",
     "js:lint": "standard src/js/**/*.js",
-    "js:test": "mkdir -p test && babel --out-file test/bootstrap-switch.test.js src/js/bootstrap-switch.test.js && karma start karma.js",
-    "js:base": "babel --out-file dist/js/bootstrap-switch.js src/js/bootstrap-switch.js",
-    "js:min": "NODE_ENV=production babel --out-file dist/js/bootstrap-switch.min.js src/js/bootstrap-switch.js",
+    "js:test": "mkdir -p test && babel -d test src/js && karma start karma.conf.js",
+    "js:base": "babel -o dist/js/bootstrap-switch.js src/js/bootstrap-switch.js",
+    "js:min": "NODE_ENV=production babel -o dist/js/bootstrap-switch.min.js src/js/bootstrap-switch.js",
     "js": "npm-run-all js:dir js:lint -p js:base js:min -s js:test",
     "css:dir": "mkdir -p dist/css",
     "css:bs2:base": "lessc src/less/bootstrap2/build.less dist/css/bootstrap2/bootstrap-switch.css",
@@ -69,13 +76,15 @@
     "start": "run-s clean build docs"
   },
   "npmName": "bootstrap-switch",
-  "npmFileMap": [{
-    "basePath": "/dist/",
-    "files": [
-      "*.js",
-      "css/bootstrap3/*.css",
-      "css/bootstrap2/*.css"
-    ]
-  }],
+  "npmFileMap": [
+    {
+      "basePath": "/dist/",
+      "files": [
+        "*.js",
+        "css/bootstrap3/*.css",
+        "css/bootstrap2/*.css"
+      ]
+    }
+  ],
   "dependencies": {}
 }
