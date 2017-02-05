@@ -13,8 +13,6 @@
     "CNAME",
     "composer.json",
     "CONTRIBUTING.md",
-    "gulpfile.coffee",
-    "gulpfile.js",
     "index.html",
     "package.json"
   ],
