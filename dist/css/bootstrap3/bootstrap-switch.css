@@ -1,7 +1,7 @@
 /**
   * bootstrap-switch - Turn checkboxes and radio buttons into toggle switches.
   *
-  * @version v3.3.2
+  * @version v3.3.3
   * @homepage http://www.bootstrap-switch.org
   * @author Mattia Larentis <mattia@larentis.eu> (http://larentis.eu)
   * @license Apache-2.0
