@@ -1,5 +1,4 @@
-const $ = window.jQuery
-const { describe, beforeEach, afterEach, it, expect } = window
+const { $, describe, beforeEach, afterEach, it, expect } = window
 
 describe('Bootstrap Switch:', function () {
   beforeEach(function () {
@@ -7,13 +6,13 @@ describe('Bootstrap Switch:', function () {
     $.fx.off = true
   })
   afterEach(function () {
-    return $(`.${$.fn.bootstrapSwitch.defaults.baseClass}`).destroy()
+    $(`.${$.fn.bootstrapSwitch.defaults.baseClass}`).bootstrapSwitch('destroy')
   })
 
   function createCheckbox () {
     return $('<input>', {
       type: 'checkbox',
-      'class': 'switch'
+      class: 'switch'
     }).appendTo('body')
   }
 
@@ -21,7 +20,7 @@ describe('Bootstrap Switch:', function () {
     return $('<input>', {
       type: 'radio',
       name: 'name',
-      'class': 'switch'
+      class: 'switch'
     }).appendTo('body')
   }
 
@@ -55,14 +54,14 @@ describe('Bootstrap Switch:', function () {
   describe('The Checkbox Bootstrap Switch', function () {
     it('should conserve its state if onSwitchChange returns false', function () {
       const $switch = createCheckbox().bootstrapSwitch({
-        onSwitchChange: function (e, s) {
-          expect(s).toEqual(true)
+        onSwitchChange: function (event, state) {
+          expect(state).toEqual(true)
           return false
         }
       })
       const $indeterminateSwitch = createCheckbox().data('indeterminate', true).bootstrapSwitch({
-        onSwitchChange: function (e, s) {
-          expect(s).toEqual(true)
+        onSwitchChange: function (event, state) {
+          expect(state).toEqual(true)
           return false
         }
       })
@@ -72,10 +71,10 @@ describe('Bootstrap Switch:', function () {
       expect($indeterminateSwitch.bootstrapSwitch('state')).toEqual(false)
     })
 
-    it('should change its state if onSwitchChange not returns false', function () {
+    it('should change its state if onSwitchChange does not return false', function () {
       const $switch = createCheckbox().bootstrapSwitch({
-        onSwitchChange: function (e, s) {
-          expect(s).toEqual(true)
+        onSwitchChange: function (event, state) {
+          expect(state).toEqual(true)
         }
       })
       $switch.click()

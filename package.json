@@ -9,21 +9,10 @@
     "js"
   ],
   "homepage": "http://www.bootstrap-switch.org",
-  "author": {
-    "name": "Mattia Larentis",
-    "email": "mattia@larentis.eu",
-    "url": "http://larentis.eu"
-  },
+  "author": "Mattia Larentis <mattia@larentis.eu> (http://larentis.eu)",
   "contributors": [
-    {
-      "name": "Emanuele Marchi",
-      "email": "emanuele@lostcrew.it",
-      "url": "http://lostcrew.it"
-    },
-    {
-      "name": "Peter Stein",
-      "url": "http://www.bdmdesign.org"
-    }
+    "Emanuele Marchi <emanuele@lostcrew.it> (http://lostcrew.it)",
+    "Peter Stein (http://www.bdmdesign.org)"
   ],
   "main": "dist/js/bootstrap-switch.js",
   "peerDependencies": {
@@ -42,6 +31,7 @@
     "babel-polyfill": "^6.22.0",
     "babel-preset-babili": "^0.0.10",
     "babel-preset-env": "^1.1.8",
+    "banner-cli": "^0.10.1",
     "bootstrap": "^3.3.7",
     "jasmine": "^2.5.3",
     "jasmine-core": "^2.5.2",
@@ -58,22 +48,24 @@
     "standard": "^8.6.0"
   },
   "scripts": {
-    "js:dir": "mkdir -p dist/js",
     "js:lint": "standard src/js/**/*.js",
     "js:test": "mkdir -p test && babel -d test src/js && karma start karma.conf.js",
-    "js:base": "babel -o dist/js/bootstrap-switch.js src/js/bootstrap-switch.js",
-    "js:min": "NODE_ENV=production babel -o dist/js/bootstrap-switch.min.js src/js/bootstrap-switch.js",
-    "js": "npm-run-all js:dir js:lint -p js:base js:min -s js:test",
-    "css:dir": "mkdir -p dist/css",
-    "css:bs2:base": "lessc src/less/bootstrap2/build.less dist/css/bootstrap2/bootstrap-switch.css",
-    "css:bs2:min": "lessc --clean-css='--advanced' src/less/bootstrap2/build.less dist/css/bootstrap2/bootstrap-switch.min.css",
-    "css:bs3:base": "lessc src/less/bootstrap3/build.less dist/css/bootstrap3/bootstrap-switch.css",
-    "css:bs3:min": "lessc --clean-css='--advanced' src/less/bootstrap3/build.less dist/css/bootstrap3/bootstrap-switch.min.css",
-    "css": "run-p css:bs2:* css:bs3:*",
+    "js:build:dir": "mkdir -p dist/js",
+    "js:build:base": "babel -o dist/js/bootstrap-switch.js src/js/bootstrap-switch.js",
+    "js:build:min": "NODE_ENV=production babel -o dist/js/bootstrap-switch.min.js src/js/bootstrap-switch.js",
+    "js:build:banner": "banner-cli dist/js/*.js",
+    "js:build": "npm-run-all js:build:dir -p js:build:base js:build:min -s js:build:banner",
+    "js": "run-s js:lint js:test js:build",
+    "css:build:base": "lessc src/less/bootstrap2/build.less dist/css/bootstrap2/bootstrap-switch.css && lessc src/less/bootstrap3/build.less dist/css/bootstrap3/bootstrap-switch.css",
+    "css:build:min": "lessc --clean-css='--advanced' src/less/bootstrap2/build.less dist/css/bootstrap2/bootstrap-switch.min.css && lessc --clean-css='--advanced' src/less/bootstrap3/build.less dist/css/bootstrap3/bootstrap-switch.min.css",
+    "css:build": "run-p css:build:*",
+    "css": "run-s css:build",
     "clean": "rm -rf dist",
-    "build": "run-p js css",
+    "lint": "run-p js:lint",
+    "test": "run-p js:test",
+    "build": "run-p *:build",
     "docs": "",
-    "start": "run-s clean build docs"
+    "start": "run-s clean lint test build docs"
   },
   "npmName": "bootstrap-switch",
   "npmFileMap": [
