@@ -62,13 +62,14 @@
     "css:build:min": "lessc --clean-css='--advanced' src/less/bootstrap2/build.less dist/css/bootstrap2/bootstrap-switch.min.css && lessc --clean-css='--advanced' src/less/bootstrap3/build.less dist/css/bootstrap3/bootstrap-switch.min.css",
     "css:build:banner": "headr dist/css/bootstrap2/bootstrap-switch.css -o dist/css/bootstrap2/bootstrap-switch.css --version --homepage --author --license && headr dist/css/bootstrap2/bootstrap-switch.min.css -o dist/css/bootstrap2/bootstrap-switch.min.css --version --homepage --author --license && headr dist/css/bootstrap3/bootstrap-switch.css -o dist/css/bootstrap3/bootstrap-switch.css --version --homepage --author --license && headr dist/css/bootstrap3/bootstrap-switch.min.css -o dist/css/bootstrap3/bootstrap-switch.min.css --version --homepage --author --license",
     "css:build": "npm-run-all css:build:base css:build:min -p css:build:banner",
-    "css": "run-s css:build",
+    "css": "run-p css:build",
     "clean": "rm -rf dist",
     "lint": "run-p js:lint",
     "test": "run-p js:test",
     "build": "run-p *:build",
-    "docs": "",
-    "start": "run-s clean lint test build docs"
+    "docs": "harp compile src/docs docs",
+    "prepublish": "run-s clean lint test build docs",
+    "start": "run-s prepublish"
   },
   "npmName": "bootstrap-switch",
   "npmFileMap": [

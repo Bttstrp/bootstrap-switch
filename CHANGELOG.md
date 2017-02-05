@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.3.3
+
+- Deprecate CoffeeScript in favour of ES6+ with Babel
+- Updated and restored documentation
+
 ## 3.3.2
 
 - Fix for Flicker on initialisation [#425](https://github.com/nostalgiaz/bootstrap-switch/issues/425), [#422](https://github.com/nostalgiaz/bootstrap-switch/issues/422)
@@ -9,7 +14,7 @@
 
 - Revert of switchChange event triggered only on falsy skip [#411](https://github.com/nostalgiaz/bootstrap-switch/issues/411)
 
-## 3.3.0 
+## 3.3.0
 
 - Fixed setting of correct state on drag from indeterminate state [#403](https://github.com/nostalgiaz/bootstrap-switch/issues/403)
 - Fixed broken state changing on hidden switch [#392, [#383](https://github.com/nostalgiaz/bootstrap-switch/issues/383)
