@@ -7,11 +7,8 @@
     <meta name="description" content="Turn checkboxes and radio buttons in toggle switches.">
     <meta name="author" content="Mattia Larentis, Emanuele Marchi and Peter Stein">
     <title>Bootstrap Switch · Turn checkboxes and radio buttons in toggle switches</title>
-    <link href="docs/css/bootstrap.min.css" rel="stylesheet">
-    <link href="docs/css/highlight.css" rel="stylesheet">
-    <link href="dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
-    <link href="docs/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="dist/css/bootstrap-switch.css" rel="stylesheet"></link>
   </head>
   <body>
     <div>
@@ -20,13 +17,13 @@
     <div>
       <input type="checkbox" checked>
     </div>
-    <script src="docs/js/jquery.min.js"></script>
-    <script src="docs/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script src="dist/js/bootstrap-switch.js"></script>
     <script>
-    $(function(argument) {
-      $('[type="checkbox"]').bootstrapSwitch();
-    })
+    const $ = window.jQuery
+    $(() => { $('[type="checkbox"]').bootstrapSwitch() })
     </script>
   </body>
 </html>

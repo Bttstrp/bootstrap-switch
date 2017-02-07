@@ -1,7 +1,7 @@
 {
   "name": "bootstrap-switch",
   "description": "Turn checkboxes and radio buttons into toggle switches.",
-  "version": "3.3.3",
+  "version": "4.0.0-alpha.1",
   "keywords": [
     "bootstrap",
     "switch",
@@ -16,8 +16,9 @@
   ],
   "main": "dist/js/bootstrap-switch.js",
   "peerDependencies": {
-    "bootstrap": "^3.1.1",
-    "jquery": "^1.9.0"
+    "bootstrap": ">=4",
+    "jquery": ">=1.9.0",
+    "tether": "^1.4.0"
   },
   "repository": {
     "type": "git",
@@ -45,6 +46,7 @@
     "karma-phantomjs-launcher": "^1.0.2",
     "less": "^2.7.2",
     "less-plugin-clean-css": "^1.5.0",
+    "node-sass": "^4.5.0",
     "npm-run-all": "^4.0.1",
     "standard": "^8.6.0",
     "wintersmith": "^2.3.6"
@@ -58,10 +60,10 @@
     "js:build:banner": "headr dist/js/bootstrap-switch.js -o dist/js/bootstrap-switch.js --version --homepage --author --license && headr dist/js/bootstrap-switch.min.js -o dist/js/bootstrap-switch.min.js --version --homepage --author --license",
     "js:build": "npm-run-all js:build:dir -p js:build:base js:build:min -s js:build:banner",
     "js": "run-s js:lint js:test js:build",
-    "css:build:base": "lessc src/less/bootstrap2/build.less dist/css/bootstrap2/bootstrap-switch.css && lessc src/less/bootstrap3/build.less dist/css/bootstrap3/bootstrap-switch.css",
-    "css:build:min": "lessc --clean-css='--advanced' src/less/bootstrap2/build.less dist/css/bootstrap2/bootstrap-switch.min.css && lessc --clean-css='--advanced' src/less/bootstrap3/build.less dist/css/bootstrap3/bootstrap-switch.min.css",
-    "css:build:banner": "headr dist/css/bootstrap2/bootstrap-switch.css -o dist/css/bootstrap2/bootstrap-switch.css --version --homepage --author --license && headr dist/css/bootstrap2/bootstrap-switch.min.css -o dist/css/bootstrap2/bootstrap-switch.min.css --version --homepage --author --license && headr dist/css/bootstrap3/bootstrap-switch.css -o dist/css/bootstrap3/bootstrap-switch.css --version --homepage --author --license && headr dist/css/bootstrap3/bootstrap-switch.min.css -o dist/css/bootstrap3/bootstrap-switch.min.css --version --homepage --author --license",
-    "css:build": "npm-run-all css:build:base css:build:min -p css:build:banner",
+    "css:build:base": "node-sass src/scss/build.scss dist/css/bootstrap-switch.css",
+    "css:build:min": "node-sass --output-style=compressed src/scss/build.scss dist/css/bootstrap-switch.min.css",
+    "css:build:banner": "headr dist/css/bootstrap-switch.css -o dist/css/bootstrap-switch.css --version --homepage --author --license && headr dist/css/bootstrap-switch.min.css -o dist/css/bootstrap-switch.min.css --version --homepage --author --license",
+    "css:build": "npm-run-all -p css:build:base css:build:min -s css:build:banner",
     "css": "run-p css:build",
     "clean": "rm -rf dist",
     "lint": "run-p js:lint",

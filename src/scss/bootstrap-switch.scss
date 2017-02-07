@@ -1,0 +1,182 @@
+$bootstrap-switch-base: "bootstrap-switch" !default;
+
+.#{$bootstrap-switch-base} {
+  display: inline-block;
+  direction: ltr;
+  cursor: pointer;
+  @include border-radius($btn-border-radius);
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  position: relative;
+  text-align: left;
+  overflow: hidden;
+  line-height: 8px;
+  z-index: 0;
+  user-select: none;
+  vertical-align: middle;
+  @include transition(border-color .15s ease-in-out, box-shadow .15s ease-in-out);
+
+  .#{$bootstrap-switch-base}-container {
+    display: inline-block;
+    top: 0;
+    @include border-radius($btn-border-radius);
+    transform: translate3d(0, 0, 0);
+  }
+
+  .#{$bootstrap-switch-base}-handle-on,
+  .#{$bootstrap-switch-base}-handle-off,
+  .#{$bootstrap-switch-base}-label {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block !important;
+    height: 100%;
+    line-height: $btn-line-height;
+    @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, 0);
+  }
+
+  .#{$bootstrap-switch-base}-handle-on,
+  .#{$bootstrap-switch-base}-handle-off {
+    text-align: center;
+    z-index: 1;
+
+    &.#{$bootstrap-switch-base}-primary {
+      @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+    }
+
+    &.#{$bootstrap-switch-base}-secondary {
+      @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+    }
+
+    &.#{$bootstrap-switch-base}-info {
+      @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
+    }
+
+    &.#{$bootstrap-switch-base}-success {
+      @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+    }
+
+    &.#{$bootstrap-switch-base}-warning {
+      @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+    }
+
+    &.#{$bootstrap-switch-base}-danger {
+      @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+    }
+  }
+
+  .#{$bootstrap-switch-base}-label {
+    text-align: center;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    z-index: 100;
+    border-left: $input-btn-border-width solid transparent;
+    border-right: $input-btn-border-width solid transparent;
+  }
+
+  .#{$bootstrap-switch-base}-handle-on {
+    @include border-left-radius($btn-border-radius);
+  }
+
+  .#{$bootstrap-switch-base}-handle-off {
+    @include border-right-radius($btn-border-radius);
+  }
+
+  input[type='radio'],
+  input[type='checkbox'] {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  &.#{$bootstrap-switch-base}-mini {
+    min-width: 71px;
+
+    .#{$bootstrap-switch-base}-handle-on,
+    .#{$bootstrap-switch-base}-handle-off,
+    .#{$bootstrap-switch-base}-label {
+      @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-border-radius-sm);
+      // padding: 3px 6px;
+      // font-size: 10px;
+      // line-height: 9px;
+    }
+  }
+
+  &.#{$bootstrap-switch-base}-small {
+    min-width: 79px;
+
+    .#{$bootstrap-switch-base}-handle-on,
+    .#{$bootstrap-switch-base}-handle-off,
+    .#{$bootstrap-switch-base}-label {
+      @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-border-radius-sm);
+      // line-height: 18px;
+    }
+  }
+
+  &.#{$bootstrap-switch-base}-large {
+    min-width: 120px;
+
+    .#{$bootstrap-switch-base}-handle-on,
+    .#{$bootstrap-switch-base}-handle-off,
+    .#{$bootstrap-switch-base}-label {
+      @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-border-radius-lg);
+      // padding: 9px 12px;
+      // font-size: 16px;
+      // line-height: normal;
+    }
+  }
+
+  &.#{$bootstrap-switch-base}-disabled,
+  &.#{$bootstrap-switch-base}-readonly,
+  &.#{$bootstrap-switch-base}-indeterminate {
+    cursor: default !important;
+
+    .#{$bootstrap-switch-base}-handle-on,
+    .#{$bootstrap-switch-base}-handle-off,
+    .#{$bootstrap-switch-base}-label {
+      opacity: .5;
+      cursor: default !important;
+    }
+  }
+
+  &.#{$bootstrap-switch-base}-animate {
+    .#{$bootstrap-switch-base}-container {
+      @include transition(margin-left .5s);
+    }
+  }
+
+  &.#{$bootstrap-switch-base}-inverse {
+    .#{$bootstrap-switch-base}-handle-on {
+      @include border-left-radius(0);
+      @include border-right-radius($btn-border-radius);
+    }
+
+    .#{$bootstrap-switch-base}-handle-off {
+      @include border-right-radius(0);
+      @include border-left-radius($btn-border-radius);
+    }
+  }
+
+  &.#{$bootstrap-switch-base}-focused {
+    @if $enable-shadows {
+      box-shadow: $btn-box-shadow, 0 0 0 2px rgba($btn-primary-border, .5);
+    } @else {
+      box-shadow: 0 0 0 2px rgba($btn-primary-border, .5);
+    }
+  }
+
+  &.#{$bootstrap-switch-base}-on,
+  &.#{$bootstrap-switch-base}-inverse.#{$bootstrap-switch-base}-off {
+    .#{$bootstrap-switch-base}-label {
+      @include border-right-radius($btn-border-radius);
+    }
+  }
+
+  &.#{$bootstrap-switch-base}-off,
+  &.#{$bootstrap-switch-base}-inverse.#{$bootstrap-switch-base}-on {
+    .#{$bootstrap-switch-base}-label {
+      @include border-left-radius($btn-border-radius);
+    }
+  }
+}

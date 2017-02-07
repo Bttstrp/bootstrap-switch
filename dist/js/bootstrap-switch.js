@@ -1,7 +1,7 @@
 /**
   * bootstrap-switch - Turn checkboxes and radio buttons into toggle switches.
   *
-  * @version v3.3.3
+  * @version v4.0.0-alpha.1
   * @homepage http://www.bootstrap-switch.org
   * @author Mattia Larentis <mattia@larentis.eu> (http://larentis.eu)
   * @license Apache-2.0
@@ -719,7 +719,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     inverse: false,
     radioAllOff: false,
     onColor: 'primary',
-    offColor: 'default',
+    offColor: 'secondary',
     onText: 'ON',
     offText: 'OFF',
     labelText: '&nbsp',

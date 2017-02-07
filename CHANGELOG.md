@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.0.0-alpha.1
+
+- Scaffolding for v4
+- SASS for CSS sources
+
 ## 3.3.3
 
 - Deprecate CoffeeScript in favour of ES6+ with Babel

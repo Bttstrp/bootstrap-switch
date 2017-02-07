@@ -601,7 +601,7 @@
     inverse: false,
     radioAllOff: false,
     onColor: 'primary',
-    offColor: 'default',
+    offColor: 'secondary',
     onText: 'ON',
     offText: 'OFF',
     labelText: '&nbsp',
