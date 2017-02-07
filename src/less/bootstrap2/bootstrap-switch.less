@@ -29,7 +29,6 @@
     .box-sizing(border-box);
     cursor: pointer;
     display: inline-block !important;
-    height: 100%;
     padding-top: 4px;
     padding-bottom: 4px;
     padding-left: 8px;
@@ -78,6 +77,10 @@
     .buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark);
   }
 
+  span::before {
+    content: "\200b";
+  }
+
   .@{bootstrap-switch-base}-handle-on {
     .border-left-radius(4px);
   }
@@ -93,6 +96,7 @@
     left: 0;
     .opacity(0);
     z-index: -1;
+    visibility: hidden;
 
     &.form-control {
       height: auto;
