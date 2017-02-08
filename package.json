@@ -21,9 +21,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/nostalgiaz/bootstrap-switch.git"
+    "url": "git://github.com/Bttstrp/bootstrap-switch.git"
   },
-  "bugs": "https://github.com/nostalgiaz/bootstrap-switch/issues",
+  "bugs": "https://github.com/Bttstrp/bootstrap-switch/issues",
   "license": "Apache-2.0",
   "readmeFilename": "README.md",
   "devDependencies": {
@@ -63,12 +63,14 @@
     "css:build:banner": "headr dist/css/bootstrap2/bootstrap-switch.css -o dist/css/bootstrap2/bootstrap-switch.css --version --homepage --author --license && headr dist/css/bootstrap2/bootstrap-switch.min.css -o dist/css/bootstrap2/bootstrap-switch.min.css --version --homepage --author --license && headr dist/css/bootstrap3/bootstrap-switch.css -o dist/css/bootstrap3/bootstrap-switch.css --version --homepage --author --license && headr dist/css/bootstrap3/bootstrap-switch.min.css -o dist/css/bootstrap3/bootstrap-switch.min.css --version --homepage --author --license",
     "css:build": "npm-run-all css:build:base css:build:min -p css:build:banner",
     "css": "run-p css:build",
+    "docs:build": "harp compile src/docs docs",
+    "docs": "run-p docs:build",
+    "publish-docs": "git subtree push --prefix docs origin gh-pages",
     "clean": "rm -rf dist",
     "lint": "run-p js:lint",
     "test": "run-p js:test",
     "build": "run-p *:build",
-    "docs": "harp compile src/docs docs",
-    "prepublish": "run-s clean lint test build docs",
+    "prepublish": "run-s clean lint test build",
     "start": "run-s prepublish"
   },
   "npmName": "bootstrap-switch",
