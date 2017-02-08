@@ -1,6 +1,6 @@
 # Bootstrap Switch
-[![Dependency Status](https://david-dm.org/nostalgiaz/bootstrap-switch.svg?style=flat)](https://david-dm.org/nostalgiaz/bootstrap-switch)
-[![devDependency Status](https://david-dm.org/nostalgiaz/bootstrap-switch/dev-status.svg?style=flat)](https://david-dm.org/nostalgiaz/bootstrap-switch#info=devDependencies)
+[![Dependency Status](https://david-dm.org/Bttstrp/bootstrap-switch.svg?style=flat)](https://david-dm.org/Bttstrp/bootstrap-switch)
+[![devDependency Status](https://david-dm.org/Bttstrp/bootstrap-switch/dev-status.svg?style=flat)](https://david-dm.org/Bttstrp/bootstrap-switch#info=devDependencies)
 [![NPM Version](http://img.shields.io/npm/v/bootstrap-switch.svg?style=flat)](https://www.npmjs.org/)
 
 Turn checkboxes and radio buttons into toggle switches. Created by [Mattia Larentis](http://github.com/nostalgiaz), maintained by [Emanuele Marchi](http://github.com/lostcrew) and [Peter Stein](http://www.bdmdesign.org) with the help of the community.
@@ -11,8 +11,8 @@ To get started, check out [http://bootstrap-switch.org](http://bootstrap-switch.
 
 Several quick start options are available:
 
-- Download the [latest release](https://github.com/nostalgiaz/bootstrap-switch/releases/latest)
-- Clone the repo: `git clone https://github.com/nostalgiaz/bootstrap-switch.git`
+- Download the [latest release](https://github.com/Bttstrp/bootstrap-switch/releases/latest)
+- Clone the repo: `git clone https://github.com/Bttstrp/bootstrap-switch.git`
 - Install with npm: `npm install bootstrap-switch`
 - Install with yarn: `yarn add bootstrap-switch`
 - Install with Composer: `composer require components/bootstrap-switch`
@@ -53,7 +53,7 @@ IE9+ and all the other modern browsers.
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? Please first search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/nostalgiaz/bootstrap-switch/issues/new).
+Have a bug or a feature request? Please first search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/Bttstrp/bootstrap-switch/issues/new).
 
 The new issue should contain both a summary of the issue and the browser/OS environment in which it occurs and a link to the playground you prefer with the reduced test case.
 If suitable, include the steps required to reproduce the bug.
@@ -72,5 +72,5 @@ Please do not use the issue tracker for personal support requests: [Stack Overfl
 
 ## License
 
-Licensed under the [MIT License](https://github.com/nostalgiaz/bootstrap-switch/blob/master/LICENSE).
+Licensed under the [MIT License](https://github.com/Bttstrp/bootstrap-switch/blob/master/LICENSE).
 
