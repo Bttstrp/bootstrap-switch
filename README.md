@@ -58,11 +58,11 @@ Have a bug or a feature request? Please first search for existing and closed iss
 The new issue should contain both a summary of the issue and the browser/OS environment in which it occurs and a link to the playground you prefer with the reduced test case.
 If suitable, include the steps required to reproduce the bug.
 
-Please do not use the issue tracker for personal support requests: [Stack Overflow](http://stackoverflow.com/questions/tagged/bootstrap-switch) is a better place to get help.
+Please do not use the issue tracker for personal support requests: [Stack Overflow](https://stackoverflow.com/questions/tagged/bootstrap-switch) is a better place to get help.
 
 ### Known issues
 
-- Make sure `.form-control` is not applied to the input. Bootstrap does not support that, refer to [Checkboxes and radios](http://getbootstrap.com/css/#checkboxes-and-radios)
+- Make sure `.form-control` is not applied to the input. Bootstrap does not support that, refer to [Checkboxes and radios](https://getbootstrap.com/css/#checkboxes-and-radios)
 
 ## Integrations
 
