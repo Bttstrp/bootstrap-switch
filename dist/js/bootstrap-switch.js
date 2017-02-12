@@ -488,22 +488,38 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _this4.setPrevOptions();
           _this4._width();
           _this4._containerPosition();
+
+          // Allow browser repaint to end of event queue but minimize flicker
           setTimeout(function () {
+            // Ensure visible in case hidden while calculating widths
+            _this4.$wrapper.css('visibility', 'visible');
             if (_this4.options.animate) {
               return _this4.$wrapper.addClass(_this4._getClass('animate'));
             }
-          }, 50);
+          }, 0);
         };
+
+        // initialize if the $wrapper is already visible
         if (this.$wrapper.is(':visible')) {
           init();
           return;
         }
-        var initInterval = window.setInterval(function () {
+
+        var interval = 0.5;
+        var pollForVisibility = function pollForVisibility() {
           if (_this4.$wrapper.is(':visible')) {
             init();
-            return window.clearInterval(initInterval);
+            return;
           }
-        }, 50);
+
+          // use exponential backoff to poll for visibility
+          interval *= 2;
+          setTimeout(pollForVisibility, interval);
+        };
+
+        // hide the element to prevent flickering until it lands in the DOM
+        this.$wrapper.css('visibility', 'hidden');
+        setTimeout(pollForVisibility, 0);
       }
     }, {
       key: '_elementHandlers',

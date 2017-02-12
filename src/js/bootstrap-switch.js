@@ -394,22 +394,38 @@
         this.setPrevOptions()
         this._width()
         this._containerPosition()
+
+        // Allow browser repaint to end of event queue but minimize flicker
         setTimeout(() => {
+          // Ensure visible in case hidden while calculating widths
+          this.$wrapper.css('visibility', 'visible')
           if (this.options.animate) {
             return this.$wrapper.addClass(this._getClass('animate'))
           }
-        }, 50)
+        }, 0)
       }
+
+      // initialize if the $wrapper is already visible
       if (this.$wrapper.is(':visible')) {
         init()
         return
       }
-      const initInterval = window.setInterval(() => {
+
+      let interval = 0.5
+      const pollForVisibility = () => {
         if (this.$wrapper.is(':visible')) {
           init()
-          return window.clearInterval(initInterval)
+          return
         }
-      }, 50)
+
+        // use exponential backoff to poll for visibility
+        interval *= 2
+        setTimeout(pollForVisibility, interval)
+      }
+
+      // hide the element to prevent flickering until it lands in the DOM
+      this.$wrapper.css('visibility', 'hidden')
+      setTimeout(pollForVisibility, 0)
     }
 
     _elementHandlers () {
