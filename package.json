@@ -47,7 +47,8 @@
     "less-plugin-clean-css": "^1.5.0",
     "npm-run-all": "^4.0.1",
     "standard": "^8.6.0",
-    "wintersmith": "^2.3.6"
+    "wintersmith": "^2.3.6",
+    "babel-plugin-transform-es2015-modules-umd": "^6.22.0"
   },
   "scripts": {
     "js:lint": "standard src/js/**/*.js",
@@ -83,6 +84,5 @@
         "css/bootstrap2/*.css"
       ]
     }
-  ],
-  "dependencies": {}
+  ]
 }

@@ -1,3 +1,5 @@
+import jQuery from "jquery"
+
 (function ($, window) {
   class BootstrapSwitch {
     constructor (element, options = {}) {
@@ -612,4 +614,4 @@
     onInit: () => {},
     onSwitchChange: () => {}
   }
-})(window.jQuery, window)
+})(jQuery, window)

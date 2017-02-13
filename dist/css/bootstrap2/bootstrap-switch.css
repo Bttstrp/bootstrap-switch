@@ -78,7 +78,6 @@
   box-sizing: border-box;
   cursor: pointer;
   display: inline-block !important;
-  height: 100%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 8px;
@@ -368,6 +367,9 @@
 .bootstrap-switch .bootstrap-switch-label.active {
   background-color: #cccccc \9;
 }
+.bootstrap-switch span::before {
+  content: "\200b";
+}
 .bootstrap-switch .bootstrap-switch-handle-on {
   -webkit-border-top-left-radius: 4px;
   -moz-border-radius-topleft: 4px;
@@ -392,6 +394,7 @@
   opacity: 0;
   filter: alpha(opacity=0);
   z-index: -1;
+  visibility: hidden;
 }
 .bootstrap-switch input[type='radio'].form-control,
 .bootstrap-switch input[type='checkbox'].form-control {
