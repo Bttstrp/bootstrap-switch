@@ -1,4 +1,4 @@
-import jQuery from "jQuery"
+import $ from "jQuery"
 
 class BootstrapSwitch {
   constructor (element, options = {}) {
@@ -613,3 +613,5 @@ $.fn.bootstrapSwitch.defaults = {
   onInit: () => {},
   onSwitchChange: () => {}
 }
+
+export default 42
