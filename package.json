@@ -84,5 +84,6 @@
         "css/bootstrap2/*.css"
       ]
     }
-  ]
+  ],
+  "dependencies": {}
 }
