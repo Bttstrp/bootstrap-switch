@@ -9,20 +9,20 @@
 
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['jquery'], factory);
+    define(['jQuery'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(require('jquery'));
+    factory(require('jQuery'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(global.jquery);
+    factory(global.jQuery);
     global.bootstrapSwitch = mod.exports;
   }
-})(this, function (_jquery) {
+})(this, function (_jQuery) {
   'use strict';
 
-  var _jquery2 = _interopRequireDefault(_jquery);
+  var _jQuery2 = _interopRequireDefault(_jQuery);
 
   function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : {
@@ -771,5 +771,5 @@
       onInit: function onInit() {},
       onSwitchChange: function onSwitchChange() {}
     };
-  })(_jquery2.default, window);
+  })(_jQuery2.default, window);
 });

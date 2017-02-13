@@ -1,4 +1,4 @@
-import jQuery from "jquery"
+import jQuery from "jQuery"
 
 (function ($, window) {
   class BootstrapSwitch {
