@@ -775,5 +775,5 @@
     onSwitchChange: function onSwitchChange() {}
   };
 
-  exports.default = 42;
+  exports.default = _jQuery2.default.fn.bootstrapSwitch;
 });

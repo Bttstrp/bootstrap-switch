@@ -614,4 +614,4 @@ $.fn.bootstrapSwitch.defaults = {
   onSwitchChange: () => {}
 }
 
-export default 42
+export default $.fn.bootstrapSwitch
