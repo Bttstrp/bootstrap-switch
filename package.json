@@ -84,7 +84,5 @@
       ]
     }
   ],
-  "dependencies": {
-    "babel-plugin-transform-es2015-modules-umd": "^6.23.0"
-  }
+  "dependencies": {}
 }
