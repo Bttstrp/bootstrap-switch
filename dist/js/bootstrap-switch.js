@@ -7,13 +7,57 @@
   * @license Apache-2.0
   */
 
-'use strict';
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define(['exports', 'jQuery'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(exports, require('jQuery'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(mod.exports, global.jQuery);
+    global.bootstrapSwitch = mod.exports;
+  }
+})(this, function (exports, _jQuery) {
+  'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  var _jQuery2 = _interopRequireDefault(_jQuery);
 
-(function ($, window) {
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _createClass = function () {
+    function defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+
+    return function (Constructor, protoProps, staticProps) {
+      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) defineProperties(Constructor, staticProps);
+      return Constructor;
+    };
+  }();
+
   var BootstrapSwitch = function () {
     function BootstrapSwitch(element) {
       var _this = this;
@@ -22,10 +66,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       _classCallCheck(this, BootstrapSwitch);
 
-      this.$element = $(element);
-      this.options = $.extend({}, $.fn.bootstrapSwitch.defaults, this._getElementOptions(), options);
+      this.$element = (0, _jQuery2.default)(element);
+      this.options = _jQuery2.default.extend({}, _jQuery2.default.fn.bootstrapSwitch.defaults, this._getElementOptions(), options);
       this.prevOptions = {};
-      this.$wrapper = $('<div>', {
+      this.$wrapper = (0, _jQuery2.default)('<div>', {
         class: function _class() {
           var classes = [];
           classes.push(_this.options.state ? 'on' : 'off');
@@ -50,16 +94,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return classes.map(_this._getClass.bind(_this)).concat([_this.options.baseClass], _this._getClasses(_this.options.wrapperClass)).join(' ');
         }
       });
-      this.$container = $('<div>', { class: this._getClass('container') });
-      this.$on = $('<span>', {
+      this.$container = (0, _jQuery2.default)('<div>', { class: this._getClass('container') });
+      this.$on = (0, _jQuery2.default)('<span>', {
         html: this.options.onText,
         class: this._getClass('handle-on') + ' ' + this._getClass(this.options.onColor)
       });
-      this.$off = $('<span>', {
+      this.$off = (0, _jQuery2.default)('<span>', {
         html: this.options.offText,
         class: this._getClass('handle-off') + ' ' + this._getClass(this.options.offColor)
       });
-      this.$label = $('<span>', {
+      this.$label = (0, _jQuery2.default)('<span>', {
         html: this.options.labelText,
         class: this._getClass('label')
       });
@@ -72,7 +116,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         if (_this.options.onSwitchChange.apply(element, args) === false) {
           if (_this.$element.is(':radio')) {
-            $('[name="' + _this.$element.attr('name') + '"]').trigger('previousState.bootstrapSwitch', true);
+            (0, _jQuery2.default)('[name="' + _this.$element.attr('name') + '"]').trigger('previousState.bootstrapSwitch', true);
           } else {
             _this.$element.trigger('previousState.bootstrapSwitch', true);
           }
@@ -111,7 +155,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return this.$element;
         }
         if (this.$element.is(':radio')) {
-          $('[name="' + this.$element.attr('name') + '"]').trigger('setPreviousOptions.bootstrapSwitch');
+          (0, _jQuery2.default)('[name="' + this.$element.attr('name') + '"]').trigger('setPreviousOptions.bootstrapSwitch');
         } else {
           this.$element.trigger('setPreviousOptions.bootstrapSwitch');
         }
@@ -346,7 +390,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return this.options.wrapperClass;
         }
         if (!value) {
-          value = $.fn.bootstrapSwitch.defaults.wrapperClass;
+          value = _jQuery2.default.fn.bootstrapSwitch.defaults.wrapperClass;
         }
         this.$wrapper.removeClass(this._getClasses(this.options.wrapperClass).join(' '));
         this.$wrapper.addClass(this._getClasses(value).join(' '));
@@ -373,7 +417,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return this.options.onInit;
         }
         if (!value) {
-          value = $.fn.bootstrapSwitch.defaults.onInit;
+          value = _jQuery2.default.fn.bootstrapSwitch.defaults.onInit;
         }
         this.options.onInit = value;
         return this.$element;
@@ -385,7 +429,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return this.options.onSwitchChange;
         }
         if (!value) {
-          value = $.fn.bootstrapSwitch.defaults.onSwitchChange;
+          value = _jQuery2.default.fn.bootstrapSwitch.defaults.onSwitchChange;
         }
         this.options.onSwitchChange = value;
         return this.$element;
@@ -533,7 +577,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _this5.$wrapper.toggleClass(_this5._getClass('off')).toggleClass(_this5._getClass('on'));
             if (!skip) {
               if (_this5.$element.is(':radio')) {
-                $('[name="' + _this5.$element.attr('name') + '"]').not(_this5.$element).prop('checked', false).trigger('change.bootstrapSwitch', true);
+                (0, _jQuery2.default)('[name="' + _this5.$element.attr('name') + '"]').not(_this5.$element).prop('checked', false).trigger('change.bootstrapSwitch', true);
               }
               _this5.$element.trigger('switchChange.bootstrapSwitch', [state]);
             }
@@ -664,9 +708,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         $form.on('reset.bootstrapSwitch', function () {
           window.setTimeout(function () {
             $form.find('input').filter(function () {
-              return $(this).data('bootstrap-switch');
+              return (0, _jQuery2.default)(this).data('bootstrap-switch');
             }).each(function () {
-              return $(this).bootstrapSwitch('state', this.checked);
+              return (0, _jQuery2.default)(this).bootstrapSwitch('state', this.checked);
             });
           }, 1);
         }).data('bootstrap-switch', true);
@@ -679,7 +723,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_getClasses',
       value: function _getClasses(classes) {
-        if (!$.isArray(classes)) {
+        if (!_jQuery2.default.isArray(classes)) {
           return [this._getClass(classes)];
         }
         return classes.map(this._getClass.bind(this));
@@ -689,14 +733,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     return BootstrapSwitch;
   }();
 
-  $.fn.bootstrapSwitch = function (option) {
+  _jQuery2.default.fn.bootstrapSwitch = function (option) {
     for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
       args[_key2 - 1] = arguments[_key2];
     }
 
     var ret = this;
     this.each(function () {
-      var $this = $(this);
+      var $this = (0, _jQuery2.default)(this);
       var data = $this.data('bootstrap-switch');
       if (!data) {
         data = new BootstrapSwitch(this, option);
@@ -708,8 +752,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     });
     return ret;
   };
-  $.fn.bootstrapSwitch.Constructor = BootstrapSwitch;
-  $.fn.bootstrapSwitch.defaults = {
+  _jQuery2.default.fn.bootstrapSwitch.Constructor = BootstrapSwitch;
+  _jQuery2.default.fn.bootstrapSwitch.defaults = {
     state: true,
     size: null,
     animate: true,
@@ -730,4 +774,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     onInit: function onInit() {},
     onSwitchChange: function onSwitchChange() {}
   };
-})(window.jQuery, window);
+
+  exports.default = _jQuery2.default.fn.bootstrapSwitch;
+});
