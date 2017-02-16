@@ -352,12 +352,9 @@ class BootstrapSwitch {
       .add(this.$off)
       .add(this.$label)
       .css('width', '')
-    let handleWidth
-    if (this.options.handleWidth === 'auto') {
-      handleWidth = Math.round(Math.max(this.$on.width(), this.$off.width()))
-    } else {
-      handleWidth = this.options.handleWidth
-    }
+    const handleWidth = this.options.handleWidth === 'auto'
+      ? Math.round(Math.max(this.$on.width(), this.$off.width()))
+      : this.options.handleWidth
     $handles.width(handleWidth)
     this.$label.width((index, width) => {
       if (this.options.labelWidth !== 'auto') { return this.options.labelWidth }
@@ -579,19 +576,19 @@ class BootstrapSwitch {
 }
 
 $.fn.bootstrapSwitch = function (option, ...args) {
-  let ret = this
-  this.each(function () {
-    const $this = $(this)
-    let data = $this.data('bootstrap-switch')
-    if (!data) {
-      data = new BootstrapSwitch(this, option)
+  function reducer (ret, next) {
+    const $this = $(next)
+    const existingData = $this.data('bootstrap-switch')
+    const data = existingData || new BootstrapSwitch(next, option)
+    if (!existingData) {
       $this.data('bootstrap-switch', data)
     }
     if (typeof option === 'string') {
-      ret = data[option].apply(data, args)
+      return data[option].apply(data, args)
     }
-  })
-  return ret
+    return ret
+  }
+  return Array.prototype.reduce.call(this, reducer, this)
 }
 $.fn.bootstrapSwitch.Constructor = BootstrapSwitch
 $.fn.bootstrapSwitch.defaults = {
