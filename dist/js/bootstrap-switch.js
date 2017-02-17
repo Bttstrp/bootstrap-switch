@@ -7,13 +7,55 @@
   * @license Apache-2.0
   */
 
-'use strict';
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define(['jquery'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(require('jquery'));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(global.jquery);
+    global.bootstrapSwitch = mod.exports;
+  }
+})(this, function (_jquery) {
+  'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+  var _jquery2 = _interopRequireDefault(_jquery);
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
 
-(function ($, window) {
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _createClass = function () {
+    function defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+
+    return function (Constructor, protoProps, staticProps) {
+      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) defineProperties(Constructor, staticProps);
+      return Constructor;
+    };
+  }();
+
+  var $ = _jquery2.default || window.jQuery || window.$;
+
   var BootstrapSwitch = function () {
     function BootstrapSwitch(element) {
       var _this = this;
@@ -430,12 +472,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var _this2 = this;
 
         var $handles = this.$on.add(this.$off).add(this.$label).css('width', '');
-        var handleWidth = void 0;
-        if (this.options.handleWidth === 'auto') {
-          handleWidth = Math.round(Math.max(this.$on.width(), this.$off.width()));
-        } else {
-          handleWidth = this.options.handleWidth;
-        }
+        var handleWidth = this.options.handleWidth === 'auto' ? Math.round(Math.max(this.$on.width(), this.$off.width())) : this.options.handleWidth;
         $handles.width(handleWidth);
         this.$label.width(function (index, width) {
           if (_this2.options.labelWidth !== 'auto') {
@@ -694,19 +731,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       args[_key2 - 1] = arguments[_key2];
     }
 
-    var ret = this;
-    this.each(function () {
-      var $this = $(this);
-      var data = $this.data('bootstrap-switch');
-      if (!data) {
-        data = new BootstrapSwitch(this, option);
+    function reducer(ret, next) {
+      var $this = $(next);
+      var existingData = $this.data('bootstrap-switch');
+      var data = existingData || new BootstrapSwitch(next, option);
+      if (!existingData) {
         $this.data('bootstrap-switch', data);
       }
       if (typeof option === 'string') {
-        ret = data[option].apply(data, args);
+        return data[option].apply(data, args);
       }
-    });
-    return ret;
+      return ret;
+    }
+    return Array.prototype.reduce.call(this, reducer, this);
   };
   $.fn.bootstrapSwitch.Constructor = BootstrapSwitch;
   $.fn.bootstrapSwitch.defaults = {
@@ -730,4 +767,4 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     onInit: function onInit() {},
     onSwitchChange: function onSwitchChange() {}
   };
-})(window.jQuery, window);
+});

@@ -42,8 +42,8 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   cursor: pointer;
-  display: inline-block !important;
-  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
   padding: 6px 12px;
   font-size: 14px;
   line-height: 20px;
@@ -91,6 +91,9 @@
   color: #333;
   background: #fff;
 }
+.bootstrap-switch span::before {
+  content: "\200b";
+}
 .bootstrap-switch .bootstrap-switch-handle-on {
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
@@ -108,6 +111,7 @@
   z-index: -1;
   opacity: 0;
   filter: alpha(opacity=0);
+  visibility: hidden;
 }
 .bootstrap-switch.bootstrap-switch-mini .bootstrap-switch-handle-on,
 .bootstrap-switch.bootstrap-switch-mini .bootstrap-switch-handle-off,
