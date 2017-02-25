@@ -86,7 +86,7 @@ class BootstrapSwitch {
   }
 
   setPrevOptions () {
-    this.prevOptions = Object.assign({}, this.options)
+    this.prevOptions = { ...this.options }
   }
 
   state (value, skip) {

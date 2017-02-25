@@ -31,6 +31,7 @@
     "babel-polyfill": "^6.22.0",
     "babel-preset-babili": "^0.0.10",
     "babel-preset-env": "^1.1.8",
+    "babel-preset-stage-2": "^6.22.0",
     "bootstrap": "^3.3.7",
     "harp": "^0.23.0",
     "headr": "0.0.4",
