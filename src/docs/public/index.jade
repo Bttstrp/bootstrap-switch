@@ -1,6 +1,6 @@
 .bs-docs-masthead
   .container
-    h1.title Bootstrap Switch
+    h1.title= title
 
     p.lead
       | Turn checkboxes &nbsp;
@@ -11,18 +11,18 @@
       input(type='checkbox', checked)
 
     p.lead
-      a.btn.btn-outline-inverse.btn-lg(href='https://github.com/Bttstrp/bootstrap-switch/archive/master.zip') Download Bootstrap Switch
+      a.btn.btn-outline-inverse.btn-lg(href='https://github.com/Bttstrp/bootstrap-switch/archive/master.zip') Download #{title}
     p.bs-docs-social
       iframe(src='https://ghbtns.com/github-btn.html?user=Bttstrp&repo=bootstrap-switch&type=watch&count=true&size=large', allowtransparency='true', frameborder='0', scrolling='0', width='184', height='30')
       iframe(src='https://ghbtns.com/github-btn.html?user=Bttstrp&repo=bootstrap-switch&type=fork&count=true&size=large', allowtransparency='true', frameborder='0', scrolling='0', width='144', height='30')
     br
     p.version
-      | Currently v3.3.3 · Compatible with Bootstrap 2 and 3
+      | Currently v#{version} · Compatible with Bootstrap 2 and 3
 
 .container
   h2.page-header Getting Started
 
-  p Include the dependencies: jQuery, Bootstrap and Bootstrap Switch CSS + Javascript.
+  p Include the dependencies: jQuery, Bootstrap and #{title} CSS + Javascript.
   pre: code
     | [...]
     | &lt;link href="bootstrap.css" rel="stylesheet"&gt;
@@ -34,7 +34,7 @@
   p Add your checkbox.
   pre: code &lt;input type="checkbox" name="my-checkbox" checked&gt;
 
-  p Initialize Bootstrap Switch.
+  p Initialize #{title}.
   pre: code $("[name='my-checkbox']").bootstrapSwitch();
 
   p Enjoy.

@@ -4,9 +4,9 @@ html(lang='en')
     meta(charset='utf-8')
     meta(http-equiv='x-ua-Compatible' content='ie=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    meta(name='description', content='Turn checkboxes and radio buttons into toggle switches.')
+    meta(name='description', content=description)
     meta(name='author', content='Mattia Larentis, Emanuele Marchi and Peter Stein')
-    title Bootstrap Switch · Turn checkboxes and radio buttons into toggle switches
+    title #{title} · #{description}
     link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet')
     link(href='css/highlight.css' rel='stylesheet')
     link(href="https://unpkg.com/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" rel='stylesheet')
@@ -24,7 +24,7 @@ html(lang='en')
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='../') Bootstrap Switch
+          a.navbar-brand(href='../')= title
         nav#collapse.collapse.navbar-collapse.bs-navbar-collapse(role='navigation')
           ul.nav.navbar-nav
             li: a(href='https://github.com/Bttstrp/bootstrap-switch/archive/master.zip', data-toggle='dropdown') Download

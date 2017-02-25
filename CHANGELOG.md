@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.3.4
+
+- Fix Object.assign not working for IE <= 11 [#616](https://github.com/Bttstrp/bootstrap-switch/issues/616)
+
 ## 3.3.3
 
 - Deprecate CoffeeScript in favour of ES6+ with Babel
