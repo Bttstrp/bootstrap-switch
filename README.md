@@ -24,7 +24,7 @@ npm install react-bootstrap-switch
 
 ### Then
 ```
-var Switch = require('react-bootstrap-switch');
+import Switch from 'react-bootstrap-switch';
 
 ...
 
