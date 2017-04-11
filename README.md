@@ -28,8 +28,14 @@ import Switch from 'react-bootstrap-switch';
 
 ...
 
+handleSwitch(elem, state) {
+  console.log('handleSwitch. elem:', elem);
+  console.log('name:', elem.props.name);
+  console.log('new state:', state);
+}
+
 render: function() {
-  return <Switch />;
+  return <Switch onChange={(el, state) => this.handleSwitch(el, state)} name='test' />;
 }
 ```
 
