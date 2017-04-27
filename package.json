@@ -57,5 +57,8 @@
     "dev": "NODE_ENV=development gulp",
     "build": "gulp dist",
     "lint": "eslint ."
+  },
+  "dependencies": {
+    "prop-types": "^15.5.8"
   }
 }

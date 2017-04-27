@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types'
 
 export default class Switch extends React.Component {
 
@@ -395,34 +396,34 @@ Switch.defaultProps = {
 };
 
 Switch.propTypes = {
-  baseClass:      React.PropTypes.string,
-  wrapperClass:   React.PropTypes.string,
-  bsSize:         React.PropTypes.string,
+  baseClass:      PropTypes.string,
+  wrapperClass:   PropTypes.string,
+  bsSize:         PropTypes.string,
 
-  handleWidth:    React.PropTypes.oneOfType([
-                    React.PropTypes.string,
-                    React.PropTypes.number
+  handleWidth:    PropTypes.oneOfType([
+                    PropTypes.string,
+                    PropTypes.number
                   ]),
-  labelWidth:     React.PropTypes.oneOfType([
-                    React.PropTypes.string,
-                    React.PropTypes.number
+  labelWidth:     PropTypes.oneOfType([
+                    PropTypes.string,
+                    PropTypes.number
                   ]),
 
-  onColor:        React.PropTypes.string,
-  offColor:       React.PropTypes.string,
+  onColor:        PropTypes.string,
+  offColor:       PropTypes.string,
 
-  onText:         React.PropTypes.node,
-  offText:        React.PropTypes.node,
-  labelText:      React.PropTypes.string,
+  onText:         PropTypes.node,
+  offText:        PropTypes.node,
+  labelText:      PropTypes.string,
 
-  inverse:        React.PropTypes.bool,
-  animate:        React.PropTypes.bool,
+  inverse:        PropTypes.bool,
+  animate:        PropTypes.bool,
 
-  disabled:       React.PropTypes.bool,
-  readonly:       React.PropTypes.bool,
+  disabled:       PropTypes.bool,
+  readonly:       PropTypes.bool,
 
-  tristate:       React.PropTypes.bool,
-  defaultValue:   React.PropTypes.bool,
-  value:          React.PropTypes.bool,
-  onChange:       React.PropTypes.func,
+  tristate:       PropTypes.bool,
+  defaultValue:   PropTypes.bool,
+  value:          PropTypes.bool,
+  onChange:       PropTypes.func,
 };
