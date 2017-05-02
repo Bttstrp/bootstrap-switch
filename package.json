@@ -51,7 +51,7 @@
     "react-dom": "^15.0.0",
     "reactify": "^1.1.1",
     "vinyl-source-stream": "^1.0.0",
-    "watchify": "^2.3.0"
+    "watchify": "^3.9.0"
   },
   "scripts": {
     "dev": "NODE_ENV=development gulp",
