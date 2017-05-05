@@ -14,6 +14,10 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -499,28 +503,28 @@ Switch.defaultProps = {
 };
 
 Switch.propTypes = {
-  baseClass: _react2.default.PropTypes.string,
-  wrapperClass: _react2.default.PropTypes.string,
-  bsSize: _react2.default.PropTypes.string,
+  baseClass: _propTypes2.default.string,
+  wrapperClass: _propTypes2.default.string,
+  bsSize: _propTypes2.default.string,
 
-  handleWidth: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),
-  labelWidth: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),
+  handleWidth: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+  labelWidth: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
 
-  onColor: _react2.default.PropTypes.string,
-  offColor: _react2.default.PropTypes.string,
+  onColor: _propTypes2.default.string,
+  offColor: _propTypes2.default.string,
 
-  onText: _react2.default.PropTypes.node,
-  offText: _react2.default.PropTypes.node,
-  labelText: _react2.default.PropTypes.string,
+  onText: _propTypes2.default.node,
+  offText: _propTypes2.default.node,
+  labelText: _propTypes2.default.string,
 
-  inverse: _react2.default.PropTypes.bool,
-  animate: _react2.default.PropTypes.bool,
+  inverse: _propTypes2.default.bool,
+  animate: _propTypes2.default.bool,
 
-  disabled: _react2.default.PropTypes.bool,
-  readonly: _react2.default.PropTypes.bool,
+  disabled: _propTypes2.default.bool,
+  readonly: _propTypes2.default.bool,
 
-  tristate: _react2.default.PropTypes.bool,
-  defaultValue: _react2.default.PropTypes.bool,
-  value: _react2.default.PropTypes.bool,
-  onChange: _react2.default.PropTypes.func
+  tristate: _propTypes2.default.bool,
+  defaultValue: _propTypes2.default.bool,
+  value: _propTypes2.default.bool,
+  onChange: _propTypes2.default.func
 };
