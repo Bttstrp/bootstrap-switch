@@ -508,7 +508,7 @@ class BootstrapSwitch {
         if (this._dragStart == null) { return }
         const difference = (event.pageX || event.originalEvent.touches[0].pageX) - this._dragStart
         event.preventDefault()
-        if (difference < -this._handleWidth || difference > 0) { return }
+        if (difference <= -this._handleWidth || difference > 0) { return }
         this._dragEnd = difference
         this.$container.css('margin-left', `${this._dragEnd}px`)
       },
