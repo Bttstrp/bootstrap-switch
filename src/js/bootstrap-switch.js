@@ -612,4 +612,4 @@
     onInit: () => {},
     onSwitchChange: () => {}
   }
-})(window.jQuery, window)
+})(window.jQuery, window);
