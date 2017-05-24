@@ -33,6 +33,9 @@
     "babel-preset-env": "^1.1.8",
     "babel-preset-stage-2": "^6.22.0",
     "bootstrap": "^3.3.7",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.2.0",
     "harp": "^0.23.0",
     "headr": "0.0.4",
     "jasmine": "^2.5.3",
@@ -47,11 +50,10 @@
     "less": "^2.7.2",
     "less-plugin-clean-css": "^1.5.0",
     "npm-run-all": "^4.0.1",
-    "standard": "^8.6.0",
     "wintersmith": "^2.3.6"
   },
   "scripts": {
-    "js:lint": "standard src/js/**/*.js",
+    "js:lint": "eslint src/js/",
     "js:test": "mkdir -p test && babel -d test src/js && karma start karma.conf.js",
     "js:build:dir": "mkdir -p dist/js",
     "js:build:base": "babel -o dist/js/bootstrap-switch.js src/js/bootstrap-switch.js",
