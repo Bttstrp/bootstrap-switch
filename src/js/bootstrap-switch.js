@@ -264,18 +264,16 @@ class BootstrapSwitch {
     return this.$element;
   }
 
-  baseClass(value) {
+  baseClass() {
     return this.options.baseClass;
   }
 
   wrapperClass(value) {
     if (typeof value === 'undefined') { return this.options.wrapperClass; }
-    if (!value) {
-      value = $.fn.bootstrapSwitch.defaults.wrapperClass;
-    }
+    const wrapperClass = value || $.fn.bootstrapSwitch.defaults.wrapperClass;
     this.$wrapper.removeClass(this._getClasses(this.options.wrapperClass).join(' '));
-    this.$wrapper.addClass(this._getClasses(value).join(' '));
-    this.options.wrapperClass = value;
+    this.$wrapper.addClass(this._getClasses(wrapperClass).join(' '));
+    this.options.wrapperClass = wrapperClass;
     return this.$element;
   }
 
@@ -289,10 +287,7 @@ class BootstrapSwitch {
 
   onInit(value) {
     if (typeof value === 'undefined') { return this.options.onInit; }
-    if (!value) {
-      value = $.fn.bootstrapSwitch.defaults.onInit;
-    }
-    this.options.onInit = value;
+    this.options.onInit = value || $.fn.bootstrapSwitch.defaults.onInit;
     return this.$element;
   }
 
@@ -300,10 +295,8 @@ class BootstrapSwitch {
     if (typeof value === 'undefined') {
       return this.options.onSwitchChange;
     }
-    if (!value) {
-      value = $.fn.bootstrapSwitch.defaults.onSwitchChange;
-    }
-    this.options.onSwitchChange = value;
+    this.options.onSwitchChange =
+      value || $.fn.bootstrapSwitch.defaults.onSwitchChange;
     return this.$element;
   }
 
@@ -366,7 +359,7 @@ class BootstrapSwitch {
     return this.$wrapper.width(this._handleWidth + this._labelWidth);
   }
 
-  _containerPosition(state = this.options.state, callback) {
+  _containerPosition(state = this.ope) {
     this.$container.css('margin-left', () => {
       const values = [0, `-${this._handleWidth}px`];
       if (this.options.indeterminate) {
@@ -390,22 +383,21 @@ class BootstrapSwitch {
       this.setPrevOptions();
       this._width();
       this._containerPosition();
-      setTimeout(() => {
-        if (this.options.animate) {
-          return this.$wrapper.addClass(this._getClass('animate'));
-        }
-      }, 50);
+      setTimeout(() => (
+        this.options.animate &&
+        this.$wrapper.addClass(this._getClass('animate'),
+      )), 50);
     };
     if (this.$wrapper.is(':visible')) {
       init();
       return;
     }
-    const initInterval = window.setInterval(() => {
-      if (this.$wrapper.is(':visible')) {
-        init();
-        return window.clearInterval(initInterval);
-      }
-    }, 50);
+    const initInterval = window.setInterval(
+      () => (
+        this.$wrapper.is(':visible') &&
+        (init() || true) &&
+        window.clearInterval(initInterval)
+      ), 50);
   }
 
   _elementHandlers() {
@@ -544,6 +536,14 @@ class BootstrapSwitch {
   }
 
   _formHandler() {
+    function isBootstrapSwitch() {
+      return $(this).data('bootstrap-switch');
+    }
+
+    function performReset() {
+      return $(this).bootstrapSwitch('state', this.checked);
+    }
+
     const $form = this.$element.closest('form');
     if ($form.data('bootstrap-switch')) {
       return;
@@ -552,8 +552,8 @@ class BootstrapSwitch {
       .on('reset.bootstrapSwitch', () => {
         window.setTimeout(() => {
           $form.find('input')
-            .filter(function () { return $(this).data('bootstrap-switch'); })
-            .each(function () { return $(this).bootstrapSwitch('state', this.checked); });
+            .filter(isBootstrapSwitch)
+            .each(performReset);
         }, 1);
       })
       .data('bootstrap-switch', true);
@@ -571,7 +571,7 @@ class BootstrapSwitch {
   }
 }
 
-$.fn.bootstrapSwitch = function (option, ...args) {
+function bootstrapSwitch(option, ...args) {
   function reducer(ret, next) {
     const $this = $(next);
     const existingData = $this.data('bootstrap-switch');
@@ -585,7 +585,9 @@ $.fn.bootstrapSwitch = function (option, ...args) {
     return ret;
   }
   return Array.prototype.reduce.call(this, reducer, this);
-};
+}
+
+$.fn.bootstrapSwitch = bootstrapSwitch;
 $.fn.bootstrapSwitch.Constructor = BootstrapSwitch;
 $.fn.bootstrapSwitch.defaults = {
   state: true,

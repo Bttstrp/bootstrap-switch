@@ -44,8 +44,8 @@ describe('Bootstrap Switch:', () => {
     const $switch = createCheckbox().bootstrapSwitch();
     let eventDoc = 0;
     let eventElement = 0;
-    $(document).on('switchChange.bootstrapSwitch', ':checkbox', (event, state) => { eventDoc++; });
-    $(':checkbox').on('switchChange.bootstrapSwitch', (event, state) => { eventElement++; });
+    $(document).on('switchChange.bootstrapSwitch', ':checkbox', () => { eventDoc += 1; });
+    $(':checkbox').on('switchChange.bootstrapSwitch', () => { eventElement += 1; });
     $switch.click();
     expect(eventElement).toEqual(eventDoc);
     expect(eventElement).toEqual(1);
