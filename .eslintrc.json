@@ -1,4 +1,7 @@
 {
   "extends": "airbnb-base",
-  "env": { "browser": true }
+  "env": { "browser": true },
+  "rules": {
+    "no-underscore-dangle": 0
+  }
 }
