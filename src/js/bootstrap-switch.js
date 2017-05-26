@@ -344,17 +344,17 @@ class BootstrapSwitch {
       if (width < handleWidth) { return handleWidth; }
       return width;
     });
-    this._handleWidth = this.$on.outerWidth();
-    this._labelWidth = this.$label.outerWidth();
-    this.$container.width((this._handleWidth * 2) + this._labelWidth);
-    return this.$wrapper.width(this._handleWidth + this._labelWidth);
+    this.privateHandleWidth = this.$on.outerWidth();
+    this.privateLabelWidth = this.$label.outerWidth();
+    this.$container.width((this.privateHandleWidth * 2) + this.privateLabelWidth);
+    return this.$wrapper.width(this.privateHandleWidth + this.privateLabelWidth);
   }
 
   _containerPosition(state = this.ope) {
     this.$container.css('margin-left', () => {
-      const values = [0, `-${this._handleWidth}px`];
+      const values = [0, `-${this.privateHandleWidth}px`];
       if (this.options.indeterminate) {
-        return `-${this._handleWidth / 2}px`;
+        return `-${this.privateHandleWidth / 2}px`;
       }
       if (state) {
         if (this.options.inverse) {
@@ -489,7 +489,7 @@ class BootstrapSwitch {
         if (dragStart == null) { return; }
         const difference = (event.pageX || event.originalEvent.touches[0].pageX) - dragStart;
         event.preventDefault();
-        if (difference < -this._handleWidth || difference > 0) { return; }
+        if (difference < -this.privateHandleWidth || difference > 0) { return; }
         dragEnd = difference;
         this.$container.css('margin-left', `${dragEnd}px`);
       },
@@ -501,7 +501,7 @@ class BootstrapSwitch {
           this.$wrapper.addClass(this._getClass('animate'));
         }
         if (dragEnd) {
-          const state = dragEnd > -(this._handleWidth / 2);
+          const state = dragEnd > -(this.privateHandleWidth / 2);
           dragEnd = false;
           this.state(this.options.inverse ? !state : state);
         } else {
