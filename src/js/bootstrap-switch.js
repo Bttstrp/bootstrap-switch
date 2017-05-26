@@ -27,7 +27,7 @@ class BootstrapSwitch {
     this.prevOptions = {};
     this.$wrapper = $('<div>', {
       class: () => getClasses(this.options, this.$element.attr('id'))
-        .map(this._getClass.bind(this))
+        .map(v => this._getClass(v))
         .concat([this.options.baseClass], this._getClasses(this.options.wrapperClass))
         .join(' '),
     });
@@ -45,7 +45,7 @@ class BootstrapSwitch {
       class: this._getClass('label'),
     });
 
-    this.$element.on('init.bootstrapSwitch', this.options.onInit.bind(this, element));
+    this.$element.on('init.bootstrapSwitch', () => this.options.onInit(element));
     this.$element.on('switchChange.bootstrapSwitch', (...args) => {
       if (this.options.onSwitchChange.apply(element, args) === false) {
         if (this.$element.is(':radio')) {
@@ -393,7 +393,7 @@ class BootstrapSwitch {
 
   _elementHandlers() {
     return this.$element.on({
-      'setPreviousOptions.bootstrapSwitch': this.setPrevOptions.bind(this),
+      'setPreviousOptions.bootstrapSwitch': () => this.setPrevOptions(),
 
       'previousState.bootstrapSwitch': () => {
         this.options = this.prevOptions;
@@ -558,7 +558,7 @@ class BootstrapSwitch {
     if (!$.isArray(classes)) {
       return [this._getClass(classes)];
     }
-    return classes.map(this._getClass.bind(this));
+    return classes.map(v => this._getClass(v));
   }
 }
 
