@@ -28,10 +28,11 @@
   "readmeFilename": "README.md",
   "devDependencies": {
     "babel-cli": "^6.22.2",
+    "babel-eslint": "^7.2.3",
     "babel-polyfill": "^6.22.0",
     "babel-preset-babili": "^0.0.10",
     "babel-preset-env": "^1.1.8",
-    "babel-preset-stage-2": "^6.22.0",
+    "babel-preset-stage-0": "^6.24.1",
     "bootstrap": "^3.3.7",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
