@@ -467,16 +467,18 @@ class BootstrapSwitch {
   }
 
   _labelHandlers() {
+    let dragStart;
+    let dragEnd;
     const handlers = {
       click(event) { event.stopPropagation(); },
 
       'mousedown.bootstrapSwitch touchstart.bootstrapSwitch': (event) => {
-        if (this._dragStart || this.options.disabled || this.options.readonly) {
+        if (dragStart || this.options.disabled || this.options.readonly) {
           return;
         }
         event.preventDefault();
         event.stopPropagation();
-        this._dragStart = (event.pageX || event.originalEvent.touches[0].pageX) - parseInt(this.$container.css('margin-left'), 10);
+        dragStart = (event.pageX || event.originalEvent.touches[0].pageX) - parseInt(this.$container.css('margin-left'), 10);
         if (this.options.animate) {
           this.$wrapper.removeClass(this._getClass('animate'));
         }
@@ -484,28 +486,28 @@ class BootstrapSwitch {
       },
 
       'mousemove.bootstrapSwitch touchmove.bootstrapSwitch': (event) => {
-        if (this._dragStart == null) { return; }
-        const difference = (event.pageX || event.originalEvent.touches[0].pageX) - this._dragStart;
+        if (dragStart == null) { return; }
+        const difference = (event.pageX || event.originalEvent.touches[0].pageX) - dragStart;
         event.preventDefault();
         if (difference < -this._handleWidth || difference > 0) { return; }
-        this._dragEnd = difference;
-        this.$container.css('margin-left', `${this._dragEnd}px`);
+        dragEnd = difference;
+        this.$container.css('margin-left', `${dragEnd}px`);
       },
 
       'mouseup.bootstrapSwitch touchend.bootstrapSwitch': (event) => {
-        if (!this._dragStart) { return; }
+        if (!dragStart) { return; }
         event.preventDefault();
         if (this.options.animate) {
           this.$wrapper.addClass(this._getClass('animate'));
         }
-        if (this._dragEnd) {
-          const state = this._dragEnd > -(this._handleWidth / 2);
-          this._dragEnd = false;
+        if (dragEnd) {
+          const state = dragEnd > -(this._handleWidth / 2);
+          dragEnd = false;
           this.state(this.options.inverse ? !state : state);
         } else {
           this.state(!this.options.state);
         }
-        this._dragStart = false;
+        dragStart = false;
       },
 
       'mouseleave.bootstrapSwitch': () => {
