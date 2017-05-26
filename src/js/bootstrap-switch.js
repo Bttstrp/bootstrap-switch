@@ -2,6 +2,19 @@ import jquery from 'jquery';
 
 const $ = jquery || window.jQuery || window.$;
 
+function getClasses(options, id) {
+  const { state, size, disabled, readonly, indeterminate, inverse } = options;
+  return [
+    state ? 'on' : 'off',
+    size,
+    disabled ? 'disabled' : undefined,
+    readonly ? 'readonly' : undefined,
+    indeterminate ? 'indeterminate' : undefined,
+    inverse ? 'inverse' : undefined,
+    id ? `id-${id}` : undefined,
+  ].filter(v => v == null);
+}
+
 class BootstrapSwitch {
   constructor(element, options = {}) {
     this.$element = $(element);
@@ -13,32 +26,10 @@ class BootstrapSwitch {
     );
     this.prevOptions = {};
     this.$wrapper = $('<div>', {
-      class: () => {
-        const classes = [];
-        classes.push(this.options.state ? 'on' : 'off');
-        if (this.options.size) {
-          classes.push(this.options.size);
-        }
-        if (this.options.disabled) {
-          classes.push('disabled');
-        }
-        if (this.options.readonly) {
-          classes.push('readonly');
-        }
-        if (this.options.indeterminate) {
-          classes.push('indeterminate');
-        }
-        if (this.options.inverse) {
-          classes.push('inverse');
-        }
-        if (this.$element.attr('id')) {
-          classes.push(`id-${this.$element.attr('id')}`);
-        }
-        return classes
-          .map(this._getClass.bind(this))
-          .concat([this.options.baseClass], this._getClasses(this.options.wrapperClass))
-          .join(' ');
-      },
+      class: () => getClasses(this.options, this.$element.attr('id'))
+        .map(v => this._getClass(v))
+        .concat([this.options.baseClass], this._getClasses(this.options.wrapperClass))
+        .join(' '),
     });
     this.$container = $('<div>', { class: this._getClass('container') });
     this.$on = $('<span>', {
@@ -54,7 +45,7 @@ class BootstrapSwitch {
       class: this._getClass('label'),
     });
 
-    this.$element.on('init.bootstrapSwitch', this.options.onInit.bind(this, element));
+    this.$element.on('init.bootstrapSwitch', () => this.options.onInit(element));
     this.$element.on('switchChange.bootstrapSwitch', (...args) => {
       if (this.options.onSwitchChange.apply(element, args) === false) {
         if (this.$element.is(':radio')) {
@@ -402,7 +393,7 @@ class BootstrapSwitch {
 
   _elementHandlers() {
     return this.$element.on({
-      'setPreviousOptions.bootstrapSwitch': this.setPrevOptions.bind(this),
+      'setPreviousOptions.bootstrapSwitch': () => this.setPrevOptions(),
 
       'previousState.bootstrapSwitch': () => {
         this.options = this.prevOptions;
@@ -567,7 +558,7 @@ class BootstrapSwitch {
     if (!$.isArray(classes)) {
       return [this._getClass(classes)];
     }
-    return classes.map(this._getClass.bind(this));
+    return classes.map(v => this._getClass(v));
   }
 }
 
