@@ -17,6 +17,6 @@
   ],
   "dependencies": {
     "bootstrap": ">=2.3.2",
-    "jquery": "~1.9.0"
+    "jquery": ">=1.9.0"
   }
 }
