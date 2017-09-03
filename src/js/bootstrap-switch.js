@@ -81,26 +81,48 @@ function prvgetClass(name) {
   return `${this.options.baseClass}-${name}`;
 }
 
+// Performs "check" with an exponential backoff starting at 0
+// until "check" returns true
+function prvexponentialBackoff(check, interval = 0.5) {
+  setTimeout(() => {
+    if (!check()) {
+      prvexponentialBackoff(check, interval * 2);
+    }
+  }, interval === 0.5 ? 0 : interval);
+}
+
 function prvinit() {
   const init = () => {
     this.setPrevOptions();
     this::prvwidth();
     this::prvcontainerPosition();
-    setTimeout(() => (
-      this.options.animate &&
-      this.$wrapper.addClass(this::prvgetClass('animate'),
-    )), 50);
+
+    // Allow browser repaint by placing at end of event queue
+    // but minimize flicker by waiting 0ms
+    setTimeout(() => {
+      // Ensure visibile in case hidden while calculating widths
+      this.$wrapper.css('visibility', 'visible');
+
+      if (this.options.animate) {
+        this.$wrapper.addClass(this::prvgetClass('animate'));
+      }
+    }, 0);
   };
+
+  // initialize immediately if the $wrapper is already visible
+  // otherwise use exponential backoff to check if the element is in the DOM yet
   if (this.$wrapper.is(':visible')) {
     init();
     return;
   }
-  const initInterval = window.setInterval(
-    () => (
-      this.$wrapper.is(':visible') &&
-      (init() || true) &&
-      window.clearInterval(initInterval)
-    ), 50);
+
+  // Function to check if $wrapper is in the DOM, inits and returns true if it is
+  // else returns false
+  const isVisibleYet = () => this.$wrapper.is(':visible') && (init() || true);
+
+  // hide the element to prevent flickering until it lands in the DOM
+  this.$wrapper.css('visibility', 'hidden');
+  prvexponentialBackoff(isVisibleYet);
 }
 
 function prvelementHandlers() {
