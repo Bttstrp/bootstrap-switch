@@ -430,7 +430,7 @@
         if (typeof value === 'undefined') {
           return this.options.state;
         }
-        if (this.options.disabled || this.options.readonly || this.options.state && !this.options.radioAllOff && this.$element.is(':radio')) {
+        if (!skip && this.options.disabled || this.options.readonly || this.options.state && !this.options.radioAllOff && this.$element.is(':radio')) {
           return this.$element;
         }
         if (this.$element.is(':radio')) {
