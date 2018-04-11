@@ -2,6 +2,7 @@
 [![Dependency Status](https://david-dm.org/Bttstrp/bootstrap-switch.svg?style=flat)](https://david-dm.org/Bttstrp/bootstrap-switch)
 [![devDependency Status](https://david-dm.org/Bttstrp/bootstrap-switch/dev-status.svg?style=flat)](https://david-dm.org/Bttstrp/bootstrap-switch#info=devDependencies)
 [![NPM Version](http://img.shields.io/npm/v/bootstrap-switch.svg?style=flat)](https://www.npmjs.org/)
+[![jsDelivr Hits](https://data.jsdelivr.com/v1/package/npm/bootstrap-switch/badge?style=rounded)](https://www.jsdelivr.com/package/npm/bootstrap-switch)
 
 Turn checkboxes and radio buttons into toggle switches. Created by [Mattia Larentis](http://github.com/nostalgiaz), maintained by [Emanuele Marchi](http://github.com/lostcrew) and [Peter Stein](http://www.bdmdesign.org) with the help of the community.
 
