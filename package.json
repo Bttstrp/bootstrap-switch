@@ -28,7 +28,9 @@
   "readmeFilename": "README.md",
   "devDependencies": {
     "babel-cli": "^6.22.2",
+    "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
+    "babel-jest": "^22.4.3",
     "babel-polyfill": "^6.22.0",
     "babel-preset-babili": "^0.0.10",
     "babel-preset-env": "^1.1.8",
@@ -41,6 +43,7 @@
     "headr": "0.0.4",
     "jasmine": "^2.5.3",
     "jasmine-core": "^2.5.2",
+    "jest": "^22.4.3",
     "jquery": "^1.12.4",
     "karma": "^1.4.1",
     "karma-babel-preprocessor": "^6.0.1",
@@ -51,11 +54,12 @@
     "less": "^2.7.2",
     "less-plugin-clean-css": "^1.5.0",
     "npm-run-all": "^4.0.1",
+    "regenerator-runtime": "^0.11.1",
     "wintersmith": "^2.3.6"
   },
   "scripts": {
     "js:lint": "eslint src/js/",
-    "js:test": "mkdir -p test && babel -d test src/js && karma start karma.conf.js",
+    "js:test": "jest",
     "js:build:dir": "mkdir -p dist/js",
     "js:build:base": "babel -o dist/js/bootstrap-switch.js src/js/bootstrap-switch.js",
     "js:build:min": "NODE_ENV=production babel -o dist/js/bootstrap-switch.min.js src/js/bootstrap-switch.js",
@@ -88,5 +92,10 @@
       ]
     }
   ],
-  "dependencies": {}
+  "dependencies": {},
+  "jest": {
+    "setupFiles": [
+      "./src/setup-test.js"
+    ]
+  }
 }
