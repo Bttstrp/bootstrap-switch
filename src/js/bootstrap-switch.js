@@ -304,7 +304,8 @@ class BootstrapSwitch {
 
     this.$element.on('init.bootstrapSwitch', () => this.options.onInit(element));
     this.$element.on('switchChange.bootstrapSwitch', (...args) => {
-      if (this.options.onSwitchChange.apply(element, args) === false) {
+      const changeState = this.options.onSwitchChange.apply(element, args);
+      if (changeState === false) {
         if (this.$element.is(':radio')) {
           $(`[name="${this.$element.attr('name')}"]`).trigger('previousState.bootstrapSwitch', true);
         } else {
