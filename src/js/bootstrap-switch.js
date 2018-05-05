@@ -549,6 +549,12 @@ class BootstrapSwitch {
     return this.$element;
   }
 
+  redraw() {
+    this.destroy();
+    this.$element.bootstrapSwitch(this.options);
+    return this.$element;
+  }
+
   destroy() {
     const $form = this.$element.closest('form');
     if ($form.length) {
