@@ -1,7 +1,7 @@
 {
   "name": "bootstrap-switch",
   "description": "Turn checkboxes and radio buttons into toggle switches.",
-  "version": "3.3.4",
+  "version": "3.3.5",
   "keywords": [
     "bootstrap",
     "switch",
@@ -16,8 +16,8 @@
   ],
   "main": "dist/js/bootstrap-switch.js",
   "peerDependencies": {
-    "bootstrap": "^3.1.1",
-    "jquery": ">=1.9.0"
+    "bootstrap": "^3.3.7",
+    "jquery": ">=1.12.4"
   },
   "repository": {
     "type": "git",
