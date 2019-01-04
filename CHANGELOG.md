@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.4
+
+- Full Bootstrap 4 integration of CSS + sources SASS/SCSS
+
 ## 3.3.4
 
 - Fix Object.assign not working for IE <= 11 [#616](https://github.com/Bttstrp/bootstrap-switch/issues/616)
