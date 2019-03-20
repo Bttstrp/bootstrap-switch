@@ -50,6 +50,10 @@ IE9+ and all the other modern browsers.
 - For Bootstrap 2 (no longer officially supported), import `src/less/bootstrap2/bootstrap-switch.less`
 - For Bootstrap 3, import `src/less/bootstrap3/bootstrap-switch.less`
 
+## SASS/SCSS
+
+- For Bootstrap 4, import `src/sass/bootstrap4/bootstrap-switch.scss`
+
 ## Bugs and feature requests
 
 Have a bug or a feature request? Please first search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/Bttstrp/bootstrap-switch/issues/new).
