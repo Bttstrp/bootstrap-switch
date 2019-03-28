@@ -6,6 +6,8 @@
 Turn checkboxes and radio buttons into toggle switches. Created by [Mattia Larentis](http://github.com/nostalgiaz), maintained by [Emanuele Marchi](http://github.com/lostcrew) and [Peter Stein](http://www.bdmdesign.org) with the help of the community.
 Compatible with Bootstrap 4, Bootstrap 3 and Bootstrap 2.
 
+Play with [demo on my fiddle](https://jsfiddle.net/djibe89/vL87w0j8/).
+
 ## Quick start
 
 Several quick start options are available:
