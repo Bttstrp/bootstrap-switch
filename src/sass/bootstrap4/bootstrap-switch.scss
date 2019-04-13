@@ -1,0 +1,214 @@
+/**
+  * bootstrap-switch - Turn checkboxes and radio buttons into toggle switches.
+  *
+  * @version v3.4 for Bootstrap 4.x
+  * @homepage https://bttstrp.github.io/bootstrap-switch
+  * @author Mattia Larentis <mattia@larentis.eu> (http://larentis.eu)
+  * & djibe
+  * @license Apache-2.0
+  */
+
+$bootstrap-switch-border-radius: 4px;
+$bootstrap-switch-handle-border-radius: 3px;
+
+@import "../bootstrap-4.2.1/functions";
+@import "../bootstrap-4.2.1/variables";
+
+.bootstrap-switch {
+	display: inline-block;
+	direction: ltr;
+	cursor: pointer;
+	border-radius: $bootstrap-switch-border-radius;
+	border: 1px solid #ccc;
+	position: relative;
+	text-align: left;
+	overflow: hidden;
+	line-height: 8px;
+	z-index: 0;
+	user-select: none;
+	vertical-align: middle;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+
+	.bootstrap-switch-container {
+		display: inline-block;
+		top: 0;
+		border-radius: $bootstrap-switch-border-radius;
+		transform: translate3d(0, 0, 0);
+	}
+
+	.bootstrap-switch-handle-on,
+	.bootstrap-switch-handle-off,
+	.bootstrap-switch-label {
+		box-sizing: border-box;
+		cursor: pointer;
+		display: table-cell;
+		vertical-align: middle;
+		padding: 6px 12px;
+		font-size: 14px;
+		line-height: 20px;
+		font-weight: 500;
+	}
+
+	.bootstrap-switch-handle-on,
+	.bootstrap-switch-handle-off {
+		text-align: center;
+		z-index: 1;
+
+		&.bootstrap-switch-primary {
+			background: $primary;
+			color: #fff;
+		}
+
+		&.bootstrap-switch-default {
+			background: #eee;
+			color: rgba(0, 0, 0, .87);
+		}
+
+		&.bootstrap-switch-secondary {
+			background: $secondary;
+			color: #fff;
+		}
+
+		&.bootstrap-switch-info {
+			background: $info;
+			color: #fff;
+		}
+
+		&.bootstrap-switch-success {
+			background: $success;
+			color: #fff;
+		}
+
+		&.bootstrap-switch-warning {
+			background: $warning;
+			color: #fff;
+		}
+
+		&.bootstrap-switch-danger {
+			background: $danger;
+			color: #fff;
+		}
+	}
+
+	.bootstrap-switch-label {
+		text-align: center;
+		margin-top: -1px;
+		margin-bottom: -1px;
+		z-index: 100;
+		color: #333;
+		background: #fff;
+		padding: 8px 12px; //test https://github.com/Bttstrp/bootstrap-switch/issues/693
+	}
+
+	span::before {
+		content: "\200b";
+	}
+
+	.bootstrap-switch-handle-on {
+		border-bottom-left-radius: $bootstrap-switch-handle-border-radius;
+		border-top-left-radius: $bootstrap-switch-handle-border-radius;
+	}
+
+	.bootstrap-switch-handle-off {
+		border-bottom-right-radius: $bootstrap-switch-handle-border-radius;
+		border-top-right-radius: $bootstrap-switch-handle-border-radius;
+	}
+
+	input[type='radio'],
+	input[type='checkbox'] {
+		position: absolute !important;
+		top: 0;
+		left: 0;
+		margin: 0;
+		z-index: -1;
+		opacity: 0;
+		filter: alpha(opacity=0);
+		visibility: hidden;
+	}
+
+	&.bootstrap-switch-mini {
+
+		.bootstrap-switch-handle-on,
+		.bootstrap-switch-handle-off,
+		.bootstrap-switch-label {
+			padding: 1px 5px;
+			font-size: 12px;
+			line-height: 1.5;
+		}
+	}
+
+	&.bootstrap-switch-small {
+
+		.bootstrap-switch-handle-on,
+		.bootstrap-switch-handle-off,
+		.bootstrap-switch-label {
+
+			padding: 5px 10px;
+			font-size: 12px;
+			line-height: 1.5;
+		}
+	}
+
+	&.bootstrap-switch-large {
+
+		.bootstrap-switch-handle-on,
+		.bootstrap-switch-handle-off,
+		.bootstrap-switch-label {
+			padding: 6px 16px;
+			font-size: 18px;
+			line-height: 1.3333333;
+		}
+	}
+
+	&.bootstrap-switch-disabled,
+	&.bootstrap-switch-readonly,
+	&.bootstrap-switch-indeterminate {
+		cursor: default !important;
+	}
+
+	&.bootstrap-switch-disabled .bootstrap-switch-handle-on,
+	&.bootstrap-switch-readonly .bootstrap-switch-handle-on,
+	&.bootstrap-switch-indeterminate .bootstrap-switch-handle-on,
+	&.bootstrap-switch-disabled .bootstrap-switch-handle-off,
+	&.bootstrap-switch-readonly .bootstrap-switch-handle-off,
+	&.bootstrap-switch-indeterminate .bootstrap-switch-handle-off,
+	&.bootstrap-switch-disabled .bootstrap-switch-label,
+	&.bootstrap-switch-readonly .bootstrap-switch-label,
+	&.bootstrap-switch-indeterminate .bootstrap-switch-label {
+		opacity: 0.5;
+		filter: alpha(opacity=50);
+		cursor: default !important;
+	}
+
+	&.bootstrap-switch-animate .bootstrap-switch-container {
+		transition: margin-left 0.5s;
+	}
+
+	&.bootstrap-switch-inverse {
+		.bootstrap-switch-handle-on {
+			border-radius: 0 $bootstrap-switch-handle-border-radius $bootstrap-switch-handle-border-radius 0;
+		}
+
+		.bootstrap-switch-handle-off {
+			border-radius: $bootstrap-switch-handle-border-radius 0 0 $bootstrap-switch-handle-border-radius;
+		}
+	}
+
+	&.bootstrap-switch-focused {
+		border-color: #66afe9;
+		outline: 0;
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, 0.6);
+	}
+
+	&.bootstrap-switch-on .bootstrap-switch-label,
+	&.bootstrap-switch-inverse.bootstrap-switch-off .bootstrap-switch-label {
+		border-bottom-right-radius: $bootstrap-switch-handle-border-radius;
+		border-top-right-radius: $bootstrap-switch-handle-border-radius;
+	}
+
+	&.bootstrap-switch-off .bootstrap-switch-label,
+	&.bootstrap-switch-inverse.bootstrap-switch-on .bootstrap-switch-label {
+		border-bottom-left-radius: $bootstrap-switch-handle-border-radius;
+		border-top-left-radius: $bootstrap-switch-handle-border-radius;
+	}
+}
