@@ -39,7 +39,7 @@
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.2.0",
-    "harp": "^0.23.0",
+    "harp": "^0.30.0",
     "headr": "0.0.4",
     "jasmine": "^2.5.3",
     "jasmine-core": "^2.5.2",
@@ -53,7 +53,7 @@
     "karma-phantomjs-launcher": "^1.0.2",
     "less": "^2.7.2",
     "less-plugin-clean-css": "^1.5.0",
-    "npm-run-all": "^4.0.1",
+    "npm-run-all": "^4.1.5",
     "regenerator-runtime": "^0.11.1",
     "wintersmith": "^2.3.6"
   },
@@ -94,6 +94,7 @@
   ],
   "dependencies": {},
   "jest": {
+    "testURL": "http://localhost/",
     "setupFiles": [
       "./src/setup-test.js"
     ]
