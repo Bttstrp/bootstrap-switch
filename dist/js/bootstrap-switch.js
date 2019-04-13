@@ -1,10 +1,10 @@
 /**
   * bootstrap-switch - Turn checkboxes and radio buttons into toggle switches.
   *
-  * @version v3.3.4
+  * @version v3.3.5
   * @homepage https://bttstrp.github.io/bootstrap-switch
   * @author Mattia Larentis <mattia@larentis.eu> (http://larentis.eu)
-  * @license Apache-2.0
+  * @license MIT
   */
 
 (function (global, factory) {
@@ -393,7 +393,8 @@
           args[_key] = arguments[_key];
         }
 
-        if (_this9.options.onSwitchChange.apply(element, args) === false) {
+        var changeState = _this9.options.onSwitchChange.apply(element, args);
+        if (changeState === false) {
           if (_this9.$element.is(':radio')) {
             $('[name="' + _this9.$element.attr('name') + '"]').trigger('previousState.bootstrapSwitch', true);
           } else {
