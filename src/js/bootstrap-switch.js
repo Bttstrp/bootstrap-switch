@@ -265,7 +265,7 @@ function prvformHandler() {
 }
 
 function prvgetClasses(classes) {
-  if (!$.isArray(classes)) {
+  if (!Array.isArray(classes)) {
     return [this::prvgetClass(classes)];
   }
   return classes.map(v => this::prvgetClass(v));
