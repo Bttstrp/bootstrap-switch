@@ -47,8 +47,6 @@
     "eslint-plugin-import": "^2.2.0",
     "harp": "^0.30.0",
     "headr": "0.0.4",
-    "jasmine": "^2.5.3",
-    "jasmine-core": "^2.5.2",
     "jest": "^22.4.3",
     "jquery": "^1.12.4",
     "less": "^2.7.2",
