@@ -1,8 +1,8 @@
-.bs-docs-masthead
+.bd-masthead.mb-3
   .container
-    h1.title= title
+    h1.mb-3= title
 
-    p.lead
+    p.lead.mb-4
       | Turn checkboxes &nbsp;
       input(type='checkbox', checked, data-switch-no-init)
       | &nbsp; and radio buttons &nbsp;
@@ -10,17 +10,18 @@
       | &nbsp; into toggle switches &nbsp;
       input(type='checkbox', checked)
 
-    p.lead
-      a.btn.btn-outline-inverse.btn-lg(href='https://github.com/Bttstrp/bootstrap-switch/archive/master.zip') Download #{title}
+    .d-flex.flex-column.flex-md-row
+      a.btn.btn-lg.btn-bd-primary.mb-3.mr-3(href="#getting-started") Getting started
+      a.btn.btn-lg.btn-outline-secondary.mb-3(href='https://github.com/Bttstrp/bootstrap-switch/archive/master.zip') Download
     p.bs-docs-social
       iframe(src='https://ghbtns.com/github-btn.html?user=Bttstrp&repo=bootstrap-switch&type=watch&count=true&size=large', allowtransparency='true', frameborder='0', scrolling='0', width='184', height='30')
       iframe(src='https://ghbtns.com/github-btn.html?user=Bttstrp&repo=bootstrap-switch&type=fork&count=true&size=large', allowtransparency='true', frameborder='0', scrolling='0', width='144', height='30')
     br
-    p.version
-      | Currently v#{version} · Compatible with Bootstrap 2 and 3
+    p.text-muted.mb-0
+      | Currently v#{version} · Compatible with Bootstrap 4, 3 and 2 (legacy)
 
-.container
-  h2.page-header Getting Started
+.container#getting-started
+  h2.display-5.fw-normal Getting Started
 
   p Include the dependencies: jQuery, Bootstrap and #{title} CSS + Javascript.
   pre: code
@@ -43,4 +44,3 @@
     a.btn.btn-lg.btn-primary(href='examples.html') See Examples
     | &nbsp;
     a.btn.btn-lg.btn-outline(href='options.html') Browse Documentation
-

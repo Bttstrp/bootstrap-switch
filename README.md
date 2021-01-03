@@ -5,7 +5,7 @@
 [![NPM Version](http://img.shields.io/npm/v/bootstrap-switch.svg?style=flat)](https://www.npmjs.org/)
 
 - Turn checkboxes and radio buttons into toggle switches.
-- Compatible with Bootstrap versions 4, 3 and 2 (legacy).
+- Compatible with Bootstrap 4, 3 and 2 (legacy).
 - Use with or without bundlers/build tools
 - Supports IE9+ and all the other modern browsers.
 - [Quick Demo](https://jsfiddle.net/djibe89/vL87w0j8/).
