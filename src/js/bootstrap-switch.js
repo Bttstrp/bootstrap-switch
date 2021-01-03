@@ -290,15 +290,15 @@ class BootstrapSwitch {
     });
     this.$container = $('<div>', { class: this::prvgetClass('container') });
     this.$on = $('<span>', {
-      html: this.options.onText,
+      text: this.options.onText,
       class: `${this::prvgetClass('handle-on')} ${this::prvgetClass(this.options.onColor)}`,
     });
     this.$off = $('<span>', {
-      html: this.options.offText,
+      text: this.options.offText,
       class: `${this::prvgetClass('handle-off')} ${this::prvgetClass(this.options.offColor)}`,
     });
     this.$label = $('<span>', {
-      html: this.options.labelText,
+      text: this.options.labelText,
       class: this::prvgetClass('label'),
     });
 
@@ -473,7 +473,7 @@ class BootstrapSwitch {
 
   onText(value) {
     if (typeof value === 'undefined') { return this.options.onText; }
-    this.$on.html(value);
+    this.$on.text(value);
     this::prvwidth();
     this::prvcontainerPosition();
     this.options.onText = value;
@@ -482,7 +482,7 @@ class BootstrapSwitch {
 
   offText(value) {
     if (typeof value === 'undefined') { return this.options.offText; }
-    this.$off.html(value);
+    this.$off.text(value);
     this::prvwidth();
     this::prvcontainerPosition();
     this.options.offText = value;
@@ -491,7 +491,7 @@ class BootstrapSwitch {
 
   labelText(value) {
     if (typeof value === 'undefined') { return this.options.labelText; }
-    this.$label.html(value);
+    this.$label.text(value);
     this::prvwidth();
     this.options.labelText = value;
     return this.$element;
@@ -598,7 +598,7 @@ $.fn.bootstrapSwitch.defaults = {
   offColor: 'default',
   onText: 'ON',
   offText: 'OFF',
-  labelText: '&nbsp',
+  labelText: '\xa0',
   handleWidth: 'auto',
   labelWidth: 'auto',
   baseClass: 'bootstrap-switch',
