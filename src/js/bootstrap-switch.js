@@ -201,7 +201,7 @@ function prvlabelHandlers() {
       if (dragStart == null) { return; }
       const difference = (event.pageX || event.originalEvent.touches[0].pageX) - dragStart;
       event.preventDefault();
-      if (difference < -this.privateHandleWidth || difference > 0) { return; }
+      if (difference <= -this.privateHandleWidth || difference > 0) { return; }
       dragEnd = difference;
       this.$container.css('margin-left', `${dragEnd}px`);
     },
