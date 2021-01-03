@@ -33,11 +33,12 @@
     "yarn": "^1.22"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.6.3",
-    "babel-minify": "^0.5.1",
+    "babel-preset-minify": "^0.5.1",
     "bootstrap": "^3.3.7",
     "eslint": "^7.17.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -46,7 +47,7 @@
     "headr": "0.0.4",
     "jest": "^26.6.3",
     "jquery": "^1.12.4",
-    "less": "^4.0.0",
+    "less": "^3.13.1",
     "less-plugin-clean-css": "^1.5.0",
     "npm-run-all": "^4.1.5"
   },
