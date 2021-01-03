@@ -1,18 +1,5 @@
-/**
-  * bootstrap-switch - Turn checkboxes and radio buttons into toggle switches.
-  *
-  * @version v3.4 for Bootstrap 4.x
-  * @homepage https://bttstrp.github.io/bootstrap-switch
-  * @author Mattia Larentis <mattia@larentis.eu> (http://larentis.eu)
-  * & djibe
-  * @license Apache-2.0
-  */
-
 $bootstrap-switch-border-radius: 4px;
 $bootstrap-switch-handle-border-radius: 3px;
-
-@import "../bootstrap-4.2.1/functions";
-@import "../bootstrap-4.2.1/variables";
 
 .bootstrap-switch {
 	display: inline-block;

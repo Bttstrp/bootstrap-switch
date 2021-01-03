@@ -12,11 +12,12 @@ window.hljs.initHighlightingOnLoad()
 $(function () {
   $('a[href*=\'#\']').on('click', function (event) {
     event.preventDefault()
-    var $target = $($(this).attr('href').slice('#'))
-    if ($target.length) {
-      $window.scrollTop($target.offset().top - sectionTop)
+    var $target = document.querySelector(this.getAttribute('href').slice('#'))
+    if ($target) {
+      $target.scrollIntoView({ behavior: 'smooth' });
     }
   })
+
   $('input[type="checkbox"], input[type="radio"]')
     .not('[data-switch-no-init]')
     .bootstrapSwitch()

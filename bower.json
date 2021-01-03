@@ -4,7 +4,7 @@
   "license": "Apache-2.0",
   "main": [
     "./dist/js/bootstrap-switch.js",
-    "./dist/css/bootstrap3/bootstrap-switch.css"
+    "./dist/css/bootstrap4/bootstrap-switch.css"
   ],
   "ignore": [
     "docs",

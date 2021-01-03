@@ -12,20 +12,18 @@ describe('Bootstrap Switch:', () => {
     $(`.${$.fn.bootstrapSwitch.defaults.baseClass}`).bootstrapSwitch('destroy');
   });
 
-  const createCheckbox = () =>
-    $('<input>', {
-      type: 'checkbox',
-      class: 'switch',
-    }).appendTo('body');
+  const createCheckbox = () => $('<input>', {
+    type: 'checkbox',
+    class: 'switch',
+  }).appendTo('body');
 
-  const createRadio = () =>
-    $('<input>', {
-      type: 'radio',
-      name: 'name',
-      class: 'switch',
-    }).appendTo('body');
+  const createRadio = () => $('<input>', {
+    type: 'radio',
+    name: 'name',
+    class: 'switch',
+  }).appendTo('body');
 
-  const getOptions = $element => $element.data('bootstrap-switch').options;
+  const getOptions = ($element) => $element.data('bootstrap-switch').options;
 
   it('should set the default options as element options, except state', () => {
     const $switch = createCheckbox().prop('checked', true).bootstrapSwitch();

@@ -1,60 +1,77 @@
 # Bootstrap Switch
+
 [![Dependency Status](https://david-dm.org/Bttstrp/bootstrap-switch.svg?style=flat)](https://david-dm.org/Bttstrp/bootstrap-switch)
 [![devDependency Status](https://david-dm.org/Bttstrp/bootstrap-switch/dev-status.svg?style=flat)](https://david-dm.org/Bttstrp/bootstrap-switch#info=devDependencies)
 [![NPM Version](http://img.shields.io/npm/v/bootstrap-switch.svg?style=flat)](https://www.npmjs.org/)
 
-Turn checkboxes and radio buttons into toggle switches. Created by [Mattia Larentis](http://github.com/nostalgiaz), maintained by [Emanuele Marchi](http://github.com/lostcrew) and [Peter Stein](http://www.bdmdesign.org) with the help of the community.
-Compatible with Bootstrap 4, Bootstrap 3 and Bootstrap 2.
+- Turn checkboxes and radio buttons into toggle switches.
+- Compatible with Bootstrap 4, 3 and 2 (legacy).
+- Use with or without bundlers/build tools
+- Supports IE9+ and all the other modern browsers.
+- [Quick Demo](https://jsfiddle.net/djibe89/vL87w0j8/).
 
-Play with [demo on my fiddle](https://jsfiddle.net/djibe89/vL87w0j8/).
+## Getting started
 
-## Quick start
+### Installation
 
-Several quick start options are available:
+The library is available on various package managers:
 
-- Download the [latest release](https://github.com/Bttstrp/bootstrap-switch/releases/latest)
-- Clone the repo: `git clone https://github.com/Bttstrp/bootstrap-switch.git`
-- Install with npm: `npm install bootstrap-switch`
-- Install with yarn: `yarn add bootstrap-switch`
-- Install with Composer: `composer require components/bootstrap-switch`
-- Install with Bower: `bower install bootstrap-switch`
-- Install with NuGet: `PM> Install-Package Bootstrap.Switch` ([NuGet package](https://github.com/blachniet/bootstrap-switch-nuget))
+- npm: `npm install bootstrap-switch`
+- yarn: `yarn add bootstrap-switch`
+- Composer: `composer require components/bootstrap-switch`
+- Bower: `bower install bootstrap-switch`
+- NuGet: `PM> Install-Package Bootstrap.Switch` ([NuGet package](https://github.com/blachniet/bootstrap-switch-nuget))
 
-Include the dependencies: jQuery, Bootstrap and Bootstrap Switch CSS + Javascript:
+You can also install it manually by downloading the [latest release](https://github.com/Bttstrp/bootstrap-switch/releases/latest) or clone the repo: `git clone https://github.com/Bttstrp/bootstrap-switch.git`.
 
-``` html
+### Inclusion
+
+#### With build tools
+
+If you use a bundler (Webpack, Rollup, Parcel…) or a task runner (Gulp, Grunt…) that supports SASS (or LESS, for Boostrap 3 or 2) and the JS module syntax, include the appropriate entry point file:
+
+```scss
+// boostrap 4
+@import "bootstrap-switch/src/sass/bootstrap4/bootstrap-switch.scss"
+// or 3
+@import "bootstrap-switch/src/less/bootstrap3/bootstrap-switch.less"
+// or 2
+@import "bootstrap-switch/src/less/bootstrap2/bootstrap-switch.less"
+```
+
+Then import the library in your JavaScript as well:
+
+```js
+import 'bootstrap-switch';
+```
+
+#### Without build tools
+
+Include the dependences (jQuery, Bootstrap) and the already compiled JavaScript and CSS files in your HTML:
+
+```html
+<!-- somewhere in <head> tag -->
 <link href="bootstrap.css" rel="stylesheet">
 <link href="bootstrap-switch.css" rel="stylesheet">
 <script src="jquery.js"></script>
 <script src="bootstrap-switch.js"></script>
 ```
 
-Add your checkbox:
+### Your first switch
+
+Add a checkbox:
 
 ```html
 <input type="checkbox" name="my-checkbox" checked>
 ```
 
-Initialize Bootstrap Switch on it:
+Finally, initialize Bootstrap Switch on it:
 
 ```javascript
 $("[name='my-checkbox']").bootstrapSwitch();
 ```
 
-Enjoy.
-
-## Supported browsers
-
-IE9+ and all the other modern browsers.
-
-## LESS
-
-- For Bootstrap 2 (no longer officially supported), import `src/less/bootstrap2/bootstrap-switch.less`
-- For Bootstrap 3, import `src/less/bootstrap3/bootstrap-switch.less`
-
-## SASS/SCSS
-
-- For Bootstrap 4, import `src/sass/bootstrap4/bootstrap-switch.scss`
+Profit!
 
 ## Bugs and feature requests
 
@@ -79,3 +96,6 @@ Please do not use the issue tracker for personal support requests: [Stack Overfl
 
 Licensed under the [MIT License](https://github.com/Bttstrp/bootstrap-switch/blob/master/LICENSE).
 
+## Credits
+
+Created by [Mattia Larentis](http://github.com/nostalgiaz). Maintained by [Emanuele Marchi](http://github.com/lostcrew), [Martin Hradil](https://github.com/himdel). Formerly maintained by [Thomas Grainger](https://github.com/graingert) and [Peter Stein](http://www.bdmdesign.org). Forever supported by the generosity of this community.
