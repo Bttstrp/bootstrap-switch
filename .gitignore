@@ -58,3 +58,4 @@ typings/
 # custom
 test/
 test.html
+.DS_Store
