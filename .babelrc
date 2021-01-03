@@ -1,16 +1,10 @@
 {
   "presets": [
-    ["env", {
-      "modules": "umd",
-      "targets": {
-        "browsers": ["last 2 versions"]
-      }
-    }],
-    "stage-0"
+    ["@babel/preset-env", { "modules": "umd" }]
   ],
   "env": {
     "production": {
-      "presets": ["babili"]
+      "presets": ["babel-minify"]
     }
   }
 }
