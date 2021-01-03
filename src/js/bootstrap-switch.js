@@ -58,7 +58,7 @@ function prvwidth() {
   return this.$wrapper.width(this.privateHandleWidth + this.privateLabelWidth);
 }
 
-function prvcontainerPosition(state = this.ope) {
+function prvcontainerPosition(state = this.options.state) {
   this.$container.css('margin-left', () => {
     const values = [0, `-${this.privateHandleWidth}px`];
     if (this.options.indeterminate) {
