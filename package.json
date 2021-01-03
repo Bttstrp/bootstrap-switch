@@ -49,7 +49,8 @@
     "jquery": "^1.12.4",
     "less": "^3.13.1",
     "less-plugin-clean-css": "^1.5.0",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.32.0"
   },
   "scripts": {
     "js:lint": "eslint src",
