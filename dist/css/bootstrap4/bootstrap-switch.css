@@ -1,52 +1,52 @@
 /**
   * bootstrap-switch - Turn checkboxes and radio buttons into toggle switches.
   *
-  * @version v3.3.5
+  * @version v3.4 for Bootstrap 4.x
   * @homepage https://bttstrp.github.io/bootstrap-switch
   * @author Mattia Larentis <mattia@larentis.eu> (http://larentis.eu)
-  * @license MIT
+  * & djibe
+  * @license Apache-2.0
   */
-
 .bootstrap-switch {
   display: inline-block;
   direction: ltr;
   cursor: pointer;
   border-radius: 4px;
-  border: 1px solid;
-  border-color: #ccc;
+  border: 1px solid #ccc;
   position: relative;
   text-align: left;
   overflow: hidden;
   line-height: 8px;
   z-index: 0;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   vertical-align: middle;
-  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
 }
 .bootstrap-switch .bootstrap-switch-container {
   display: inline-block;
   top: 0;
   border-radius: 4px;
   -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }
 .bootstrap-switch .bootstrap-switch-handle-on,
 .bootstrap-switch .bootstrap-switch-handle-off,
 .bootstrap-switch .bootstrap-switch-label {
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+          box-sizing: border-box;
   cursor: pointer;
   display: table-cell;
   vertical-align: middle;
   padding: 6px 12px;
   font-size: 14px;
   line-height: 20px;
+  font-weight: 500;
 }
 .bootstrap-switch .bootstrap-switch-handle-on,
 .bootstrap-switch .bootstrap-switch-handle-off {
@@ -55,33 +55,38 @@
 }
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary,
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary {
+  background: #007bff;
   color: #fff;
-  background: #337ab7;
+}
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default {
+  background: #eee;
+  color: rgba(0, 0, 0, 0.87);
+}
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-secondary,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-secondary {
+  background: #6c757d;
+  color: #fff;
 }
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info,
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info {
+  background: #17a2b8;
   color: #fff;
-  background: #5bc0de;
 }
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success,
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success {
+  background: #28a745;
   color: #fff;
-  background: #5cb85c;
 }
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning,
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning {
-  background: #f0ad4e;
+  background: #ffc107;
   color: #fff;
 }
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger,
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger {
+  background: #dc3545;
   color: #fff;
-  background: #d9534f;
-}
-.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default,
-.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default {
-  color: #000;
-  background: #eeeeee;
 }
 .bootstrap-switch .bootstrap-switch-label {
   text-align: center;
@@ -90,6 +95,7 @@
   z-index: 100;
   color: #333;
   background: #fff;
+  padding: 8px 12px;
 }
 .bootstrap-switch span::before {
   content: "\200b";
@@ -134,54 +140,35 @@
   font-size: 18px;
   line-height: 1.3333333;
 }
-.bootstrap-switch.bootstrap-switch-disabled,
-.bootstrap-switch.bootstrap-switch-readonly,
-.bootstrap-switch.bootstrap-switch-indeterminate {
+.bootstrap-switch.bootstrap-switch-disabled, .bootstrap-switch.bootstrap-switch-readonly, .bootstrap-switch.bootstrap-switch-indeterminate {
   cursor: default !important;
 }
-.bootstrap-switch.bootstrap-switch-disabled .bootstrap-switch-handle-on,
-.bootstrap-switch.bootstrap-switch-readonly .bootstrap-switch-handle-on,
-.bootstrap-switch.bootstrap-switch-indeterminate .bootstrap-switch-handle-on,
-.bootstrap-switch.bootstrap-switch-disabled .bootstrap-switch-handle-off,
-.bootstrap-switch.bootstrap-switch-readonly .bootstrap-switch-handle-off,
-.bootstrap-switch.bootstrap-switch-indeterminate .bootstrap-switch-handle-off,
-.bootstrap-switch.bootstrap-switch-disabled .bootstrap-switch-label,
-.bootstrap-switch.bootstrap-switch-readonly .bootstrap-switch-label,
-.bootstrap-switch.bootstrap-switch-indeterminate .bootstrap-switch-label {
+.bootstrap-switch.bootstrap-switch-disabled .bootstrap-switch-handle-on, .bootstrap-switch.bootstrap-switch-readonly .bootstrap-switch-handle-on, .bootstrap-switch.bootstrap-switch-indeterminate .bootstrap-switch-handle-on, .bootstrap-switch.bootstrap-switch-disabled .bootstrap-switch-handle-off, .bootstrap-switch.bootstrap-switch-readonly .bootstrap-switch-handle-off, .bootstrap-switch.bootstrap-switch-indeterminate .bootstrap-switch-handle-off, .bootstrap-switch.bootstrap-switch-disabled .bootstrap-switch-label, .bootstrap-switch.bootstrap-switch-readonly .bootstrap-switch-label, .bootstrap-switch.bootstrap-switch-indeterminate .bootstrap-switch-label {
   opacity: 0.5;
   filter: alpha(opacity=50);
   cursor: default !important;
 }
 .bootstrap-switch.bootstrap-switch-animate .bootstrap-switch-container {
   -webkit-transition: margin-left 0.5s;
-  -o-transition: margin-left 0.5s;
   transition: margin-left 0.5s;
 }
 .bootstrap-switch.bootstrap-switch-inverse .bootstrap-switch-handle-on {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-  border-bottom-right-radius: 3px;
-  border-top-right-radius: 3px;
+  border-radius: 0 3px 3px 0;
 }
 .bootstrap-switch.bootstrap-switch-inverse .bootstrap-switch-handle-off {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 3px;
-  border-top-left-radius: 3px;
+  border-radius: 3px 0 0 3px;
 }
 .bootstrap-switch.bootstrap-switch-focused {
   border-color: #66afe9;
   outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }
-.bootstrap-switch.bootstrap-switch-on .bootstrap-switch-label,
-.bootstrap-switch.bootstrap-switch-inverse.bootstrap-switch-off .bootstrap-switch-label {
+.bootstrap-switch.bootstrap-switch-on .bootstrap-switch-label, .bootstrap-switch.bootstrap-switch-inverse.bootstrap-switch-off .bootstrap-switch-label {
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
 }
-.bootstrap-switch.bootstrap-switch-off .bootstrap-switch-label,
-.bootstrap-switch.bootstrap-switch-inverse.bootstrap-switch-on .bootstrap-switch-label {
+.bootstrap-switch.bootstrap-switch-off .bootstrap-switch-label, .bootstrap-switch.bootstrap-switch-inverse.bootstrap-switch-on .bootstrap-switch-label {
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
 }

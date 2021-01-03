@@ -4,8 +4,9 @@
 [![NPM Version](http://img.shields.io/npm/v/bootstrap-switch.svg?style=flat)](https://www.npmjs.org/)
 
 Turn checkboxes and radio buttons into toggle switches. Created by [Mattia Larentis](http://github.com/nostalgiaz), maintained by [Emanuele Marchi](http://github.com/lostcrew) and [Peter Stein](http://www.bdmdesign.org) with the help of the community.
+Compatible with Bootstrap 4, Bootstrap 3 and Bootstrap 2.
 
-To get started, check out [https://bttstrp.github.io/bootstrap-switch](https://bttstrp.github.io/bootstrap-switch)!
+Play with [demo on my fiddle](https://jsfiddle.net/djibe89/vL87w0j8/).
 
 ## Quick start
 
@@ -50,6 +51,10 @@ IE9+ and all the other modern browsers.
 
 - For Bootstrap 2 (no longer officially supported), import `src/less/bootstrap2/bootstrap-switch.less`
 - For Bootstrap 3, import `src/less/bootstrap3/bootstrap-switch.less`
+
+## SASS/SCSS
+
+- For Bootstrap 4, import `src/sass/bootstrap4/bootstrap-switch.scss`
 
 ## Bugs and feature requests
 
