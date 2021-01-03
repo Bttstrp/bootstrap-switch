@@ -11,8 +11,10 @@
   "homepage": "https://bttstrp.github.io/bootstrap-switch",
   "author": "Mattia Larentis <mattia@larentis.eu> (http://larentis.eu)",
   "contributors": [
-    "Emanuele Marchi <emanuele@lostcrew.it> (http://lostcrew.it)",
-    "Peter Stein (http://www.bdmdesign.org)"
+    "Emanuele Marchi (https://github.com/LostCrew)",
+    "Martin Hradil (https://github.com/himdel)",
+    "Peter Stein (http://www.bdmdesign.org)",
+    "Thomas Grainger (https://github.com/graingert)"
   ],
   "main": "dist/js/bootstrap-switch.js",
   "peerDependencies": {
@@ -66,12 +68,12 @@
     "js:build:base": "babel -o dist/js/bootstrap-switch.js src/js/bootstrap-switch.js",
     "js:build:min": "NODE_ENV=production babel -o dist/js/bootstrap-switch.min.js src/js/bootstrap-switch.js",
     "js:build:banner": "headr dist/js/bootstrap-switch.js -o dist/js/bootstrap-switch.js --version --homepage --author --license && headr dist/js/bootstrap-switch.min.js -o dist/js/bootstrap-switch.min.js --version --homepage --author --license",
-    "js:build": "npm-run-all js:build:dir -p js:build:base js:build:min -s js:build:banner",
+    "js:build": "run-s js:build:dir js:build:base js:build:min js:build:banner",
     "js": "run-s js:lint js:test js:build",
     "css:build:base": "lessc src/less/bootstrap2/build.less dist/css/bootstrap2/bootstrap-switch.css && lessc src/less/bootstrap3/build.less dist/css/bootstrap3/bootstrap-switch.css",
     "css:build:min": "lessc --clean-css='--advanced' src/less/bootstrap2/build.less dist/css/bootstrap2/bootstrap-switch.min.css && lessc --clean-css='--advanced' src/less/bootstrap3/build.less dist/css/bootstrap3/bootstrap-switch.min.css",
     "css:build:banner": "headr dist/css/bootstrap2/bootstrap-switch.css -o dist/css/bootstrap2/bootstrap-switch.css --version --homepage --author --license && headr dist/css/bootstrap2/bootstrap-switch.min.css -o dist/css/bootstrap2/bootstrap-switch.min.css --version --homepage --author --license && headr dist/css/bootstrap3/bootstrap-switch.css -o dist/css/bootstrap3/bootstrap-switch.css --version --homepage --author --license && headr dist/css/bootstrap3/bootstrap-switch.min.css -o dist/css/bootstrap3/bootstrap-switch.min.css --version --homepage --author --license",
-    "css:build": "npm-run-all css:build:base css:build:min -p css:build:banner",
+    "css:build": "run-s css:build:base css:build:min css:build:banner",
     "css": "run-p css:build",
     "docs:build": "harp compile src/docs docs",
     "docs": "run-p docs:build",
