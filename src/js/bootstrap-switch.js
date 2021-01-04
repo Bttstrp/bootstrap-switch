@@ -12,7 +12,7 @@ function getClasses(options, id) {
     indeterminate ? 'indeterminate' : undefined,
     inverse ? 'inverse' : undefined,
     id ? `id-${id}` : undefined,
-  ].filter(v => v == null);
+  ].filter(v => v != null);
 }
 
 
